@@ -109,10 +109,19 @@ using Socket = asio::ip::tcp::socket;
 
 void test_network()
 {
-    TCPConnector connector(Socket(g_io_context));
+    auto guard = asio::make_work_guard(g_io_context);
+    TCPConnector connector(g_io_context, "127.0.0.1", 18081);
+    connector.setNewConnectionCallback([](std::shared_ptr<Socket> newSocket)
+    {
+        std::cout << " ====== " << std::endl;
+    });
+    connector.start();
+    g_io_context.run();
 }
 
 int main(int argc, const char * argv[]) {
+    
+    test_network();
     
 //    test_timers();
 //
@@ -122,17 +131,17 @@ int main(int argc, const char * argv[]) {
 
 //    test_server();
     
-    SwapStruct ss1;
-    SwapStruct ss2;
-    
-    ss1.version = 1;
-    ss1.name = "1";
-    ss2.version = 2;
-    ss2.name = "2";
-    
-    std::cout << &ss1 << "      " << &ss2 << std::endl;
-    std::swap(ss1, ss2);
-    std::cout << &ss1 << "      " << &ss2 << std::endl;
+//    SwapStruct ss1;
+//    SwapStruct ss2;
+//    
+//    ss1.version = 1;
+//    ss1.name = "1";
+//    ss2.version = 2;
+//    ss2.name = "2";
+//    
+//    std::cout << &ss1 << "      " << &ss2 << std::endl;
+//    std::swap(ss1, ss2);
+//    std::cout << &ss1 << "      " << &ss2 << std::endl;
     
     return 0;
 }

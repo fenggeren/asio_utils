@@ -401,10 +401,6 @@ void kqueue_reactor::run(long usec, op_queue<operation>& ops)
 
   lock.unlock();
     
-    std::cout << "time: "
-            << "sec: " << timeout->tv_sec
-    << "   nsec: " << timeout->tv_nsec << std::endl;
-    
   // Block on the kqueue descriptor.
   struct kevent events[128];
   int num_events = kevent(kqueue_fd_, 0, 0, events, 128, timeout);
@@ -433,8 +429,7 @@ void kqueue_reactor::run(long usec, op_queue<operation>& ops)
     }
   }
 #endif // defined(ASIO_ENABLE_HANDLER_TRACKING)
-
-    std::cout << "num_events: " << num_events << std::endl;
+ 
   // Dispatch the waiting events.
   for (int i = 0; i < num_events; ++i)
   {

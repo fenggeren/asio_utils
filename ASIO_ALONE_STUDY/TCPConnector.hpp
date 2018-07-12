@@ -13,9 +13,10 @@
 
 class TCPConnector
 {
+    using SocketPtr = std::shared_ptr<asio::ip::tcp::socket>;
 public:
-
-    using NewConnectionCallback = std::function<void(std::shared_ptr<asio::ip::tcp::socket>)>;
+    
+    using NewConnectionCallback = std::function<void(SocketPtr)>;
     
     TCPConnector(asio::io_context& ictx,
                  const std::string& ip,
@@ -26,33 +27,39 @@ public:
         newConnectionCallback_ = cb;
     }
     
+    void setRetryNum(int num) { retryNum_ = num; }
+    
     void start();
     
     void restart();
     
+    // 停止连接
     void stop();
     
     asio::ip::tcp::endpoint endpoint() const { return endpoint_; }
     
 private:
     
-    enum States { kDisconnected, kConnecting, kConnected };
-    static const int kMaxRetryDelayMs = 30*1000;
-    static const int kInitRetryDelayMs = 500;
+    enum States { kDisconnected, kConnecting, kConnected, kStopped };
+
     
     void setState(States s) { state_ = s; }
     
-    void connect();
+    void handleConnect(SocketPtr socket, asio::error_code ec);
     
-    void retry(const asio::ip::tcp::socket& socket);
+    void retry(SocketPtr socket);
     
     
 private:
     asio::io_context& io_context_;
     asio::ip::tcp::endpoint endpoint_;
     NewConnectionCallback newConnectionCallback_;
+    
+    asio::basic_waitable_timer<std::chrono::steady_clock> retryTimer_;
+    
     bool connect_;
     States state_;
     int retryDelayMs_;
+    int retryNum_;
 };
 
