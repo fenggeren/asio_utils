@@ -102,6 +102,16 @@ struct SwapStruct
 };
 
 
+#include "TCPConnector.hpp"
+
+asio::io_context g_io_context;
+using Socket = asio::ip::tcp::socket;
+
+void test_network()
+{
+    TCPConnector connector(Socket(g_io_context));
+}
+
 int main(int argc, const char * argv[]) {
     
 //    test_timers();

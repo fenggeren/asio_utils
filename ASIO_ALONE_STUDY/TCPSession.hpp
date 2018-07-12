@@ -18,13 +18,13 @@
 using asio::ip::tcp;
 class TCPSession;
 using TCPSessionPtr = std::shared_ptr<TCPSession>;
-using SocketPtr = std::unique_ptr<tcp::socket>;
+using SocketPtr = std::shared_ptr<tcp::socket>;
 
 class TCPSession : public std::enable_shared_from_this<TCPSession> 
 {
 public:
     
-    TCPSession(tcp::socket socket);
+    TCPSession(SocketPtr socket);
     ~TCPSession();
     void send(const void* message, int len);
     void send(const std::string& message);
@@ -43,7 +43,7 @@ private:
     void handClose();
     void internalSend();
 private:
-    tcp::socket socket_;
+    SocketPtr socket_;
 
     std::function<void(const TCPSessionPtr&)> writeCompleteCallback_;
     std::function<void(const TCPSessionPtr&)> closeCallback_;

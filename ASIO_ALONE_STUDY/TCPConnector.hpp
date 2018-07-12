@@ -14,8 +14,8 @@
 class TCPConnector
 {
 public:
-    
-    using NewConnectionCallback = std::function<void(asio::ip::tcp::socket)>;
+
+    using NewConnectionCallback = std::function<void(std::shared_ptr<asio::ip::tcp::socket>)>;
     
     TCPConnector(asio::io_context& ictx,
                  const std::string& ip,
@@ -26,7 +26,7 @@ public:
         newConnectionCallback_ = cb;
     }
     
-    void start(const asio::ip::tcp::socket& socket);
+    void start();
     
     void restart();
     
@@ -48,6 +48,7 @@ private:
     
     
 private:
+    asio::io_context& io_context_;
     asio::ip::tcp::endpoint endpoint_;
     NewConnectionCallback newConnectionCallback_;
     bool connect_;

@@ -12,6 +12,7 @@ TCPConnector::TCPConnector(asio::io_context& ictx,
              const std::string& ip,
              unsigned short port)
 : endpoint_(asio::ip::address_v4::from_string(ip), port)
+, io_context_(ictx)
 , connect_(false)
 , state_(kDisconnected)
 , retryDelayMs_(kInitRetryDelayMs)
@@ -20,18 +21,20 @@ TCPConnector::TCPConnector(asio::io_context& ictx,
 }
 
 
-void TCPConnector::start(const asio::ip::tcp::socket& sockett)
+void TCPConnector::start()
 {
     connect_ = true;
-    asio::io_context io;
-    asio::ip::tcp::socket socket(io);
     
-    socket.async_connect(endpoint_,
-                        [this](std::error_code ec)
+    std::shared_ptr<asio::ip::tcp::socket>
+    socketPtr(new asio::ip::tcp::socket(io_context_));
+    
+    socketPtr->async_connect(endpoint_,
+                             [=]
+                             (std::error_code ec)
                         {
                             if (!ec)
                             {
-                                
+                                newConnectionCallback_(socketPtr);
                             }
                         });
 }

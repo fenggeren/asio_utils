@@ -8,7 +8,7 @@
 
 #include "TCPSession.hpp"
 
-TCPSession::TCPSession(tcp::socket socket)
+TCPSession::TCPSession(SocketPtr socket)
 : socket_(std::move(socket)),
 sendBuffer_(new DataBuffer),
 outputBuffer_(new DataBuffer),
@@ -26,7 +26,7 @@ TCPSession::~TCPSession()
 
 void TCPSession::startAsyncRead()
 {
-    socket_.async_read_some(asio::buffer(inputBuffer_->beginWrite(),
+    socket_->async_read_some(asio::buffer(inputBuffer_->beginWrite(),
                                          inputBuffer_->writableBytes()),
                             std::bind(&TCPSession::handRead,this,
                                       std::placeholders::_1,
@@ -49,7 +49,7 @@ void TCPSession::internalSend()
     }
     std::swap(sendBuffer_, outputBuffer_);
     
-    socket_.async_send(asio::buffer(sendBuffer_->beginWrite(),
+    socket_->async_send(asio::buffer(sendBuffer_->beginWrite(),
                                     sendBuffer_->writableBytes()),
                        std::bind(&TCPSession::handWrite,this,
                                  std::placeholders::_1,
