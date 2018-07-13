@@ -11,6 +11,8 @@
 		286682FD20F634DF00C1D7FA /* DataBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 286682FB20F634DF00C1D7FA /* DataBuffer.cpp */; };
 		2866830020F6D64D00C1D7FA /* DataHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 286682FE20F6D64D00C1D7FA /* DataHandler.cpp */; };
 		2866830320F77F6500C1D7FA /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2866830120F77F6500C1D7FA /* TCPConnector.cpp */; };
+		2866830B20F8DDF000C1D7FA /* TCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2866830920F8DDF000C1D7FA /* TCPServer.cpp */; };
+		28895B4120F8E2FC00AF4F20 /* TCPAcceptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28895B3F20F8E2FC00AF4F20 /* TCPAcceptor.cpp */; };
 		28C200B120CD600900A9ECC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28C200B020CD600900A9ECC5 /* main.cpp */; };
 		28C202B220CD602200A9ECC5 /* src.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28C2020820CD602100A9ECC5 /* src.cpp */; };
 		28C202B620D54D5500A9ECC5 /* server.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 28C202B520D54D5500A9ECC5 /* server.hpp */; };
@@ -37,6 +39,11 @@
 		286682FF20F6D64D00C1D7FA /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
 		2866830120F77F6500C1D7FA /* TCPConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPConnector.cpp; sourceTree = "<group>"; };
 		2866830220F77F6500C1D7FA /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
+		2866830820F8210600C1D7FA /* Callbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Callbacks.h; sourceTree = "<group>"; };
+		2866830920F8DDF000C1D7FA /* TCPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPServer.cpp; sourceTree = "<group>"; };
+		2866830A20F8DDF000C1D7FA /* TCPServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPServer.hpp; sourceTree = "<group>"; };
+		28895B3F20F8E2FC00AF4F20 /* TCPAcceptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPAcceptor.cpp; sourceTree = "<group>"; };
+		28895B4020F8E2FC00AF4F20 /* TCPAcceptor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPAcceptor.hpp; sourceTree = "<group>"; };
 		28C200AD20CD600900A9ECC5 /* ASIO_ALONE_STUDY */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ASIO_ALONE_STUDY; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C200B020CD600900A9ECC5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		28C200B820CD602100A9ECC5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -1248,6 +1255,11 @@
 				286682FF20F6D64D00C1D7FA /* DataHandler.hpp */,
 				2866830120F77F6500C1D7FA /* TCPConnector.cpp */,
 				2866830220F77F6500C1D7FA /* TCPConnector.hpp */,
+				2866830820F8210600C1D7FA /* Callbacks.h */,
+				2866830920F8DDF000C1D7FA /* TCPServer.cpp */,
+				2866830A20F8DDF000C1D7FA /* TCPServer.hpp */,
+				28895B3F20F8E2FC00AF4F20 /* TCPAcceptor.cpp */,
+				28895B4020F8E2FC00AF4F20 /* TCPAcceptor.hpp */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -1310,10 +1322,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28895B4120F8E2FC00AF4F20 /* TCPAcceptor.cpp in Sources */,
 				28C202B620D54D5500A9ECC5 /* server.hpp in Sources */,
 				28C202B220CD602200A9ECC5 /* src.cpp in Sources */,
 				2866830020F6D64D00C1D7FA /* DataHandler.cpp in Sources */,
 				286682FD20F634DF00C1D7FA /* DataBuffer.cpp in Sources */,
+				2866830B20F8DDF000C1D7FA /* TCPServer.cpp in Sources */,
 				286682FA20F4DC5D00C1D7FA /* TCPSession.cpp in Sources */,
 				28C200B120CD600900A9ECC5 /* main.cpp in Sources */,
 				2866830320F77F6500C1D7FA /* TCPConnector.cpp in Sources */,
