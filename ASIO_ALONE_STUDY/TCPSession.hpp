@@ -26,23 +26,54 @@ public:
     
     TCPSession(SocketPtr socket);
     ~TCPSession();
-    void send(const void* message, int len);
-    void send(const std::string& message);
-    void send(std::string&& message);
     
+    // 直接发送二进制数据
+    void send(const void* message, size_t len);
+    void send(const std::string& message); 
+    
+    // 异步读取，读取完后调用回调 message callback。
     void startAsyncRead();
     
-    void connect()
+    
+    // 直接关闭链接
+    void shutdown();
+    void forceClose(); 
+    
+    // 链接建立 & 销毁
+    void connectEstablished();
+    void connectDestroyed();
+    
+    bool connected() const { return socket_ != nullptr; }
+    bool disconnected() const { return socket_ == nullptr; }
+
+public:
+    ///////  设置回调   /////////
+    void setConnectionCallback(const std::function<void(const TCPSessionPtr&)>& cb)
     {
-        
+        connectionCallback_ = cb;
     }
+    void setCloseCallback(const std::function<void(const TCPSessionPtr&)>& cb)
+    {
+        closeCallback_ = cb;
+    }
+    void setMessageCallback(const std::function<void(const TCPSessionPtr&, DataBuffer*const)>& cb)
+    {
+        messageCallback_ = cb;
+    }
+    void setWriteCompleteCallback(const std::function<void(const TCPSessionPtr&)>& cb)
+    {
+        writeCompleteCallback_ = cb;
+    }
+ 
 private:
     
     void handRead(asio::error_code ec, std::size_t bytesRead);
     void handWrite(asio::error_code ec, std::size_t bytesRead);
     void handClose();
-    void internalSend();
+    void internalSend(); 
 private:
+    
+    
     SocketPtr socket_;
 
     std::function<void(const TCPSessionPtr&)> writeCompleteCallback_;

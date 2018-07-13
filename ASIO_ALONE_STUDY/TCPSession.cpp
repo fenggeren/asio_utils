@@ -33,8 +33,13 @@ void TCPSession::startAsyncRead()
                                       std::placeholders::_2));
 }
 
+void TCPSession::send(const std::string& message)
+{
+    send(message.data(), message.size());
+}
 
-void TCPSession::send(const void* message, int len)
+
+void TCPSession::send(const void* message, size_t len)
 {
     outputBuffer_->append(message, len);
     
@@ -87,11 +92,42 @@ void TCPSession::handWrite(asio::error_code ec, std::size_t bytesRead)
 
 void TCPSession::handClose()
 {
-    closeCallback_(shared_from_this());
+    if (connected())
+    {
+        socket_->close();
+        socket_ = nullptr;
+        closeCallback_(shared_from_this());
+    }
 }
 
 
+void TCPSession::connectEstablished()
+{
+    if (connectionCallback_) {
+        connectionCallback_(shared_from_this());
+    }
+}
 
+void TCPSession::connectDestroyed()
+{
+    forceClose();
+}
+
+void TCPSession::shutdown()
+{
+    if (socket_ && socket_->is_open())
+    {
+        
+        socket_->shutdown(asio::socket_base::shutdown_send);
+    }
+}
+void TCPSession::forceClose()
+{
+    if (socket_ && socket_->is_open())
+    {
+        handClose();
+    }
+}
 
 
 
