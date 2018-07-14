@@ -27,9 +27,12 @@ void TCPAcceptor::listen(unsigned short port, bool ipv6)
     }
     acceptor_.bind(endpoint);
     acceptor_.listen();
-    
-    
-    
+ 
+    listenInternal();
+}
+
+void TCPAcceptor::listenInternal()
+{
     std::shared_ptr<tcp::socket> new_socket(new tcp::socket(io_context_));
     acceptor_.async_accept(*new_socket, std::bind(&TCPAcceptor::handAccept, this,new_socket, std::placeholders::_1));
 }
@@ -41,6 +44,7 @@ void TCPAcceptor::handAccept(std::shared_ptr<tcp::socket> socket, asio::error_co
         if (newConnectionCallback_)
         {
             newConnectionCallback_(socket);
+            listenInternal();
         }
         else
         {

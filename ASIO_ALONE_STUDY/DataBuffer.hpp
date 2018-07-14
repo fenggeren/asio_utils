@@ -17,6 +17,15 @@ public:
     static const size_t kCheapPrepend = 8;
     static const size_t kInitialSize = 1024;
     
+    
+    DataBuffer(size_t initialSize = kInitialSize)
+    : buffer_(kCheapPrepend + initialSize)
+    , readerIndex_(kCheapPrepend)
+    , writerIndex_(kCheapPrepend)
+    {
+        
+    }
+    
     size_t readableBytes() const
     {
         return writerIndex_ - readerIndex_;
@@ -97,6 +106,15 @@ public:
     const char* beginWrite() const
     {
         return begin() + writerIndex_;
+    }
+    
+    char* beginRead()
+    {
+        return begin() + readerIndex_;
+    }
+    const char* beginRead() const
+    {
+        return begin() + readerIndex_;
     }
     
     void hasWritten(size_t len)

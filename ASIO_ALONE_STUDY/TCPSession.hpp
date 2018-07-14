@@ -24,7 +24,7 @@ class TCPSession : public std::enable_shared_from_this<TCPSession>
 {
 public:
     
-    TCPSession(SocketPtr socket);
+    TCPSession(SocketPtr socket, const std::string& name);
     ~TCPSession();
     
     // 直接发送二进制数据
@@ -45,7 +45,8 @@ public:
     
     bool connected() const { return socket_ != nullptr; }
     bool disconnected() const { return socket_ == nullptr; }
-
+    
+    const std::string& name() const { return name_; }
 public:
     ///////  设置回调   /////////
     void setConnectionCallback(const std::function<void(const TCPSessionPtr&)>& cb)
@@ -85,7 +86,8 @@ private:
     DataBuffer* outputBuffer_;
     
     DataBuffer* sendBuffer_;
-     
+    
+    const std::string name_;
 };
 
 

@@ -8,8 +8,9 @@
 
 #include "TCPSession.hpp"
 
-TCPSession::TCPSession(SocketPtr socket)
+TCPSession::TCPSession(SocketPtr socket, const std::string& name)
 : socket_(std::move(socket)),
+name_(name),
 sendBuffer_(new DataBuffer),
 outputBuffer_(new DataBuffer),
 inputBuffer_(new DataBuffer)
@@ -48,14 +49,14 @@ void TCPSession::send(const void* message, size_t len)
 
 void TCPSession::internalSend()
 {
-    if (sendBuffer_->isOperate())
+    if (sendBuffer_->isOperate() || outputBuffer_->readableBytes() == 0)
     {
         return;
     }
     std::swap(sendBuffer_, outputBuffer_);
     
-    socket_->async_send(asio::buffer(sendBuffer_->beginWrite(),
-                                    sendBuffer_->writableBytes()),
+    socket_->async_send(asio::buffer(sendBuffer_->beginRead(),
+                                    sendBuffer_->readableBytes()),
                        std::bind(&TCPSession::handWrite,this,
                                  std::placeholders::_1,
                                  std::placeholders::_2));
@@ -103,6 +104,7 @@ void TCPSession::handClose()
 
 void TCPSession::connectEstablished()
 {
+    startAsyncRead();
     if (connectionCallback_) {
         connectionCallback_(shared_from_this());
     }

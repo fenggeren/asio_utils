@@ -20,6 +20,7 @@
         "cstddef": "cpp",
         "cstring": "cpp",
         "ctime": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "*.ipp": "cpp"
     }
 }

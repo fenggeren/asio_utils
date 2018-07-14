@@ -27,6 +27,7 @@ public:
     
 private:
     
+    void listenInternal();
     void handAccept(std::shared_ptr<tcp::socket> socket, asio::error_code ec);
     
 private:
