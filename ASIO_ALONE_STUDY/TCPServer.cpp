@@ -77,6 +77,7 @@ void TCPServer::defaultWriteCompleteCallback(const TCPSessionPtr& session)
 void TCPServer::removeConnection(const std::shared_ptr<TCPSession>& session)
 {
     std::cout << " remove connection: " << session->name() << std::endl;
+    connectionsMap_.erase(session->name());
 }
 
 void TCPServer::defaultConnectionCallback(const std::shared_ptr<TCPSession>& session)

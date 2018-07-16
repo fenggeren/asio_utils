@@ -76,19 +76,31 @@ void TCPSession::handRead(asio::error_code ec, std::size_t bytesRead)
         }
         else
         {
-            // TODO. 处理错误
+            if (ec == asio::error::interrupted ||
+                ec == asio::error::try_again)
+            {
+                startAsyncRead();
+            }
+            else
+            {
+                std::cout << " handRead io Error: " << ec << std::endl;
+                handClose();
+            }
         }
     }
 }
 
 void TCPSession::handWrite(asio::error_code ec, std::size_t bytesRead)
 {
-    sendBuffer_->unoperate();
-    sendBuffer_->retrieveAll();
-    if (writeCompleteCallback_) {
-        writeCompleteCallback_(shared_from_this());
+    if (!ec)
+    {
+        sendBuffer_->unoperate();
+        sendBuffer_->retrieveAll();
+        if (writeCompleteCallback_) {
+            writeCompleteCallback_(shared_from_this());
+        }
+        internalSend();
     }
-    internalSend();
 }
 
 void TCPSession::handClose()

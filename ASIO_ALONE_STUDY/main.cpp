@@ -11,6 +11,8 @@
 #include "server.hpp"
 #include "asio.hpp"
 #include <chrono>
+#include <type_traits>
+#include <sys/syscall.h>
 
 using namespace asio;
 
@@ -105,33 +107,37 @@ struct SwapStruct
 #include "TCPConnector.hpp"
 #include "TCPServer.hpp"
 
-asio::io_context g_io_context;
-using Socket = asio::ip::tcp::socket;
-auto guard = asio::make_work_guard(g_io_context);
-
-void test_network()
-{
-    TCPConnector connector(g_io_context, "127.0.0.1", 18081);
-    connector.setNewConnectionCallback([](std::shared_ptr<Socket> newSocket)
-    {
-        std::cout << " ====== " << std::endl;
-    });
-    connector.start();
-    g_io_context.run();
-}
-
-void test_tcp_server()
-{
-    TCPServer server(g_io_context, 8085);
-    server.start();
-    
-    g_io_context.run();
-}
+//asio::io_context g_io_context;
+//using Socket = asio::ip::tcp::socket;
+//auto guard = asio::make_work_guard(g_io_context);
+//
+//void test_network()
+//{
+//    TCPConnector connector(g_io_context, "127.0.0.1", 18081);
+//    connector.setNewConnectionCallback([](std::shared_ptr<Socket> newSocket)
+//    {
+//        std::cout << " ====== " << std::endl;
+//    });
+//    connector.start();
+//    g_io_context.run();
+//}
+//
+//void test_tcp_server()
+//{
+//    TCPServer server(g_io_context, 8085);
+//    server.start();
+//    
+//    g_io_context.run();
+//}
 
 int main(int argc, const char * argv[]) {
     
 //    test_network();
-    test_tcp_server();
+//    test_tcp_server();
+    
+//    test_asio_queue();
+    
+    
     
 //    test_timers();
 //
