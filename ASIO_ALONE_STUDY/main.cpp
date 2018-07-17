@@ -130,7 +130,20 @@ struct SwapStruct
 //    g_io_context.run();
 //}
 
+#include "TCPClient.hpp"
+
+void test_TCPClient()
+{
+    asio::io_context io_context;
+    TCPClient client(io_context, "127.0.0.1", 5058);
+    client.connect();
+    
+    io_context.run();
+}
+
 int main(int argc, const char * argv[]) {
+    
+    test_TCPClient();
     
 //    test_network();
 //    test_tcp_server();

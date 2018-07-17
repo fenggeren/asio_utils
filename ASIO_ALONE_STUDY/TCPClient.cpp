@@ -68,9 +68,12 @@ void TCPClient::newConnection(std::shared_ptr<tcp::socket> socket)
     session_ = session;
 }
 
-void TCPClient::defaultMessageCallback(const std::shared_ptr<TCPSession>&, DataBuffer*const)
+void TCPClient::defaultMessageCallback(const std::shared_ptr<TCPSession>& session, DataBuffer*const buffer)
 {
-    
+    std::string msg(buffer->beginRead(), buffer->readableBytes());
+    buffer->retrieveAll();
+    std::cout << msg << std::endl;
+    session->send(msg);
 }
 
 void TCPClient::defaultWriteCompleteCallback(const std::shared_ptr<TCPSession>&)

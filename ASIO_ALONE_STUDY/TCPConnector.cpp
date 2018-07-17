@@ -12,11 +12,13 @@ static const int kMaxRetryDelayMs = 30000;
 static const int kInitRetryDelayMs = 500;
 
 TCPConnector::TCPConnector(asio::io_context& ictx,
-             const std::string& ip,
+             const std::string& address,
              unsigned short port)
-: endpoint_(asio::ip::address_v4::from_string(ip), port)
-, io_context_(ictx)
+: io_context_(ictx)
+, resolve_(ictx)
 , retryTimer_(io_context_)
+, address_(address)
+, port_(port)
 , connect_(false)
 , state_(kDisconnected)
 , retryDelayMs_(kInitRetryDelayMs)
@@ -43,13 +45,20 @@ void TCPConnector::stop()
 
 void TCPConnector::start()
 {
+    if (state_ == kConnecting) {
+        return;
+    }
+    
     connect_ = true;
     setState(kConnecting);
-    
+    resolveAddress();
+}
+
+void TCPConnector::connect()
+{
     SocketPtr
     socketPtr(new asio::ip::tcp::socket(io_context_));
-    
-    socketPtr->async_connect(endpoint_,std::bind(&TCPConnector::handleConnect, this, socketPtr, std::placeholders::_1));
+    socketPtr->async_connect(*endpoint_iterator_,std::bind(&TCPConnector::handleConnect, this, socketPtr, std::placeholders::_1));
 }
 
 void TCPConnector::handleConnect(SocketPtr socket, asio::error_code ec)
@@ -61,6 +70,11 @@ void TCPConnector::handleConnect(SocketPtr socket, asio::error_code ec)
         {
             newConnectionCallback_(socket);
         }
+    }
+    else if (endpoint_iterator_ != asio::ip::tcp::resolver::iterator())
+    {
+        endpoint_iterator_++;
+        connect();
     }
     else if (ec == asio::error::try_again ||
              ec == asio::error::address_in_use ||
@@ -116,7 +130,17 @@ void TCPConnector::retry(SocketPtr socket)
 }
 
 
-
+void TCPConnector::resolveAddress()
+{
+    resolve_.async_resolve(address_,
+                          std::to_string(port_),
+                          [&](asio::error_code ec,
+                             asio::ip::basic_resolver_results<asio::ip::tcp> results)
+                          {
+                              endpoint_iterator_ = results.begin();
+                              connect();
+                          });
+}
 
 
 

@@ -19,7 +19,7 @@ public:
     using NewConnectionCallback = std::function<void(SocketPtr)>;
     
     TCPConnector(asio::io_context& ictx,
-                 const std::string& ip,
+                 const std::string& address,
                  unsigned short port);
     
     void setNewConnectionCallback(const NewConnectionCallback& cb)
@@ -49,7 +49,9 @@ private:
     
     void retry(SocketPtr socket);
     
+    void resolveAddress();
     
+    void connect();
 private:
     asio::io_context& io_context_;
     asio::ip::tcp::endpoint endpoint_;
@@ -61,5 +63,11 @@ private:
     States state_;
     int retryDelayMs_;
     int retryNum_;
+    
+    const std::string address_;
+    const unsigned short port_;
+    
+    asio::ip::tcp::resolver::iterator endpoint_iterator_;
+    asio::ip::tcp::resolver resolve_;
 };
 
