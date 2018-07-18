@@ -15,6 +15,7 @@ namespace Queue
     using Handler = std::function<void()>;
     using CompleteHandler = std::function<void()>;
     
+#define S2M(S) (int)(S*1000)
     
     class TimerManager
     {
@@ -29,7 +30,7 @@ namespace Queue
         TimerPtr createTimer(double delay, Handler&& handler)
         {
             TimerPtr timer(new BasicTimer(io_context_));
-            timer->expires_after(std::chrono::milliseconds((int)delay * 1000));
+            timer->expires_after(std::chrono::milliseconds(S2M(delay)));
             timer->async_wait([timer, handler=std::move(handler)](asio::error_code ec)
                               {
                                   handler();
@@ -41,7 +42,7 @@ namespace Queue
         static TimerPtr createTimer(double delay, Handler&& handler, asio::io_context& io)
         {
             TimerPtr timer(new BasicTimer(io));
-            timer->expires_after(std::chrono::milliseconds((int)delay * 1000));
+            timer->expires_after(std::chrono::milliseconds(S2M(delay)));
             timer->async_wait([timer, handler=std::move(handler)](asio::error_code ec)
                               {
                                   handler();
@@ -53,7 +54,7 @@ namespace Queue
         
         struct RepeatHandler
         {
-            RepeatHandler(TimerPtr timer, int interval, int count,
+            RepeatHandler(TimerPtr timer, double interval, int count,
                           const Handler& handler)
             : timer_(timer)
             , interval_(interval)
@@ -66,7 +67,8 @@ namespace Queue
                 handler_();
                 if (--count_ > 0)
                 {
-                    timer_->expires_after(std::chrono::milliseconds((int)(interval_ * 1000)));
+                    std::cout << timer_.use_count() << std::endl;
+                    timer_->expires_after(std::chrono::milliseconds(S2M(interval_)));
                     timer_->async_wait(std::forward<RepeatHandler>(*this));
                 }
             }
@@ -84,7 +86,7 @@ namespace Queue
                                    asio::io_context& io)
         {
             TimerPtr timer(new BasicTimer(io));
-            timer->expires_after(std::chrono::milliseconds((int)delay * 1000));
+            timer->expires_after(std::chrono::milliseconds(S2M(delay)));
             
             std::function<void(asio::error_code)> timerHandler;
             timerHandler = [&, timer, delay, interval, count]
@@ -93,7 +95,7 @@ namespace Queue
                 handler();
                 count -= 1;
                 if (count > 0) {
-                    timer->expires_after(std::chrono::milliseconds((int)delay * 1000));
+                    timer->expires_after(std::chrono::milliseconds(S2M(delay)));
                     timer->async_wait(RepeatHandler(timer, interval, count, handler));
                 }
             };
@@ -108,6 +110,8 @@ namespace Queue
     private:
         asio::io_context& io_context_;
     };
+    
+    
     
     
     class MainQueue
@@ -166,10 +170,19 @@ namespace Queue
             return queue;
         }
         
+        GlobalQueue()
+        : pool_(4)
+        {}
+        
         void post(Handler&& handler)
         {
             
             asio::post(pool_, std::forward<Handler>(handler));
+        }
+        
+        void dispatch(Handler&& handler)
+        {
+            asio::dispatch(pool_, std::forward<Handler>(handler));
         }
         
         void strand(Handler&& handler)
@@ -177,11 +190,14 @@ namespace Queue
             //            asio::post(asio::strand<decltype(pool_.get_executor())>(), handler);
         }
         
+        
+        
     private:
         asio::thread_pool pool_;
     };
 }
 
+#if 0
 
 void test_asio_queue()
 {
@@ -236,5 +252,5 @@ void test_timer()
 }
 
 
-
+#endif
 

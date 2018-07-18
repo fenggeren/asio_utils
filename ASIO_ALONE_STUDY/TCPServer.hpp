@@ -26,6 +26,8 @@ public:
     TCPServer(asio::io_context& io, unsigned short port, bool ipv6=false);
     
     void start();
+    
+    
 private:
     
     void newConnection(std::shared_ptr<tcp::socket> socket);

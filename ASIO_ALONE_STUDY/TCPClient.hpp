@@ -28,6 +28,9 @@ public:
     void disconnect();
     void stop();
     
+    
+    
+    
 private:
     
     void newConnection(std::shared_ptr<asio::ip::tcp::socket> socket);

@@ -141,16 +141,61 @@ void test_TCPClient()
     io_context.run();
 }
 
+#include "Queue.hpp"
+
+void test_main_Queue()
+{
+    using namespace Queue;
+    
+    asio::io_context io_context;
+    TimerManager manager(io_context);
+    
+    manager.createRepeatTimer(1, 0.5, 1000,
+                              []{
+                                  std::cout << " ======== " << std::endl;
+                              }, io_context);
+    
+    io_context.run();
+    
+    
+    auto& main = MainQueue::Instance();
+    
+    main.runMainThread();
+}
+
+void test_block_blocks()
+{
+    using Handler = std::function<void(const std::string&)>;
+    using Error = std::function<void(int)>;
+    
+    using AsyncHandler = std::function<void(Handler, Error)>;
+    
+    AsyncHandler async = [](const Handler& handler,
+                            const Error& error)
+    {
+        std::cout << "begin handler" << std::endl;
+        handler("处理");
+        error(3);
+    };
+    
+    async([](const std::string& msg){
+        std::cout << msg << std::endl;
+    },
+    [](int err){
+        std::cout << "Handler error code: " << err << std::endl;
+    });
+}
+
 int main(int argc, const char * argv[]) {
     
-    test_TCPClient();
+    test_block_blocks();
+    
+//    test_main_Queue();
     
 //    test_network();
 //    test_tcp_server();
     
 //    test_asio_queue();
-    
-    
     
 //    test_timers();
 //
