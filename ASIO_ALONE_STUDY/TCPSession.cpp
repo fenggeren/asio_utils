@@ -109,7 +109,9 @@ void TCPSession::handClose()
     {
         socket_->close();
         socket_ = nullptr;
-        closeCallback_(shared_from_this());
+        if (closeCallback_) {
+            closeCallback_(shared_from_this());
+        }
     }
 }
 

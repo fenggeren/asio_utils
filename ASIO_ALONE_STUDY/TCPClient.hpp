@@ -30,6 +30,18 @@ public:
     
     
     
+    void setConnectionCallback(const std::function<void(const std::shared_ptr<TCPSession>&)> cb)
+    {
+        connectionCallback_ = cb;
+    }
+    void setWriteCompleteCallback(const std::function<void(const std::shared_ptr<TCPSession>&)>& cb)
+    {
+        writeCompleteCallback_ = cb;
+    }
+    void setMessageCallback(const std::function<void(const std::shared_ptr<TCPSession>&, DataBuffer*const)>& cb)
+    {
+        messageCallback_ = cb;
+    }
     
 private:
     
