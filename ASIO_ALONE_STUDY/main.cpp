@@ -186,9 +186,59 @@ void test_block_blocks()
     });
 }
 
+#include "Logging.hpp"
+
+Logging::AsyncLogging* g_logging = nullptr;
+
+void asyncOutput(const char* msg, size_t len)
+{
+    g_logging->append(msg, len);
+}
+
+off_t kRollSize = 500*1000*1000;
+
+void testLog()
+{
+    using namespace Logging;
+    while (true)
+    {
+        LOG_INFO << " ======= ";
+    }
+}
+
 int main(int argc, const char * argv[]) {
     
-    test_block_blocks();
+    using namespace Logging;
+    AsyncLogging log("logging", kRollSize);
+    log.start();
+    g_logging = &log;
+    
+    Logger::setOutput(asyncOutput);
+    
+    std::vector<std::thread> threads;
+    
+    for (int i = 0; i < 10; ++i) {
+        threads.push_back(std::thread([&]{
+            testLog();
+        }));
+    }
+    sleep(10);
+
+    
+//    while (true)
+//    {
+//        LOG_INFO << " loggging ";
+//        usleep(1);
+//    }
+    
+//    std::cout << sizeof(time_t) << std::endl;
+    
+    
+    
+//    test_block_blocks();
+    
+//    time_t t = time(NULL);
+//    std::cout << t << std::endl;
     
 //    test_main_Queue();
     

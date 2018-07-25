@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		281CC4CA20FA0FBC00E22487 /* TCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 281CC4C820FA0FBC00E22487 /* TCPClient.cpp */; };
 		281CC4CD20FCC12C00E22487 /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 281CC4CB20FCC12C00E22487 /* Queue.cpp */; };
+		285527DE21076C0F0045C309 /* Logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285527DC21076C0F0045C309 /* Logging.cpp */; };
+		285527E121076D370045C309 /* Timestamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 285527DF21076D370045C309 /* Timestamp.cpp */; };
 		286682FA20F4DC5D00C1D7FA /* TCPSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 286682F820F4DC5D00C1D7FA /* TCPSession.cpp */; };
 		286682FD20F634DF00C1D7FA /* DataBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 286682FB20F634DF00C1D7FA /* DataBuffer.cpp */; };
 		2866830020F6D64D00C1D7FA /* DataHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 286682FE20F6D64D00C1D7FA /* DataHandler.cpp */; };
@@ -37,6 +39,11 @@
 		281CC4C920FA0FBC00E22487 /* TCPClient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPClient.hpp; sourceTree = "<group>"; };
 		281CC4CB20FCC12C00E22487 /* Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Queue.cpp; sourceTree = "<group>"; };
 		281CC4CC20FCC12C00E22487 /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
+		281CC4F921034D7900E22487 /* noncopyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = noncopyable.h; sourceTree = "<group>"; };
+		285527DC21076C0F0045C309 /* Logging.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logging.cpp; sourceTree = "<group>"; };
+		285527DD21076C0F0045C309 /* Logging.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logging.hpp; sourceTree = "<group>"; };
+		285527DF21076D370045C309 /* Timestamp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timestamp.cpp; sourceTree = "<group>"; };
+		285527E021076D370045C309 /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
 		286682F820F4DC5D00C1D7FA /* TCPSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPSession.cpp; sourceTree = "<group>"; };
 		286682F920F4DC5D00C1D7FA /* TCPSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPSession.hpp; sourceTree = "<group>"; };
 		286682FB20F634DF00C1D7FA /* DataBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataBuffer.cpp; sourceTree = "<group>"; };
@@ -549,6 +556,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		281CC4F52101457E00E22487 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				285527DC21076C0F0045C309 /* Logging.cpp */,
+				285527DD21076C0F0045C309 /* Logging.hpp */,
+				285527DF21076D370045C309 /* Timestamp.cpp */,
+				285527E021076D370045C309 /* Timestamp.hpp */,
+			);
+			name = Log;
+			sourceTree = "<group>";
+		};
 		28C200A420CD600900A9ECC5 = {
 			isa = PBXGroup;
 			children = (
@@ -1253,6 +1271,7 @@
 		28C202B320D0017900A9ECC5 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				281CC4F52101457E00E22487 /* Log */,
 				286682F820F4DC5D00C1D7FA /* TCPSession.cpp */,
 				286682F920F4DC5D00C1D7FA /* TCPSession.hpp */,
 				286682FB20F634DF00C1D7FA /* DataBuffer.cpp */,
@@ -1270,6 +1289,7 @@
 				28895B4020F8E2FC00AF4F20 /* TCPAcceptor.hpp */,
 				281CC4CB20FCC12C00E22487 /* Queue.cpp */,
 				281CC4CC20FCC12C00E22487 /* Queue.hpp */,
+				281CC4F921034D7900E22487 /* noncopyable.h */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -1332,6 +1352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				285527E121076D370045C309 /* Timestamp.cpp in Sources */,
 				28895B4120F8E2FC00AF4F20 /* TCPAcceptor.cpp in Sources */,
 				28C202B620D54D5500A9ECC5 /* server.hpp in Sources */,
 				28C202B220CD602200A9ECC5 /* src.cpp in Sources */,
@@ -1339,6 +1360,7 @@
 				2866830020F6D64D00C1D7FA /* DataHandler.cpp in Sources */,
 				281CC4CA20FA0FBC00E22487 /* TCPClient.cpp in Sources */,
 				286682FD20F634DF00C1D7FA /* DataBuffer.cpp in Sources */,
+				285527DE21076C0F0045C309 /* Logging.cpp in Sources */,
 				2866830B20F8DDF000C1D7FA /* TCPServer.cpp in Sources */,
 				286682FA20F4DC5D00C1D7FA /* TCPSession.cpp in Sources */,
 				28C200B120CD600900A9ECC5 /* main.cpp in Sources */,
