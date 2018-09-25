@@ -10,6 +10,7 @@
 #include "TCPSession.hpp"
 #include "TCPConnector.hpp"
 #include "DataBuffer.hpp"
+#include <iostream>
 
 TCPClient::TCPClient(asio::io_context& io_context,
           const std::string& ip,

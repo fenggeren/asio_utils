@@ -9,6 +9,7 @@
 #include "TCPServer.hpp"
 #include "TCPAcceptor.hpp"
 #include "TCPSession.hpp"
+#include <iostream>
 
 TCPServer::TCPServer(asio::io_context& io, unsigned short port,bool ipv6)
 : io_context_(io)

@@ -7,6 +7,7 @@
 //
 
 #include "TCPSession.hpp"
+#include <iostream>
 
 TCPSession::TCPSession(SocketPtr socket, const std::string& name)
 : socket_(std::move(socket)),
@@ -64,9 +65,9 @@ void TCPSession::internalSend()
 
 }
 
-void TCPSession::handRead(asio::error_code ec, std::size_t bytesRead)
+void TCPSession::handRead(std::error_code ec, std::size_t bytesRead)
 {
-    if (ec != asio::error::operation_aborted)
+    if (ec.value() != asio::error::operation_aborted)
     {
         if (!ec)
         {
@@ -76,8 +77,8 @@ void TCPSession::handRead(asio::error_code ec, std::size_t bytesRead)
         }
         else
         {
-            if (ec == asio::error::interrupted ||
-                ec == asio::error::try_again)
+            if (ec.value() == asio::error::interrupted ||
+                ec.value() == asio::error::try_again)
             {
                 startAsyncRead();
             }
@@ -90,7 +91,7 @@ void TCPSession::handRead(asio::error_code ec, std::size_t bytesRead)
     }
 }
 
-void TCPSession::handWrite(asio::error_code ec, std::size_t bytesRead)
+void TCPSession::handWrite(std::error_code ec, std::size_t bytesRead)
 {
     if (!ec)
     {

@@ -8,7 +8,8 @@
 
 #pragma once
 
-#include "asio.hpp"
+//#include "asio.hpp"
+#include "Header.h"
 
 
 class TCPConnector
@@ -45,7 +46,7 @@ private:
     
     void setState(States s) { state_ = s; }
     
-    void handleConnect(SocketPtr socket, asio::error_code ec);
+    void handleConnect(SocketPtr socket, std::error_code ec);
     
     void retry(SocketPtr socket);
     

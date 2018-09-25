@@ -8,7 +8,8 @@
 #pragma once
 #include <list>
 #include <unordered_set>
-#include "asio.hpp"
+#include "Header.h"
+#include <iostream>
 
 namespace Queue
 {
@@ -31,7 +32,7 @@ namespace Queue
         {
             TimerPtr timer(new BasicTimer(io_context_));
             timer->expires_after(std::chrono::milliseconds(S2M(delay)));
-            timer->async_wait([timer, handler=std::move(handler)](asio::error_code ec)
+            timer->async_wait([timer, handler=std::move(handler)](std::error_code ec)
                               {
                                   handler();
                                   (void)timer;
@@ -43,7 +44,7 @@ namespace Queue
         {
             TimerPtr timer(new BasicTimer(io));
             timer->expires_after(std::chrono::milliseconds(S2M(delay)));
-            timer->async_wait([timer, handler=std::move(handler)](asio::error_code ec)
+            timer->async_wait([timer, handler=std::move(handler)](std::error_code ec)
                               {
                                   handler();
                                   std::cout << timer.use_count() << std::endl;
@@ -62,7 +63,7 @@ namespace Queue
             , handler_(handler)
             {}
             
-            void operator()(asio::error_code ec)
+            void operator()(std::error_code ec)
             {
                 handler_();
                 if (--count_ > 0)
@@ -88,9 +89,9 @@ namespace Queue
             TimerPtr timer(new BasicTimer(io));
             timer->expires_after(std::chrono::milliseconds(S2M(delay)));
             
-            std::function<void(asio::error_code)> timerHandler;
+            std::function<void(std::error_code)> timerHandler;
             timerHandler = [&, timer, delay, interval, count]
-            (asio::error_code ec) mutable
+            (std::error_code ec) mutable
             {
                 handler();
                 count -= 1;
@@ -237,8 +238,8 @@ void test_timer()
     
     
     
-    std::function<void(asio::error_code)> handler;
-    handler = [&, timer](asio::error_code ec)
+    std::function<void(std::error_code)> handler;
+    handler = [&, timer](std::error_code ec)
     {
         std::cout << time(NULL) << std::endl;
         timer->expires_after(std::chrono::milliseconds(100));

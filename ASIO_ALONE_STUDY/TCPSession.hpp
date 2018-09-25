@@ -7,7 +7,8 @@
 //
 #pragma once
 
-#include "asio.hpp"
+#include "Header.h"
+//#include "asio.hpp"
 #include <memory>
 #include <string>
 #include <vector>
@@ -68,8 +69,8 @@ public:
  
 private:
     
-    void handRead(asio::error_code ec, std::size_t bytesRead);
-    void handWrite(asio::error_code ec, std::size_t bytesRead);
+    void handRead(std::error_code ec, std::size_t bytesRead);
+    void handWrite(std::error_code ec, std::size_t bytesRead);
     void handClose();
     void internalSend(); 
 private:

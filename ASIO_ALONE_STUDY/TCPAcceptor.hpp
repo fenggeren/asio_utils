@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "asio.hpp"
+#include "Header.h"
 
 using asio::ip::tcp;
 
@@ -28,7 +28,7 @@ public:
 private:
     
     void listenInternal();
-    void handAccept(std::shared_ptr<tcp::socket> socket, asio::error_code ec);
+    void handAccept(std::shared_ptr<tcp::socket> socket, std::error_code ec);
     
 private:
     asio::io_context& io_context_;

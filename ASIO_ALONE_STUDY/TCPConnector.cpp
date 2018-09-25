@@ -7,6 +7,7 @@
 //
 
 #include "TCPConnector.hpp"
+#include <iostream>
 
 static const int kMaxRetryDelayMs = 30000;
 static const int kInitRetryDelayMs = 500;
@@ -61,7 +62,7 @@ void TCPConnector::connect()
     socketPtr->async_connect(*endpoint_iterator_,std::bind(&TCPConnector::handleConnect, this, socketPtr, std::placeholders::_1));
 }
 
-void TCPConnector::handleConnect(SocketPtr socket, asio::error_code ec)
+void TCPConnector::handleConnect(SocketPtr socket, std::error_code ec)
 {
     if (!ec)
     {
@@ -76,21 +77,21 @@ void TCPConnector::handleConnect(SocketPtr socket, asio::error_code ec)
         endpoint_iterator_++;
         connect();
     }
-    else if (ec == asio::error::try_again ||
-             ec == asio::error::address_in_use ||
-             ec == asio::error::no_protocol_option ||
-             ec == asio::error::connection_refused ||
-             ec == asio::error::host_unreachable)
+    else if (ec.value() == asio::error::try_again ||
+             ec.value() == asio::error::address_in_use ||
+             ec.value() == asio::error::no_protocol_option ||
+             ec.value() == asio::error::connection_refused ||
+             ec.value() == asio::error::host_unreachable)
     {
         retry(socket);
     }
-    else if (ec == asio::error::no_permission ||
-             ec == asio::error::access_denied ||
-             ec == asio::error::address_family_not_supported ||
-             ec == asio::error::already_started ||
-             ec == asio::error::bad_descriptor ||
-             ec == asio::error::fault ||
-             ec == asio::error::not_socket)
+    else if (ec.value() == asio::error::no_permission ||
+             ec.value() == asio::error::access_denied ||
+             ec.value() == asio::error::address_family_not_supported ||
+             ec.value() == asio::error::already_started ||
+             ec.value() == asio::error::bad_descriptor ||
+             ec.value() == asio::error::fault ||
+             ec.value() == asio::error::not_socket)
     {
         socket->close();
         std::cout << "connect error in TCPConnector " << ec << std::endl;
@@ -116,7 +117,7 @@ void TCPConnector::retry(SocketPtr socket)
     if (connect_)
     {
         retryTimer_.expires_after(std::chrono::milliseconds(retryDelayMs_));
-        retryTimer_.async_wait([this](asio::error_code)
+        retryTimer_.async_wait([this](std::error_code)
         {
             start();
         });
@@ -134,7 +135,7 @@ void TCPConnector::resolveAddress()
 {
     resolve_.async_resolve(address_,
                           std::to_string(port_),
-                          [&](asio::error_code ec,
+                          [&](std::error_code ec,
                              asio::ip::basic_resolver_results<asio::ip::tcp> results)
                           {
                               endpoint_iterator_ = results.begin();

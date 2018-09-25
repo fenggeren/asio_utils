@@ -7,7 +7,7 @@
 //
 
 #include "TCPAcceptor.hpp"
-
+#include <iostream>
 
 TCPAcceptor::TCPAcceptor(asio::io_context& io_context)
 : io_context_(io_context)
@@ -37,7 +37,7 @@ void TCPAcceptor::listenInternal()
     acceptor_.async_accept(*new_socket, std::bind(&TCPAcceptor::handAccept, this,new_socket, std::placeholders::_1));
 }
 
-void TCPAcceptor::handAccept(std::shared_ptr<tcp::socket> socket, asio::error_code ec)
+void TCPAcceptor::handAccept(std::shared_ptr<tcp::socket> socket, std::error_code ec)
 {
     if (!ec)
     {
@@ -53,6 +53,7 @@ void TCPAcceptor::handAccept(std::shared_ptr<tcp::socket> socket, asio::error_co
     }
     else
     {
+        
         std::cout << "TCPAcceptor::handAccept ERROR " << ec;
     }
 }
