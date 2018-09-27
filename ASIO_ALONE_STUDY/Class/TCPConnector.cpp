@@ -72,9 +72,8 @@ void TCPConnector::handleConnect(SocketPtr socket, std::error_code ec)
             newConnectionCallback_(socket);
         }
     }
-    else if (endpoint_iterator_ != asio::ip::tcp::resolver::iterator())
+    else if (++endpoint_iterator_ != asio::ip::tcp::resolver::iterator())
     {
-        endpoint_iterator_++;
         connect();
     }
     else if (ec.value() == asio::error::try_again ||

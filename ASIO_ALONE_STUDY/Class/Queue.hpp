@@ -47,7 +47,6 @@ namespace Queue
             timer->async_wait([timer, handler=std::move(handler)](std::error_code ec)
                               {
                                   handler();
-                                  std::cout << timer.use_count() << std::endl;
                                   (void)timer;
                               });
             return timer;
@@ -68,7 +67,6 @@ namespace Queue
                 handler_();
                 if (--count_ > 0)
                 {
-                    std::cout << timer_.use_count() << std::endl;
                     timer_->expires_after(std::chrono::milliseconds(S2M(interval_)));
                     timer_->async_wait(std::forward<RepeatHandler>(*this));
                 }
@@ -80,7 +78,7 @@ namespace Queue
             Handler handler_;
         };
         
-        TimerPtr createRepeatTimer(double delay,
+        static TimerPtr createRepeatTimer(double delay,
                                    double interval,
                                    int count,
                                    Handler&& handler,

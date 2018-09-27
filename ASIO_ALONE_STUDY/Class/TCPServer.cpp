@@ -62,28 +62,23 @@ void TCPServer::defaultMessageCallback(const TCPSessionPtr& session,
 {
     std::string receive(buffer->beginRead(), buffer->readableBytes());
     buffer->retrieveAll();
-    std::cout << " message in "
-            << session->name()
-            << "  buffer: "
-            << receive << std::endl;
-    
     session->send(receive);
 }
 
 void TCPServer::defaultWriteCompleteCallback(const TCPSessionPtr& session)
 {
-    std::cout << " write complete " << session->name() << std::endl;
+//    std::cout << " write complete " << session->name() << std::endl;
 }
 
 void TCPServer::removeConnection(const std::shared_ptr<TCPSession>& session)
 {
-    std::cout << " remove connection: " << session->name() << std::endl;
+//    std::cout << " remove connection: " << session->name() << std::endl;
     connectionsMap_.erase(session->name());
 }
 
 void TCPServer::defaultConnectionCallback(const std::shared_ptr<TCPSession>& session)
 {
-    std::cout << " connection: " << session->name() << std::endl;
+//    std::cout << " connection: " << session->name() << std::endl;
 }
 
 

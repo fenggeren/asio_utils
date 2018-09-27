@@ -23,10 +23,12 @@ TCPClient::TCPClient(asio::io_context& io_context,
 
 void TCPClient::connect()
 {
+    connect_ = true;
     connector_->start();
 }
 void TCPClient::disconnect()
 {
+    connect_ = false;
     if (session_) {
         session_->shutdown();
     }
@@ -38,6 +40,14 @@ void TCPClient::stop()
         connector_->stop();
     }
 }
+void TCPClient::send(const void* message, size_t len)
+{
+    session_->send(message, len);
+}
+void TCPClient::send(const std::string& message)
+{
+    session_->send(message);
+}
 
 void TCPClient::newConnection(std::shared_ptr<tcp::socket> socket)
 {
@@ -48,7 +58,9 @@ void TCPClient::newConnection(std::shared_ptr<tcp::socket> socket)
     snprintf(buf, sizeof(buf), "%s:%d", endpoint.address().to_string().c_str(), endpoint.port());
     
     std::string name(buf);
-    std::shared_ptr<TCPSession> session(new TCPSession(socket, name)); 
+    std::shared_ptr<TCPSession> session(new TCPSession(socket, name));
+    session_ = session;
+    
     if (writeCompleteCallback_) {
         session->setWriteCompleteCallback(writeCompleteCallback_);
     } else {
@@ -66,7 +78,6 @@ void TCPClient::newConnection(std::shared_ptr<tcp::socket> socket)
     }
     session->setCloseCallback(std::bind(&TCPClient::removeConnection, this, std::placeholders::_1));
     session->connectEstablished();
-    session_ = session;
 }
 
 void TCPClient::defaultMessageCallback(const std::shared_ptr<TCPSession>& session, DataBuffer*const buffer)
@@ -91,6 +102,10 @@ void TCPClient::removeConnection(const std::shared_ptr<TCPSession>&)
 {
 //    session_.reset();
     session_->connectDestroyed();
+    if (retry_ && connect_)
+    {
+        connector_->restart();
+    }
 }
 
 

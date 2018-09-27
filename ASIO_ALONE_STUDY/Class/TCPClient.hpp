@@ -28,7 +28,10 @@ public:
     void disconnect();
     void stop();
     
+    void send(const void* message, size_t len);
+    void send(const std::string& message); 
     
+    void enableRetry() { retry_ = true; }
     
     void setConnectionCallback(const std::function<void(const std::shared_ptr<TCPSession>&)> cb)
     {
@@ -59,6 +62,9 @@ private:
     std::function<void(const std::shared_ptr<TCPSession>&)> connectionCallback_;
     std::function<void(const std::shared_ptr<TCPSession>&)> writeCompleteCallback_;
     std::function<void(const std::shared_ptr<TCPSession>&, DataBuffer*const)> messageCallback_;
+    
+    bool retry_{false};
+    bool connect_{false};
 };
 
 

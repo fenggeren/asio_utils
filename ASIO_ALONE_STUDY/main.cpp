@@ -16,7 +16,7 @@
 
 using namespace asio;
 
-
+/*
 void printNow()
 {
     std::cout << "====now====: " << std::chrono::system_clock::now().time_since_epoch().count() << std::endl;
@@ -206,23 +206,24 @@ void testLog()
     }
 }
 
+ */
 int main(int argc, const char * argv[]) {
     
-    using namespace Logging;
-    AsyncLogging log("logging", kRollSize);
-    log.start();
-    g_logging = &log;
-    
-    Logger::setOutput(asyncOutput);
-    
-    std::vector<std::thread> threads;
-    
-    for (int i = 0; i < 10; ++i) {
-        threads.push_back(std::thread([&]{
-            testLog();
-        }));
-    }
-    sleep(10);
+//    using namespace Logging;
+//    AsyncLogging log("logging", kRollSize);
+//    log.start();
+//    g_logging = &log;
+//
+//    Logger::setOutput(asyncOutput);
+//
+//    std::vector<std::thread> threads;
+//
+//    for (int i = 0; i < 10; ++i) {
+//        threads.push_back(std::thread([&]{
+//            testLog();
+//        }));
+//    }
+//    sleep(10);
 
     
 //    while (true)
