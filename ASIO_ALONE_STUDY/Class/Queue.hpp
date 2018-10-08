@@ -11,12 +11,19 @@
 #include "Header.h"
 #include <iostream>
 
+
+
 namespace Queue
 {
     using Handler = std::function<void()>;
     using CompleteHandler = std::function<void()>;
-    
+
 #define S2M(S) (int)(S*1000)
+
+    
+    asio::io_context& getIoContext();
+    void dispatchAfter(double delay, Handler&& handler);
+    
     
     class TimerManager
     {
@@ -30,14 +37,7 @@ namespace Queue
         
         TimerPtr createTimer(double delay, Handler&& handler)
         {
-            TimerPtr timer(new BasicTimer(io_context_));
-            timer->expires_after(std::chrono::milliseconds(S2M(delay)));
-            timer->async_wait([timer, handler=std::move(handler)](std::error_code ec)
-                              {
-                                  handler();
-                                  (void)timer;
-                              });
-            return timer;
+            return createTimer(delay, std::forward<Handler>(handler), io_context_);
         }
         
         static TimerPtr createTimer(double delay, Handler&& handler, asio::io_context& io)
@@ -102,7 +102,15 @@ namespace Queue
             timer->async_wait(timerHandler);
             return timer;
         }
-        
+
+        TimerPtr createRepeatTimer(double delay,
+                               double interval,
+                               int count,
+                               Handler&& handler)
+        {
+            return createRepeatTimer(delay, interval, count, std::forward<Handler>(handler), io_context_);
+        }
+ 
     private:
         
         

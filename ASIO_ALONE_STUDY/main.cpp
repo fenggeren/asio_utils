@@ -13,7 +13,7 @@
 #include <chrono>
 #include <type_traits>
 #include <sys/syscall.h>
-
+#include "Queue.hpp"
 using namespace asio;
 
 /*
@@ -185,6 +185,7 @@ void test_block_blocks()
         std::cout << "Handler error code: " << err << std::endl;
     });
 }
+*/
 
 #include "Logging.hpp"
 
@@ -192,7 +193,7 @@ Logging::AsyncLogging* g_logging = nullptr;
 
 void asyncOutput(const char* msg, size_t len)
 {
-    g_logging->append(msg, len);
+    g_logging->append(msg, (int)len);
 }
 
 off_t kRollSize = 500*1000*1000;
@@ -202,29 +203,55 @@ void testLog()
     using namespace Logging;
     while (true)
     {
-        LOG_INFO << " ======= ";
+        LOG_INFO << "    ";
     }
 }
 
- */
+void testAsyncLogging()
+{
+    using namespace Logging;
+    AsyncLogging log("logging", kRollSize);
+    log.start();
+    g_logging = &log;
+    
+    Logger::setOutput(asyncOutput);
+    
+    std::vector<std::thread> threads;
+    
+    for (int i = 0; i < 10; ++i) {
+        threads.push_back(std::thread([&]{
+            testLog();
+        }));
+    }
+    sleep(10);
+    
+    for (auto& t : threads)
+    {
+        t.join();
+    }
+}
+
+void test_timer()
+{
+    asio::basic_waitable_timer<std::chrono::steady_clock> timer(Queue::getIoContext());
+    timer.expires_after(std::chrono::seconds(1));
+    timer.async_wait([](std::error_code ec){
+        std::cout << " ==== " << std::endl;
+    });
+    Queue::getIoContext().run_one();
+}
+
 int main(int argc, const char * argv[]) {
     
-//    using namespace Logging;
-//    AsyncLogging log("logging", kRollSize);
-//    log.start();
-//    g_logging = &log;
+//    using namespace Queue;
 //
-//    Logger::setOutput(asyncOutput);
+//    dispatchAfter(3, []{
+//        std::cout << " === 3 ===" << std::endl;
+//    });
 //
-//    std::vector<std::thread> threads;
-//
-//    for (int i = 0; i < 10; ++i) {
-//        threads.push_back(std::thread([&]{
-//            testLog();
-//        }));
-//    }
-//    sleep(10);
-
+//    getIoContext().run();
+    
+    test_timer();
     
 //    while (true)
 //    {
