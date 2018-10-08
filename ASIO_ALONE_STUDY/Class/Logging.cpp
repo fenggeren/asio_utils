@@ -14,6 +14,10 @@
 #include <assert.h>
 #include <string>
 
+namespace fasio
+{
+
+
 namespace Logging
 {
     const char digits[] = "9876543210123456789";
@@ -621,3 +625,4 @@ namespace Logging
 
 
 
+}

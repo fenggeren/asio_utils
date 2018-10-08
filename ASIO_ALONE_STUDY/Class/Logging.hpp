@@ -16,6 +16,10 @@
 
 #include "Timestamp.hpp"
 
+namespace fasio
+{
+
+
 namespace Logging
 {
     const static int kSmallBuffer = 4000;
@@ -422,3 +426,4 @@ namespace Logging
 
 
 
+}

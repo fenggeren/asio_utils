@@ -11,6 +11,8 @@
 //#include "asio.hpp"
 #include "Header.h"
 
+namespace fasio
+{
 
 class TCPConnector
 {
@@ -72,3 +74,4 @@ private:
     asio::ip::tcp::resolver resolve_;
 };
 
+}

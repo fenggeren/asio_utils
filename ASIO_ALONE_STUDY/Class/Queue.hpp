@@ -12,6 +12,9 @@
 #include <iostream>
 
 
+namespace fasio
+{
+
 
 namespace Queue
 {
@@ -261,3 +264,4 @@ void test_timer()
 
 #endif
 
+}

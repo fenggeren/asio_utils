@@ -9,6 +9,10 @@
 #include "TCPAcceptor.hpp"
 #include <iostream>
 
+namespace fasio
+{
+
+
 TCPAcceptor::TCPAcceptor(asio::io_context& io_context)
 : io_context_(io_context)
 , acceptor_(io_context_)
@@ -69,3 +73,4 @@ void TCPAcceptor::handAccept(std::shared_ptr<tcp::socket> socket, std::error_cod
 
 
 
+}

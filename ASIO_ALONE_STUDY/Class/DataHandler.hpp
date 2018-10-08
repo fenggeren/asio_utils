@@ -8,7 +8,10 @@
 
 #pragma once
 
+namespace fasio
+{
 
+    
 /*
  数据处理，接口，
  子类具体实现
@@ -24,3 +27,4 @@ private:
 
 
 
+}

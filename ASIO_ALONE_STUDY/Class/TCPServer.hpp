@@ -13,6 +13,10 @@
 #include "Header.h"
 #include <unordered_map>
 
+namespace fasio
+{
+
+
 class TCPAcceptor;
 class TCPSession;
 class DataBuffer;
@@ -68,3 +72,4 @@ private:
 
 
 
+}

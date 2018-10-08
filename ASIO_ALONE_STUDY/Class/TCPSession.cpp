@@ -9,6 +9,9 @@
 #include "TCPSession.hpp"
 #include <iostream>
 
+namespace fasio
+{
+
 TCPSession::TCPSession(SocketPtr socket, const std::string& name)
 : socket_(std::move(socket)),
 name_(name),
@@ -150,3 +153,4 @@ void TCPSession::forceClose()
 
 
 
+}

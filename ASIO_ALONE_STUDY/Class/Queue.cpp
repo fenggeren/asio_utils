@@ -7,6 +7,9 @@
 //
 
 #include "Queue.hpp"
+namespace fasio
+{
+
 
 namespace Queue
 {
@@ -44,3 +47,4 @@ namespace Queue
 
 
 
+}

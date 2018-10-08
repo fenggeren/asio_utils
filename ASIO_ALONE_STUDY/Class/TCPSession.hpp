@@ -15,11 +15,15 @@
 #include <array>
 #include "DataBuffer.hpp"
 
+namespace fasio
+{
 
+    
 using asio::ip::tcp;
 class TCPSession;
 using TCPSessionPtr = std::shared_ptr<TCPSession>;
 using SocketPtr = std::shared_ptr<tcp::socket>;
+
 
 class TCPSession : public std::enable_shared_from_this<TCPSession> 
 {
@@ -96,3 +100,4 @@ private:
 
 
 
+}

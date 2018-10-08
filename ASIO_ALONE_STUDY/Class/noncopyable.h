@@ -8,7 +8,10 @@
 
 #pragma once
 
+namespace fasio
+{
 
+    
 class noncopyable
 {
 protected:
@@ -22,3 +25,5 @@ private:
  
 };
 
+
+}

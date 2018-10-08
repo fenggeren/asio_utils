@@ -10,6 +10,10 @@
 
 #include "Header.h"
 
+namespace fasio
+{
+
+
 using asio::ip::tcp;
 
 class TCPAcceptor
@@ -36,3 +40,4 @@ private:
     NewConnectionCallback newConnectionCallback_;
 };
 
+}

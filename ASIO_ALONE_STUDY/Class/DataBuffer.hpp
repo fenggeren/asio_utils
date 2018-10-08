@@ -10,6 +10,10 @@
 #include <vector>
 #include <assert.h>
 
+namespace fasio
+{
+
+
 class DataBuffer
 {
 public:
@@ -265,3 +269,6 @@ private:
     bool isOperating_{false};
 };
 
+
+
+}

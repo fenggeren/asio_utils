@@ -11,6 +11,10 @@
 #include "TCPSession.hpp"
 #include <iostream>
 
+namespace fasio
+{
+
+
 TCPServer::TCPServer(asio::io_context& io, unsigned short port,bool ipv6)
 : io_context_(io)
 , acceptor_(new TCPAcceptor(io))
@@ -89,3 +93,4 @@ void TCPServer::defaultConnectionCallback(const std::shared_ptr<TCPSession>& ses
 
 
 
+}

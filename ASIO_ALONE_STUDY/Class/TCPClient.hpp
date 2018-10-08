@@ -11,6 +11,9 @@
 
 #include <memory>
 #include "Header.h"
+namespace fasio
+{
+
 
 class TCPConnector;
 class TCPSession;
@@ -78,3 +81,4 @@ private:
 
 
 
+}

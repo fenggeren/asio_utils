@@ -9,6 +9,10 @@
 #include "TCPConnector.hpp"
 #include <iostream>
 
+namespace fasio
+{
+
+    
 static const int kMaxRetryDelayMs = 30000;
 static const int kInitRetryDelayMs = 500;
 
@@ -148,3 +152,4 @@ void TCPConnector::resolveAddress()
 
 
 
+}

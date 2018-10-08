@@ -8,6 +8,9 @@
 
 #include "Timestamp.hpp"
 
+namespace fasio
+{
+
 std::string Timestamp::toString() const
 {
     char buf[32] = {0};
@@ -47,4 +50,6 @@ Timestamp Timestamp::now()
     gettimeofday(&tv, NULL);
     int64_t seconds = tv.tv_sec;
     return Timestamp(seconds * kMicroSecondsPerSecond + tv.tv_usec);
+}
+    
 }

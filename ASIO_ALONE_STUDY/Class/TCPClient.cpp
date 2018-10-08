@@ -12,6 +12,10 @@
 #include "DataBuffer.hpp"
 #include <iostream>
 
+namespace fasio
+{
+
+
 TCPClient::TCPClient(asio::io_context& io_context,
           const std::string& ip,
           unsigned short port)
@@ -114,3 +118,4 @@ void TCPClient::removeConnection(const std::shared_ptr<TCPSession>&)
 
 
 
+}
