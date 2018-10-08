@@ -19,6 +19,7 @@
 		1F365423215A15B1003B9FAD /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F365418215A15B1003B9FAD /* TCPConnector.cpp */; };
 		28C200B120CD600900A9ECC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28C200B020CD600900A9ECC5 /* main.cpp */; };
 		28C202B620D54D5500A9ECC5 /* server.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 28C202B520D54D5500A9ECC5 /* server.hpp */; };
+		8123E1FA216B9C4A0050FD4D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1F8216B9C4A0050FD4D /* Thread.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +61,8 @@
 		28C200AD20CD600900A9ECC5 /* ASIO_ALONE_STUDY */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ASIO_ALONE_STUDY; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C200B020CD600900A9ECC5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		28C202B520D54D5500A9ECC5 /* server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = server.hpp; sourceTree = "<group>"; };
+		8123E1F8216B9C4A0050FD4D /* Thread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
+		8123E1F9216B9C4A0050FD4D /* Thread.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Thread.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 		1F365402215A15B1003B9FAD /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				8123E1F8216B9C4A0050FD4D /* Thread.cpp */,
+				8123E1F9216B9C4A0050FD4D /* Thread.hpp */,
 				1F365403215A15B1003B9FAD /* Timestamp.hpp */,
 				1F365416215A15B1003B9FAD /* Timestamp.cpp */,
 				1F365405215A15B1003B9FAD /* TCPConnector.hpp */,
@@ -195,6 +200,7 @@
 				1F36541F215A15B1003B9FAD /* TCPSession.cpp in Sources */,
 				28C200B120CD600900A9ECC5 /* main.cpp in Sources */,
 				1F365423215A15B1003B9FAD /* TCPConnector.cpp in Sources */,
+				8123E1FA216B9C4A0050FD4D /* Thread.cpp in Sources */,
 				1F36541D215A15B1003B9FAD /* Queue.cpp in Sources */,
 				1F36541E215A15B1003B9FAD /* TCPServer.cpp in Sources */,
 				1F36541B215A15B1003B9FAD /* DataBuffer.cpp in Sources */,

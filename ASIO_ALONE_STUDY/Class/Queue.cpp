@@ -14,6 +14,7 @@ namespace fasio
 namespace Queue
 {
 #define ioContexts ioContextMap()
+#define nameThreads nameThreadMap()
     
     std::map<std::__thread_id, asio::io_context>&
     ioContextMap()
@@ -22,11 +23,23 @@ namespace Queue
         return *map;
     }
     
+    std::map<std::string, std::__thread_id>&
+    nameThreadMap()
+    {
+        static std::map<std::string, std::__thread_id>* map = new std::map<std::string, std::__thread_id>;
+        return *map;
+    }
+    
     asio::io_context& getIoContext()
     {
 //        auto iter = ioContexts.find(std::this_thread::get_id());
 //        if (iter == ioContexts.end()) {
 //        }
+        return ioContexts[std::this_thread::get_id()];
+    }
+    
+    asio::io_context& getIoContext(const std::string& name)
+    {
         return ioContexts[std::this_thread::get_id()];
     }
     
@@ -39,6 +52,11 @@ namespace Queue
     void dispatchAfter(double delay, Handler&& handler)
     {
         TimerManager::createTimer(delay, std::forward<Handler>(handler), getIoContext());
+    }
+ 
+    void dispatchAsync(Handler&& handler, asio::io_context& io)
+    {
+        asio::dispatch(io, std::forward<Handler>(handler));
     }
     
 }

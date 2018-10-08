@@ -241,15 +241,25 @@ void test_timer()
     Queue::getIoContext().run_one();
 }
 
+std::string abc("abc");
+const char* test_string_data()
+{
+    return abc.data();
+}
+
 int main(int argc, const char * argv[]) {
     
-    using namespace Queue;
-
-    dispatchAfter(3, []{
-        std::cout << " === 3 ===" << std::endl;
-    });
-
-    getIoContext().run();
+    const char* data = test_string_data();
+    
+    printf("%s ---  %p", data, data);
+    
+//    using namespace Queue;
+//
+//    dispatchAfter(3, []{
+//        std::cout << " === 3 ===" << std::endl;
+//    });
+//
+//    getIoContext().run();
 
     
 //    test_timer();

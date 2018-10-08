@@ -25,7 +25,13 @@ namespace Queue
 
     
     asio::io_context& getIoContext();
+    // 通过/*线程的每个*/名字，获取对应的ctx
+    asio::io_context& getIoContext(const std::string& name);
+    
     void dispatchAfter(double delay, Handler&& handler);
+    void dispatchAsync(Handler&& handler, asio::io_context& io);
+    
+
     
     
     class TimerManager
@@ -122,33 +128,33 @@ namespace Queue
     };
     
     
-    
-    
-    class MainQueue
+    class Queue
     {
+        using ExecutorGuard = asio::executor_work_guard<asio::io_context::executor_type>;
     public:
-        static MainQueue& Instance()
-        {
-            static MainQueue queue;
-            return queue;
-        }
         
-        // 必须启动时 在主线程调用一次
-        static void MainQueueInit()
-        {
-            MainQueue::Instance();
-        }
-        
-        MainQueue()
-        :guard_(asio::make_work_guard(io_context_))
+        Queue(asio::io_context& io = getIoContext())
+        :io_context_(io)
         {
             
         }
         
-        void runMainThread()
+        void run()
         {
             io_context_.run();
         }
+        
+        void runForever()
+        {
+            guard_ = std::make_shared<ExecutorGuard>(io_context_.get_executor());
+            io_context_.run();
+        }
+        
+        asio::io_context& ioContext()
+        {
+            return io_context_;
+        }
+        
         
         void post(Handler&& handler)
         {
@@ -166,8 +172,8 @@ namespace Queue
         }
         
     private:
-        asio::io_context io_context_;
-        asio::executor_work_guard<asio::io_context::executor_type> guard_;
+        asio::io_context& io_context_;
+        std::shared_ptr<ExecutorGuard> guard_;
     };
     
     class GlobalQueue
@@ -199,7 +205,6 @@ namespace Queue
         {
             //            asio::post(asio::strand<decltype(pool_.get_executor())>(), handler);
         }
-        
         
         
     private:
