@@ -130,7 +130,6 @@ namespace queue
         Queue(asio::io_context& io = getIoContext())
         :io_context_(io)
         {
-            
         }
         
         void run()

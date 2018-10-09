@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include "Conv.hpp"
 
 class RunLoop
 {
