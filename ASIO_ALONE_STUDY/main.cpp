@@ -233,12 +233,12 @@ void testAsyncLogging()
 
 void test_timer()
 {
-    asio::basic_waitable_timer<std::chrono::steady_clock> timer(queue::getIoContext());
+    asio::basic_waitable_timer<std::chrono::steady_clock> timer(getIoContext());
     timer.expires_after(std::chrono::seconds(1));
     timer.async_wait([](std::error_code ec){
         std::cout << " ==== " << std::endl;
     });
-    queue::getIoContext().run_one();
+    getIoContext().run_one();
 }
 
 std::string abc("abc");
@@ -247,9 +247,11 @@ const char* test_string_data()
     return abc.data();
 }
 
+using namespace fasio::queue;
+
 void test_main_queue()
 {
-    using namespace fasio::queue;
+    
     
     MainQueue.dispatch([]{
         std::cout << "haha" << std::endl;
@@ -260,6 +262,16 @@ void test_main_queue()
     });
     
     MainQueue.runForever();
+}
+
+void test_global_queue()
+{
+    std::thread thread([]{
+        Queue queue;
+        
+        queue.runForever();
+    });
+    thread.detach();
 }
 
 int main(int argc, const char * argv[]) {

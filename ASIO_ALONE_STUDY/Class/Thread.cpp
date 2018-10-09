@@ -19,7 +19,7 @@ namespace fasio
     using nameThreadMap = std::map<std::string, std::__thread_id>;
     
     nameThreadMap&
-    ioContextMap()
+    ioThreadMap()
     {
         static nameThreadMap* map = new nameThreadMap;
         return *map;

@@ -20,6 +20,8 @@
 		28C200B120CD600900A9ECC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28C200B020CD600900A9ECC5 /* main.cpp */; };
 		28C202B620D54D5500A9ECC5 /* server.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 28C202B520D54D5500A9ECC5 /* server.hpp */; };
 		8123E1FA216B9C4A0050FD4D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1F8216B9C4A0050FD4D /* Thread.cpp */; };
+		8123E1FD216CDB6B0050FD4D /* RunLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1FB216CDB6B0050FD4D /* RunLoop.cpp */; };
+		8123E200216CDD280050FD4D /* Conv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1FE216CDD280050FD4D /* Conv.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +65,10 @@
 		28C202B520D54D5500A9ECC5 /* server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = server.hpp; sourceTree = "<group>"; };
 		8123E1F8216B9C4A0050FD4D /* Thread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
 		8123E1F9216B9C4A0050FD4D /* Thread.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Thread.hpp; sourceTree = "<group>"; };
+		8123E1FB216CDB6B0050FD4D /* RunLoop.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RunLoop.cpp; sourceTree = "<group>"; };
+		8123E1FC216CDB6B0050FD4D /* RunLoop.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RunLoop.hpp; sourceTree = "<group>"; };
+		8123E1FE216CDD280050FD4D /* Conv.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Conv.cpp; sourceTree = "<group>"; };
+		8123E1FF216CDD280050FD4D /* Conv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Conv.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,10 @@
 		1F365402215A15B1003B9FAD /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				8123E1FE216CDD280050FD4D /* Conv.cpp */,
+				8123E1FF216CDD280050FD4D /* Conv.hpp */,
+				8123E1FB216CDB6B0050FD4D /* RunLoop.cpp */,
+				8123E1FC216CDB6B0050FD4D /* RunLoop.hpp */,
 				8123E1F8216B9C4A0050FD4D /* Thread.cpp */,
 				8123E1F9216B9C4A0050FD4D /* Thread.hpp */,
 				1F365403215A15B1003B9FAD /* Timestamp.hpp */,
@@ -201,8 +211,10 @@
 				28C200B120CD600900A9ECC5 /* main.cpp in Sources */,
 				1F365423215A15B1003B9FAD /* TCPConnector.cpp in Sources */,
 				8123E1FA216B9C4A0050FD4D /* Thread.cpp in Sources */,
+				8123E200216CDD280050FD4D /* Conv.cpp in Sources */,
 				1F36541D215A15B1003B9FAD /* Queue.cpp in Sources */,
 				1F36541E215A15B1003B9FAD /* TCPServer.cpp in Sources */,
+				8123E1FD216CDB6B0050FD4D /* RunLoop.cpp in Sources */,
 				1F36541B215A15B1003B9FAD /* DataBuffer.cpp in Sources */,
 				1F36541C215A15B1003B9FAD /* TCPClient.cpp in Sources */,
 			);

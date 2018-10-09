@@ -18,6 +18,8 @@ namespace fasio
     static void setThreadName(std::string&& name);
     static const std::string& getThreadName();
     
+    asio::io_context& getIoContext(); 
+    
     struct ThreadInfo
     {
         ThreadInfo(const std::__thread_id& tid, const std::string& name)

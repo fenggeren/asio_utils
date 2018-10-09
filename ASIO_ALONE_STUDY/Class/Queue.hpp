@@ -10,7 +10,7 @@
 #include <unordered_set>
 #include "Header.h"
 #include <iostream>
-
+#include "Conv.hpp"
 
 namespace fasio
 {
@@ -18,18 +18,8 @@ namespace fasio
 
 namespace queue
 {
-    using Handler = std::function<void()>;
-    using CompleteHandler = std::function<void()>;
-
+ 
 #define S2M(S) (int)(S*1000)
-
-    asio::io_context& getIoContext();
-    // 通过/*线程的每个*/名字，获取对应的ctx
-    asio::io_context& getIoContext(const std::string& name);
-    
-    void dispatchAfter(double delay, Handler&& handler);
-    void dispatchAsync(Handler&& handler, asio::io_context& io);
-    
 
     class TimerManager
     {
