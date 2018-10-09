@@ -18,7 +18,7 @@ namespace fasio
 {
 
 
-namespace Logging
+namespace logging
 {
     const char digits[] = "9876543210123456789";
     const char* zero = digits + 9;

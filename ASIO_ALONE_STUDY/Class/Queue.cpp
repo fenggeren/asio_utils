@@ -11,7 +11,7 @@ namespace fasio
 {
 
 
-namespace Queue
+namespace queue
 {
 #define ioContexts ioContextMap()
 #define nameThreads nameThreadMap()

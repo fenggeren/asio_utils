@@ -16,14 +16,13 @@ namespace fasio
 {
 
 
-namespace Queue
+namespace queue
 {
     using Handler = std::function<void()>;
     using CompleteHandler = std::function<void()>;
 
 #define S2M(S) (int)(S*1000)
 
-    
     asio::io_context& getIoContext();
     // 通过/*线程的每个*/名字，获取对应的ctx
     asio::io_context& getIoContext(const std::string& name);
@@ -32,8 +31,6 @@ namespace Queue
     void dispatchAsync(Handler&& handler, asio::io_context& io);
     
 
-    
-    
     class TimerManager
     {
         using BasicTimer = asio::basic_waitable_timer<std::chrono::steady_clock>;
@@ -122,16 +119,23 @@ namespace Queue
  
     private:
         
-        
     private:
         asio::io_context& io_context_;
     };
     
+
+#define MainQueue Queue::mainQueue()
     
     class Queue
     {
         using ExecutorGuard = asio::executor_work_guard<asio::io_context::executor_type>;
     public:
+        
+        static Queue& mainQueue()
+        {
+            static Queue queue;
+            return queue;
+        }
         
         Queue(asio::io_context& io = getIoContext())
         :io_context_(io)

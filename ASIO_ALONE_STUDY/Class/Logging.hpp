@@ -20,7 +20,7 @@ namespace fasio
 {
 
 
-namespace Logging
+namespace logging
 {
     const static int kSmallBuffer = 4000;
     const static int kLargeBuffer = 4000 * 1000;
