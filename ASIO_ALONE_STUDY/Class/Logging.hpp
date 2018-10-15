@@ -272,7 +272,7 @@ namespace logging
     Logger(__FILE__, __LINE__, Logger::TRACE, __func__).stream()
 #define LOG_DEBUG if(Logger::LogLevel() <= Logger::DEBUg) \
     Logger(__FILE__, __LINE__, Logger::DEBUg, __func__).stream()
-#define LOG_INFO if(Logger::LogLevel() <= Logger::INFO) \
+#define LOG_MINFO if(Logger::LogLevel() <= Logger::INFO) \
     Logger(__FILE__, __LINE__, Logger::INFO, __func__).stream()
 #define LOG_WARN  Logger(__FILE__, __LINE__, Logger::WARN, __func__).stream()
 #define LOG_ERROR  Logger(__FILE__, __LINE__, Logger::ERROR, __func__).stream()

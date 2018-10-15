@@ -8,6 +8,8 @@
 
 #include "TCPSession.hpp"
 #include <iostream>
+#include "Logging.hpp"
+using namespace fasio::logging;
 
 namespace fasio
 {
@@ -72,24 +74,32 @@ void TCPSession::handRead(std::error_code ec, std::size_t bytesRead)
 {
     if (ec.value() != asio::error::operation_aborted)
     {
-        if (!ec)
+        try
         {
-            inputBuffer_->hasWritten(bytesRead);
-            messageCallback_(shared_from_this(), inputBuffer_);
-            startAsyncRead();
-        }
-        else
-        {
-            if (ec.value() == asio::error::interrupted ||
-                ec.value() == asio::error::try_again)
+            if (!ec)
             {
+                inputBuffer_->hasWritten(bytesRead);
+                messageCallback_(shared_from_this(), inputBuffer_);
                 startAsyncRead();
             }
             else
             {
-                std::cout << " handRead io Error: " << ec << std::endl;
-                handClose();
+                if (ec.value() == asio::error::interrupted ||
+                    ec.value() == asio::error::try_again)
+                {
+                    startAsyncRead();
+                }
+                else
+                {
+                    LOG_MINFO << " connection closed: " << ec.value();
+                    handClose();
+                }
             }
+        }
+        catch (const std::exception& e)
+        {
+            LOG_ERROR << " unhandled exception in handleread: " << ec.value();
+            throw;
         }
     }
 }

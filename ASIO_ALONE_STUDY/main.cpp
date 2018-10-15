@@ -203,7 +203,7 @@ void testLog()
     using namespace logging;
     while (true)
     {
-        LOG_INFO << "    ";
+        LOG_MINFO << "    ";
     }
 }
 

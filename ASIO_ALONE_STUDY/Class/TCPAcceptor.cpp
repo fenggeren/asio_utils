@@ -8,6 +8,8 @@
 
 #include "TCPAcceptor.hpp"
 #include <iostream>
+#include "Logging.hpp"
+using namespace fasio::logging;
 
 namespace fasio
 {
@@ -22,17 +24,25 @@ TCPAcceptor::TCPAcceptor(asio::io_context& io_context)
 
 void TCPAcceptor::listen(unsigned short port, bool ipv6)
 {
-    tcp::endpoint endpoint(ipv6 ? tcp::v6() : tcp::v4(),
-                           port);
-    acceptor_.open(endpoint.protocol());
-    acceptor_.set_option(tcp::acceptor::reuse_address(true));
-    if (ipv6) {
-        acceptor_.set_option(asio::ip::v6_only(false));
+    
+    try
+    {
+        tcp::endpoint endpoint(ipv6 ? tcp::v6() : tcp::v4(),
+                               port);
+        acceptor_.open(endpoint.protocol());
+        acceptor_.set_option(tcp::acceptor::reuse_address(true));
+        if (ipv6) {
+            acceptor_.set_option(asio::ip::v6_only(false));
+        }
+        acceptor_.bind(endpoint);
+        acceptor_.listen();
+        
+        listenInternal();
     }
-    acceptor_.bind(endpoint);
-    acceptor_.listen();
- 
-    listenInternal();
+    catch (...)
+    {
+        LOG_ERROR << "cannot bind/listen on port.";
+    }
 }
 
 void TCPAcceptor::listenInternal()
