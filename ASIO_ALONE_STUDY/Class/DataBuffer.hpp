@@ -9,7 +9,7 @@
 #pragma once
 #include <vector>
 #include <assert.h>
-
+#include <stdlib.h>
 namespace fasio
 {
 

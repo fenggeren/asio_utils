@@ -16,7 +16,13 @@
 
 #include <boost/asio.hpp>
 using namespace boost;
- 
+
+#if BOOST_ASIO_VERSION < 101200
+
+#define  io_context io_service
+
+#endif
+
 //using namespace asio;
 
 #endif
