@@ -31,7 +31,19 @@ public:
     
     void start();
     
+    void setMessageCallback(const std::function<void(const std::shared_ptr<TCPSession>&, DataBuffer*const)>& callback)
+    {
+        messageCallback_ = callback;
+    }
     
+    void setConnectionCallback(const std::function<void(const std::shared_ptr<TCPSession>&)>& callback)
+    {
+        connectionCallback_ = callback;
+    }
+    void setRemoveConnectionCallback(const std::function<void(const std::shared_ptr<TCPSession>&)>& callback)
+    {
+        removeConnectionCallback_ = callback;
+    }
 private:
     
     void newConnection(std::shared_ptr<tcp::socket> socket);
@@ -52,7 +64,7 @@ private:
     std::function<void(const std::shared_ptr<TCPSession>&)> connectionCallback_;
     std::function<void(const std::shared_ptr<TCPSession>&)> writeCompleteCallback_;
     std::function<void(const std::shared_ptr<TCPSession>&, DataBuffer*const)> messageCallback_;
-    
+    std::function<void(const std::shared_ptr<TCPSession>&)> removeConnectionCallback_;
     unsigned short port_;
     bool ipv6_;
 };
