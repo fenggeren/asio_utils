@@ -86,7 +86,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F365402215A15B1003B9FAD /* Class */ = {
+		1F365402215A15B1003B9FAD /* Net */ = {
 			isa = PBXGroup;
 			children = (
 				1F5B1ABD2186EFB800752C8B /* logging */,
@@ -117,7 +117,7 @@
 				1F365414215A15B1003B9FAD /* TCPAcceptor.cpp */,
 				1F365419215A15B1003B9FAD /* Logging.hpp */,
 			);
-			path = Class;
+			path = Net;
 			sourceTree = "<group>";
 		};
 		1F5B1ABD2186EFB800752C8B /* logging */ = {
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				1FD879D9217479E9003547AE /* CPG */,
-				1F365402215A15B1003B9FAD /* Class */,
+				1F365402215A15B1003B9FAD /* Net */,
 				28C200B020CD600900A9ECC5 /* main.cpp */,
 			);
 			path = ASIO_ALONE_STUDY;
