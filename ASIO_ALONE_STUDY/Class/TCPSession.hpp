@@ -78,10 +78,14 @@ private:
     void handClose();
     void internalSend(); 
 private:
+    enum StateE { kDisconnected, kConnecting, kConnected, kDisconnecting };
     
+    
+    
+private:
     
     SocketPtr socket_;
-
+    
     std::function<void(const TCPSessionPtr&)> writeCompleteCallback_;
     std::function<void(const TCPSessionPtr&)> closeCallback_;
     std::function<void(const TCPSessionPtr&)> connectionCallback_;
@@ -93,6 +97,8 @@ private:
     DataBuffer* sendBuffer_;
     
     const std::string name_;
+    
+    StateE state_;
 };
 
 

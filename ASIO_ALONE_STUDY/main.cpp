@@ -7,13 +7,15 @@
 // 
 
 #include <iostream>
-#include <chrono>
-#include "server.hpp"
+#include <chrono> 
 #include "Header.h"
 #include <chrono>
 #include <type_traits>
 #include <sys/syscall.h>
 #include "Queue.hpp"
+#include "CPGGatewayServer.hpp"
+
+
 using namespace asio;
 using namespace fasio;
 /*
@@ -274,9 +276,63 @@ void test_global_queue()
     thread.detach();
 }
 
-int main(int argc, const char * argv[]) {
+#include "TCPClient.hpp"
+#include "DataBuffer.hpp"
+#include "Queue.hpp"
+#include "TCPSession.hpp"
+
+class Clients
+{
+    struct client
+    {
+        asio::io_context io_context_;
+        std::shared_ptr<TCPClient> client_;
+    };
+public:
     
-    test_main_queue();
+    void start()
+    {
+        std::list<std::shared_ptr<std::thread>> threads_;
+        for(int i = 0; i < 1; i++)
+        {
+            threads_.push_back(std::make_shared<std::thread>(([&]{
+                createClient();
+            })));
+        }
+        
+        for (auto& t : threads_)
+        {
+            t->join();
+        }
+    }
+    
+    void createClient()
+    {
+        client c;
+        c.client_ = std::make_shared<TCPClient>(c.io_context_, "127.0.0.1", 7237);
+        c.client_->setMessageCallback(std::bind(&Clients::messageCallback, this, std::placeholders::_1, std::placeholders::_2));
+        c.client_->connect();
+        c.io_context_.run();
+    }
+    
+private:
+    
+    void messageCallback(const std::shared_ptr<TCPSession>& session, DataBuffer*const buffer)
+    {
+        std::string cnt(buffer->peek(), buffer->readableBytes());
+        buffer->retrieveAll();
+        session->send(cnt);
+    }
+    
+};
+
+
+
+
+int main(int argc, const char * argv[]) {
+  
+    
+//    test_main_queue();
     
 //    using namespace Queue;
 //
@@ -330,6 +386,9 @@ int main(int argc, const char * argv[]) {
 //    std::cout << &ss1 << "      " << &ss2 << std::endl;
 //    std::swap(ss1, ss2);
 //    std::cout << &ss1 << "      " << &ss2 << std::endl;
+    
+    Clients client;
+    client.start();
     
     return 0;
 }

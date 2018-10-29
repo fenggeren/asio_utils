@@ -19,7 +19,8 @@ TCPSession::TCPSession(SocketPtr socket, const std::string& name)
 name_(name),
 sendBuffer_(new DataBuffer),
 outputBuffer_(new DataBuffer),
-inputBuffer_(new DataBuffer)
+inputBuffer_(new DataBuffer),
+state_(kConnecting)
 {
     
 }
@@ -33,11 +34,14 @@ TCPSession::~TCPSession()
 
 void TCPSession::startAsyncRead()
 {
-    socket_->async_read_some(asio::buffer(inputBuffer_->beginWrite(),
-                                         inputBuffer_->writableBytes()),
-                            std::bind(&TCPSession::handRead,this,
-                                      std::placeholders::_1,
-                                      std::placeholders::_2));
+    if (state_ == kConnected)
+    {
+        socket_->async_read_some(asio::buffer(inputBuffer_->beginWrite(),
+                                              inputBuffer_->writableBytes()),
+                                 std::bind(&TCPSession::handRead,this,
+                                           std::placeholders::_1,
+                                           std::placeholders::_2));
+    }
 }
 
 void TCPSession::send(const std::string& message)
@@ -55,7 +59,9 @@ void TCPSession::send(const void* message, size_t len)
 
 void TCPSession::internalSend()
 {
-    if (sendBuffer_->isOperate() || outputBuffer_->readableBytes() == 0)
+    if (state_ != kConnected ||
+        sendBuffer_->isOperate() ||
+        outputBuffer_->readableBytes() == 0)
     {
         return;
     }
@@ -119,6 +125,7 @@ void TCPSession::handWrite(std::error_code ec, std::size_t bytesRead)
 
 void TCPSession::handClose()
 {
+    state_ = kDisconnected;
     if (connected())
     {
         socket_->close();
@@ -132,6 +139,7 @@ void TCPSession::handClose()
 
 void TCPSession::connectEstablished()
 {
+    state_ = kConnected;
     startAsyncRead();
     if (connectionCallback_) {
         connectionCallback_(shared_from_this());
@@ -140,21 +148,26 @@ void TCPSession::connectEstablished()
 
 void TCPSession::connectDestroyed()
 {
-    forceClose();
+    if (state_ == kConnected)
+    {
+        state_ = kDisconnected;
+        forceClose();
+    }
 }
 
 void TCPSession::shutdown()
 {
-    if (socket_ && socket_->is_open())
+    if (state_ == kConnected)
     {
-        
+        state_ = kDisconnecting;
         socket_->shutdown(asio::socket_base::shutdown_send);
     }
 }
 void TCPSession::forceClose()
 {
-    if (socket_ && socket_->is_open())
+    if (state_ == kConnected || state_ == kDisconnecting)
     {
+        state_ = kDisconnecting;
         handClose();
     }
 }

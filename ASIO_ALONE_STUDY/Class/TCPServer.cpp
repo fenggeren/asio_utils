@@ -83,7 +83,7 @@ void TCPServer::removeConnection(const std::shared_ptr<TCPSession>& session)
     }
     if (removeConnectionCallback_)
     {
-        removeConnection(session);
+        removeConnectionCallback_(session);
     }
 }
 
