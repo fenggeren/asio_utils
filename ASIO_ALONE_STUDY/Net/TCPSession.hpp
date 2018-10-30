@@ -14,6 +14,7 @@
 #include <vector>
 #include <array>
 #include "DataBuffer.hpp"
+#include "base/FASIOType.h"
 
 namespace fasio
 {
@@ -57,6 +58,10 @@ public:
                                     state_ == kDisconnecting; }
     
     const std::string& name() const { return name_; }
+    
+    // void setUUID(uint32 uuid) { uuid_ = uuid; }
+    uint32 uuid() const { return uuid_; }
+    
 public:
     ///////  设置回调   /////////
     void setConnectionCallback(const std::function<void(const TCPSessionPtr&)>& cb)
@@ -102,7 +107,10 @@ protected:
     const std::string name_;
     
     StateE state_;
+    
+    const uint16 uuid_;
 
+    static std::atomic<int> num_;
 };
 
 

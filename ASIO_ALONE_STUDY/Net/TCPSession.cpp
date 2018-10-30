@@ -16,13 +16,16 @@ using namespace fasio::logging;
 namespace fasio
 {
 
+std::atomic<int> TCPSession::num_;
+
 TCPSession::TCPSession(SocketPtr socket, const std::string& name)
 : socket_(std::move(socket)),
 name_(name),
 sendBuffer_(new DataBuffer),
 outputBuffer_(new DataBuffer),
 inputBuffer_(new DataBuffer),
-state_(kConnecting)
+state_(kConnecting),
+uuid_(num_++)
 {
     
 }

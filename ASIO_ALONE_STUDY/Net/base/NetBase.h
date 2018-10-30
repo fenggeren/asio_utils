@@ -40,7 +40,7 @@ class IPacketParser
 {
 public:
 	virtual int32 parsePacket(const char* buf, uint32 len) = 0;
-}
+};
 
 class ISession
 {
