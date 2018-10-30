@@ -18,6 +18,8 @@
 		1F365422215A15B1003B9FAD /* DataHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F365417215A15B1003B9FAD /* DataHandler.cpp */; };
 		1F365423215A15B1003B9FAD /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F365418215A15B1003B9FAD /* TCPConnector.cpp */; };
 		1F5114F82182B63000D14D13 /* CPGClients.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5114F62182B63000D14D13 /* CPGClients.cpp */; };
+		1F5B1AC12186F3F200752C8B /* ParseProto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B1ABF2186F3F200752C8B /* ParseProto.cpp */; };
+		1F5B1AC421870A2B00752C8B /* CPGNetPacket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B1AC221870A2B00752C8B /* CPGNetPacket.cpp */; };
 		1FD879DC217479F7003547AE /* CPGGatewayServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FD879DA217479F7003547AE /* CPGGatewayServer.cpp */; };
 		28C200B120CD600900A9ECC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28C200B020CD600900A9ECC5 /* main.cpp */; };
 		8123E1FA216B9C4A0050FD4D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1F8216B9C4A0050FD4D /* Thread.cpp */; };
@@ -63,6 +65,10 @@
 		1F365419215A15B1003B9FAD /* Logging.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logging.hpp; sourceTree = "<group>"; };
 		1F5114F62182B63000D14D13 /* CPGClients.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPGClients.cpp; sourceTree = "<group>"; };
 		1F5114F72182B63000D14D13 /* CPGClients.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPGClients.hpp; sourceTree = "<group>"; };
+		1F5B1ABF2186F3F200752C8B /* ParseProto.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ParseProto.cpp; sourceTree = "<group>"; };
+		1F5B1AC02186F3F200752C8B /* ParseProto.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParseProto.hpp; sourceTree = "<group>"; };
+		1F5B1AC221870A2B00752C8B /* CPGNetPacket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPGNetPacket.cpp; sourceTree = "<group>"; };
+		1F5B1AC321870A2B00752C8B /* CPGNetPacket.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPGNetPacket.hpp; sourceTree = "<group>"; };
 		1FD879DA217479F7003547AE /* CPGGatewayServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPGGatewayServer.cpp; sourceTree = "<group>"; };
 		1FD879DB217479F7003547AE /* CPGGatewayServer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPGGatewayServer.hpp; sourceTree = "<group>"; };
 		28C200AD20CD600900A9ECC5 /* ASIO_ALONE_STUDY */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ASIO_ALONE_STUDY; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +122,8 @@
 				1F36540C215A15B1003B9FAD /* TCPAcceptor.hpp */,
 				1F365414215A15B1003B9FAD /* TCPAcceptor.cpp */,
 				1F365419215A15B1003B9FAD /* Logging.hpp */,
+				1F5B1AC221870A2B00752C8B /* CPGNetPacket.cpp */,
+				1F5B1AC321870A2B00752C8B /* CPGNetPacket.hpp */,
 			);
 			path = Net;
 			sourceTree = "<group>";
@@ -128,6 +136,15 @@
 				1F365407215A15B1003B9FAD /* Logging.cpp */,
 			);
 			path = logging;
+			sourceTree = "<group>";
+		};
+		1F5B1ABE2186F3DE00752C8B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				1F5B1ABF2186F3F200752C8B /* ParseProto.cpp */,
+				1F5B1AC02186F3F200752C8B /* ParseProto.hpp */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		1FD879D9217479E9003547AE /* CPG */ = {
@@ -160,6 +177,7 @@
 		28C200AF20CD600900A9ECC5 /* ASIO_ALONE_STUDY */ = {
 			isa = PBXGroup;
 			children = (
+				1F5B1ABE2186F3DE00752C8B /* Util */,
 				1FD879D9217479E9003547AE /* CPG */,
 				1F365402215A15B1003B9FAD /* Net */,
 				28C200B020CD600900A9ECC5 /* main.cpp */,
@@ -225,7 +243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F5B1AC421870A2B00752C8B /* CPGNetPacket.cpp in Sources */,
 				1F5114F82182B63000D14D13 /* CPGClients.cpp in Sources */,
+				1F5B1AC12186F3F200752C8B /* ParseProto.cpp in Sources */,
 				1F365421215A15B1003B9FAD /* Timestamp.cpp in Sources */,
 				1F365420215A15B1003B9FAD /* TCPAcceptor.cpp in Sources */,
 				1F36541A215A15B1003B9FAD /* Logging.cpp in Sources */,
