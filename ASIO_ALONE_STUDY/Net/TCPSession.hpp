@@ -21,6 +21,7 @@ namespace fasio
     
 using asio::ip::tcp;
 class TCPSession;
+class TCPConnector;
 using TCPSessionPtr = std::shared_ptr<TCPSession>;
 using SocketPtr = std::shared_ptr<tcp::socket>;
 
@@ -30,7 +31,7 @@ class TCPSession : public std::enable_shared_from_this<TCPSession>
 public:
     
     TCPSession(SocketPtr socket, const std::string& name);
-    ~TCPSession();
+    virtual ~TCPSession();
     
     // 直接发送二进制数据
     void send(const void* message, size_t len);
@@ -70,7 +71,7 @@ public:
     {
         writeCompleteCallback_ = cb;
     }
- 
+
 private:
     
     void handRead(std::error_code ec, std::size_t bytesRead);
@@ -82,7 +83,7 @@ private:
     
     
     
-private:
+protected:
     
     SocketPtr socket_;
     
@@ -99,10 +100,23 @@ private:
     const std::string name_;
     
     StateE state_;
+
 };
 
 
-
+class ClientSession : public TCPSession
+{
+public:
+    
+    
+    void setConnector(std::shared_ptr<TCPConnector> connector)
+    { connector_ = connector; }
+    
+    const std::shared_ptr<TCPConnector> connector()
+    { return connector_; }
+private:
+    std::shared_ptr<TCPConnector> connector_{nullptr};
+};
 
 
 
