@@ -14,17 +14,20 @@ namespace fasio
 
 class TCPSession;
 
-class SessionFactory
+class NetSessionFactory
 {
 	virtual std::shared_ptr<TCPSession> createSession() = 0;
 };
 
 
-class NetSessionManager : public SessionFactory
+class NetSessionManager : public NetSessionFactory
 {
 public:
-	
+	NetSessionManager();
+	virtual ~NetSessionManager();
 
+public:
+    
 };
 
 

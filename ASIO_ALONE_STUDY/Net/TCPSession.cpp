@@ -9,6 +9,8 @@
 #include "TCPSession.hpp"
 #include <iostream>
 #include "Logging.hpp"
+#include "TCPConnector.hpp"
+
 using namespace fasio::logging;
 
 namespace fasio
@@ -172,7 +174,26 @@ void TCPSession::forceClose()
     }
 }
 
+void ClientSession::setConnector(std::shared_ptr<TCPConnector> connector)
+{
+    connector_ = connector;
+    connector->setNewConnectionCallback(nullptr);
+}
 
+void ClientSession::reconnect()
+{
+    if (retry_)
+    {
+        connector_->restart();
+    }
+}
+ 
+void ClientSession::stop()
+{
+    if (connector_) {
+        connector_->stop();
+    }
+}
 
 
 

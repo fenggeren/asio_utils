@@ -40,17 +40,21 @@ public:
     // 异步读取，读取完后调用回调 message callback。
     void startAsyncRead();
     
-    
     // 直接关闭链接
     void shutdown();
     void forceClose(); 
+    
+    void disconnect()
+    { forceClose(); }
     
     // 链接建立 & 销毁
     void connectEstablished();
     void connectDestroyed();
     
-    bool connected() const { return socket_ != nullptr; }
-    bool disconnected() const { return socket_ == nullptr; }
+    bool connected() const { return state_ == kConnected ||
+                                    state_ == kConnecting; }
+    bool disconnected() const { return state_ == kDisconnected ||
+                                    state_ == kDisconnecting; }
     
     const std::string& name() const { return name_; }
 public:
@@ -81,8 +85,6 @@ private:
 private:
     enum StateE { kDisconnected, kConnecting, kConnected, kDisconnecting };
     
-    
-    
 protected:
     
     SocketPtr socket_;
@@ -108,14 +110,24 @@ class ClientSession : public TCPSession
 {
 public:
     
+    void reconnect();
     
-    void setConnector(std::shared_ptr<TCPConnector> connector)
-    { connector_ = connector; }
+    void stop();
+    
+    void unenableRetry() { retry_ = false; }
+    
+    
+private:
+    
+    void setConnector(std::shared_ptr<TCPConnector> connector);
     
     const std::shared_ptr<TCPConnector> connector()
     { return connector_; }
 private:
     std::shared_ptr<TCPConnector> connector_{nullptr};
+    
+    bool retry_{true};
+    bool connect_{false};
 };
 
 
