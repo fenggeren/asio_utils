@@ -21,6 +21,13 @@
         "cstring": "cpp",
         "ctime": "cpp",
         "memory": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "__nullptr": "cpp",
+        "optional": "cpp",
+        "variant": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp"
     }
 }
