@@ -11,6 +11,7 @@
 #include "TCPListener.h"
 #include "logging/Logging.hpp"
 #include <functional>
+#include "TCPConnector.hpp"
 
 namespace fasio
 {
@@ -23,13 +24,28 @@ void TCPSessionManager::createListener(int port, bool ipv6, std::shared_ptr<TCPS
     listener->listen(port, ipv6);
     listeners_.insert({port, listener});
 }
+    
+void TCPSessionManager::createConnector(uint8 type, asio::io_context& io,
+                                        const std::string& ip, uint16 port)
+{
+    std::shared_ptr<TCPConnector> connector(new TCPConnector(io, ip, port));
+    auto session = createConnectorSession(type);
+    addSession(session);
+    session->setConnector(connector);
+    connector->start();
+}
+    
+std::shared_ptr<ClientSession>
+    TCPSessionManager::createConnectorSession(uint8 type)
+{
+    return std::make_shared<ClientSession>();
+}
 
 void TCPSessionManager::newSession(std::shared_ptr<TCPSession> session)
 {
     LOG_MINFO << session->uuid();
     
-    sessionMap_[session->uuid()] = session;
-    session->setCloseCallback(std::bind(&TCPSessionManager::removeSessionPtr, this, std::placeholders::_1));
+    addSession(session);
 }
 
 void TCPSessionManager::removeSessionPtr(const TCPSessionPtr& session)
@@ -39,6 +55,15 @@ void TCPSessionManager::removeSessionPtr(const TCPSessionPtr& session)
 void TCPSessionManager::removeSession(int32 uuid)
 {
     sessionMap_.erase(uuid);
+}
+void TCPSessionManager::addSession(TCPSessionPtr session)
+{
+    if (sessionMap_.find(session->uuid()) != sessionMap_.end())
+    {
+        LOG_MINFO << " session had exist: " << session->uuid();
+    }
+    sessionMap_[session->uuid()] = session;
+    session->setCloseCallback(std::bind(&TCPSessionManager::removeSessionPtr, this, std::placeholders::_1));
 }
 
 inline TCPSessionPtr TCPSessionManager::getSession(int32 uuid)

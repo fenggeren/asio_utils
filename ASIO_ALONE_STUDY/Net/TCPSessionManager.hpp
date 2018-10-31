@@ -35,7 +35,9 @@ public:
  
 public:
 	void createListener(int port, bool ipv6, std::shared_ptr<TCPSessionFactory> factory);
-
+    
+    virtual void createConnector(uint8 type, asio::io_context& io,
+                                 const std::string& ip, uint16 port);
 public:
 
     void addSession(TCPSessionPtr session);
@@ -50,6 +52,10 @@ public:
 
 	void newSession(std::shared_ptr<TCPSession> session);
 	
+public:
+    
+    virtual std::shared_ptr<ClientSession> createConnectorSession(uint8 type);
+    
 private:
     void removeSessionPtr(const TCPSessionPtr& session);
     

@@ -34,6 +34,8 @@ public:
     TCPSession(SocketPtr socket, const std::string& name);
     virtual ~TCPSession();
     
+    TCPSession();
+    
     // 增加更多数据，不进行发送.
     void addMore(const void* message, size_t len);
     // 直接发送二进制数据
@@ -53,6 +55,11 @@ public:
     // 链接建立 & 销毁
     void connectEstablished();
     void connectDestroyed();
+    
+public:
+    
+    void setSocket(SocketPtr socket) { socket_ = socket; }
+    void setName(const std::string& name) { name_ = name;}
     
     bool connected() const { return state_ == kConnected ||
                                     state_ == kConnecting; }
@@ -108,7 +115,7 @@ protected:
     
     DataBuffer* sendBuffer_;
     
-    const std::string name_;
+    std::string name_;
     
     StateE state_;
     
@@ -130,13 +137,17 @@ public:
     
     void unenableRetry() { retry_ = false; }
     
-    
-private:
+public:
     
     void setConnector(std::shared_ptr<TCPConnector> connector);
     
     const std::shared_ptr<TCPConnector> connector()
     { return connector_; }
+    
+private:
+    
+    void connectCallback(SocketPtr sock);
+    
 private:
     std::shared_ptr<TCPConnector> connector_{nullptr};
     

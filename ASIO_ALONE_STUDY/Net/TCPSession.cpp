@@ -19,9 +19,14 @@ namespace fasio
 std::atomic<int> TCPSession::num_;
 
 TCPSession::TCPSession(SocketPtr socket, const std::string& name)
-: socket_(std::move(socket)),
-name_(name),
-sendBuffer_(new DataBuffer),
+: TCPSession()
+{
+    socket_ = std::move(socket);
+    name_ = name;
+}
+    
+TCPSession::TCPSession()
+:sendBuffer_(new DataBuffer),
 outputBuffer_(new DataBuffer),
 inputBuffer_(new DataBuffer),
 state_(kConnecting),
@@ -184,7 +189,14 @@ void TCPSession::forceClose()
 void ClientSession::setConnector(std::shared_ptr<TCPConnector> connector)
 {
     connector_ = connector;
-    connector->setNewConnectionCallback(nullptr);
+    connector_->setNewConnectionCallback(std::bind(&ClientSession::connectCallback, this, std::placeholders::_1));
+//    connector->setNewConnectionCallback(nullptr);
+}
+    
+void ClientSession::connectCallback(SocketPtr sock)
+{
+    socket_ = sock;
+    connectEstablished();
 }
 
 void ClientSession::reconnect()
