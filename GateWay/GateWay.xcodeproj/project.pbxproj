@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8123E23B2189D7FC0050FD4D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E23A2189D7FC0050FD4D /* main.cpp */; };
+		8123E2432189D8680050FD4D /* GSSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2412189D8680050FD4D /* GSSessionManager.cpp */; };
+		8123E2742189DCE60050FD4D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2462189DCE50050FD4D /* Thread.cpp */; };
+		8123E2752189DCE60050FD4D /* RunLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2482189DCE50050FD4D /* RunLoop.cpp */; };
+		8123E2762189DCE60050FD4D /* NetPacket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E24F2189DCE50050FD4D /* NetPacket.cpp */; };
+		8123E2772189DCE60050FD4D /* ParseProto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2512189DCE50050FD4D /* ParseProto.cpp */; };
+		8123E2782189DCE60050FD4D /* TCPListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2532189DCE50050FD4D /* TCPListener.cpp */; };
+		8123E2792189DCE60050FD4D /* DataBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2592189DCE50050FD4D /* DataBuffer.cpp */; };
+		8123E27A2189DCE60050FD4D /* TCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E25C2189DCE50050FD4D /* TCPClient.cpp */; };
+		8123E27B2189DCE60050FD4D /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E25E2189DCE50050FD4D /* Queue.cpp */; };
+		8123E27C2189DCE60050FD4D /* TCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E25F2189DCE50050FD4D /* TCPServer.cpp */; };
+		8123E27D2189DCE60050FD4D /* Conv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2602189DCE50050FD4D /* Conv.cpp */; };
+		8123E27E2189DCE60050FD4D /* TCPSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2622189DCE50050FD4D /* TCPSession.cpp */; };
+		8123E27F2189DCE60050FD4D /* TCPAcceptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2642189DCE50050FD4D /* TCPAcceptor.cpp */; };
+		8123E2802189DCE60050FD4D /* DataHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2672189DCE50050FD4D /* DataHandler.cpp */; };
+		8123E2812189DCE60050FD4D /* TCPSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2692189DCE50050FD4D /* TCPSessionManager.cpp */; };
+		8123E2822189DCE60050FD4D /* Logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E26C2189DCE50050FD4D /* Logging.cpp */; };
+		8123E2832189DCE60050FD4D /* Timestamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E26D2189DCE50050FD4D /* Timestamp.cpp */; };
+		8123E2842189DCE60050FD4D /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E26F2189DCE50050FD4D /* TCPConnector.cpp */; };
+		8123E2852189DCE60050FD4D /* FASIOType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2732189DCE50050FD4D /* FASIOType.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8123E2352189D7FC0050FD4D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8123E2372189D7FC0050FD4D /* GateWay */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GateWay; sourceTree = BUILT_PRODUCTS_DIR; };
+		8123E23A2189D7FC0050FD4D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8123E2412189D8680050FD4D /* GSSessionManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GSSessionManager.cpp; sourceTree = "<group>"; };
+		8123E2422189D8680050FD4D /* GSSessionManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GSSessionManager.hpp; sourceTree = "<group>"; };
+		8123E2462189DCE50050FD4D /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
+		8123E2472189DCE50050FD4D /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
+		8123E2482189DCE50050FD4D /* RunLoop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RunLoop.cpp; sourceTree = "<group>"; };
+		8123E2492189DCE50050FD4D /* NetSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetSessionManager.hpp; sourceTree = "<group>"; };
+		8123E24A2189DCE50050FD4D /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
+		8123E24B2189DCE50050FD4D /* TCPSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPSessionManager.hpp; sourceTree = "<group>"; };
+		8123E24C2189DCE50050FD4D /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		8123E24E2189DCE50050FD4D /* ParseProto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParseProto.hpp; sourceTree = "<group>"; };
+		8123E24F2189DCE50050FD4D /* NetPacket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetPacket.cpp; sourceTree = "<group>"; };
+		8123E2502189DCE50050FD4D /* NetPacket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetPacket.hpp; sourceTree = "<group>"; };
+		8123E2512189DCE50050FD4D /* ParseProto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParseProto.cpp; sourceTree = "<group>"; };
+		8123E2522189DCE50050FD4D /* Callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callbacks.h; sourceTree = "<group>"; };
+		8123E2532189DCE50050FD4D /* TCPListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPListener.cpp; sourceTree = "<group>"; };
+		8123E2542189DCE50050FD4D /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
+		8123E2552189DCE50050FD4D /* NetBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetBase.hpp; sourceTree = "<group>"; };
+		8123E2562189DCE50050FD4D /* TCPServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPServer.hpp; sourceTree = "<group>"; };
+		8123E2572189DCE50050FD4D /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
+		8123E2582189DCE50050FD4D /* Conv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Conv.hpp; sourceTree = "<group>"; };
+		8123E2592189DCE50050FD4D /* DataBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataBuffer.cpp; sourceTree = "<group>"; };
+		8123E25A2189DCE50050FD4D /* TCPAcceptor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPAcceptor.hpp; sourceTree = "<group>"; };
+		8123E25B2189DCE50050FD4D /* TCPSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPSession.hpp; sourceTree = "<group>"; };
+		8123E25C2189DCE50050FD4D /* TCPClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPClient.cpp; sourceTree = "<group>"; };
+		8123E25D2189DCE50050FD4D /* noncopyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = noncopyable.h; sourceTree = "<group>"; };
+		8123E25E2189DCE50050FD4D /* Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Queue.cpp; sourceTree = "<group>"; };
+		8123E25F2189DCE50050FD4D /* TCPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPServer.cpp; sourceTree = "<group>"; };
+		8123E2602189DCE50050FD4D /* Conv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Conv.cpp; sourceTree = "<group>"; };
+		8123E2612189DCE50050FD4D /* DataBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataBuffer.hpp; sourceTree = "<group>"; };
+		8123E2622189DCE50050FD4D /* TCPSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPSession.cpp; sourceTree = "<group>"; };
+		8123E2632189DCE50050FD4D /* TCPSessionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPSessionFactory.h; sourceTree = "<group>"; };
+		8123E2642189DCE50050FD4D /* TCPAcceptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPAcceptor.cpp; sourceTree = "<group>"; };
+		8123E2652189DCE50050FD4D /* TCPClient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPClient.hpp; sourceTree = "<group>"; };
+		8123E2662189DCE50050FD4D /* Thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Thread.hpp; sourceTree = "<group>"; };
+		8123E2672189DCE50050FD4D /* DataHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataHandler.cpp; sourceTree = "<group>"; };
+		8123E2682189DCE50050FD4D /* RunLoop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RunLoop.hpp; sourceTree = "<group>"; };
+		8123E2692189DCE50050FD4D /* TCPSessionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPSessionManager.cpp; sourceTree = "<group>"; };
+		8123E26B2189DCE50050FD4D /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
+		8123E26C2189DCE50050FD4D /* Logging.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logging.cpp; sourceTree = "<group>"; };
+		8123E26D2189DCE50050FD4D /* Timestamp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timestamp.cpp; sourceTree = "<group>"; };
+		8123E26E2189DCE50050FD4D /* Logging.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logging.hpp; sourceTree = "<group>"; };
+		8123E26F2189DCE50050FD4D /* TCPConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPConnector.cpp; sourceTree = "<group>"; };
+		8123E2712189DCE50050FD4D /* NetBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetBase.h; sourceTree = "<group>"; };
+		8123E2722189DCE50050FD4D /* FASIOType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FASIOType.h; sourceTree = "<group>"; };
+		8123E2732189DCE50050FD4D /* FASIOType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FASIOType.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8123E2342189D7FC0050FD4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8123E22E2189D7FC0050FD4D = {
+			isa = PBXGroup;
+			children = (
+				8123E2392189D7FC0050FD4D /* GateWay */,
+				8123E2382189D7FC0050FD4D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8123E2382189D7FC0050FD4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8123E2372189D7FC0050FD4D /* GateWay */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8123E2392189D7FC0050FD4D /* GateWay */ = {
+			isa = PBXGroup;
+			children = (
+				8123E2452189DCE50050FD4D /* Net */,
+				8123E23A2189D7FC0050FD4D /* main.cpp */,
+				8123E2412189D8680050FD4D /* GSSessionManager.cpp */,
+				8123E2422189D8680050FD4D /* GSSessionManager.hpp */,
+			);
+			path = GateWay;
+			sourceTree = "<group>";
+		};
+		8123E2452189DCE50050FD4D /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				8123E2462189DCE50050FD4D /* Thread.cpp */,
+				8123E2472189DCE50050FD4D /* DataHandler.hpp */,
+				8123E2482189DCE50050FD4D /* RunLoop.cpp */,
+				8123E2492189DCE50050FD4D /* NetSessionManager.hpp */,
+				8123E24A2189DCE50050FD4D /* TCPConnector.hpp */,
+				8123E24B2189DCE50050FD4D /* TCPSessionManager.hpp */,
+				8123E24C2189DCE50050FD4D /* Header.h */,
+				8123E24D2189DCE50050FD4D /* Util */,
+				8123E2522189DCE50050FD4D /* Callbacks.h */,
+				8123E2532189DCE50050FD4D /* TCPListener.cpp */,
+				8123E2542189DCE50050FD4D /* Queue.hpp */,
+				8123E2552189DCE50050FD4D /* NetBase.hpp */,
+				8123E2562189DCE50050FD4D /* TCPServer.hpp */,
+				8123E2572189DCE50050FD4D /* TCPListener.h */,
+				8123E2582189DCE50050FD4D /* Conv.hpp */,
+				8123E2592189DCE50050FD4D /* DataBuffer.cpp */,
+				8123E25A2189DCE50050FD4D /* TCPAcceptor.hpp */,
+				8123E25B2189DCE50050FD4D /* TCPSession.hpp */,
+				8123E25C2189DCE50050FD4D /* TCPClient.cpp */,
+				8123E25D2189DCE50050FD4D /* noncopyable.h */,
+				8123E25E2189DCE50050FD4D /* Queue.cpp */,
+				8123E25F2189DCE50050FD4D /* TCPServer.cpp */,
+				8123E2602189DCE50050FD4D /* Conv.cpp */,
+				8123E2612189DCE50050FD4D /* DataBuffer.hpp */,
+				8123E2622189DCE50050FD4D /* TCPSession.cpp */,
+				8123E2632189DCE50050FD4D /* TCPSessionFactory.h */,
+				8123E2642189DCE50050FD4D /* TCPAcceptor.cpp */,
+				8123E2652189DCE50050FD4D /* TCPClient.hpp */,
+				8123E2662189DCE50050FD4D /* Thread.hpp */,
+				8123E2672189DCE50050FD4D /* DataHandler.cpp */,
+				8123E2682189DCE50050FD4D /* RunLoop.hpp */,
+				8123E2692189DCE50050FD4D /* TCPSessionManager.cpp */,
+				8123E26A2189DCE50050FD4D /* logging */,
+				8123E26F2189DCE50050FD4D /* TCPConnector.cpp */,
+				8123E2702189DCE50050FD4D /* base */,
+			);
+			name = Net;
+			path = ../../ASIO_ALONE_STUDY/Net;
+			sourceTree = "<group>";
+		};
+		8123E24D2189DCE50050FD4D /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8123E24E2189DCE50050FD4D /* ParseProto.hpp */,
+				8123E24F2189DCE50050FD4D /* NetPacket.cpp */,
+				8123E2502189DCE50050FD4D /* NetPacket.hpp */,
+				8123E2512189DCE50050FD4D /* ParseProto.cpp */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		8123E26A2189DCE50050FD4D /* logging */ = {
+			isa = PBXGroup;
+			children = (
+				8123E26B2189DCE50050FD4D /* Timestamp.hpp */,
+				8123E26C2189DCE50050FD4D /* Logging.cpp */,
+				8123E26D2189DCE50050FD4D /* Timestamp.cpp */,
+				8123E26E2189DCE50050FD4D /* Logging.hpp */,
+			);
+			path = logging;
+			sourceTree = "<group>";
+		};
+		8123E2702189DCE50050FD4D /* base */ = {
+			isa = PBXGroup;
+			children = (
+				8123E2712189DCE50050FD4D /* NetBase.h */,
+				8123E2722189DCE50050FD4D /* FASIOType.h */,
+				8123E2732189DCE50050FD4D /* FASIOType.cpp */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8123E2362189D7FC0050FD4D /* GateWay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8123E23E2189D7FC0050FD4D /* Build configuration list for PBXNativeTarget "GateWay" */;
+			buildPhases = (
+				8123E2332189D7FC0050FD4D /* Sources */,
+				8123E2342189D7FC0050FD4D /* Frameworks */,
+				8123E2352189D7FC0050FD4D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GateWay;
+			productName = GateWay;
+			productReference = 8123E2372189D7FC0050FD4D /* GateWay */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8123E22F2189D7FC0050FD4D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "guanrui fu";
+				TargetAttributes = {
+					8123E2362189D7FC0050FD4D = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = 8123E2322189D7FC0050FD4D /* Build configuration list for PBXProject "GateWay" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8123E22E2189D7FC0050FD4D;
+			productRefGroup = 8123E2382189D7FC0050FD4D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8123E2362189D7FC0050FD4D /* GateWay */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8123E2332189D7FC0050FD4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8123E27E2189DCE60050FD4D /* TCPSession.cpp in Sources */,
+				8123E2432189D8680050FD4D /* GSSessionManager.cpp in Sources */,
+				8123E2762189DCE60050FD4D /* NetPacket.cpp in Sources */,
+				8123E27C2189DCE60050FD4D /* TCPServer.cpp in Sources */,
+				8123E2842189DCE60050FD4D /* TCPConnector.cpp in Sources */,
+				8123E27D2189DCE60050FD4D /* Conv.cpp in Sources */,
+				8123E2772189DCE60050FD4D /* ParseProto.cpp in Sources */,
+				8123E27B2189DCE60050FD4D /* Queue.cpp in Sources */,
+				8123E2792189DCE60050FD4D /* DataBuffer.cpp in Sources */,
+				8123E23B2189D7FC0050FD4D /* main.cpp in Sources */,
+				8123E2742189DCE60050FD4D /* Thread.cpp in Sources */,
+				8123E27A2189DCE60050FD4D /* TCPClient.cpp in Sources */,
+				8123E2782189DCE60050FD4D /* TCPListener.cpp in Sources */,
+				8123E2812189DCE60050FD4D /* TCPSessionManager.cpp in Sources */,
+				8123E27F2189DCE60050FD4D /* TCPAcceptor.cpp in Sources */,
+				8123E2832189DCE60050FD4D /* Timestamp.cpp in Sources */,
+				8123E2822189DCE60050FD4D /* Logging.cpp in Sources */,
+				8123E2752189DCE60050FD4D /* RunLoop.cpp in Sources */,
+				8123E2852189DCE60050FD4D /* FASIOType.cpp in Sources */,
+				8123E2802189DCE60050FD4D /* DataHandler.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8123E23C2189D7FC0050FD4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8123E23D2189D7FC0050FD4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8123E23F2189D7FC0050FD4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					../ASIO_ALONE_STUDY,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-l",
+					boost_system,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8123E2402189D7FC0050FD4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					../ASIO_ALONE_STUDY,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-l",
+					boost_system,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8123E2322189D7FC0050FD4D /* Build configuration list for PBXProject "GateWay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8123E23C2189D7FC0050FD4D /* Debug */,
+				8123E23D2189D7FC0050FD4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8123E23E2189D7FC0050FD4D /* Build configuration list for PBXNativeTarget "GateWay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8123E23F2189D7FC0050FD4D /* Debug */,
+				8123E2402189D7FC0050FD4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8123E22F2189D7FC0050FD4D /* Project object */;
+}

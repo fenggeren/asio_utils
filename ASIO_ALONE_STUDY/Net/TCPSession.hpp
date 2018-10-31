@@ -74,6 +74,7 @@ public:
     void setType(int type) {type_ = type;}
     uint8 type() const { return type_;}
     
+    bool isClient() const { return client_; }
 public:
     ///////  设置回调   /////////
     void setConnectionCallback(const std::function<void(const TCPSessionPtr&)>& cb)
@@ -123,6 +124,7 @@ protected:
     
     const uint16 uuid_;
     
+    bool client_{false};
     static std::atomic<int> num_;
 };
 
@@ -131,12 +133,15 @@ class ClientSession : public TCPSession
 {
 public:
     
+    ClientSession();
+    
     void reconnect();
     
     void stop();
     
     void unenableRetry() { retry_ = false; }
     
+    bool canRetry() const { return retry_; }
 public:
     
     void setConnector(std::shared_ptr<TCPConnector> connector);

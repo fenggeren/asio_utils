@@ -15,8 +15,6 @@
 #include "DataBuffer.hpp"
 
 using namespace fasio;
-namespace TESTSM
-{
 static asio::io_context g_IoContext;
 
 enum ServerType
@@ -76,7 +74,7 @@ public:
 
 
 
-class TestSessionManager : public TCPSessionManager
+class GSSessionManager : public TCPSessionManager
 {
 public:
     
@@ -87,21 +85,14 @@ public:
         createListener(7891, false, factory);
         createListener(7892, false, factory);
         
+        createConnector(ServerType_Gate_Central, g_IoContext, "127.0.0.1", 7801);
+        
         g_IoContext.run();
     }
     
 private:
 
 };
-
-
-
-
-
-}
-
-
-
 
 
 

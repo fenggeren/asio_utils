@@ -18,11 +18,13 @@ static asio::io_context g_IoContext;
 enum ServerType
 {
     ServerType_CG = 0,
-    ServerType_Client_Gate = 0,
+    ServerType_Client_Gate = 1,
     ServerType_Gate_Login,
     ServerType_Gate_Match,
     ServerType_Gate_Central
 };
+
+
 
 
 class GateSession : public TCPSession
@@ -72,6 +74,8 @@ public:
     }
 };
 
+
+
 class CSSessionManager : public TCPSessionManager
 {
 public:
@@ -79,9 +83,9 @@ public:
     void start()
     {
         auto factory = std::make_shared<GateSessionFactory>();
-        createListener(7895, false, factory);
-        createListener(7896, false, factory);
-        createListener(7897, false, factory);
+        createListener(7801, false, factory);
+//        createListener(7896, false, factory);
+//        createListener(7897, false, factory);
         g_IoContext.run();
     }
     

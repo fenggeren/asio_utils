@@ -186,6 +186,12 @@ void TCPSession::forceClose()
     }
 }
 
+ClientSession::ClientSession()
+:TCPSession()
+{
+    client_ = true;
+}
+
 void ClientSession::setConnector(std::shared_ptr<TCPConnector> connector)
 {
     connector_ = connector;
@@ -201,6 +207,7 @@ void ClientSession::connectCallback(SocketPtr sock)
 
 void ClientSession::reconnect()
 {
+    connectDestroyed();
     if (retry_)
     {
         connector_->restart();

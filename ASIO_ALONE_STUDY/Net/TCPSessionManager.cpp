@@ -47,11 +47,29 @@ void TCPSessionManager::newSession(std::shared_ptr<TCPSession> session)
     
     addSession(session);
 }
-
+ 
+    
 void TCPSessionManager::removeSessionPtr(const TCPSessionPtr& session)
 {
-    removeSession(session->uuid());
+    if (!session->isClient())
+    {
+        removeSession(session->uuid());
+    }
+    else
+    {
+        TCPSession* ssp = session.get();
+        ClientSession* clientsession = dynamic_cast<ClientSession*>(ssp);
+        if (clientsession && clientsession->canRetry())
+        {
+            clientsession->reconnect();
+        }
+        else
+        {
+            removeSession(session->uuid());
+        }
+    }
 }
+    
 void TCPSessionManager::removeSession(int32 uuid)
 {
     sessionMap_.erase(uuid);
@@ -60,7 +78,7 @@ void TCPSessionManager::addSession(TCPSessionPtr session)
 {
     if (sessionMap_.find(session->uuid()) != sessionMap_.end())
     {
-        LOG_MINFO << " session had exist: " << session->uuid();
+        LOG_MINFO << " session has exist: " << session->uuid();
     }
     sessionMap_[session->uuid()] = session;
     session->setCloseCallback(std::bind(&TCPSessionManager::removeSessionPtr, this, std::placeholders::_1));

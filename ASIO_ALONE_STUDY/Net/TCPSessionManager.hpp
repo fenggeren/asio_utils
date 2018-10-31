@@ -57,8 +57,7 @@ public:
     virtual std::shared_ptr<ClientSession> createConnectorSession(uint8 type);
     
 private:
-    void removeSessionPtr(const TCPSessionPtr& session);
-    
+    void removeSessionPtr(const TCPSessionPtr& session); 
 protected:
     std::unordered_map<uint16 ,std::shared_ptr<TCPListener>> listeners_;
     std::unordered_map<int32, TCPSessionPtr> sessionMap_;

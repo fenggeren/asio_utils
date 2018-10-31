@@ -27,6 +27,7 @@
 		8123E200216CDD280050FD4D /* Conv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1FE216CDD280050FD4D /* Conv.cpp */; };
 		8123E22921889FC20050FD4D /* TCPListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E22321889FC20050FD4D /* TCPListener.cpp */; };
 		8123E22A21889FC20050FD4D /* TCPSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E22521889FC20050FD4D /* TCPSessionManager.cpp */; };
+		8123E22D2189D6DE0050FD4D /* TestClients.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E22B2189D6DE0050FD4D /* TestClients.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,6 +88,8 @@
 		8123E22621889FC20050FD4D /* TCPSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPSessionManager.hpp; sourceTree = "<group>"; };
 		8123E22721889FC20050FD4D /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
 		8123E22821889FC20050FD4D /* NetBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetBase.hpp; sourceTree = "<group>"; };
+		8123E22B2189D6DE0050FD4D /* TestClients.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TestClients.cpp; sourceTree = "<group>"; };
+		8123E22C2189D6DE0050FD4D /* TestClients.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TestClients.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,8 @@
 			children = (
 				1FE3E87921895D1800A2F52D /* TestSessionManager.cpp */,
 				1FE3E87A21895D1800A2F52D /* TestSessionManager.hpp */,
+				8123E22B2189D6DE0050FD4D /* TestClients.cpp */,
+				8123E22C2189D6DE0050FD4D /* TestClients.hpp */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				1FE3E87B21895D1800A2F52D /* TestSessionManager.cpp in Sources */,
 				1F36541D215A15B1003B9FAD /* Queue.cpp in Sources */,
 				1F36541E215A15B1003B9FAD /* TCPServer.cpp in Sources */,
+				8123E22D2189D6DE0050FD4D /* TestClients.cpp in Sources */,
 				8123E1FD216CDB6B0050FD4D /* RunLoop.cpp in Sources */,
 				1F36541B215A15B1003B9FAD /* DataBuffer.cpp in Sources */,
 				1F36541C215A15B1003B9FAD /* TCPClient.cpp in Sources */,

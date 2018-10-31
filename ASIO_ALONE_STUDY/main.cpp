@@ -12,8 +12,7 @@
 #include <chrono>
 #include <type_traits>
 #include <sys/syscall.h>
-#include "Queue.hpp" 
-#include "TestSessionManager.hpp"
+#include "Queue.hpp"  
 
 using namespace asio;
 using namespace fasio;
@@ -329,10 +328,7 @@ private:
 
 int main(int argc, const char * argv[])
 {
- 
-    TESTSM::TestSessionManager manager;
-    manager.start();
-    
+  
     
     return 0;
 }
