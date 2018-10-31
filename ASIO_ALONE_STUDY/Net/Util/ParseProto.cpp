@@ -8,6 +8,8 @@
 
 #include "ParseProto.hpp"
 
+namespace fasio
+{
 char* bigMemory = new char[1024*1024];
 char* getStaticBigMemory()
 {
@@ -21,4 +23,5 @@ bool checkMemory()
 void resetMemory(bool flag)
 {
     bigMemoryIsUse = flag;
+}
 }

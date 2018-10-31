@@ -12,9 +12,8 @@
 #include <chrono>
 #include <type_traits>
 #include <sys/syscall.h>
-#include "Queue.hpp"
-#include "CPGGatewayServer.hpp"
-
+#include "Queue.hpp" 
+#include "TestSessionManager.hpp"
 
 using namespace asio;
 using namespace fasio;
@@ -187,7 +186,6 @@ void test_block_blocks()
         std::cout << "Handler error code: " << err << std::endl;
     });
 }
-*/
 
 #include "Logging.hpp"
 
@@ -327,68 +325,14 @@ private:
 };
 
 
+*/
 
-
-int main(int argc, const char * argv[]) {
-  
+int main(int argc, const char * argv[])
+{
+ 
+    TESTSM::TestSessionManager manager;
+    manager.start();
     
-//    test_main_queue();
-    
-//    using namespace Queue;
-//
-//    dispatchAfter(3, []{
-//        std::cout << " === 3 ===" << std::endl;
-//    });
-//
-//    getIoContext().run();
-
-    
-//    test_timer();
-    
-//    while (true)
-//    {
-//        LOG_INFO << " loggging ";
-//        usleep(1);
-//    }
-    
-//    std::cout << sizeof(time_t) << std::endl;
-    
-    
-    
-//    test_block_blocks();
-    
-//    time_t t = time(NULL);
-//    std::cout << t << std::endl;
-    
-//    test_main_Queue();
-    
-//    test_network();
-//    test_tcp_server();
-    
-//    test_asio_queue();
-    
-//    test_timers();
-//
-//
-//    std::pair<uint8_t*, uint8_t> range;
-//    range = {};
-
-//    test_server();
-    
-//    SwapStruct ss1;
-//    SwapStruct ss2;
-//    
-//    ss1.version = 1;
-//    ss1.name = "1";
-//    ss2.version = 2;
-//    ss2.name = "2";
-//    
-//    std::cout << &ss1 << "      " << &ss2 << std::endl;
-//    std::swap(ss1, ss2);
-//    std::cout << &ss1 << "      " << &ss2 << std::endl;
-    
-    Clients client;
-    client.start();
     
     return 0;
 }

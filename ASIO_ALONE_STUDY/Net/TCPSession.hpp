@@ -34,9 +34,11 @@ public:
     TCPSession(SocketPtr socket, const std::string& name);
     virtual ~TCPSession();
     
+    // 增加更多数据，不进行发送.
+    void addMore(const void* message, size_t len);
     // 直接发送二进制数据
     void send(const void* message, size_t len);
-    void send(const std::string& message); 
+    void send(const std::string& message);
     
     // 异步读取，读取完后调用回调 message callback。
     void startAsyncRead();
@@ -61,6 +63,9 @@ public:
     
     // void setUUID(uint32 uuid) { uuid_ = uuid; }
     uint32 uuid() const { return uuid_; }
+    
+    void setType(int type) {type_ = type;}
+    uint8 type() const { return type_;}
     
 public:
     ///////  设置回调   /////////
@@ -91,13 +96,12 @@ private:
     enum StateE { kDisconnected, kConnecting, kConnected, kDisconnecting };
     
 protected:
-    
-    SocketPtr socket_;
-    
     std::function<void(const TCPSessionPtr&)> writeCompleteCallback_;
     std::function<void(const TCPSessionPtr&)> closeCallback_;
     std::function<void(const TCPSessionPtr&)> connectionCallback_;
     std::function<void(const TCPSessionPtr&, DataBuffer*const)> messageCallback_;
+    
+    SocketPtr socket_;
     
     DataBuffer* inputBuffer_;
     DataBuffer* outputBuffer_;
@@ -108,8 +112,10 @@ protected:
     
     StateE state_;
     
+    uint16 type_{0};
+    
     const uint16 uuid_;
-
+    
     static std::atomic<int> num_;
 };
 

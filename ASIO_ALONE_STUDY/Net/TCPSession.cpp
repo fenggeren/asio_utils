@@ -54,7 +54,11 @@ void TCPSession::send(const std::string& message)
     send(message.data(), message.size());
 }
 
-
+void TCPSession::addMore(const void* more, size_t len)
+{
+    outputBuffer_->append(more, len);
+}
+    
 void TCPSession::send(const void* message, size_t len)
 {
     outputBuffer_->append(message, len);

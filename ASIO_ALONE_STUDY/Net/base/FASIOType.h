@@ -22,6 +22,12 @@ typedef unsigned int 		uint32;
 typedef signed long long 	int64;
 typedef unsigned long long 	uint64;
 
+struct PacketHeader
+{
+    int32 type;
+    int32 size;
+};
 
+#define kPacketHeaderSize sizeof(PacketHeader)
 
 

@@ -30,8 +30,8 @@ struct Listener
 class TCPSessionManager
 {
 public:
-	TCPSessionManager();
-	virtual ~TCPSessionManager();
+    TCPSessionManager() {}
+    virtual ~TCPSessionManager() {}
  
 public:
 	void createListener(int port, bool ipv6, std::shared_ptr<TCPSessionFactory> factory);
@@ -43,15 +43,17 @@ public:
 	void removeSession(int32 uuid);
 	TCPSessionPtr getSession(int32 uuid);
 
-	// stype:  ?????
+	// stype:  服务器类型
 	void sendMsgToSession(int32 uuid, const void* data, int len, int msgID, uint8 stype = 0);
-	void send(int32 uuid, const char* buffer, uint8 stype = 0);
 
 public:
 
 	void newSession(std::shared_ptr<TCPSession> session);
 	
-public:
+private:
+    void removeSessionPtr(const TCPSessionPtr& session);
+    
+protected:
     std::unordered_map<uint16 ,std::shared_ptr<TCPListener>> listeners_;
     std::unordered_map<int32, TCPSessionPtr> sessionMap_;
 };

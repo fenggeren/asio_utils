@@ -9,6 +9,7 @@
 #include "TCPSessionManager.hpp"
 #include "TCPSessionFactory.h"
 #include "TCPListener.h"
+#include <functional>
 
 namespace fasio
 {
@@ -23,8 +24,55 @@ void TCPSessionManager::createListener(int port, bool ipv6, std::shared_ptr<TCPS
 
 void TCPSessionManager::newSession(std::shared_ptr<TCPSession> session)
 {
+    printf("======%d======", session->uuid());
     sessionMap_[session->uuid()] = session;
+    session->setCloseCallback(std::bind(&TCPSessionManager::removeSessionPtr, this, std::placeholders::_1));
 }
 
+void TCPSessionManager::removeSessionPtr(const TCPSessionPtr& session)
+{
+    removeSession(session->uuid());
 }
+void TCPSessionManager::removeSession(int32 uuid)
+{
+    sessionMap_.erase(uuid);
+}
+
+inline TCPSessionPtr TCPSessionManager::getSession(int32 uuid)
+{
+    auto iter = sessionMap_.find(uuid);
+    if (iter != sessionMap_.end()) {
+        return iter->second;
+    }
+    return nullptr;
+}
+
+void TCPSessionManager::sendMsgToSession(int32 uuid, const void* data, int len, int msgID, uint8 stype)
+{
+    PacketHeader header{msgID, len};
+    if (uuid > 0)
+    {
+        auto iter = sessionMap_.find(uuid);
+        if (iter != sessionMap_.end())
+        {
+            iter->second->addMore(&header, sizeof(PacketHeader));
+            iter->second->send(data, len);
+        }
+    }
+    else
+    {
+        for (auto& pair : sessionMap_)
+        {
+            if (pair.second->type() == stype)
+            {
+                pair.second->addMore(&header, sizeof(PacketHeader));
+                pair.second->send(data, len);
+            }
+        }
+    }
+}
+    
+}
+
+
 

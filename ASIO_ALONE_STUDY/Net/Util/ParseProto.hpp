@@ -10,6 +10,9 @@
 
 #include <memory>
 
+namespace fasio
+{
+    
 char* getStaticBigMemory();
 bool checkMemory();
 void resetMemory(bool flag);
@@ -60,5 +63,5 @@ bool parseProtoMsg(const char* data, int len, T& msg)
 
 
 
-
+}
 

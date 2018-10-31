@@ -6,7 +6,7 @@ namespace fasio
 {
 
 TCPListener::TCPListener(std::shared_ptr<TCPSessionFactory> sessionFactory)
-:acceptor_(sessionFactory_->io_context())
+:acceptor_(sessionFactory->io_context())
 , sessionFactory_(sessionFactory)
 {
     acceptor_.setNewConnectionCallback(std::bind(&TCPListener::newConnection, this, std::placeholders::_1));
@@ -25,6 +25,7 @@ void TCPListener::newConnection(std::shared_ptr<tcp::socket> sock)
     //                                     endpoint.port());
 
     auto session = sessionFactory_->createSession(sock);
+    session->setType(sessionFactory_->type());
     newSessionCallback_(session);
     session->connectEstablished();
 }

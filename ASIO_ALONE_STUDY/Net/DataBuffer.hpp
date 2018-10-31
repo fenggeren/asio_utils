@@ -81,6 +81,7 @@ public:
     }
     
     /////////
+    
     void append(const char* data, size_t len)
     {
         ensureWritableBytes(len);
