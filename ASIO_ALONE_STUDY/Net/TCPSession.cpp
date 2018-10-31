@@ -134,9 +134,9 @@ void TCPSession::handWrite(std::error_code ec, std::size_t bytesRead)
 
 void TCPSession::handClose()
 {
-    state_ = kDisconnected;
     if (connected())
     {
+        state_ = kDisconnected;
         socket_->close();
         socket_ = nullptr;
         if (closeCallback_) {

@@ -44,7 +44,7 @@ private:
     {
         std::string content(data->peek(), data->readableBytes());
         data->retrieveAll();
-        printf("%s\n", content.data());
+        session->send(content);
     }
 private:
 };

@@ -9,11 +9,13 @@
 #include "TCPSessionManager.hpp"
 #include "TCPSessionFactory.h"
 #include "TCPListener.h"
+#include "logging/Logging.hpp"
 #include <functional>
 
 namespace fasio
 {
-
+using namespace logging;
+    
 void TCPSessionManager::createListener(int port, bool ipv6, std::shared_ptr<TCPSessionFactory> factory)
 {
     std::shared_ptr<TCPListener> listener(new TCPListener(factory));
@@ -24,7 +26,8 @@ void TCPSessionManager::createListener(int port, bool ipv6, std::shared_ptr<TCPS
 
 void TCPSessionManager::newSession(std::shared_ptr<TCPSession> session)
 {
-    printf("======%d======", session->uuid());
+    LOG_MINFO << session->uuid();
+    
     sessionMap_[session->uuid()] = session;
     session->setCloseCallback(std::bind(&TCPSessionManager::removeSessionPtr, this, std::placeholders::_1));
 }
