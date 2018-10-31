@@ -67,6 +67,7 @@ public:
     {
         return ServerType_Client_Gate;
     }
+    
 };
 
 
@@ -107,8 +108,8 @@ public:
     {
         auto factory = std::make_shared<GSSessionFactory>();
         createListener(7890, false, factory);
-        createListener(7891, false, factory);
-        createListener(7892, false, factory);
+//        createListener(7891, false, factory);
+//        createListener(7892, false, factory);
         
         for (int i = 0; i < 100; i++)
         {
@@ -131,6 +132,11 @@ private:
             return TCPSessionManager::createConnectorSession(type);
         }
     }
+    
+    
+private:
+    
+    std::vector<std::shared_ptr<std::thread>> threads_;
     
 };
 

@@ -25,9 +25,9 @@ public:
     
     Robots()
     {
-        createClients(7890, 10);
-        createClients(7891, 10);
-        createClients(7892, 10);
+        createClients(7890, 100);
+//        createClients(7891, 10);
+//        createClients(7892, 10);
     }
     
     void start()
@@ -55,6 +55,7 @@ private:
             ClientPtr client(new TCPClient(io_context_, "127.0.0.1", port));
             client->setMessageCallback(std::bind(&Robots::messageIn, this, std::placeholders::_1, std::placeholders::_2));
             client->setConnectionCallback(std::bind(&Robots::connectCallback, this, std::placeholders::_1));
+            client->enableRetry();
             clients_.push_back(client);
         }
     }
