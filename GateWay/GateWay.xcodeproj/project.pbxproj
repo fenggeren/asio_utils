@@ -102,6 +102,7 @@
 		8123E2712189DCE50050FD4D /* NetBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetBase.h; sourceTree = "<group>"; };
 		8123E2722189DCE50050FD4D /* FASIOType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FASIOType.h; sourceTree = "<group>"; };
 		8123E2732189DCE50050FD4D /* FASIOType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FASIOType.cpp; sourceTree = "<group>"; };
+		81918765218B2EEA00A06BD0 /* CPGHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPGHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				1FE3EA0A218AE47E00A2F52D /* CPGServerDefine.h */,
+				81918765218B2EEA00A06BD0 /* CPGHeader.h */,
 			);
 			name = CPG;
 			path = ../../ASIO_ALONE_STUDY/CPG;

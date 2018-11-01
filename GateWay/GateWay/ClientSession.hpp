@@ -11,8 +11,7 @@
 #include <Net/TCPSession.hpp>
 #include <Net/TCPSessionFactory.h>
 #include <CPG/CPGServerDefine.h>
-
-
+ 
 using namespace fasio;
 
 class CGSession : public TCPSession

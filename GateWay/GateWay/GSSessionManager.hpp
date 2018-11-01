@@ -24,6 +24,12 @@ class GSSessionManager : public TCPSessionManager
 {
 public:
     
+    static GSSessionManager& instance()
+    {
+        static GSSessionManager manager;
+        return manager;
+    }
+    
     void start()
     {
         auto factory = std::make_shared<CGSessionFactory>(g_IoContext);
@@ -34,6 +40,10 @@ public:
         createConnector(ServerType_Gate_Login, g_IoContext, "127.0.0.1", 7831);
         g_IoContext.run();
     }
+    
+public:
+    
+    void transToMatchServer(uint32 mid, const void* data, uint32 len);
     
 private:
     
@@ -59,9 +69,7 @@ private:
     
     
 private:
-    
-    std::vector<std::shared_ptr<std::thread>> threads_;
-    
+    std::unordered_map<uint32, std::shared_ptr<TCPSession>> mid2MatchServers_;
 };
 
 

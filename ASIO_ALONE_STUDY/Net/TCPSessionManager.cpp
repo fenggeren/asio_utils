@@ -86,7 +86,7 @@ void TCPSessionManager::addSession(TCPSessionPtr session)
     session->setCloseCallback(std::bind(&TCPSessionManager::removeSessionPtr, this, std::placeholders::_1));
 }
 
-inline TCPSessionPtr TCPSessionManager::getSession(int32 uuid)
+TCPSessionPtr TCPSessionManager::getSession(int32 uuid)
 {
     auto iter = sessionMap_.find(uuid);
     if (iter != sessionMap_.end()) {
