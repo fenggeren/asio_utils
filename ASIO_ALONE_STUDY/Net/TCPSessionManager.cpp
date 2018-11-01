@@ -30,6 +30,7 @@ void TCPSessionManager::createConnector(uint8 type, asio::io_context& io,
 {
     std::shared_ptr<TCPConnector> connector(new TCPConnector(io, ip, port));
     auto session = createConnectorSession(type);
+    session->setType(type);
     addSession(session);
     session->setConnector(connector);
     connector->start();
@@ -43,7 +44,8 @@ std::shared_ptr<ClientSession>
 
 void TCPSessionManager::newSession(std::shared_ptr<TCPSession> session)
 {
-    LOG_MINFO << session->uuid();
+    LOG_MINFO << "sessionid: " << session->uuid()
+            << " type: " << session->type() ;
     
     addSession(session);
 }

@@ -27,6 +27,9 @@
 		1FE3E9492189A5FB00A2F52D /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9342189A5FB00A2F52D /* TCPConnector.cpp */; };
 		1FE3E94A2189A5FB00A2F52D /* FASIOType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9382189A5FB00A2F52D /* FASIOType.cpp */; };
 		1FE3E94D2189A65800A2F52D /* CSSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E94B2189A65800A2F52D /* CSSessionManager.cpp */; };
+		1FE3EA1C218AE85800A2F52D /* GateSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA1A218AE85800A2F52D /* GateSession.cpp */; };
+		1FE3EA1F218AE86300A2F52D /* MatchSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA1D218AE86300A2F52D /* MatchSession.cpp */; };
+		1FE3EA22218AE86E00A2F52D /* LoginSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA20218AE86E00A2F52D /* LoginSession.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +92,12 @@
 		1FE3E9382189A5FB00A2F52D /* FASIOType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FASIOType.cpp; sourceTree = "<group>"; };
 		1FE3E94B2189A65800A2F52D /* CSSessionManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSSessionManager.cpp; sourceTree = "<group>"; };
 		1FE3E94C2189A65800A2F52D /* CSSessionManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSSessionManager.hpp; sourceTree = "<group>"; };
+		1FE3EA1A218AE85800A2F52D /* GateSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GateSession.cpp; sourceTree = "<group>"; };
+		1FE3EA1B218AE85800A2F52D /* GateSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GateSession.hpp; sourceTree = "<group>"; };
+		1FE3EA1D218AE86300A2F52D /* MatchSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatchSession.cpp; sourceTree = "<group>"; };
+		1FE3EA1E218AE86300A2F52D /* MatchSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MatchSession.hpp; sourceTree = "<group>"; };
+		1FE3EA20218AE86E00A2F52D /* LoginSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoginSession.cpp; sourceTree = "<group>"; };
+		1FE3EA21218AE86E00A2F52D /* LoginSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LoginSession.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +134,12 @@
 				1FE3E9032189A5B500A2F52D /* main.cpp */,
 				1FE3E94B2189A65800A2F52D /* CSSessionManager.cpp */,
 				1FE3E94C2189A65800A2F52D /* CSSessionManager.hpp */,
+				1FE3EA1A218AE85800A2F52D /* GateSession.cpp */,
+				1FE3EA1B218AE85800A2F52D /* GateSession.hpp */,
+				1FE3EA1D218AE86300A2F52D /* MatchSession.cpp */,
+				1FE3EA1E218AE86300A2F52D /* MatchSession.hpp */,
+				1FE3EA20218AE86E00A2F52D /* LoginSession.cpp */,
+				1FE3EA21218AE86E00A2F52D /* LoginSession.hpp */,
 			);
 			path = CentralServer;
 			sourceTree = "<group>";
@@ -262,6 +277,7 @@
 			files = (
 				1FE3E93A2189A5FB00A2F52D /* RunLoop.cpp in Sources */,
 				1FE3E94A2189A5FB00A2F52D /* FASIOType.cpp in Sources */,
+				1FE3EA22218AE86E00A2F52D /* LoginSession.cpp in Sources */,
 				1FE3E93C2189A5FB00A2F52D /* ParseProto.cpp in Sources */,
 				1FE3E9482189A5FB00A2F52D /* Timestamp.cpp in Sources */,
 				1FE3E9412189A5FB00A2F52D /* TCPServer.cpp in Sources */,
@@ -276,9 +292,11 @@
 				1FE3E93E2189A5FB00A2F52D /* DataBuffer.cpp in Sources */,
 				1FE3E94D2189A65800A2F52D /* CSSessionManager.cpp in Sources */,
 				1FE3E9492189A5FB00A2F52D /* TCPConnector.cpp in Sources */,
+				1FE3EA1C218AE85800A2F52D /* GateSession.cpp in Sources */,
 				1FE3E9452189A5FB00A2F52D /* DataHandler.cpp in Sources */,
 				1FE3E9042189A5B500A2F52D /* main.cpp in Sources */,
 				1FE3E9392189A5FB00A2F52D /* Thread.cpp in Sources */,
+				1FE3EA1F218AE86300A2F52D /* MatchSession.cpp in Sources */,
 				1FE3E9442189A5FB00A2F52D /* TCPAcceptor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
