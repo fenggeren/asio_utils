@@ -9,6 +9,8 @@
 #pragma once
 
 #include <memory>
+#include <string>
+
 namespace fasio
 {
 class NetPacket;
@@ -20,8 +22,8 @@ class NetPacket
 public:
     
     static NetPacketPtr getPacket(const void* data,int len);
-    
     static NetPacketPtr createPacket(const void* data,int len, int msgid);
+    static NetPacketPtr createPacket(const std::string& data, int msgid);
     
     NetPacket(const void* data, int size);
     NetPacket(const void* data, int size, int msgid);

@@ -57,6 +57,12 @@ NetPacketPtr NetPacket::createPacket(const void* data,int len, int msgid)
 {
     return NetPacketPtr(new NetPacket(data, len, msgid));
 }
+    
+NetPacketPtr NetPacket::createPacket(const std::string& str, int msgid)
+{
+    return NetPacketPtr(new NetPacket(str.data(), str.size(), msgid));
+}
+    
 
 template <class T>
 std::shared_ptr<T> getProtoMsg(const char* data, int len)

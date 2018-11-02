@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F95CE62218BFC630057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CE61218BFC630057618A /* libprotobuf.a */; };
+		1F95CE92218BFD380057618A /* CPGToCentral.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE90218BFD380057618A /* CPGToCentral.pb.cc */; };
 		1FE3E9B2218AA2D400A2F52D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9B1218AA2D400A2F52D /* main.cpp */; };
 		1FE3E9E7218AA2E300A2F52D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9B9218AA2E200A2F52D /* Thread.cpp */; };
 		1FE3E9E8218AA2E300A2F52D /* RunLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9BB218AA2E200A2F52D /* RunLoop.cpp */; };
@@ -44,6 +46,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F95CE61218BFC630057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
+		1F95CE8C218BFD380057618A /* CPGToCentral.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPGToCentral.proto; sourceTree = "<group>"; };
+		1F95CE8D218BFD380057618A /* ng */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ng; sourceTree = "<group>"; };
+		1F95CE8E218BFD380057618A /* CPGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGHeader.h; sourceTree = "<group>"; };
+		1F95CE8F218BFD380057618A /* CPGToCentral.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGToCentral.pb.h; sourceTree = "<group>"; };
+		1F95CE90218BFD380057618A /* CPGToCentral.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentral.pb.cc; sourceTree = "<group>"; };
+		1F95CE91218BFD380057618A /* CPGServerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
 		1FE3E9AE218AA2D400A2F52D /* LoginServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LoginServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE3E9B1218AA2D400A2F52D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1FE3E9B9218AA2E200A2F52D /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
@@ -93,7 +102,6 @@
 		1FE3E9FA218AA31E00A2F52D /* LSSessionManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LSSessionManager.hpp; sourceTree = "<group>"; };
 		1FE3E9FC218AE01600A2F52D /* GateSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GateSession.cpp; sourceTree = "<group>"; };
 		1FE3E9FD218AE01600A2F52D /* GateSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GateSession.hpp; sourceTree = "<group>"; };
-		1FE3EA01218AE17C00A2F52D /* CPGServerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
 		1FE3EA03218AE2DD00A2F52D /* L2CSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = L2CSession.cpp; sourceTree = "<group>"; };
 		1FE3EA04218AE2DD00A2F52D /* L2CSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = L2CSession.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,17 +111,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F95CE62218BFC630057618A /* libprotobuf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F95CE60218BFC630057618A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F95CE61218BFC630057618A /* libprotobuf.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F95CE8B218BFD380057618A /* CPG */ = {
+			isa = PBXGroup;
+			children = (
+				1F95CE8C218BFD380057618A /* CPGToCentral.proto */,
+				1F95CE8D218BFD380057618A /* ng */,
+				1F95CE8E218BFD380057618A /* CPGHeader.h */,
+				1F95CE8F218BFD380057618A /* CPGToCentral.pb.h */,
+				1F95CE90218BFD380057618A /* CPGToCentral.pb.cc */,
+				1F95CE91218BFD380057618A /* CPGServerDefine.h */,
+			);
+			name = CPG;
+			path = ../../ASIO_ALONE_STUDY/CPG;
+			sourceTree = "<group>";
+		};
 		1FE3E9A5218AA2D400A2F52D = {
 			isa = PBXGroup;
 			children = (
 				1FE3E9B0218AA2D400A2F52D /* LoginServer */,
 				1FE3E9AF218AA2D400A2F52D /* Products */,
+				1F95CE60218BFC630057618A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,7 +160,7 @@
 		1FE3E9B0218AA2D400A2F52D /* LoginServer */ = {
 			isa = PBXGroup;
 			children = (
-				1FE3EA00218AE17C00A2F52D /* CPG */,
+				1F95CE8B218BFD380057618A /* CPG */,
 				1FE3E9B8218AA2E200A2F52D /* Net */,
 				1FE3E9B1218AA2D400A2F52D /* main.cpp */,
 				1FE3E9F9218AA31E00A2F52D /* LSSessionManager.cpp */,
@@ -216,15 +248,6 @@
 			path = base;
 			sourceTree = "<group>";
 		};
-		1FE3EA00218AE17C00A2F52D /* CPG */ = {
-			isa = PBXGroup;
-			children = (
-				1FE3EA01218AE17C00A2F52D /* CPGServerDefine.h */,
-			);
-			name = CPG;
-			path = ../../ASIO_ALONE_STUDY/CPG;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,6 +317,7 @@
 				1FE3E9F4218AA2E300A2F52D /* TCPSessionManager.cpp in Sources */,
 				1FE3E9EB218AA2E300A2F52D /* TCPListener.cpp in Sources */,
 				1FE3E9F1218AA2E300A2F52D /* TCPSession.cpp in Sources */,
+				1F95CE92218BFD380057618A /* CPGToCentral.pb.cc in Sources */,
 				1FE3E9ED218AA2E300A2F52D /* TCPClient.cpp in Sources */,
 				1FE3E9F0218AA2E300A2F52D /* Conv.cpp in Sources */,
 				1FE3E9EC218AA2E300A2F52D /* DataBuffer.cpp in Sources */,

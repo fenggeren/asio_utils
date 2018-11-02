@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F95CE4C218BECB60057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CE4B218BECB60057618A /* libprotobuf.a */; };
+		1F95CE8A218BFD2E0057618A /* CPGToCentral.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE88218BFD2E0057618A /* CPGToCentral.pb.cc */; };
 		1FE3EA08218AE38100A2F52D /* ClientSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA06218AE38100A2F52D /* ClientSession.cpp */; };
 		1FE3EA0D218AE55200A2F52D /* G2CSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA0B218AE55200A2F52D /* G2CSession.cpp */; };
 		1FE3EA10218AE59900A2F52D /* G2MSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA0E218AE59900A2F52D /* G2MSession.cpp */; };
@@ -46,9 +48,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F95CE47218BEB240057618A /* libprotoc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotoc.a; path = ../../../../../../usr/local/lib/libprotoc.a; sourceTree = "<group>"; };
+		1F95CE49218BEC660057618A /* libprotoc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotoc.dylib; path = ../../../../../../usr/local/lib/libprotoc.dylib; sourceTree = "<group>"; };
+		1F95CE4B218BECB60057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
+		1F95CE84218BFD2E0057618A /* CPGToCentral.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPGToCentral.proto; sourceTree = "<group>"; };
+		1F95CE85218BFD2E0057618A /* ng */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ng; sourceTree = "<group>"; };
+		1F95CE86218BFD2E0057618A /* CPGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGHeader.h; sourceTree = "<group>"; };
+		1F95CE87218BFD2E0057618A /* CPGToCentral.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGToCentral.pb.h; sourceTree = "<group>"; };
+		1F95CE88218BFD2E0057618A /* CPGToCentral.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentral.pb.cc; sourceTree = "<group>"; };
+		1F95CE89218BFD2E0057618A /* CPGServerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
 		1FE3EA06218AE38100A2F52D /* ClientSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClientSession.cpp; sourceTree = "<group>"; };
 		1FE3EA07218AE38100A2F52D /* ClientSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ClientSession.hpp; sourceTree = "<group>"; };
-		1FE3EA0A218AE47E00A2F52D /* CPGServerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
 		1FE3EA0B218AE55200A2F52D /* G2CSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = G2CSession.cpp; sourceTree = "<group>"; };
 		1FE3EA0C218AE55200A2F52D /* G2CSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = G2CSession.hpp; sourceTree = "<group>"; };
 		1FE3EA0E218AE59900A2F52D /* G2MSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = G2MSession.cpp; sourceTree = "<group>"; };
@@ -102,7 +112,6 @@
 		8123E2712189DCE50050FD4D /* NetBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetBase.h; sourceTree = "<group>"; };
 		8123E2722189DCE50050FD4D /* FASIOType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FASIOType.h; sourceTree = "<group>"; };
 		8123E2732189DCE50050FD4D /* FASIOType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FASIOType.cpp; sourceTree = "<group>"; };
-		81918765218B2EEA00A06BD0 /* CPGHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPGHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,17 +119,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F95CE4C218BECB60057618A /* libprotobuf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1FE3EA09218AE47E00A2F52D /* CPG */ = {
+		1F95CE46218BEB230057618A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1FE3EA0A218AE47E00A2F52D /* CPGServerDefine.h */,
-				81918765218B2EEA00A06BD0 /* CPGHeader.h */,
+				1F95CE4B218BECB60057618A /* libprotobuf.a */,
+				1F95CE49218BEC660057618A /* libprotoc.dylib */,
+				1F95CE47218BEB240057618A /* libprotoc.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F95CE83218BFD2E0057618A /* CPG */ = {
+			isa = PBXGroup;
+			children = (
+				1F95CE84218BFD2E0057618A /* CPGToCentral.proto */,
+				1F95CE85218BFD2E0057618A /* ng */,
+				1F95CE86218BFD2E0057618A /* CPGHeader.h */,
+				1F95CE87218BFD2E0057618A /* CPGToCentral.pb.h */,
+				1F95CE88218BFD2E0057618A /* CPGToCentral.pb.cc */,
+				1F95CE89218BFD2E0057618A /* CPGServerDefine.h */,
 			);
 			name = CPG;
 			path = ../../ASIO_ALONE_STUDY/CPG;
@@ -131,6 +155,7 @@
 			children = (
 				8123E2392189D7FC0050FD4D /* GateWay */,
 				8123E2382189D7FC0050FD4D /* Products */,
+				1F95CE46218BEB230057618A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,7 +170,7 @@
 		8123E2392189D7FC0050FD4D /* GateWay */ = {
 			isa = PBXGroup;
 			children = (
-				1FE3EA09218AE47E00A2F52D /* CPG */,
+				1F95CE83218BFD2E0057618A /* CPG */,
 				8123E2452189DCE50050FD4D /* Net */,
 				8123E23A2189D7FC0050FD4D /* main.cpp */,
 				8123E2412189D8680050FD4D /* GSSessionManager.cpp */,
@@ -317,6 +342,7 @@
 				1FE3EA0D218AE55200A2F52D /* G2CSession.cpp in Sources */,
 				8123E2852189DCE60050FD4D /* FASIOType.cpp in Sources */,
 				8123E2802189DCE60050FD4D /* DataHandler.cpp in Sources */,
+				1F95CE8A218BFD2E0057618A /* CPGToCentral.pb.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

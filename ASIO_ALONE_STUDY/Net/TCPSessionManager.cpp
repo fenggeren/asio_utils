@@ -12,6 +12,7 @@
 #include "logging/Logging.hpp"
 #include <functional>
 #include "TCPConnector.hpp"
+#include "Util/NetPacket.hpp"
 
 namespace fasio
 {
@@ -97,15 +98,60 @@ TCPSessionPtr TCPSessionManager::getSession(int32 uuid)
 
 void TCPSessionManager::sendMsgToSession(int32 uuid, const void* data, int len, int msgID, uint8 stype)
 {
-    PacketHeader header{msgID, len};
-    if (uuid > 0)
+    TCPSessionPtr session = nullptr;
+    auto iter = sessionMap_.find(uuid);
+    if (iter != sessionMap_.end())
     {
-        auto iter = sessionMap_.find(uuid);
-        if (iter != sessionMap_.end())
-        {
-            iter->second->addMore(&header, sizeof(PacketHeader));
-            iter->second->send(data, len);
-        }
+        session = iter->second;
+    }
+    sendMsgToSession(session, data, len, msgID, stype);
+}
+ 
+void TCPSessionManager::sendMsgToSession(int32 uuid,
+                                         google::protobuf::Message& msg,
+                                         int msgID, uint8 stype)
+{
+    TCPSessionPtr session = nullptr;
+    auto iter = sessionMap_.find(uuid);
+    if (iter != sessionMap_.end())
+    {
+        session = iter->second;
+    }
+    sendMsgToSession(session, msg, msgID, stype);
+}
+void TCPSessionManager::sendMsgToSession(int32 uuid,
+                                         const std::string& msg,
+                                         int msgID, uint8 stype)
+{
+    TCPSessionPtr session = nullptr;
+    auto iter = sessionMap_.find(uuid);
+    if (iter != sessionMap_.end())
+    {
+        session = iter->second;
+    }
+    sendMsgToSession(session, msg, msgID, stype);
+}
+void TCPSessionManager::sendMsgToSession(int32 uuid,
+                                         std::shared_ptr<NetPacket> packet,
+                                         uint8 stype)
+{
+    TCPSessionPtr session = nullptr;
+    auto iter = sessionMap_.find(uuid);
+    if (iter != sessionMap_.end())
+    {
+        session = iter->second;
+    }
+    sendMsgToSession(session, packet, stype);
+}
+void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
+                                         const void* data, int len,
+                                         int msgID, uint8 stype)
+{
+    PacketHeader header{msgID, len};
+    if (session)
+    {
+        session->addMore(&header, sizeof(PacketHeader));
+        session->send(data, len);
     }
     else
     {
@@ -114,6 +160,44 @@ void TCPSessionManager::sendMsgToSession(int32 uuid, const void* data, int len, 
             if (pair.second->type() == stype)
             {
                 pair.second->addMore(&header, sizeof(PacketHeader));
+                pair.second->send(data, len);
+            }
+        }
+    }
+}
+void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
+                                         google::protobuf::Message& msg,
+                                         int msgID, uint8 stype)
+{
+    sendMsgToSession(session, msg.SerializeAsString(), msgID, stype);
+}
+void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
+                                         const std::string& msg,
+                                         int msgID, uint8 stype)
+{
+    sendMsgToSession(session, msg.data(), (int)msg.size(), msgID, stype);
+}
+void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
+                                         std::shared_ptr<NetPacket> packet,
+                                         uint8 stype )
+{
+    sendMsgToSession(session, packet->buffer(), packet->size(), stype);
+}
+    
+void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
+                                         const void* data,
+                                         int len, uint8 stype)
+{
+    if (session)
+    {
+        session->send(data, len);
+    }
+    else
+    {
+        for (auto& pair : sessionMap_)
+        {
+            if (pair.second->type() == stype)
+            {
                 pair.second->send(data, len);
             }
         }

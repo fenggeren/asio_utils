@@ -19,6 +19,8 @@
 		1F365423215A15B1003B9FAD /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F365418215A15B1003B9FAD /* TCPConnector.cpp */; };
 		1F5B1AC12186F3F200752C8B /* ParseProto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B1ABF2186F3F200752C8B /* ParseProto.cpp */; };
 		1F5B1ACF21884B4B00752C8B /* FASIOType.h in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B1ACE21884B4B00752C8B /* FASIOType.h */; };
+		1F95CE5F218BFC580057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CE5E218BFC570057618A /* libprotobuf.a */; };
+		1F95CE7A218BFCE90057618A /* CPGToCentral.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE77218BFCE90057618A /* CPGToCentral.pb.cc */; };
 		1FE3E87821894B7100A2F52D /* NetPacket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E87621894B7100A2F52D /* NetPacket.cpp */; };
 		28C200B120CD600900A9ECC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 28C200B020CD600900A9ECC5 /* main.cpp */; };
 		8123E1FA216B9C4A0050FD4D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1F8216B9C4A0050FD4D /* Thread.cpp */; };
@@ -68,9 +70,15 @@
 		1F5B1AC02186F3F200752C8B /* ParseProto.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParseProto.hpp; sourceTree = "<group>"; };
 		1F5B1ACB21884AA400752C8B /* NetBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetBase.h; sourceTree = "<group>"; };
 		1F5B1ACE21884B4B00752C8B /* FASIOType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FASIOType.h; sourceTree = "<group>"; };
+		1F95CE5E218BFC570057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
+		1F95CE73218BFCE90057618A /* CPGToCentral.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPGToCentral.proto; sourceTree = "<group>"; };
+		1F95CE74218BFCE90057618A /* ng */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ng; sourceTree = "<group>"; };
+		1F95CE75218BFCE90057618A /* CPGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGHeader.h; sourceTree = "<group>"; };
+		1F95CE76218BFCE90057618A /* CPGToCentral.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGToCentral.pb.h; sourceTree = "<group>"; };
+		1F95CE77218BFCE90057618A /* CPGToCentral.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentral.pb.cc; sourceTree = "<group>"; };
+		1F95CE79218BFCE90057618A /* CPGServerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
 		1FE3E87621894B7100A2F52D /* NetPacket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NetPacket.cpp; sourceTree = "<group>"; };
 		1FE3E87721894B7100A2F52D /* NetPacket.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NetPacket.hpp; sourceTree = "<group>"; };
-		1FE3E9FF218AE15C00A2F52D /* CPGServerDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
 		28C200AD20CD600900A9ECC5 /* ASIO_ALONE_STUDY */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ASIO_ALONE_STUDY; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C200B020CD600900A9ECC5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8123E1F8216B9C4A0050FD4D /* Thread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
@@ -92,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F95CE5F218BFC580057618A /* libprotobuf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,10 +179,23 @@
 			path = base;
 			sourceTree = "<group>";
 		};
-		1FD879D9217479E9003547AE /* CPG */ = {
+		1F95CE5D218BFC570057618A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1FE3E9FF218AE15C00A2F52D /* CPGServerDefine.h */,
+				1F95CE5E218BFC570057618A /* libprotobuf.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F95CE72218BFCE90057618A /* CPG */ = {
+			isa = PBXGroup;
+			children = (
+				1F95CE73218BFCE90057618A /* CPGToCentral.proto */,
+				1F95CE74218BFCE90057618A /* ng */,
+				1F95CE75218BFCE90057618A /* CPGHeader.h */,
+				1F95CE76218BFCE90057618A /* CPGToCentral.pb.h */,
+				1F95CE77218BFCE90057618A /* CPGToCentral.pb.cc */,
+				1F95CE79218BFCE90057618A /* CPGServerDefine.h */,
 			);
 			path = CPG;
 			sourceTree = "<group>";
@@ -183,6 +205,7 @@
 			children = (
 				28C200AF20CD600900A9ECC5 /* ASIO_ALONE_STUDY */,
 				28C200AE20CD600900A9ECC5 /* Products */,
+				1F95CE5D218BFC570057618A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,7 +220,7 @@
 		28C200AF20CD600900A9ECC5 /* ASIO_ALONE_STUDY */ = {
 			isa = PBXGroup;
 			children = (
-				1FD879D9217479E9003547AE /* CPG */,
+				1F95CE72218BFCE90057618A /* CPG */,
 				1F365402215A15B1003B9FAD /* Net */,
 				28C200B020CD600900A9ECC5 /* main.cpp */,
 			);
@@ -266,6 +289,7 @@
 				1F5B1ACF21884B4B00752C8B /* FASIOType.h in Sources */,
 				8123E22921889FC20050FD4D /* TCPListener.cpp in Sources */,
 				1FE3E87821894B7100A2F52D /* NetPacket.cpp in Sources */,
+				1F95CE7A218BFCE90057618A /* CPGToCentral.pb.cc in Sources */,
 				1F5B1AC12186F3F200752C8B /* ParseProto.cpp in Sources */,
 				1F365421215A15B1003B9FAD /* Timestamp.cpp in Sources */,
 				1F365420215A15B1003B9FAD /* TCPAcceptor.cpp in Sources */,

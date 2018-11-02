@@ -10,11 +10,7 @@
 #include "CSSessionManager.hpp"
 
 int main(int argc, const char * argv[]) {
-    
-    
-    CSSessionManager manager;
-    
-    manager.start();
+     
     
     return 0;
 }

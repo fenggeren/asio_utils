@@ -147,6 +147,7 @@ void TCPSession::handClose()
         if (closeCallback_) {
             closeCallback_(shared_from_this());
         }
+        onClose();
     }
 }
 
@@ -158,6 +159,7 @@ void TCPSession::connectEstablished()
     if (connectionCallback_) {
         connectionCallback_(shared_from_this());
     }
+    sendInitData();
 }
 
 void TCPSession::connectDestroyed()

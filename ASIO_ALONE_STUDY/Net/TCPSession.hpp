@@ -94,6 +94,10 @@ public:
         writeCompleteCallback_ = cb;
     }
 
+protected:
+    
+    virtual void onClose() {}
+    virtual void sendInitData() {}
 private:
     
     void handRead(std::error_code ec, std::size_t bytesRead);

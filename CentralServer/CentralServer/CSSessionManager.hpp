@@ -7,38 +7,45 @@
 //
 
 #pragma once
-
+#include <list>
 #include <Net/TCPSessionFactory.h>
 #include <Net/TCPSessionManager.hpp>
+#include <google/protobuf/message.h>
+#include <CPG/CPGHeader.h>
+#include <CPG/CPGServerDefine.h>
 #include "GateSession.hpp"
 #include "MatchSession.hpp"
 #include "LoginSession.hpp"
 
 using namespace fasio;
 
-static asio::io_context g_IoContext;
-
-
-
-
 class CSSessionManager : public TCPSessionManager
 {
 public:
     
-    void start()
+    static CSSessionManager& instance()
     {
-        //
-        auto gateFactory = std::make_shared<GateSessionFactory>(g_IoContext);
-        createListener(7801, false, gateFactory);
-        auto matchFactory = std::make_shared<MatchSessionFactory>(g_IoContext);
-        createListener(7802, false, matchFactory);
-        auto loginFactory = std::make_shared<LoginSessionFactory>(g_IoContext);
-        createListener(7803, false, loginFactory);
-        g_IoContext.run();
+        static CSSessionManager manager;
+        return manager;
     }
     
+     
+public:
+    // sessionID, server type,
+    void serviceRegistRQ(TCPSessionPtr session,
+                         const void* data, int len);
+    void serverLoginRQ(TCPSessionPtr session,
+                       const void* data, int len);
+     
 private:
     
+    void gateServerRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
+    void serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
+private:
+    std::vector<std::shared_ptr<ServerInfo>> servers_;
+    
+private:
+    static int32 serverID;
 };
 
 

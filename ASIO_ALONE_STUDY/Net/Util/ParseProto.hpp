@@ -29,7 +29,7 @@ public:
 };
 
 template <class T>
-std::shared_ptr<T> parseProtoMsg(const char* data, int len)
+std::shared_ptr<T> parseProtoMsg(const void* data, int len)
 {
     if (checkMemory())
     {
@@ -54,7 +54,7 @@ std::shared_ptr<T> parseProtoMsg(const char* data, int len)
 }
 
 template <class T>
-bool parseProtoMsg(const char* data, int len, T& msg)
+bool parseProtoMsg(const void* data, int len, T& msg)
 {
     return msg.ParseFromArray(data, len);
 }

@@ -10,6 +10,7 @@
 #include <Net/TCPSessionManager.hpp>
 #include <Net/TCPSession.hpp>
 #include <Net/DataBuffer.hpp>
+#include <CPG/CPGHeader.h>
 #include "ClientSession.hpp"
 #include "G2CSession.hpp"
 #include "G2MSession.hpp"
@@ -43,7 +44,7 @@ public:
     
 public:
     
-    void transToMatchServer(uint32 mid, const void* data, uint32 len);
+    void transToMatchServer(int32 mid, const google::protobuf::Message& msg, int32 msgType);
     
 private:
     

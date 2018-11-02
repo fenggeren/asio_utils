@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F95CE65218BFC6E0057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CE64218BFC6E0057618A /* libprotobuf.a */; };
+		1F95CE82218BFD150057618A /* CPGToCentral.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE80218BFD150057618A /* CPGToCentral.pb.cc */; };
 		1FE3E95B218A96FB00A2F52D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E95A218A96FB00A2F52D /* main.cpp */; };
 		1FE3E990218A970500A2F52D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E962218A970500A2F52D /* Thread.cpp */; };
 		1FE3E991218A970500A2F52D /* RunLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E964218A970500A2F52D /* RunLoop.cpp */; };
@@ -44,6 +46,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F95CE64218BFC6E0057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
+		1F95CE7C218BFD150057618A /* CPGToCentral.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPGToCentral.proto; sourceTree = "<group>"; };
+		1F95CE7D218BFD150057618A /* ng */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ng; sourceTree = "<group>"; };
+		1F95CE7E218BFD150057618A /* CPGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGHeader.h; sourceTree = "<group>"; };
+		1F95CE7F218BFD150057618A /* CPGToCentral.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGToCentral.pb.h; sourceTree = "<group>"; };
+		1F95CE80218BFD150057618A /* CPGToCentral.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentral.pb.cc; sourceTree = "<group>"; };
+		1F95CE81218BFD150057618A /* CPGServerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
 		1FE3E957218A96FB00A2F52D /* MatchServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MatchServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE3E95A218A96FB00A2F52D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1FE3E962218A970500A2F52D /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
@@ -102,17 +111,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F95CE65218BFC6E0057618A /* libprotobuf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F95CE63218BFC6E0057618A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F95CE64218BFC6E0057618A /* libprotobuf.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F95CE7B218BFD150057618A /* CPG */ = {
+			isa = PBXGroup;
+			children = (
+				1F95CE7C218BFD150057618A /* CPGToCentral.proto */,
+				1F95CE7D218BFD150057618A /* ng */,
+				1F95CE7E218BFD150057618A /* CPGHeader.h */,
+				1F95CE7F218BFD150057618A /* CPGToCentral.pb.h */,
+				1F95CE80218BFD150057618A /* CPGToCentral.pb.cc */,
+				1F95CE81218BFD150057618A /* CPGServerDefine.h */,
+			);
+			name = CPG;
+			path = ../../ASIO_ALONE_STUDY/CPG;
+			sourceTree = "<group>";
+		};
 		1FE3E94E218A96FB00A2F52D = {
 			isa = PBXGroup;
 			children = (
 				1FE3E959218A96FB00A2F52D /* MatchServer */,
 				1FE3E958218A96FB00A2F52D /* Products */,
+				1F95CE63218BFC6E0057618A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +160,7 @@
 		1FE3E959218A96FB00A2F52D /* MatchServer */ = {
 			isa = PBXGroup;
 			children = (
+				1F95CE7B218BFD150057618A /* CPG */,
 				1FE3E961218A970500A2F52D /* Net */,
 				1FE3E95A218A96FB00A2F52D /* main.cpp */,
 				1FE3E9A2218A974D00A2F52D /* MSSessionManager.cpp */,
@@ -283,6 +317,7 @@
 				1FE3E99D218A970500A2F52D /* TCPSessionManager.cpp in Sources */,
 				1FE3E994218A970500A2F52D /* TCPListener.cpp in Sources */,
 				1FE3E99A218A970500A2F52D /* TCPSession.cpp in Sources */,
+				1F95CE82218BFD150057618A /* CPGToCentral.pb.cc in Sources */,
 				1FE3E996218A970500A2F52D /* TCPClient.cpp in Sources */,
 				1FE3E999218A970500A2F52D /* Conv.cpp in Sources */,
 				1FE3E995218A970500A2F52D /* DataBuffer.cpp in Sources */,

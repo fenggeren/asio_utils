@@ -10,6 +10,7 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
+#include <google/protobuf/message.h>
 #include "TCPSession.hpp"
 
 
@@ -20,7 +21,7 @@ class TCPSessionFactory;
 class TCPSession;
 class TCPAcceptor;
 class TCPListener;
-
+class NetPacket;
 struct Listener 
 {
 	std::shared_ptr<TCPSessionFactory> factory_;
@@ -46,8 +47,24 @@ public:
 	TCPSessionPtr getSession(int32 uuid);
 
 	// stype:  服务器类型
-	void sendMsgToSession(int32 uuid, const void* data, int len, int msgID, uint8 stype = 0);
-
+	void sendMsgToSession(int32 uuid, const void* data, int len,
+                          int msgID, uint8 stype = 0);
+    void sendMsgToSession(int32 uuid, google::protobuf::Message& msg,
+                          int msgID, uint8 stype = 0);
+    void sendMsgToSession(int32 uuid, const std::string& msg,
+                          int msgID, uint8 stype = 0);
+    void sendMsgToSession(int32 uuid, std::shared_ptr<NetPacket> packet,
+                          uint8 stype = 0);
+    void sendMsgToSession(TCPSessionPtr session, const void* data, int len,
+                          int msgID, uint8 stype = 0);
+    void sendMsgToSession(TCPSessionPtr session, google::protobuf::Message& msg,
+                          int msgID, uint8 stype = 0);
+    void sendMsgToSession(TCPSessionPtr session, const std::string& msg,
+                          int msgID, uint8 stype = 0);
+    void sendMsgToSession(TCPSessionPtr session, std::shared_ptr<NetPacket> packet,
+                          uint8 stype = 0);
+    
+    void sendMsgToSession(TCPSessionPtr session, const void* data, int len, uint8 stype = 0);
 public:
 
 	void newSession(std::shared_ptr<TCPSession> session);
