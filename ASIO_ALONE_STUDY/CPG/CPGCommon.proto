@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+// 前后端通用的数据包, 大多和具体游戏相关--
+// GateWay起到直接转发包的作用。
+package CPGCommon;

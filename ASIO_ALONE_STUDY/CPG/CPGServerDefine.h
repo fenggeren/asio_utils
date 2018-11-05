@@ -16,6 +16,8 @@
 #define kServerLoginRQ      20003
 #define kServerLoginRS      20004
 
+#define kClientConnectRQ    10001
+#define kClientConnectRS    10002
 
 
 

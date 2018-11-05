@@ -8,77 +8,33 @@
 
 
 #pragma once
+#include <string>
+#include <Net/base/FASIOType.h>
 
-#include <Net/TCPSessionFactory.h>
-#include <Net/TCPSession.hpp>
-#include <Net/TCPConnector.hpp>
-#include <Net/TCPClient.hpp>
-#include <list>
-#include <Net/Queue.hpp>
-
-using namespace fasio;
-using namespace queue;
-class Robots
+class Robot : public std::enable_shared_from_this<Robot>
 {
-    using ClientPtr = std::shared_ptr<TCPClient>;
 public:
     
-    Robots()
+    Robot(const std::string& ip, uint16 port)
+    : port_(port), ip_(ip)
     {
-        createClients(7890, 100);
-//        createClients(7891, 10);
-//        createClients(7892, 10);
     }
     
-    void start()
-    {
-        for (auto& client : clients_)
-        {
-            client->connect();
-        }
-        
-        auto guard = asio::make_work_guard(io_context_);
-        
-        TimerManager::createRepeatTimer(5, 5, 10000000, [&]{
-            printf("%llu\n", count_);
-        }, io_context_);
-        
-        io_context_.run();
-    }
-    
+    void connect();
+ 
+
+public:
+    const std::string& ip() const {return ip_; }
+    void setIP(const std::string& ip) { ip_ = ip; }
+    uint16 port() const { return port_;}
+    void setPort(uint16 port) { port_ = port; }
+
+    uint32 sessionID() const { return sessionID_; }
+    void setSessionID(uint32 sessionID) { sessionID_ = sessionID_; }
 private:
-    
-    void createClients(uint16 port, int num)
-    {
-        for(int i = 0; i < num; i++)
-        {
-            ClientPtr client(new TCPClient(io_context_, "127.0.0.1", port));
-            client->setMessageCallback(std::bind(&Robots::messageIn, this, std::placeholders::_1, std::placeholders::_2));
-            client->setConnectionCallback(std::bind(&Robots::connectCallback, this, std::placeholders::_1));
-            client->enableRetry();
-            clients_.push_back(client);
-        }
-    }
-    
-    void messageIn(const std::shared_ptr<TCPSession>& session,
-                   DataBuffer*const data)
-    {
-        count_++;
-        std::string content(data->peek(), data->readableBytes());
-        data->retrieveAll();
-        session->send(content);
-    }
-    
-    void connectCallback(const std::shared_ptr<TCPSession>& session)
-    {
-        session->send("hello world");
-    }
-    
-private:
-    asio::io_context io_context_;
-    std::list<ClientPtr> clients_;
-    
-    unsigned long long count_;
+    unsigned short port_;
+    std::string ip_;
+    uint32 sessionID_;
 };
 
 

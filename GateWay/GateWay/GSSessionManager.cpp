@@ -9,6 +9,11 @@
 #include "GSSessionManager.hpp"
 #include <Net/logging/Logging.hpp>
 #include <Net/Util/ParseProto.hpp>
+#include <CPG/CPGServerDefine.h>
+#include "G2CSession.hpp"
+#include "G2MSession.hpp"
+#include "G2LSession.hpp"
+
 using namespace fasio::logging;
 
 
@@ -26,4 +31,26 @@ void GSSessionManager::transToMatchServer(int32 mid, const google::protobuf::Mes
     {
         LOG_ERROR << " not found matchserver for mid: " << mid;
     }
+}
+
+ std::shared_ptr<ClientSession>
+GSSessionManager::createConnectorSession(uint8 type)
+{
+    if (type == ServerType_Gate_Central)
+    {
+        return std::make_shared<G2CSession>();
+    }
+    else if (type == ServerType_Gate_Match)
+    {
+        return std::make_shared<G2MSession>();
+    }
+    else if (type == ServerType_Gate_Login)
+    {
+        return std::make_shared<G2LSession>();
+    }
+    else
+    {
+        return TCPSessionManager::createConnectorSession(type);
+    }
+    
 }

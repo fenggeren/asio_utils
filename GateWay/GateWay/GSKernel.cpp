@@ -12,6 +12,7 @@
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"
 #include "GSSessionManager.hpp"
+#include "ClientSession.hpp"
 
 using namespace fasio::logging;
 

@@ -28,6 +28,8 @@
 		8123E200216CDD280050FD4D /* Conv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1FE216CDD280050FD4D /* Conv.cpp */; };
 		8123E22921889FC20050FD4D /* TCPListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E22321889FC20050FD4D /* TCPListener.cpp */; };
 		8123E22A21889FC20050FD4D /* TCPSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E22521889FC20050FD4D /* TCPSessionManager.cpp */; };
+		81994CDA219074960034623E /* CPGClient.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CD9219074960034623E /* CPGClient.proto */; };
+		81994CDC21907A190034623E /* CPGCommon.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CDB21907A190034623E /* CPGCommon.proto */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +95,8 @@
 		8123E22621889FC20050FD4D /* TCPSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPSessionManager.hpp; sourceTree = "<group>"; };
 		8123E22721889FC20050FD4D /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
 		8123E22821889FC20050FD4D /* NetBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetBase.hpp; sourceTree = "<group>"; };
+		81994CD9219074960034623E /* CPGClient.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGClient.proto; sourceTree = "<group>"; };
+		81994CDB21907A190034623E /* CPGCommon.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGCommon.proto; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				1F95CE73218BFCE90057618A /* CPGToCentral.proto */,
+				81994CD9219074960034623E /* CPGClient.proto */,
+				81994CDB21907A190034623E /* CPGCommon.proto */,
 				1F95CE74218BFCE90057618A /* ng */,
 				1F95CE75218BFCE90057618A /* CPGHeader.h */,
 				1F95CE76218BFCE90057618A /* CPGToCentral.pb.h */,
@@ -285,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81994CDC21907A190034623E /* CPGCommon.proto in Sources */,
 				8123E22A21889FC20050FD4D /* TCPSessionManager.cpp in Sources */,
 				1F5B1ACF21884B4B00752C8B /* FASIOType.h in Sources */,
 				8123E22921889FC20050FD4D /* TCPListener.cpp in Sources */,
@@ -305,6 +312,7 @@
 				8123E1FD216CDB6B0050FD4D /* RunLoop.cpp in Sources */,
 				1F36541B215A15B1003B9FAD /* DataBuffer.cpp in Sources */,
 				1F36541C215A15B1003B9FAD /* TCPClient.cpp in Sources */,
+				81994CDA219074960034623E /* CPGClient.proto in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,15 +8,11 @@
 
 #pragma once
 
-#include <Net/TCPSessionFactory.h>
 #include <Net/TCPSessionManager.hpp>
-#include <Net/TCPSession.hpp>
-#include <Net/DataBuffer.hpp>
+#include <Net/TCPSession.hpp> 
 #include <CPG/CPGHeader.h>
-#include "ClientSession.hpp"
-#include "G2CSession.hpp"
-#include "G2MSession.hpp"
-#include "G2LSession.hpp"
+
+using namespace fasio;
 
 
 #define SessionManager GSSessionManager::instance()
@@ -38,25 +34,7 @@ public:
     
 private:
     
-    virtual std::shared_ptr<ClientSession> createConnectorSession(uint8 type) override
-    {
-        if (type == ServerType_Gate_Central)
-        {
-            return std::make_shared<G2CSession>();
-        }
-        else if (type == ServerType_Gate_Match)
-        {
-            return std::make_shared<G2MSession>();
-        }
-        else if (type == ServerType_Gate_Login)
-        {
-            return std::make_shared<G2LSession>();
-        }
-        else
-        {
-            return TCPSessionManager::createConnectorSession(type);
-        }
-    }
+    virtual std::shared_ptr<ClientSession> createConnectorSession(uint8 type) override;
     
     
 private:

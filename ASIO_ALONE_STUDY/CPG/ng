@@ -1,5 +1,5 @@
 #!/bin/bash
-files=(CPGToCentral)
+files=(CPGToCentral, CPGClient)
 for f in ${files[@]}
 do
     echo "genereate  $f.proto -> ${f}.pb.{h,cc}"

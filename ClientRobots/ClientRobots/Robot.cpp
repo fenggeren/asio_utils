@@ -7,3 +7,9 @@
 //
 
 #include "Robot.hpp"
+#include "RobotManager.hpp"
+
+void Robot::connect()
+{
+    gRobotManager.postConnect(shared_from_this());
+}

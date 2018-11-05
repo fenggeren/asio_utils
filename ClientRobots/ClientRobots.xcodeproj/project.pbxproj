@@ -27,6 +27,11 @@
 		1FE3E8F421899E6600A2F52D /* Timestamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8DE21899E6600A2F52D /* Timestamp.cpp */; };
 		1FE3E8F521899E6600A2F52D /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8E021899E6600A2F52D /* TCPConnector.cpp */; };
 		1FE3E8F621899E6600A2F52D /* FASIOType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8E421899E6600A2F52D /* FASIOType.cpp */; };
+		81994CEE21907DE40034623E /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81994CED21907DE40034623E /* libprotobuf.a */; };
+		81994CF121907E010034623E /* CPGClient.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 81994CF021907E000034623E /* CPGClient.pb.cc */; };
+		81994CF4219080470034623E /* RobotSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81994CF2219080470034623E /* RobotSession.cpp */; };
+		81994CF7219081470034623E /* RobotManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81994CF5219081470034623E /* RobotManager.cpp */; };
+		81994CFA219081B00034623E /* RobotSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81994CF8219081AF0034623E /* RobotSessionManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +94,17 @@
 		1FE3E8E221899E6600A2F52D /* NetBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetBase.h; sourceTree = "<group>"; };
 		1FE3E8E321899E6600A2F52D /* FASIOType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FASIOType.h; sourceTree = "<group>"; };
 		1FE3E8E421899E6600A2F52D /* FASIOType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FASIOType.cpp; sourceTree = "<group>"; };
+		81994CE221907AF30034623E /* CPGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGHeader.h; sourceTree = "<group>"; };
+		81994CE721907AF30034623E /* CPGServerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
+		81994CED21907DE40034623E /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
+		81994CEF21907E000034623E /* CPGClient.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGClient.pb.h; sourceTree = "<group>"; };
+		81994CF021907E000034623E /* CPGClient.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGClient.pb.cc; sourceTree = "<group>"; };
+		81994CF2219080470034623E /* RobotSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RobotSession.cpp; sourceTree = "<group>"; };
+		81994CF3219080470034623E /* RobotSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RobotSession.hpp; sourceTree = "<group>"; };
+		81994CF5219081470034623E /* RobotManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RobotManager.cpp; sourceTree = "<group>"; };
+		81994CF6219081470034623E /* RobotManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RobotManager.hpp; sourceTree = "<group>"; };
+		81994CF8219081AF0034623E /* RobotSessionManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RobotSessionManager.cpp; sourceTree = "<group>"; };
+		81994CF9219081AF0034623E /* RobotSessionManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RobotSessionManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81994CEE21907DE40034623E /* libprotobuf.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,10 +139,17 @@
 		1FE3E887218983F800A2F52D /* ClientRobots */ = {
 			isa = PBXGroup;
 			children = (
+				81994CDD21907AF30034623E /* CPG */,
 				1FE3E8B621899E6600A2F52D /* Net */,
 				1FE3E888218983F800A2F52D /* main.cpp */,
 				1FE3E8B02189896400A2F52D /* Robot.cpp */,
 				1FE3E8B12189896400A2F52D /* Robot.hpp */,
+				81994CF2219080470034623E /* RobotSession.cpp */,
+				81994CF3219080470034623E /* RobotSession.hpp */,
+				81994CF8219081AF0034623E /* RobotSessionManager.cpp */,
+				81994CF9219081AF0034623E /* RobotSessionManager.hpp */,
+				81994CF5219081470034623E /* RobotManager.cpp */,
+				81994CF6219081470034623E /* RobotManager.hpp */,
 			);
 			path = ClientRobots;
 			sourceTree = "<group>";
@@ -133,6 +157,7 @@
 		1FE3E8AE2189859800A2F52D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81994CED21907DE40034623E /* libprotobuf.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -212,6 +237,18 @@
 			path = base;
 			sourceTree = "<group>";
 		};
+		81994CDD21907AF30034623E /* CPG */ = {
+			isa = PBXGroup;
+			children = (
+				81994CF021907E000034623E /* CPGClient.pb.cc */,
+				81994CEF21907E000034623E /* CPGClient.pb.h */,
+				81994CE221907AF30034623E /* CPGHeader.h */,
+				81994CE721907AF30034623E /* CPGServerDefine.h */,
+			);
+			name = CPG;
+			path = ../../ASIO_ALONE_STUDY/CPG;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -275,19 +312,23 @@
 				1FE3E8F521899E6600A2F52D /* TCPConnector.cpp in Sources */,
 				1FE3E8EE21899E6600A2F52D /* Conv.cpp in Sources */,
 				1FE3E8E821899E6600A2F52D /* ParseProto.cpp in Sources */,
+				81994CF4219080470034623E /* RobotSession.cpp in Sources */,
 				1FE3E8EC21899E6600A2F52D /* Queue.cpp in Sources */,
 				1FE3E8EA21899E6600A2F52D /* DataBuffer.cpp in Sources */,
 				1FE3E889218983F800A2F52D /* main.cpp in Sources */,
 				1FE3E8E521899E6600A2F52D /* Thread.cpp in Sources */,
 				1FE3E8EB21899E6600A2F52D /* TCPClient.cpp in Sources */,
+				81994CFA219081B00034623E /* RobotSessionManager.cpp in Sources */,
 				1FE3E8E921899E6600A2F52D /* TCPListener.cpp in Sources */,
 				1FE3E8F221899E6600A2F52D /* TCPSessionManager.cpp in Sources */,
 				1FE3E8F021899E6600A2F52D /* TCPAcceptor.cpp in Sources */,
 				1FE3E8F421899E6600A2F52D /* Timestamp.cpp in Sources */,
 				1FE3E8F321899E6600A2F52D /* Logging.cpp in Sources */,
+				81994CF121907E010034623E /* CPGClient.pb.cc in Sources */,
 				1FE3E8E621899E6600A2F52D /* RunLoop.cpp in Sources */,
 				1FE3E8F621899E6600A2F52D /* FASIOType.cpp in Sources */,
 				1FE3E8F121899E6600A2F52D /* DataHandler.cpp in Sources */,
+				81994CF7219081470034623E /* RobotManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

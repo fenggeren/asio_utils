@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package CPGClient;
+
+// 连接请求
+message ConnectGateRQ
+{
+}
+// 返回负载最小的 GateServer信息
+message ConnectGateRS
+{
+    int32   result  = 1;
+    int32   port    = 2;
+    string  ip      = 3;
+}
+
+message LoginRS
+{
+    int32   uid  = 1;
+    string token = 2;
+}
+
+message LoginRQ
+{
+    int32   result = 1;
+}
