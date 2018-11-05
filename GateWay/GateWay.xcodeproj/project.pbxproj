@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F95CE4C218BECB60057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CE4B218BECB60057618A /* libprotobuf.a */; };
 		1F95CE8A218BFD2E0057618A /* CPGToCentral.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE88218BFD2E0057618A /* CPGToCentral.pb.cc */; };
+		1F95CEA3218FEA5A0057618A /* GSKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CEA1218FEA5A0057618A /* GSKernel.cpp */; };
 		1FE3EA08218AE38100A2F52D /* ClientSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA06218AE38100A2F52D /* ClientSession.cpp */; };
 		1FE3EA0D218AE55200A2F52D /* G2CSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA0B218AE55200A2F52D /* G2CSession.cpp */; };
 		1FE3EA10218AE59900A2F52D /* G2MSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA0E218AE59900A2F52D /* G2MSession.cpp */; };
@@ -57,6 +58,8 @@
 		1F95CE87218BFD2E0057618A /* CPGToCentral.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGToCentral.pb.h; sourceTree = "<group>"; };
 		1F95CE88218BFD2E0057618A /* CPGToCentral.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentral.pb.cc; sourceTree = "<group>"; };
 		1F95CE89218BFD2E0057618A /* CPGServerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
+		1F95CEA1218FEA5A0057618A /* GSKernel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GSKernel.cpp; sourceTree = "<group>"; };
+		1F95CEA2218FEA5A0057618A /* GSKernel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GSKernel.hpp; sourceTree = "<group>"; };
 		1FE3EA06218AE38100A2F52D /* ClientSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ClientSession.cpp; sourceTree = "<group>"; };
 		1FE3EA07218AE38100A2F52D /* ClientSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ClientSession.hpp; sourceTree = "<group>"; };
 		1FE3EA0B218AE55200A2F52D /* G2CSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = G2CSession.cpp; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 				8123E23A2189D7FC0050FD4D /* main.cpp */,
 				8123E2412189D8680050FD4D /* GSSessionManager.cpp */,
 				8123E2422189D8680050FD4D /* GSSessionManager.hpp */,
+				1F95CEA1218FEA5A0057618A /* GSKernel.cpp */,
+				1F95CEA2218FEA5A0057618A /* GSKernel.hpp */,
 				1FE3EA06218AE38100A2F52D /* ClientSession.cpp */,
 				1FE3EA07218AE38100A2F52D /* ClientSession.hpp */,
 				1FE3EA0B218AE55200A2F52D /* G2CSession.cpp */,
@@ -318,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F95CEA3218FEA5A0057618A /* GSKernel.cpp in Sources */,
 				1FE3EA10218AE59900A2F52D /* G2MSession.cpp in Sources */,
 				8123E27E2189DCE60050FD4D /* TCPSession.cpp in Sources */,
 				8123E2432189D8680050FD4D /* GSSessionManager.cpp in Sources */,

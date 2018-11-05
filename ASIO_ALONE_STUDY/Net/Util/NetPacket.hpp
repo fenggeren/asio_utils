@@ -10,7 +10,7 @@
 
 #include <memory>
 #include <string>
-
+#include "../base/FASIOType.h"
 namespace fasio
 {
 class NetPacket;
@@ -43,15 +43,8 @@ private:
 template <class T>
 std::shared_ptr<T> getProtoMsg(const char* data, int len);
 
+bool hasPacket(const char* data, int len);
 
 
-
-
-
-
-
-
-
-
-
+ 
 }

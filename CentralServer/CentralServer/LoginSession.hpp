@@ -23,7 +23,9 @@ public:
         messageCallback_ = std::bind(&LoginSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
         
     }
+public:
     
+    virtual void onClose() override;
 private:
     
     void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,

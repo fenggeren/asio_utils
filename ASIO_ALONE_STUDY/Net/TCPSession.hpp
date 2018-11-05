@@ -75,6 +75,10 @@ public:
     uint8 type() const { return type_;}
     
     bool isClient() const { return client_; }
+    
+    void setLogicID(uint32 logicID) { logicID_ = logicID; }
+    uint32 logicID() const { return logicID_; }
+    
 public:
     ///////  设置回调   /////////
     void setConnectionCallback(const std::function<void(const TCPSessionPtr&)>& cb)
@@ -127,6 +131,8 @@ protected:
     uint16 type_{0};
     
     const uint16 uuid_;
+    
+    uint32 logicID_{0};
     
     bool client_{false};
     static std::atomic<int> num_;

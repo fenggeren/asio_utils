@@ -6,6 +6,8 @@
 //  Copyright © 2018年 guanrui fu. All rights reserved.
 //
 
+#pragma once
+
 #include <Net/TCPSessionFactory.h>
 #include <Net/TCPSessionManager.hpp>
 #include <Net/TCPSession.hpp>
@@ -16,8 +18,6 @@
 #include "G2MSession.hpp"
 #include "G2LSession.hpp"
 
-using namespace fasio;
-static asio::io_context g_IoContext;
 
   
 
@@ -31,17 +31,7 @@ public:
         return manager;
     }
     
-    void start()
-    {
-        auto factory = std::make_shared<CGSessionFactory>(g_IoContext);
-        createListener(7890, false, factory);
-        
-        createConnector(ServerType_Gate_Central, g_IoContext, "127.0.0.1", 7801);
-        createConnector(ServerType_Gate_Match, g_IoContext, "127.0.0.1", 7851);
-        createConnector(ServerType_Gate_Login, g_IoContext, "127.0.0.1", 7831);
-        g_IoContext.run();
-    }
-    
+
 public:
     
     void transToMatchServer(int32 mid, const google::protobuf::Message& msg, int32 msgType);

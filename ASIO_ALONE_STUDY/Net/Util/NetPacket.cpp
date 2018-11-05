@@ -78,5 +78,17 @@ std::shared_ptr<T> getProtoMsg(const char* data, int len)
     return nullptr;
 }
 
+bool hasPacket(const char* data, int len)
+{
+    if (len > kPacketHeaderSize)
+    {
+        PacketHeader* header = (PacketHeader*)data;
+        if (len >= header->size + kPacketHeaderSize)
+        {
+            return true;
+        }
+    }
+    return false;
+}
  
 }

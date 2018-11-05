@@ -29,18 +29,37 @@ class CSKernel
 {
 public:
     
+    static CSKernel& instance()
+    {
+        static CSKernel kernel;
+        return kernel;
+    }
+    
+    
     void start()
     {
         //
         auto gateFactory = std::make_shared<GateSessionFactory>(g_IoContext);
-        CSSessionManager::instance().createListener(7801, false, gateFactory);
+        SessionManager.createListener(7801, false, gateFactory);
         auto matchFactory = std::make_shared<MatchSessionFactory>(g_IoContext);
-        CSSessionManager::instance().createListener(7802, false, matchFactory);
+        SessionManager.createListener(7802, false, matchFactory);
         auto loginFactory = std::make_shared<LoginSessionFactory>(g_IoContext);
-        CSSessionManager::instance().createListener(7803, false, loginFactory);
+        SessionManager.createListener(7803, false, loginFactory);
         g_IoContext.run();
     }
     
+    
+public:
+    
+    // sessionID, server type,
+    void serverRegistRQ(TCPSessionPtr session,
+                         const void* data, int len);
+    void serverLoginRQ(TCPSessionPtr session,
+                       const void* data, int len);
+private:
+    
+    void gateServerRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
+    void serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
 public:
     
     std::shared_ptr<ServerInfo> getService(uint32 sid);
@@ -49,6 +68,9 @@ public:
 private:
     
     std::unordered_map<uint32, std::shared_ptr<ServerInfo>> servers_;
+     
+private:
+    static int32 serverID;
 };
 
 

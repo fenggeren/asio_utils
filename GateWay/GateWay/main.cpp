@@ -6,14 +6,13 @@
 //  Copyright © 2018年 guanrui fu. All rights reserved.
 //
 
-#include <iostream>
-#include "GSSessionManager.hpp"
+#include <iostream> 
+#include "GSKernel.hpp"
 
 int main(int argc, const char * argv[]) {
     
-    GSSessionManager manager;
-    manager.start();
-    
+    GSKernel kernel;
+    kernel.start();
     
     return 0;
 }

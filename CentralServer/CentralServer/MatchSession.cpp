@@ -7,3 +7,12 @@
 //
 
 #include "MatchSession.hpp"
+#include <Net/Util/NetPacket.hpp>
+#include "CSKernel.hpp"
+
+using namespace fasio;
+
+void MatchSession::onClose()
+{
+    CSKernel::instance().removeService(logicID());
+}

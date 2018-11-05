@@ -19,6 +19,8 @@
 
 using namespace fasio;
 
+#define SessionManager CSSessionManager::instance()
+
 class CSSessionManager : public TCPSessionManager
 {
 public:
@@ -31,21 +33,10 @@ public:
     
      
 public:
-    // sessionID, server type,
-    void serviceRegistRQ(TCPSessionPtr session,
-                         const void* data, int len);
-    void serverLoginRQ(TCPSessionPtr session,
-                       const void* data, int len);
-    
-private:
-    
-    void gateServerRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
-    void serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
+  
 private:
     std::vector<std::shared_ptr<ServerInfo>> servers_;
-    
-private:
-    static int32 serverID;
+
 };
 
 

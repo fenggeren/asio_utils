@@ -7,3 +7,12 @@
 //
 
 #include "LoginSession.hpp"
+#include <Net/Util/NetPacket.hpp>
+#include "CSKernel.hpp"
+
+using namespace fasio;
+
+void LoginSession::onClose()
+{
+    CSKernel::instance().removeService(logicID());
+}
