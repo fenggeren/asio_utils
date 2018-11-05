@@ -8,12 +8,13 @@
 
 #include <iostream>
 #include "MSSessionManager.hpp"
+#include "MSKernel.hpp"
 
 
 int main(int argc, const char * argv[]) {
-    
-    MSSessionManager manager;
-    manager.start();
+
+    MSKernel kernel;
+    kernel.start();
     
     return 0;
 }

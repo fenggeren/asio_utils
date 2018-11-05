@@ -10,9 +10,6 @@
 #include "LSSessionManager.hpp"
 
 int main(int argc, const char * argv[]) {
-    
-    LSSessionManager manager;
-    manager.start();
-    
+     
     return 0;
 }

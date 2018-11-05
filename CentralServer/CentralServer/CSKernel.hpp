@@ -9,15 +9,9 @@
 #include <list>
 #include <unordered_map>
 #include <vector>
-#include <Net/TCPSessionFactory.h>
-#include <Net/TCPSessionManager.hpp>
-#include <google/protobuf/message.h>
+#include <Net/TCPSession.hpp>
 #include <CPG/CPGHeader.h>
 #include <CPG/CPGServerDefine.h>
-#include "GateSession.hpp"
-#include "MatchSession.hpp"
-#include "LoginSession.hpp"
-#include "CSSessionManager.hpp"
 
 using namespace fasio;
 
@@ -36,18 +30,7 @@ public:
     }
     
     
-    void start()
-    {
-        //
-        auto gateFactory = std::make_shared<GateSessionFactory>(g_IoContext);
-        SessionManager.createListener(7801, false, gateFactory);
-        auto matchFactory = std::make_shared<MatchSessionFactory>(g_IoContext);
-        SessionManager.createListener(7802, false, matchFactory);
-        auto loginFactory = std::make_shared<LoginSessionFactory>(g_IoContext);
-        SessionManager.createListener(7803, false, loginFactory);
-        g_IoContext.run();
-    }
-    
+    void start();
     
 public:
     

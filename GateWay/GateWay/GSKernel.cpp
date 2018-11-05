@@ -11,8 +11,20 @@
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"
+#include "GSSessionManager.hpp"
 
 using namespace fasio::logging;
+
+void GSKernel::start()
+{
+    auto factory = std::make_shared<CGSessionFactory>(g_IoContext);
+    GSSessionManager::instance().createListener(7890, false, factory);
+    
+    GSSessionManager::instance().createConnector(ServerType_Gate_Central, g_IoContext, "127.0.0.1", 7801);
+    GSSessionManager::instance().createConnector(ServerType_Gate_Match, g_IoContext, "127.0.0.1", 7851);
+    GSSessionManager::instance().createConnector(ServerType_Gate_Login, g_IoContext, "127.0.0.1", 7831);
+    g_IoContext.run();
+}
 
 void GSKernel::serverRegistRS(TCPSessionPtr session,
                               const void* data, int len)

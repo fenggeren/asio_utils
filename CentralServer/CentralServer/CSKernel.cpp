@@ -11,8 +11,20 @@
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"
-
+#include "CSSessionManager.hpp"
 using namespace fasio::logging;
+
+void CSKernel::start()
+{
+    //
+    auto gateFactory = std::make_shared<GateSessionFactory>(g_IoContext);
+    SessionManager.createListener(7801, false, gateFactory);
+    auto matchFactory = std::make_shared<MatchSessionFactory>(g_IoContext);
+    SessionManager.createListener(7802, false, matchFactory);
+    auto loginFactory = std::make_shared<LoginSessionFactory>(g_IoContext);
+    SessionManager.createListener(7803, false, loginFactory);
+    g_IoContext.run();
+}
 
 std::shared_ptr<ServerInfo> CSKernel::getService(uint32 sid)
 {
