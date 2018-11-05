@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package CPGToCentral;
+
+// 服务器之间的消息
+
+// 服务器信息
+message ServerInfo
+{
+	int32	type		= 1;
+	int32	port 		= 2;
+	int32	sid	 		= 3;
+	string	ip 	 		= 4;
+};
+ 
+// 各服务启动后 需注册到CentralServer
+message ServerRegisterRQ
+{
+	int32	type 	= 1;
+	int32	port 	= 2;
+	int32   sid		= 3; 
+	string	ip   	= 4;
+	string exportIP = 5;
+}
+message ServerRegisterRS
+{
+	int32	result 					= 1;
+	int32	sid	   					= 2;  
+	repeated ServerInfo connServers	= 3;  // 需要连接的服务
+}
+
+
+// GateServer的信息， 
+message GateServerInfo
+{
+	int32	port 		= 1;
+	int32	sid	 		= 2;
+	string	ip 	 		= 3;
+	string	exportIP 	= 4; // 外网地址，用于客户端连接，也是客户端连接服务器的唯一入口
+}
+
+// 获取负载最少的GateWay
+message ServerLoginRQ
+{
+	int32 cid = 1; // 用户id
+	int32 sid = 2; //Master GS id
+}
+message ServerLoginRS
+{
+	int32 result 			= 1;
+	int32 cid 				= 2; // 用户id 
+	GateServerInfo gsinfo 	= 3; 
+}
+
+
+
+
+
+
+
+
+
