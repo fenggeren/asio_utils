@@ -26,15 +26,17 @@ void TCPSessionManager::createListener(int port, bool ipv6, std::shared_ptr<TCPS
     listeners_.insert({port, listener});
 }
     
-void TCPSessionManager::createConnector(uint8 type, asio::io_context& io,
+std::shared_ptr<ClientSession> TCPSessionManager::createConnector(uint8 type, asio::io_context& io,
                                         const std::string& ip, uint16 port)
 {
     std::shared_ptr<TCPConnector> connector(new TCPConnector(io, ip, port));
     auto session = createConnectorSession(type);
     session->setType(type);
     addSession(session);
+    addClientSession(session);
     session->setConnector(connector);
     connector->start();
+    return session;
 }
     
 std::shared_ptr<ClientSession>
@@ -69,6 +71,7 @@ void TCPSessionManager::removeSessionPtr(const TCPSessionPtr& session)
         else
         {
             removeSession(session->uuid());
+            removeClientSession(session->uuid());
         }
     }
 }
@@ -77,6 +80,45 @@ void TCPSessionManager::removeSession(int32 uuid)
 {
     sessionMap_.erase(uuid);
 }
+
+void TCPSessionManager::removeClientSession(int32 logicid)
+{
+    auto iter = std::find_if(clientSessions_.begin(), clientSessions_.end(),
+                             [logicid](const TCPSessionPtr& session)
+              {
+                  return session->logicID() == logicid;
+              });
+    if (iter != clientSessions_.end())
+    {
+        clientSessions_.erase(iter);
+    }
+    else
+    {
+        LOG_ERROR << " can't found client session :" << logicid;
+    }
+}
+TCPSessionPtr TCPSessionManager::getClientSession(int32 logicid)
+{
+    auto iter = std::find_if(clientSessions_.begin(), clientSessions_.end(),
+                             [logicid](const TCPSessionPtr& session)
+                          {
+                              return session->logicID() == logicid;
+                          });
+    if (iter != clientSessions_.end())
+    {
+        return *iter;
+    }
+    else
+    {
+        LOG_ERROR << " can't found client session :" << logicid;
+        return nullptr;
+    }
+}
+void TCPSessionManager::addClientSession(TCPSessionPtr session)
+{
+    clientSessions_.push_back(session);
+}
+
 void TCPSessionManager::addSession(TCPSessionPtr session)
 {
     if (sessionMap_.find(session->uuid()) != sessionMap_.end())

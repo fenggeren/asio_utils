@@ -10,6 +10,7 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
+#include <list>
 #include <google/protobuf/message.h>
 #include "TCPSession.hpp"
 
@@ -37,15 +38,19 @@ public:
 public:
 	void createListener(int port, bool ipv6, std::shared_ptr<TCPSessionFactory> factory);
     
-    virtual void createConnector(uint8 type, asio::io_context& io,
+    virtual std::shared_ptr<ClientSession>
+    createConnector(uint8 type, asio::io_context& io,
                                  const std::string& ip, uint16 port);
 public:
 
     void addSession(TCPSessionPtr session);
-    
 	void removeSession(int32 uuid);
 	TCPSessionPtr getSession(int32 uuid);
-
+    
+    void addClientSession(TCPSessionPtr session);
+    void removeClientSession(int32 logicid);
+    TCPSessionPtr getClientSession(int32 logicid);
+    
 	// stype:  服务器类型
 	void sendMsgToSession(int32 uuid, const void* data, int len,
                           int msgID, uint8 stype = 0);
@@ -78,6 +83,7 @@ private:
 protected:
     std::unordered_map<uint16 ,std::shared_ptr<TCPListener>> listeners_;
     std::unordered_map<int32, TCPSessionPtr> sessionMap_;
+    std::list<TCPSessionPtr> clientSessions_;
 };
 
 

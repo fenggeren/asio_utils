@@ -19,7 +19,7 @@
 #include "G2LSession.hpp"
 
 
-  
+#define SessionManager GSSessionManager::instance()
 
 class GSSessionManager : public TCPSessionManager
 {

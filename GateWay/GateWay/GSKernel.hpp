@@ -32,6 +32,12 @@ class GSKernel
 {
 public:
     
+    static GSKernel& instance()
+    {
+        static GSKernel kernel;
+        return kernel;
+    }
+    
     void start()
     {
         auto factory = std::make_shared<CGSessionFactory>(g_IoContext);
@@ -43,11 +49,19 @@ public:
         g_IoContext.run();
     }
     
+public:
+    void addNewConnect(int type, int port, int serverid, const std::string& ip);
+    
+public:
+    
+    void serverRegistRS(TCPSessionPtr session,
+                        const void* data, int len);
+    void serverLoginRS(TCPSessionPtr session,
+                       const void* data, int len);
     
 private:
-    
-    std::unordered_map<uint32, MatchServerInfo*> matchesServices_;
-    
+    // 比赛id <=> match info
+    std::unordered_map<uint32, TCPSessionPtr> matchesServices_;
 };
 
 

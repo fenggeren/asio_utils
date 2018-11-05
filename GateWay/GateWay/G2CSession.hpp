@@ -23,18 +23,22 @@ public:
     
 private:
     
+    virtual void onClose() override;
+    virtual void sendInitData() override;
+    
+private:
+    
     void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data)
-    {
-        std::string content(data->peek(), data->readableBytes());
-        data->retrieveAll();
-        session->send(content);
-    }
+                                DataBuffer*const data);
     
     void defaultConnectionCallback(const TCPSessionPtr& session)
     {
         session->send("HELLO Central Server");
     }
+private:
+    
+    void serverRegistRS(const void* data, int len);
+    void serverLoginRS(const void* data, int len);
     
 private:
 };
