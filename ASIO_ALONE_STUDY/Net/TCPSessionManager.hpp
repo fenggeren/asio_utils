@@ -68,7 +68,6 @@ public:
                           int msgID, uint8 stype = 0);
     void sendMsgToSession(TCPSessionPtr session, std::shared_ptr<NetPacket> packet,
                           uint8 stype = 0);
-    
     void sendMsgToSession(TCPSessionPtr session, const void* data, int len, uint8 stype = 0);
 public:
 

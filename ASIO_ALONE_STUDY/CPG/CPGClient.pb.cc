@@ -17,64 +17,50 @@
 #include <google/protobuf/port_def.inc>
 
 namespace CPGClient {
-class ConnectGateRQDefaultTypeInternal {
+class ConnectRQDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<ConnectGateRQ> _instance;
-} _ConnectGateRQ_default_instance_;
-class ConnectGateRSDefaultTypeInternal {
+  ::google::protobuf::internal::ExplicitlyConstructed<ConnectRQ> _instance;
+} _ConnectRQ_default_instance_;
+class ConnectRSDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<ConnectGateRS> _instance;
-} _ConnectGateRS_default_instance_;
-class LoginRSDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<LoginRS> _instance;
-} _LoginRS_default_instance_;
+  ::google::protobuf::internal::ExplicitlyConstructed<ConnectRS> _instance;
+} _ConnectRS_default_instance_;
 class LoginRQDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<LoginRQ> _instance;
 } _LoginRQ_default_instance_;
+class LoginRSDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<LoginRS> _instance;
+} _LoginRS_default_instance_;
 }  // namespace CPGClient
-static void InitDefaultsConnectGateRQ_CPGClient_2eproto() {
+static void InitDefaultsConnectRQ_CPGClient_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::CPGClient::_ConnectGateRQ_default_instance_;
-    new (ptr) ::CPGClient::ConnectGateRQ();
+    void* ptr = &::CPGClient::_ConnectRQ_default_instance_;
+    new (ptr) ::CPGClient::ConnectRQ();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::CPGClient::ConnectGateRQ::InitAsDefaultInstance();
+  ::CPGClient::ConnectRQ::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_ConnectGateRQ_CPGClient_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsConnectGateRQ_CPGClient_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_ConnectRQ_CPGClient_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsConnectRQ_CPGClient_2eproto}, {}};
 
-static void InitDefaultsConnectGateRS_CPGClient_2eproto() {
+static void InitDefaultsConnectRS_CPGClient_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::CPGClient::_ConnectGateRS_default_instance_;
-    new (ptr) ::CPGClient::ConnectGateRS();
+    void* ptr = &::CPGClient::_ConnectRS_default_instance_;
+    new (ptr) ::CPGClient::ConnectRS();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::CPGClient::ConnectGateRS::InitAsDefaultInstance();
+  ::CPGClient::ConnectRS::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_ConnectGateRS_CPGClient_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsConnectGateRS_CPGClient_2eproto}, {}};
-
-static void InitDefaultsLoginRS_CPGClient_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::CPGClient::_LoginRS_default_instance_;
-    new (ptr) ::CPGClient::LoginRS();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::CPGClient::LoginRS::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<0> scc_info_LoginRS_CPGClient_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsLoginRS_CPGClient_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_ConnectRS_CPGClient_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsConnectRS_CPGClient_2eproto}, {}};
 
 static void InitDefaultsLoginRQ_CPGClient_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -90,11 +76,25 @@ static void InitDefaultsLoginRQ_CPGClient_2eproto() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_LoginRQ_CPGClient_2eproto =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsLoginRQ_CPGClient_2eproto}, {}};
 
+static void InitDefaultsLoginRS_CPGClient_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGClient::_LoginRS_default_instance_;
+    new (ptr) ::CPGClient::LoginRS();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::CPGClient::LoginRS::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_LoginRS_CPGClient_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsLoginRS_CPGClient_2eproto}, {}};
+
 void InitDefaults_CPGClient_2eproto() {
-  ::google::protobuf::internal::InitSCC(&scc_info_ConnectGateRQ_CPGClient_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_ConnectGateRS_CPGClient_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_LoginRS_CPGClient_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_ConnectRQ_CPGClient_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_ConnectRS_CPGClient_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_LoginRQ_CPGClient_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_LoginRS_CPGClient_2eproto.base);
 }
 
 ::google::protobuf::Metadata file_level_metadata_CPGClient_2eproto[4];
@@ -103,44 +103,48 @@ constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descr
 
 const ::google::protobuf::uint32 TableStruct_CPGClient_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectGateRQ, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRQ, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRQ, logicid_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectGateRS, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRS, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectGateRS, result_),
-  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectGateRS, port_),
-  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectGateRS, ip_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRS, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRS, uid_),
-  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRS, token_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRS, logicid_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRS, result_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRS, port_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRS, ip_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRQ, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRQ, result_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRQ, logicid_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRQ, uid_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRQ, token_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRS, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRS, logicid_),
+  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRS, result_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::CPGClient::ConnectGateRQ)},
-  { 5, -1, sizeof(::CPGClient::ConnectGateRS)},
-  { 13, -1, sizeof(::CPGClient::LoginRS)},
-  { 20, -1, sizeof(::CPGClient::LoginRQ)},
+  { 0, -1, sizeof(::CPGClient::ConnectRQ)},
+  { 6, -1, sizeof(::CPGClient::ConnectRS)},
+  { 15, -1, sizeof(::CPGClient::LoginRQ)},
+  { 23, -1, sizeof(::CPGClient::LoginRS)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGClient::_ConnectGateRQ_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGClient::_ConnectGateRS_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGClient::_LoginRS_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGClient::_ConnectRQ_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGClient::_ConnectRS_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CPGClient::_LoginRQ_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGClient::_LoginRS_default_instance_),
 };
 
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_CPGClient_2eproto = {
@@ -151,13 +155,14 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 
 ::google::protobuf::internal::DescriptorTable descriptor_table_CPGClient_2eproto = {
   false, InitDefaults_CPGClient_2eproto, 
-  "\n\017CPGClient.proto\022\tCPGClient\"\017\n\rConnectG"
-  "ateRQ\"9\n\rConnectGateRS\022\016\n\006result\030\001 \001(\005\022\014"
-  "\n\004port\030\002 \001(\005\022\n\n\002ip\030\003 \001(\t\"%\n\007LoginRS\022\013\n\003u"
-  "id\030\001 \001(\005\022\r\n\005token\030\002 \001(\t\"\031\n\007LoginRQ\022\016\n\006re"
-  "sult\030\001 \001(\005b\006proto3"
+  "\n\017CPGClient.proto\022\tCPGClient\"\034\n\tConnectR"
+  "Q\022\017\n\007logicID\030\001 \001(\005\"F\n\tConnectRS\022\017\n\007logic"
+  "ID\030\001 \001(\005\022\016\n\006result\030\002 \001(\005\022\014\n\004port\030\003 \001(\005\022\n"
+  "\n\002ip\030\004 \001(\t\"6\n\007LoginRQ\022\017\n\007logicID\030\001 \001(\005\022\013"
+  "\n\003uid\030\002 \001(\005\022\r\n\005token\030\003 \001(\t\"*\n\007LoginRS\022\017\n"
+  "\007logicID\030\001 \001(\005\022\016\n\006result\030\002 \001(\005b\006proto3"
 ,
-  "CPGClient.proto", &assign_descriptors_table_CPGClient_2eproto, 178,
+  "CPGClient.proto", &assign_descriptors_table_CPGClient_2eproto, 238,
 };
 
 void AddDescriptors_CPGClient_2eproto() {
@@ -173,60 +178,64 @@ namespace CPGClient {
 
 // ===================================================================
 
-void ConnectGateRQ::InitAsDefaultInstance() {
+void ConnectRQ::InitAsDefaultInstance() {
 }
-class ConnectGateRQ::HasBitSetters {
+class ConnectRQ::HasBitSetters {
  public:
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ConnectRQ::kLogicIDFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-ConnectGateRQ::ConnectGateRQ()
+ConnectRQ::ConnectRQ()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(constructor:CPGClient.ConnectRQ)
 }
-ConnectGateRQ::ConnectGateRQ(const ConnectGateRQ& from)
+ConnectRQ::ConnectRQ(const ConnectRQ& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:CPGClient.ConnectGateRQ)
+  logicid_ = from.logicid_;
+  // @@protoc_insertion_point(copy_constructor:CPGClient.ConnectRQ)
 }
 
-void ConnectGateRQ::SharedCtor() {
+void ConnectRQ::SharedCtor() {
+  logicid_ = 0;
 }
 
-ConnectGateRQ::~ConnectGateRQ() {
-  // @@protoc_insertion_point(destructor:CPGClient.ConnectGateRQ)
+ConnectRQ::~ConnectRQ() {
+  // @@protoc_insertion_point(destructor:CPGClient.ConnectRQ)
   SharedDtor();
 }
 
-void ConnectGateRQ::SharedDtor() {
+void ConnectRQ::SharedDtor() {
 }
 
-void ConnectGateRQ::SetCachedSize(int size) const {
+void ConnectRQ::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ConnectGateRQ& ConnectGateRQ::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_ConnectGateRQ_CPGClient_2eproto.base);
+const ConnectRQ& ConnectRQ::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_ConnectRQ_CPGClient_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void ConnectGateRQ::Clear() {
-// @@protoc_insertion_point(message_clear_start:CPGClient.ConnectGateRQ)
+void ConnectRQ::Clear() {
+// @@protoc_insertion_point(message_clear_start:CPGClient.ConnectRQ)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  logicid_ = 0;
   _internal_metadata_.Clear();
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* ConnectGateRQ::_InternalParse(const char* begin, const char* end, void* object,
+const char* ConnectRQ::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<ConnectGateRQ*>(object);
+  auto msg = static_cast<ConnectRQ*>(object);
   ::google::protobuf::uint32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
@@ -236,6 +245,16 @@ const char* ConnectGateRQ::_InternalParse(const char* begin, const char* end, vo
     ptr = Varint::Parse32Inline(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
+      // int32 logicID = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_logicid(value);
+        break;
+      }
       default: {
       handle_unusual: (void)&&handle_unusual;
         if ((tag & 7) == 4 || tag == 0) {
@@ -260,62 +279,90 @@ group_continues: (void)&&group_continues;
   return ptr;
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool ConnectGateRQ::MergePartialFromCodedStream(
+bool ConnectRQ::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(parse_start:CPGClient.ConnectRQ)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0) {
-      goto success;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 logicID = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &logicid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
     }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, _internal_metadata_.mutable_unknown_fields()));
   }
 success:
-  // @@protoc_insertion_point(parse_success:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(parse_success:CPGClient.ConnectRQ)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(parse_failure:CPGClient.ConnectRQ)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void ConnectGateRQ::SerializeWithCachedSizes(
+void ConnectRQ::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(serialize_start:CPGClient.ConnectRQ)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
+
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->logicid(), output);
+  }
 
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(serialize_end:CPGClient.ConnectRQ)
 }
 
-::google::protobuf::uint8* ConnectGateRQ::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* ConnectRQ::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(serialize_to_array_start:CPGClient.ConnectRQ)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
+
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->logicid(), target);
+  }
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(serialize_to_array_end:CPGClient.ConnectRQ)
   return target;
 }
 
-size_t ConnectGateRQ::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CPGClient.ConnectGateRQ)
+size_t ConnectRQ::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CPGClient.ConnectRQ)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -327,63 +374,74 @@ size_t ConnectGateRQ::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->logicid());
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
 }
 
-void ConnectGateRQ::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:CPGClient.ConnectGateRQ)
+void ConnectRQ::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CPGClient.ConnectRQ)
   GOOGLE_DCHECK_NE(&from, this);
-  const ConnectGateRQ* source =
-      ::google::protobuf::DynamicCastToGenerated<ConnectGateRQ>(
+  const ConnectRQ* source =
+      ::google::protobuf::DynamicCastToGenerated<ConnectRQ>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGClient.ConnectRQ)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGClient.ConnectGateRQ)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGClient.ConnectRQ)
     MergeFrom(*source);
   }
 }
 
-void ConnectGateRQ::MergeFrom(const ConnectGateRQ& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CPGClient.ConnectGateRQ)
+void ConnectRQ::MergeFrom(const ConnectRQ& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CPGClient.ConnectRQ)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.logicid() != 0) {
+    set_logicid(from.logicid());
+  }
 }
 
-void ConnectGateRQ::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:CPGClient.ConnectGateRQ)
+void ConnectRQ::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CPGClient.ConnectRQ)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void ConnectGateRQ::CopyFrom(const ConnectGateRQ& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CPGClient.ConnectGateRQ)
+void ConnectRQ::CopyFrom(const ConnectRQ& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CPGClient.ConnectRQ)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ConnectGateRQ::IsInitialized() const {
+bool ConnectRQ::IsInitialized() const {
   return true;
 }
 
-void ConnectGateRQ::Swap(ConnectGateRQ* other) {
+void ConnectRQ::Swap(ConnectRQ* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void ConnectGateRQ::InternalSwap(ConnectGateRQ* other) {
+void ConnectRQ::InternalSwap(ConnectRQ* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(logicid_, other->logicid_);
 }
 
-::google::protobuf::Metadata ConnectGateRQ::GetMetadata() const {
+::google::protobuf::Metadata ConnectRQ::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGClient_2eproto);
   return ::file_level_metadata_CPGClient_2eproto[kIndexInFileMessages];
 }
@@ -391,24 +449,25 @@ void ConnectGateRQ::InternalSwap(ConnectGateRQ* other) {
 
 // ===================================================================
 
-void ConnectGateRS::InitAsDefaultInstance() {
+void ConnectRS::InitAsDefaultInstance() {
 }
-class ConnectGateRS::HasBitSetters {
+class ConnectRS::HasBitSetters {
  public:
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ConnectGateRS::kResultFieldNumber;
-const int ConnectGateRS::kPortFieldNumber;
-const int ConnectGateRS::kIpFieldNumber;
+const int ConnectRS::kLogicIDFieldNumber;
+const int ConnectRS::kResultFieldNumber;
+const int ConnectRS::kPortFieldNumber;
+const int ConnectRS::kIpFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-ConnectGateRS::ConnectGateRS()
+ConnectRS::ConnectRS()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(constructor:CPGClient.ConnectRS)
 }
-ConnectGateRS::ConnectGateRS(const ConnectGateRS& from)
+ConnectRS::ConnectRS(const ConnectRS& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
@@ -416,56 +475,56 @@ ConnectGateRS::ConnectGateRS(const ConnectGateRS& from)
   if (from.ip().size() > 0) {
     ip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_);
   }
-  ::memcpy(&result_, &from.result_,
+  ::memcpy(&logicid_, &from.logicid_,
     static_cast<size_t>(reinterpret_cast<char*>(&port_) -
-    reinterpret_cast<char*>(&result_)) + sizeof(port_));
-  // @@protoc_insertion_point(copy_constructor:CPGClient.ConnectGateRS)
+    reinterpret_cast<char*>(&logicid_)) + sizeof(port_));
+  // @@protoc_insertion_point(copy_constructor:CPGClient.ConnectRS)
 }
 
-void ConnectGateRS::SharedCtor() {
+void ConnectRS::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
-      &scc_info_ConnectGateRS_CPGClient_2eproto.base);
+      &scc_info_ConnectRS_CPGClient_2eproto.base);
   ip_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&result_, 0, static_cast<size_t>(
+  ::memset(&logicid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&port_) -
-      reinterpret_cast<char*>(&result_)) + sizeof(port_));
+      reinterpret_cast<char*>(&logicid_)) + sizeof(port_));
 }
 
-ConnectGateRS::~ConnectGateRS() {
-  // @@protoc_insertion_point(destructor:CPGClient.ConnectGateRS)
+ConnectRS::~ConnectRS() {
+  // @@protoc_insertion_point(destructor:CPGClient.ConnectRS)
   SharedDtor();
 }
 
-void ConnectGateRS::SharedDtor() {
+void ConnectRS::SharedDtor() {
   ip_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-void ConnectGateRS::SetCachedSize(int size) const {
+void ConnectRS::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ConnectGateRS& ConnectGateRS::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_ConnectGateRS_CPGClient_2eproto.base);
+const ConnectRS& ConnectRS::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_ConnectRS_CPGClient_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void ConnectGateRS::Clear() {
-// @@protoc_insertion_point(message_clear_start:CPGClient.ConnectGateRS)
+void ConnectRS::Clear() {
+// @@protoc_insertion_point(message_clear_start:CPGClient.ConnectRS)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&result_, 0, static_cast<size_t>(
+  ::memset(&logicid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&port_) -
-      reinterpret_cast<char*>(&result_)) + sizeof(port_));
+      reinterpret_cast<char*>(&logicid_)) + sizeof(port_));
   _internal_metadata_.Clear();
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* ConnectGateRS::_InternalParse(const char* begin, const char* end, void* object,
+const char* ConnectRS::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<ConnectGateRS*>(object);
+  auto msg = static_cast<ConnectRS*>(object);
   ::google::protobuf::uint32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
@@ -475,9 +534,19 @@ const char* ConnectGateRS::_InternalParse(const char* begin, const char* end, vo
     ptr = Varint::Parse32Inline(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // int32 result = 1;
+      // int32 logicID = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_logicid(value);
+        break;
+      }
+      // int32 result = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
@@ -485,9 +554,9 @@ const char* ConnectGateRS::_InternalParse(const char* begin, const char* end, vo
         msg->set_result(value);
         break;
       }
-      // int32 port = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+      // int32 port = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
@@ -495,12 +564,12 @@ const char* ConnectGateRS::_InternalParse(const char* begin, const char* end, vo
         msg->set_port(value);
         break;
       }
-      // string ip = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+      // string ip = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
         ptr = Varint::Parse32Inline(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("CPGClient.ConnectGateRS.ip");
+        ctx->extra_parse_data().SetFieldName("CPGClient.ConnectRS.ip");
         parser_till_end = ::google::protobuf::internal::StringParserUTF8;
         ::std::string* str = msg->mutable_ip();
         str->clear();
@@ -535,19 +604,32 @@ group_continues: (void)&&group_continues;
   return ptr;
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool ConnectGateRS::MergePartialFromCodedStream(
+bool ConnectRS::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(parse_start:CPGClient.ConnectRS)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 result = 1;
+      // int32 logicID = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &logicid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 result = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -558,9 +640,9 @@ bool ConnectGateRS::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 port = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+      // int32 port = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -571,15 +653,15 @@ bool ConnectGateRS::MergePartialFromCodedStream(
         break;
       }
 
-      // string ip = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+      // string ip = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_ip()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->ip().data(), static_cast<int>(this->ip().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "CPGClient.ConnectGateRS.ip"));
+            "CPGClient.ConnectRS.ip"));
         } else {
           goto handle_unusual;
         }
@@ -598,86 +680,96 @@ bool ConnectGateRS::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(parse_success:CPGClient.ConnectRS)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(parse_failure:CPGClient.ConnectRS)
   return false;
 #undef DO_
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
-void ConnectGateRS::SerializeWithCachedSizes(
+void ConnectRS::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(serialize_start:CPGClient.ConnectRS)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 result = 1;
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->logicid(), output);
+  }
+
+  // int32 result = 2;
   if (this->result() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->result(), output);
   }
 
-  // int32 port = 2;
+  // int32 port = 3;
   if (this->port() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->port(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->port(), output);
   }
 
-  // string ip = 3;
+  // string ip = 4;
   if (this->ip().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->ip().data(), static_cast<int>(this->ip().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CPGClient.ConnectGateRS.ip");
+      "CPGClient.ConnectRS.ip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->ip(), output);
+      4, this->ip(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(serialize_end:CPGClient.ConnectRS)
 }
 
-::google::protobuf::uint8* ConnectGateRS::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* ConnectRS::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(serialize_to_array_start:CPGClient.ConnectRS)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 result = 1;
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->logicid(), target);
+  }
+
+  // int32 result = 2;
   if (this->result() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->result(), target);
   }
 
-  // int32 port = 2;
+  // int32 port = 3;
   if (this->port() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->port(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->port(), target);
   }
 
-  // string ip = 3;
+  // string ip = 4;
   if (this->ip().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->ip().data(), static_cast<int>(this->ip().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CPGClient.ConnectGateRS.ip");
+      "CPGClient.ConnectRS.ip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->ip(), target);
+        4, this->ip(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(serialize_to_array_end:CPGClient.ConnectRS)
   return target;
 }
 
-size_t ConnectGateRS::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CPGClient.ConnectGateRS)
+size_t ConnectRS::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CPGClient.ConnectRS)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -689,21 +781,28 @@ size_t ConnectGateRS::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string ip = 3;
+  // string ip = 4;
   if (this->ip().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->ip());
   }
 
-  // int32 result = 1;
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->logicid());
+  }
+
+  // int32 result = 2;
   if (this->result() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->result());
   }
 
-  // int32 port = 2;
+  // int32 port = 3;
   if (this->port() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -715,23 +814,23 @@ size_t ConnectGateRS::ByteSizeLong() const {
   return total_size;
 }
 
-void ConnectGateRS::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:CPGClient.ConnectGateRS)
+void ConnectRS::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CPGClient.ConnectRS)
   GOOGLE_DCHECK_NE(&from, this);
-  const ConnectGateRS* source =
-      ::google::protobuf::DynamicCastToGenerated<ConnectGateRS>(
+  const ConnectRS* source =
+      ::google::protobuf::DynamicCastToGenerated<ConnectRS>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGClient.ConnectRS)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGClient.ConnectRS)
     MergeFrom(*source);
   }
 }
 
-void ConnectGateRS::MergeFrom(const ConnectGateRS& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CPGClient.ConnectGateRS)
+void ConnectRS::MergeFrom(const ConnectRS& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CPGClient.ConnectRS)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -741,6 +840,9 @@ void ConnectGateRS::MergeFrom(const ConnectGateRS& from) {
 
     ip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_);
   }
+  if (from.logicid() != 0) {
+    set_logicid(from.logicid());
+  }
   if (from.result() != 0) {
     set_result(from.result());
   }
@@ -749,384 +851,39 @@ void ConnectGateRS::MergeFrom(const ConnectGateRS& from) {
   }
 }
 
-void ConnectGateRS::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:CPGClient.ConnectGateRS)
+void ConnectRS::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CPGClient.ConnectRS)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void ConnectGateRS::CopyFrom(const ConnectGateRS& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CPGClient.ConnectGateRS)
+void ConnectRS::CopyFrom(const ConnectRS& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CPGClient.ConnectRS)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool ConnectGateRS::IsInitialized() const {
+bool ConnectRS::IsInitialized() const {
   return true;
 }
 
-void ConnectGateRS::Swap(ConnectGateRS* other) {
+void ConnectRS::Swap(ConnectRS* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void ConnectGateRS::InternalSwap(ConnectGateRS* other) {
+void ConnectRS::InternalSwap(ConnectRS* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   ip_.Swap(&other->ip_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
+  swap(logicid_, other->logicid_);
   swap(result_, other->result_);
   swap(port_, other->port_);
 }
 
-::google::protobuf::Metadata ConnectGateRS::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGClient_2eproto);
-  return ::file_level_metadata_CPGClient_2eproto[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void LoginRS::InitAsDefaultInstance() {
-}
-class LoginRS::HasBitSetters {
- public:
-};
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int LoginRS::kUidFieldNumber;
-const int LoginRS::kTokenFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-LoginRS::LoginRS()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:CPGClient.LoginRS)
-}
-LoginRS::LoginRS(const LoginRS& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.token().size() > 0) {
-    token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.token_);
-  }
-  uid_ = from.uid_;
-  // @@protoc_insertion_point(copy_constructor:CPGClient.LoginRS)
-}
-
-void LoginRS::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_LoginRS_CPGClient_2eproto.base);
-  token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  uid_ = 0;
-}
-
-LoginRS::~LoginRS() {
-  // @@protoc_insertion_point(destructor:CPGClient.LoginRS)
-  SharedDtor();
-}
-
-void LoginRS::SharedDtor() {
-  token_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void LoginRS::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const LoginRS& LoginRS::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_LoginRS_CPGClient_2eproto.base);
-  return *internal_default_instance();
-}
-
-
-void LoginRS::Clear() {
-// @@protoc_insertion_point(message_clear_start:CPGClient.LoginRS)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  uid_ = 0;
-  _internal_metadata_.Clear();
-}
-
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* LoginRS::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<LoginRS*>(object);
-  ::google::protobuf::uint32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ::google::protobuf::uint32 tag;
-    ptr = Varint::Parse32Inline(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-    switch (tag >> 3) {
-      // int32 uid = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        ::google::protobuf::uint64 val;
-        ptr = Varint::Parse64(ptr, &val);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ::google::protobuf::int32 value = val;
-        msg->set_uid(value);
-        break;
-      }
-      // string token = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
-        ptr = Varint::Parse32Inline(ptr, &size);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("CPGClient.LoginRS.token");
-        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
-        ::std::string* str = msg->mutable_token();
-        str->clear();
-        object = str;
-        if (size > end - ptr) goto len_delim_till_end;
-        auto newend = ptr + size;
-        if (size) ptr = parser_till_end(ptr, newend, object, ctx);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr == newend);
-        break;
-      }
-      default: {
-      handle_unusual: (void)&&handle_unusual;
-        if ((tag & 7) == 4 || tag == 0) {
-          bool ok = ctx->ValidEndGroup(tag);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
-          return ptr;
-        }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        if (res.second) return ptr;
-      }
-    }  // switch
-  }  // while
-  return ptr;
-len_delim_till_end: (void)&&len_delim_till_end;
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                                 {parser_till_end, object}, size);
-group_continues: (void)&&group_continues;
-  GOOGLE_DCHECK(ptr >= end);
-  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
-  return ptr;
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool LoginRS::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:CPGClient.LoginRS)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 uid = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &uid_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string token = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_token()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->token().data(), static_cast<int>(this->token().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "CPGClient.LoginRS.token"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:CPGClient.LoginRS)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:CPGClient.LoginRS)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void LoginRS::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:CPGClient.LoginRS)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 uid = 1;
-  if (this->uid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->uid(), output);
-  }
-
-  // string token = 2;
-  if (this->token().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->token().data(), static_cast<int>(this->token().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CPGClient.LoginRS.token");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->token(), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:CPGClient.LoginRS)
-}
-
-::google::protobuf::uint8* LoginRS::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:CPGClient.LoginRS)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 uid = 1;
-  if (this->uid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->uid(), target);
-  }
-
-  // string token = 2;
-  if (this->token().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->token().data(), static_cast<int>(this->token().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CPGClient.LoginRS.token");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->token(), target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:CPGClient.LoginRS)
-  return target;
-}
-
-size_t LoginRS::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CPGClient.LoginRS)
-  size_t total_size = 0;
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string token = 2;
-  if (this->token().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->token());
-  }
-
-  // int32 uid = 1;
-  if (this->uid() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->uid());
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void LoginRS::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:CPGClient.LoginRS)
-  GOOGLE_DCHECK_NE(&from, this);
-  const LoginRS* source =
-      ::google::protobuf::DynamicCastToGenerated<LoginRS>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGClient.LoginRS)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGClient.LoginRS)
-    MergeFrom(*source);
-  }
-}
-
-void LoginRS::MergeFrom(const LoginRS& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CPGClient.LoginRS)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.token().size() > 0) {
-
-    token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.token_);
-  }
-  if (from.uid() != 0) {
-    set_uid(from.uid());
-  }
-}
-
-void LoginRS::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:CPGClient.LoginRS)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void LoginRS::CopyFrom(const LoginRS& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CPGClient.LoginRS)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LoginRS::IsInitialized() const {
-  return true;
-}
-
-void LoginRS::Swap(LoginRS* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void LoginRS::InternalSwap(LoginRS* other) {
-  using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  token_.Swap(&other->token_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(uid_, other->uid_);
-}
-
-::google::protobuf::Metadata LoginRS::GetMetadata() const {
+::google::protobuf::Metadata ConnectRS::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGClient_2eproto);
   return ::file_level_metadata_CPGClient_2eproto[kIndexInFileMessages];
 }
@@ -1141,7 +898,9 @@ class LoginRQ::HasBitSetters {
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int LoginRQ::kResultFieldNumber;
+const int LoginRQ::kLogicIDFieldNumber;
+const int LoginRQ::kUidFieldNumber;
+const int LoginRQ::kTokenFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 LoginRQ::LoginRQ()
@@ -1153,12 +912,23 @@ LoginRQ::LoginRQ(const LoginRQ& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  result_ = from.result_;
+  token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.token().size() > 0) {
+    token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
+  ::memcpy(&logicid_, &from.logicid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&uid_) -
+    reinterpret_cast<char*>(&logicid_)) + sizeof(uid_));
   // @@protoc_insertion_point(copy_constructor:CPGClient.LoginRQ)
 }
 
 void LoginRQ::SharedCtor() {
-  result_ = 0;
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_LoginRQ_CPGClient_2eproto.base);
+  token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&logicid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&uid_) -
+      reinterpret_cast<char*>(&logicid_)) + sizeof(uid_));
 }
 
 LoginRQ::~LoginRQ() {
@@ -1167,6 +937,7 @@ LoginRQ::~LoginRQ() {
 }
 
 void LoginRQ::SharedDtor() {
+  token_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void LoginRQ::SetCachedSize(int size) const {
@@ -1184,7 +955,10 @@ void LoginRQ::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  result_ = 0;
+  token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&logicid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&uid_) -
+      reinterpret_cast<char*>(&logicid_)) + sizeof(uid_));
   _internal_metadata_.Clear();
 }
 
@@ -1201,14 +975,40 @@ const char* LoginRQ::_InternalParse(const char* begin, const char* end, void* ob
     ptr = Varint::Parse32Inline(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // int32 result = 1;
+      // int32 logicID = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         ::google::protobuf::int32 value = val;
-        msg->set_result(value);
+        msg->set_logicid(value);
+        break;
+      }
+      // int32 uid = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_uid(value);
+        break;
+      }
+      // string token = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("CPGClient.LoginRQ.token");
+        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
+        ::std::string* str = msg->mutable_token();
+        str->clear();
+        object = str;
+        if (size > end - ptr) goto len_delim_till_end;
+        auto newend = ptr + size;
+        if (size) ptr = parser_till_end(ptr, newend, object, ctx);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr == newend);
         break;
       }
       default: {
@@ -1245,13 +1045,41 @@ bool LoginRQ::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 result = 1;
+      // int32 logicID = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &result_)));
+                 input, &logicid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 uid = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &uid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string token = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_token()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->token().data(), static_cast<int>(this->token().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CPGClient.LoginRQ.token"));
         } else {
           goto handle_unusual;
         }
@@ -1285,9 +1113,24 @@ void LoginRQ::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 result = 1;
-  if (this->result() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->logicid(), output);
+  }
+
+  // int32 uid = 2;
+  if (this->uid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->uid(), output);
+  }
+
+  // string token = 3;
+  if (this->token().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->token().data(), static_cast<int>(this->token().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CPGClient.LoginRQ.token");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->token(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1304,9 +1147,25 @@ void LoginRQ::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 result = 1;
-  if (this->result() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->logicid(), target);
+  }
+
+  // int32 uid = 2;
+  if (this->uid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->uid(), target);
+  }
+
+  // string token = 3;
+  if (this->token().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->token().data(), static_cast<int>(this->token().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "CPGClient.LoginRQ.token");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->token(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1330,11 +1189,25 @@ size_t LoginRQ::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 result = 1;
-  if (this->result() != 0) {
+  // string token = 3;
+  if (this->token().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->token());
+  }
+
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->result());
+        this->logicid());
+  }
+
+  // int32 uid = 2;
+  if (this->uid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->uid());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1364,8 +1237,15 @@ void LoginRQ::MergeFrom(const LoginRQ& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.result() != 0) {
-    set_result(from.result());
+  if (from.token().size() > 0) {
+
+    token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.token_);
+  }
+  if (from.logicid() != 0) {
+    set_logicid(from.logicid());
+  }
+  if (from.uid() != 0) {
+    set_uid(from.uid());
   }
 }
 
@@ -1394,10 +1274,335 @@ void LoginRQ::Swap(LoginRQ* other) {
 void LoginRQ::InternalSwap(LoginRQ* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(result_, other->result_);
+  token_.Swap(&other->token_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(logicid_, other->logicid_);
+  swap(uid_, other->uid_);
 }
 
 ::google::protobuf::Metadata LoginRQ::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGClient_2eproto);
+  return ::file_level_metadata_CPGClient_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void LoginRS::InitAsDefaultInstance() {
+}
+class LoginRS::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int LoginRS::kLogicIDFieldNumber;
+const int LoginRS::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+LoginRS::LoginRS()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CPGClient.LoginRS)
+}
+LoginRS::LoginRS(const LoginRS& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&logicid_, &from.logicid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&logicid_)) + sizeof(result_));
+  // @@protoc_insertion_point(copy_constructor:CPGClient.LoginRS)
+}
+
+void LoginRS::SharedCtor() {
+  ::memset(&logicid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&logicid_)) + sizeof(result_));
+}
+
+LoginRS::~LoginRS() {
+  // @@protoc_insertion_point(destructor:CPGClient.LoginRS)
+  SharedDtor();
+}
+
+void LoginRS::SharedDtor() {
+}
+
+void LoginRS::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const LoginRS& LoginRS::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_LoginRS_CPGClient_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void LoginRS::Clear() {
+// @@protoc_insertion_point(message_clear_start:CPGClient.LoginRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&logicid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&logicid_)) + sizeof(result_));
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* LoginRS::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<LoginRS*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // int32 logicID = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_logicid(value);
+        break;
+      }
+      // int32 result = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_result(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4 || tag == 0) {
+          bool ok = ctx->ValidEndGroup(tag);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool LoginRS::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CPGClient.LoginRS)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 logicID = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &logicid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 result = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &result_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CPGClient.LoginRS)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CPGClient.LoginRS)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void LoginRS::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CPGClient.LoginRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->logicid(), output);
+  }
+
+  // int32 result = 2;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->result(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:CPGClient.LoginRS)
+}
+
+::google::protobuf::uint8* LoginRS::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:CPGClient.LoginRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->logicid(), target);
+  }
+
+  // int32 result = 2;
+  if (this->result() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->result(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:CPGClient.LoginRS)
+  return target;
+}
+
+size_t LoginRS::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CPGClient.LoginRS)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 logicID = 1;
+  if (this->logicid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->logicid());
+  }
+
+  // int32 result = 2;
+  if (this->result() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->result());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void LoginRS::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CPGClient.LoginRS)
+  GOOGLE_DCHECK_NE(&from, this);
+  const LoginRS* source =
+      ::google::protobuf::DynamicCastToGenerated<LoginRS>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGClient.LoginRS)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGClient.LoginRS)
+    MergeFrom(*source);
+  }
+}
+
+void LoginRS::MergeFrom(const LoginRS& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CPGClient.LoginRS)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.logicid() != 0) {
+    set_logicid(from.logicid());
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void LoginRS::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CPGClient.LoginRS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRS::CopyFrom(const LoginRS& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CPGClient.LoginRS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRS::IsInitialized() const {
+  return true;
+}
+
+void LoginRS::Swap(LoginRS* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void LoginRS::InternalSwap(LoginRS* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(logicid_, other->logicid_);
+  swap(result_, other->result_);
+}
+
+::google::protobuf::Metadata LoginRS::GetMetadata() const {
   ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGClient_2eproto);
   return ::file_level_metadata_CPGClient_2eproto[kIndexInFileMessages];
 }
@@ -1407,17 +1612,17 @@ void LoginRQ::InternalSwap(LoginRQ* other) {
 }  // namespace CPGClient
 namespace google {
 namespace protobuf {
-template<> PROTOBUF_NOINLINE ::CPGClient::ConnectGateRQ* Arena::CreateMaybeMessage< ::CPGClient::ConnectGateRQ >(Arena* arena) {
-  return Arena::CreateInternal< ::CPGClient::ConnectGateRQ >(arena);
+template<> PROTOBUF_NOINLINE ::CPGClient::ConnectRQ* Arena::CreateMaybeMessage< ::CPGClient::ConnectRQ >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGClient::ConnectRQ >(arena);
 }
-template<> PROTOBUF_NOINLINE ::CPGClient::ConnectGateRS* Arena::CreateMaybeMessage< ::CPGClient::ConnectGateRS >(Arena* arena) {
-  return Arena::CreateInternal< ::CPGClient::ConnectGateRS >(arena);
-}
-template<> PROTOBUF_NOINLINE ::CPGClient::LoginRS* Arena::CreateMaybeMessage< ::CPGClient::LoginRS >(Arena* arena) {
-  return Arena::CreateInternal< ::CPGClient::LoginRS >(arena);
+template<> PROTOBUF_NOINLINE ::CPGClient::ConnectRS* Arena::CreateMaybeMessage< ::CPGClient::ConnectRS >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGClient::ConnectRS >(arena);
 }
 template<> PROTOBUF_NOINLINE ::CPGClient::LoginRQ* Arena::CreateMaybeMessage< ::CPGClient::LoginRQ >(Arena* arena) {
   return Arena::CreateInternal< ::CPGClient::LoginRQ >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGClient::LoginRS* Arena::CreateMaybeMessage< ::CPGClient::LoginRS >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGClient::LoginRS >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

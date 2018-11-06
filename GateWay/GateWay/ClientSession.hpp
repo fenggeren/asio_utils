@@ -27,13 +27,11 @@ public:
 private:
     
     void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data)
-    {
-        std::string content(data->peek(), data->readableBytes());
-        data->retrieveAll();
-        session->send(content);
-    }
+                                DataBuffer*const data);
 private:
+    
+    void loginRQ(const void* data, int len);
+    
 };
 
 class CGSessionFactory : public TCPSessionFactory

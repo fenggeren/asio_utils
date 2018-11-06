@@ -15,22 +15,79 @@
 #include "RobotManager.hpp"
 #include "Robot.hpp"
 
-// sock????
-// ??????GateServer??????
-void RobotSession::sendInitData() 
+
+using namespace fasio::logging;
+
+void C2BSession::onClose()
 {
-    setLogicID(uuid());
-    if (firstConnect_)
+    
+}
+
+void C2BSession::sendInitData()
+{
+    //向 balance发送连接请求。 返回合适的GateServer配置信息
+    CPGClient::ConnectRQ rq;
+    rq.set_logicid(uuid());
+    SessionManager.sendMsgToSession(shared_from_this(), rq, kConnectRQ, ServerType_BalanceServer);
+}
+
+
+void C2BSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
+                                        DataBuffer*const data)
+{
+    while (hasPacket(data->peek(), data->readableBytes()))
     {
-        // ????gs????
-        CPGClient::ConnectGateRQ rq;
-        SessionManager.sendMsgToSession(shared_from_this(), rq, kClientConnectRQ,ServerType_GateServer);
+        PacketHeader* header = (PacketHeader*)data->peek();
+        const void* buffer = data->peek() + kPacketHeaderSize;
+        switch (header->type) {
+            case kConnectRS:
+            {
+                connectRS(buffer, header->size);
+                break;
+            }
+            default:
+            {
+                LOG_ERROR << " error msg :" << header->type;
+                break;
+            }
+        }
+        data->retrieve(kPacketHeaderSize + header->size);
     }
+}
+
+void C2BSession::connectRS(const void* data, int len)
+{
+    CPGClient::ConnectRS rs;
+    if (fasio::parseProtoMsg(data, len, rs))
+    {
+        auto robot = gRobotManager.getRobot(logicID());
+        robot->setIP(rs.ip());
+        robot->setPort(rs.port());
+        robot->connect();
+        forceClose();
+    }
+    else
+    {
+        LOG_ERROR << " not parse data to CPGClient::ConnectRS size: " << len;
+    }
+}
+
+///////////////////////////////////////////////////
+
+void RobotSession::sendInitData()
+{
+    // 登录请求
+    CPGClient::LoginRQ rq;
+    rq.set_uid(uuid());
+    char buf[64] = {0};
+    snprintf(buf, sizeof(buf), "Robot-%d",uuid());
+    rq.set_token(buf);
+    rq.set_logicid(uuid());
+    SessionManager.sendMsgToSession(shared_from_this(), rq, kLoginRQ,ServerType_GateServer);
 }
 
 void RobotSession::onClose() 
 {
-    firstConnect_ = true;
 }
 
 
@@ -41,9 +98,9 @@ void RobotSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& ses
         PacketHeader* header = (PacketHeader*)data->peek();
         const void* buffer = data->peek() + kPacketHeaderSize;
         switch (header->type) {
-            case kClientConnectRQ:
-            { 
-                connectRS(buffer, header->size);
+            case kLoginRS:
+            {
+                loginRS(buffer, header->size);
                 break;
             } 
             default:
@@ -52,22 +109,7 @@ void RobotSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& ses
         data->retrieve(kPacketHeaderSize + header->size);
     }
 }
-
-
-void RobotSession::connectRS(const void* data, int len)
+void RobotSession::loginRS(const void* data, int len)
 {
-    CPGClient::ConnectGateRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
-    {
-        firstConnect_ = false;
-        // ????  ????session???????session
-        auto robot = gRobotManager.getRobot(logicID());
-        robot->setIP(rs.ip());
-        robot->setPort(rs.port());
-        robot->connect();
-    }
-    else 
-    {
-
-    }
+    
 }

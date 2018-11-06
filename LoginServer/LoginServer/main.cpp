@@ -7,9 +7,11 @@
 //
 
 #include <iostream>
-#include "LSSessionManager.hpp"
+#include "LSKernel.hpp"
 
 int main(int argc, const char * argv[]) {
-     
+    
+    LSKernel::instance().start();
+    
     return 0;
 }

@@ -13,11 +13,11 @@
 
 #define kServerRegistRQ     20001
 #define kServerRegistRS     20002
-#define kServerLoginRQ      20003
-#define kServerLoginRS      20004
+#define kLoginRQ      20003
+#define kLoginRS      20004
 
-#define kClientConnectRQ    10001
-#define kClientConnectRS    10002
+#define kConnectRQ    10001
+#define kConnectRS    10002
 
 
 
@@ -35,11 +35,15 @@ enum ServerType
     ServerType_Gate_Central,
     ServerType_Match_Central,
     ServerType_Login_Central,
+    ServerType_Balance_Central,
+    ServerType_Client_Balance,
+    ServerType_Client_Gate,
     ServerType_GateServer,
     ServerType_LoginServer,
     ServerType_MatchServer,
     ServerType_CentralServer,
-    ServerType_Client
+    ServerType_BalanceServer,
+    ServerType_Client,
 };
 
 // 动态启动新的服务,配置

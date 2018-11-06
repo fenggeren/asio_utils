@@ -7,10 +7,11 @@
 //
 
 #include <iostream>
-#include "CSSessionManager.hpp"
+#include "CSKernel.hpp"
 
 int main(int argc, const char * argv[]) {
-     
+    
+    CSKernel::instance().start();
     
     return 0;
 }

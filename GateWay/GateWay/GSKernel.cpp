@@ -6,13 +6,14 @@
 //  Copyright © 2018年 guanrui fu. All rights reserved.
 //
 
+#include "ClientSession.hpp"
 #include "GSKernel.hpp"
 #include <CPG/CPGToCentral.pb.h>
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"
 #include "GSSessionManager.hpp"
-#include "ClientSession.hpp"
+
 
 using namespace fasio::logging;
 
@@ -22,8 +23,8 @@ void GSKernel::start()
     GSSessionManager::instance().createListener(7890, false, factory);
     
     GSSessionManager::instance().createConnector(ServerType_Gate_Central, g_IoContext, "127.0.0.1", 7801);
-    GSSessionManager::instance().createConnector(ServerType_Gate_Match, g_IoContext, "127.0.0.1", 7851);
-    GSSessionManager::instance().createConnector(ServerType_Gate_Login, g_IoContext, "127.0.0.1", 7831);
+//    GSSessionManager::instance().createConnector(ServerType_Gate_Match, g_IoContext, "127.0.0.1", 7851);
+//    GSSessionManager::instance().createConnector(ServerType_Gate_Login, g_IoContext, "127.0.0.1", 7831);
     g_IoContext.run();
 }
 

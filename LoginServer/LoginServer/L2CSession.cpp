@@ -27,7 +27,7 @@ void L2CSession::sendInitData()
     rq.set_ip("127.0.0.1");
     
     SessionManager.sendMsgToSession(shared_from_this(), rq,
-                                    kServerRegistRQ, ServerType_MatchServer);
+                                    kServerRegistRQ, ServerType_CentralServer);
 }
 
 

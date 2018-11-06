@@ -28,10 +28,10 @@ void G2CSession::sendInitData()
     rq.set_port(7890);
     rq.set_sid(0);
     rq.set_ip("127.0.0.1");
-    rq.set_ip("127.0.0.1");
+    rq.set_exportip("127.0.0.1");
     
     SessionManager.sendMsgToSession(shared_from_this(), rq,
-                                    kServerRegistRQ, ServerType_GateServer);
+                                    kServerRegistRQ, ServerType_CentralServer);
 }
 
 
@@ -48,7 +48,7 @@ void G2CSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& sessi
                 serverRegistRS(buffer, header->size);
                 break;
             }
-            case kServerLoginRS:
+            case kLoginRS:
             {
                 serverLoginRS(buffer, header->size);
                 break;

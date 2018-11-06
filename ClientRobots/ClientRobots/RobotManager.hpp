@@ -9,8 +9,11 @@
 #pragma once
 #include <CPG/CPGServerDefine.h>
 #include <Net/base/FASIOType.h>
+#include <Net/Header.h>
 #include <unordered_map>
+#include <vector>
 #include "Robot.hpp"
+
 
 #define gRobotManager RobotManager::instance()
 
@@ -26,15 +29,17 @@ public:
     RobotManager();
     void start();
     
-    std::shared_ptr<Robot> getRobot(uint32 logicID) const
+    std::shared_ptr<Robot> getRobot(uint32 logicID)
     {
-        return robotsMap_[logicID];
+        return robots_[logicID];
     };
     void removeRobot(uint32 logicID)
     {
-        robotsMap_.erase(logicID);
+        robots_.erase(robots_.begin() + logicID);
     }
-
+    
+    void setRobotNum(int num) { robotNums_ = num; }
+    
 public:
 
     void postConnect(std::shared_ptr<Robot> robot);
@@ -43,8 +48,9 @@ private:
     
     int32 robotNums_;
     asio::io_context io_context_;
-    std::unordered_map<uint32, std::shared_ptr<Robot>> robotsMap_;
-
+    std::vector<std::shared_ptr<Robot>> robots_;
+    
+    
     const std::string ip_;
     const uint16 port_;
 };

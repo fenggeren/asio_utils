@@ -39,6 +39,10 @@ public:
                          const void* data, int len);
     void serverLoginRQ(TCPSessionPtr session,
                        const void* data, int len);
+    
+public:
+    void requestBestGateServer(TCPSessionPtr session, const void* data, int len);
+    
 private:
     
     void gateServerRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);

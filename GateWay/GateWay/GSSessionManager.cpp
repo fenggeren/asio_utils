@@ -33,7 +33,7 @@ void GSSessionManager::transToMatchServer(int32 mid, const google::protobuf::Mes
     }
 }
 
- std::shared_ptr<ClientSession>
+std::shared_ptr<ClientSession>
 GSSessionManager::createConnectorSession(uint8 type)
 {
     if (type == ServerType_Gate_Central)

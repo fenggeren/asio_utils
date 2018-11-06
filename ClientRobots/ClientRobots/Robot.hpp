@@ -29,12 +29,12 @@ public:
     uint16 port() const { return port_;}
     void setPort(uint16 port) { port_ = port; }
 
-    uint32 sessionID() const { return sessionID_; }
-    void setSessionID(uint32 sessionID) { sessionID_ = sessionID_; }
+    uint32 logicID() const { return logicID_; }
+    void setLogicID(uint32 logicID) { logicID_ = logicID; }
 private:
     unsigned short port_;
     std::string ip_;
-    uint32 sessionID_;
+    uint32 logicID_;
 };
 
 

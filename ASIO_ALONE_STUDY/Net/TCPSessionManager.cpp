@@ -192,7 +192,7 @@ void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
     PacketHeader header{msgID, len};
     if (session)
     {
-        session->addMore(&header, sizeof(PacketHeader));
+        session->addMore(&header, kPacketHeaderSize);
         session->send(data, len);
     }
     else
@@ -201,7 +201,7 @@ void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
         {
             if (pair.second->type() == stype)
             {
-                pair.second->addMore(&header, sizeof(PacketHeader));
+                pair.second->addMore(&header, kPacketHeaderSize);
                 pair.second->send(data, len);
             }
         }

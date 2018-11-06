@@ -18,7 +18,7 @@ public:
     ClientSession()
     {
         messageCallback_ = std::bind(&G2CSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-        connectionCallback_ = std::bind(&G2CSession::defaultConnectionCallback, this, std::placeholders::_1);
+//        connectionCallback_ = std::bind(&G2CSession::defaultConnectionCallback, this, std::placeholders::_1);
     }
     
 private:

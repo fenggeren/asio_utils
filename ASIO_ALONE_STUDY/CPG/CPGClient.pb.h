@@ -49,12 +49,12 @@ struct TableStruct_CPGClient_2eproto {
 };
 void AddDescriptors_CPGClient_2eproto();
 namespace CPGClient {
-class ConnectGateRQ;
-class ConnectGateRQDefaultTypeInternal;
-extern ConnectGateRQDefaultTypeInternal _ConnectGateRQ_default_instance_;
-class ConnectGateRS;
-class ConnectGateRSDefaultTypeInternal;
-extern ConnectGateRSDefaultTypeInternal _ConnectGateRS_default_instance_;
+class ConnectRQ;
+class ConnectRQDefaultTypeInternal;
+extern ConnectRQDefaultTypeInternal _ConnectRQ_default_instance_;
+class ConnectRS;
+class ConnectRSDefaultTypeInternal;
+extern ConnectRSDefaultTypeInternal _ConnectRS_default_instance_;
 class LoginRQ;
 class LoginRQDefaultTypeInternal;
 extern LoginRQDefaultTypeInternal _LoginRQ_default_instance_;
@@ -64,8 +64,8 @@ extern LoginRSDefaultTypeInternal _LoginRS_default_instance_;
 }  // namespace CPGClient
 namespace google {
 namespace protobuf {
-template<> ::CPGClient::ConnectGateRQ* Arena::CreateMaybeMessage<::CPGClient::ConnectGateRQ>(Arena*);
-template<> ::CPGClient::ConnectGateRS* Arena::CreateMaybeMessage<::CPGClient::ConnectGateRS>(Arena*);
+template<> ::CPGClient::ConnectRQ* Arena::CreateMaybeMessage<::CPGClient::ConnectRQ>(Arena*);
+template<> ::CPGClient::ConnectRS* Arena::CreateMaybeMessage<::CPGClient::ConnectRS>(Arena*);
 template<> ::CPGClient::LoginRQ* Arena::CreateMaybeMessage<::CPGClient::LoginRQ>(Arena*);
 template<> ::CPGClient::LoginRS* Arena::CreateMaybeMessage<::CPGClient::LoginRS>(Arena*);
 }  // namespace protobuf
@@ -74,24 +74,24 @@ namespace CPGClient {
 
 // ===================================================================
 
-class ConnectGateRQ : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGClient.ConnectGateRQ) */ {
+class ConnectRQ : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGClient.ConnectRQ) */ {
  public:
-  ConnectGateRQ();
-  virtual ~ConnectGateRQ();
+  ConnectRQ();
+  virtual ~ConnectRQ();
 
-  ConnectGateRQ(const ConnectGateRQ& from);
+  ConnectRQ(const ConnectRQ& from);
 
-  inline ConnectGateRQ& operator=(const ConnectGateRQ& from) {
+  inline ConnectRQ& operator=(const ConnectRQ& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  ConnectGateRQ(ConnectGateRQ&& from) noexcept
-    : ConnectGateRQ() {
+  ConnectRQ(ConnectRQ&& from) noexcept
+    : ConnectRQ() {
     *this = ::std::move(from);
   }
 
-  inline ConnectGateRQ& operator=(ConnectGateRQ&& from) noexcept {
+  inline ConnectRQ& operator=(ConnectRQ&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -103,34 +103,34 @@ class ConnectGateRQ : public ::google::protobuf::Message /* @@protoc_insertion_p
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const ConnectGateRQ& default_instance();
+  static const ConnectRQ& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ConnectGateRQ* internal_default_instance() {
-    return reinterpret_cast<const ConnectGateRQ*>(
-               &_ConnectGateRQ_default_instance_);
+  static inline const ConnectRQ* internal_default_instance() {
+    return reinterpret_cast<const ConnectRQ*>(
+               &_ConnectRQ_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  void Swap(ConnectGateRQ* other);
-  friend void swap(ConnectGateRQ& a, ConnectGateRQ& b) {
+  void Swap(ConnectRQ* other);
+  friend void swap(ConnectRQ& a, ConnectRQ& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ConnectGateRQ* New() const final {
-    return CreateMaybeMessage<ConnectGateRQ>(NULL);
+  inline ConnectRQ* New() const final {
+    return CreateMaybeMessage<ConnectRQ>(NULL);
   }
 
-  ConnectGateRQ* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<ConnectGateRQ>(arena);
+  ConnectRQ* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ConnectRQ>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const ConnectGateRQ& from);
-  void MergeFrom(const ConnectGateRQ& from);
+  void CopyFrom(const ConnectRQ& from);
+  void MergeFrom(const ConnectRQ& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -152,7 +152,7 @@ class ConnectGateRQ : public ::google::protobuf::Message /* @@protoc_insertion_p
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ConnectGateRQ* other);
+  void InternalSwap(ConnectRQ* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -168,34 +168,41 @@ class ConnectGateRQ : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:CPGClient.ConnectGateRQ)
+  // int32 logicID = 1;
+  void clear_logicid();
+  static const int kLogicIDFieldNumber = 1;
+  ::google::protobuf::int32 logicid() const;
+  void set_logicid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:CPGClient.ConnectRQ)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::int32 logicid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_CPGClient_2eproto;
 };
 // -------------------------------------------------------------------
 
-class ConnectGateRS : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGClient.ConnectGateRS) */ {
+class ConnectRS : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGClient.ConnectRS) */ {
  public:
-  ConnectGateRS();
-  virtual ~ConnectGateRS();
+  ConnectRS();
+  virtual ~ConnectRS();
 
-  ConnectGateRS(const ConnectGateRS& from);
+  ConnectRS(const ConnectRS& from);
 
-  inline ConnectGateRS& operator=(const ConnectGateRS& from) {
+  inline ConnectRS& operator=(const ConnectRS& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  ConnectGateRS(ConnectGateRS&& from) noexcept
-    : ConnectGateRS() {
+  ConnectRS(ConnectRS&& from) noexcept
+    : ConnectRS() {
     *this = ::std::move(from);
   }
 
-  inline ConnectGateRS& operator=(ConnectGateRS&& from) noexcept {
+  inline ConnectRS& operator=(ConnectRS&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -207,34 +214,34 @@ class ConnectGateRS : public ::google::protobuf::Message /* @@protoc_insertion_p
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const ConnectGateRS& default_instance();
+  static const ConnectRS& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const ConnectGateRS* internal_default_instance() {
-    return reinterpret_cast<const ConnectGateRS*>(
-               &_ConnectGateRS_default_instance_);
+  static inline const ConnectRS* internal_default_instance() {
+    return reinterpret_cast<const ConnectRS*>(
+               &_ConnectRS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  void Swap(ConnectGateRS* other);
-  friend void swap(ConnectGateRS& a, ConnectGateRS& b) {
+  void Swap(ConnectRS* other);
+  friend void swap(ConnectRS& a, ConnectRS& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline ConnectGateRS* New() const final {
-    return CreateMaybeMessage<ConnectGateRS>(NULL);
+  inline ConnectRS* New() const final {
+    return CreateMaybeMessage<ConnectRS>(NULL);
   }
 
-  ConnectGateRS* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<ConnectGateRS>(arena);
+  ConnectRS* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ConnectRS>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const ConnectGateRS& from);
-  void MergeFrom(const ConnectGateRS& from);
+  void CopyFrom(const ConnectRS& from);
+  void MergeFrom(const ConnectRS& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -256,7 +263,7 @@ class ConnectGateRS : public ::google::protobuf::Message /* @@protoc_insertion_p
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ConnectGateRS* other);
+  void InternalSwap(ConnectRS* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -272,9 +279,9 @@ class ConnectGateRS : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // string ip = 3;
+  // string ip = 4;
   void clear_ip();
-  static const int kIpFieldNumber = 3;
+  static const int kIpFieldNumber = 4;
   const ::std::string& ip() const;
   void set_ip(const ::std::string& value);
   #if LANG_CXX11
@@ -286,152 +293,33 @@ class ConnectGateRS : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::std::string* release_ip();
   void set_allocated_ip(::std::string* ip);
 
-  // int32 result = 1;
+  // int32 logicID = 1;
+  void clear_logicid();
+  static const int kLogicIDFieldNumber = 1;
+  ::google::protobuf::int32 logicid() const;
+  void set_logicid(::google::protobuf::int32 value);
+
+  // int32 result = 2;
   void clear_result();
-  static const int kResultFieldNumber = 1;
+  static const int kResultFieldNumber = 2;
   ::google::protobuf::int32 result() const;
   void set_result(::google::protobuf::int32 value);
 
-  // int32 port = 2;
+  // int32 port = 3;
   void clear_port();
-  static const int kPortFieldNumber = 2;
+  static const int kPortFieldNumber = 3;
   ::google::protobuf::int32 port() const;
   void set_port(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:CPGClient.ConnectGateRS)
+  // @@protoc_insertion_point(class_scope:CPGClient.ConnectRS)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr ip_;
+  ::google::protobuf::int32 logicid_;
   ::google::protobuf::int32 result_;
   ::google::protobuf::int32 port_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_CPGClient_2eproto;
-};
-// -------------------------------------------------------------------
-
-class LoginRS : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGClient.LoginRS) */ {
- public:
-  LoginRS();
-  virtual ~LoginRS();
-
-  LoginRS(const LoginRS& from);
-
-  inline LoginRS& operator=(const LoginRS& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  LoginRS(LoginRS&& from) noexcept
-    : LoginRS() {
-    *this = ::std::move(from);
-  }
-
-  inline LoginRS& operator=(LoginRS&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return default_instance().GetDescriptor();
-  }
-  static const LoginRS& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const LoginRS* internal_default_instance() {
-    return reinterpret_cast<const LoginRS*>(
-               &_LoginRS_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  void Swap(LoginRS* other);
-  friend void swap(LoginRS& a, LoginRS& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline LoginRS* New() const final {
-    return CreateMaybeMessage<LoginRS>(NULL);
-  }
-
-  LoginRS* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<LoginRS>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const LoginRS& from);
-  void MergeFrom(const LoginRS& from);
-  void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
-  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
-  #else
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(LoginRS* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string token = 2;
-  void clear_token();
-  static const int kTokenFieldNumber = 2;
-  const ::std::string& token() const;
-  void set_token(const ::std::string& value);
-  #if LANG_CXX11
-  void set_token(::std::string&& value);
-  #endif
-  void set_token(const char* value);
-  void set_token(const char* value, size_t size);
-  ::std::string* mutable_token();
-  ::std::string* release_token();
-  void set_allocated_token(::std::string* token);
-
-  // int32 uid = 1;
-  void clear_uid();
-  static const int kUidFieldNumber = 1;
-  ::google::protobuf::int32 uid() const;
-  void set_uid(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:CPGClient.LoginRS)
- private:
-  class HasBitSetters;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr token_;
-  ::google::protobuf::int32 uid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_CPGClient_2eproto;
 };
@@ -474,7 +362,7 @@ class LoginRQ : public ::google::protobuf::Message /* @@protoc_insertion_point(c
                &_LoginRQ_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    2;
 
   void Swap(LoginRQ* other);
   friend void swap(LoginRQ& a, LoginRQ& b) {
@@ -531,17 +419,157 @@ class LoginRQ : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // int32 result = 1;
-  void clear_result();
-  static const int kResultFieldNumber = 1;
-  ::google::protobuf::int32 result() const;
-  void set_result(::google::protobuf::int32 value);
+  // string token = 3;
+  void clear_token();
+  static const int kTokenFieldNumber = 3;
+  const ::std::string& token() const;
+  void set_token(const ::std::string& value);
+  #if LANG_CXX11
+  void set_token(::std::string&& value);
+  #endif
+  void set_token(const char* value);
+  void set_token(const char* value, size_t size);
+  ::std::string* mutable_token();
+  ::std::string* release_token();
+  void set_allocated_token(::std::string* token);
+
+  // int32 logicID = 1;
+  void clear_logicid();
+  static const int kLogicIDFieldNumber = 1;
+  ::google::protobuf::int32 logicid() const;
+  void set_logicid(::google::protobuf::int32 value);
+
+  // int32 uid = 2;
+  void clear_uid();
+  static const int kUidFieldNumber = 2;
+  ::google::protobuf::int32 uid() const;
+  void set_uid(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:CPGClient.LoginRQ)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr token_;
+  ::google::protobuf::int32 logicid_;
+  ::google::protobuf::int32 uid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_CPGClient_2eproto;
+};
+// -------------------------------------------------------------------
+
+class LoginRS : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGClient.LoginRS) */ {
+ public:
+  LoginRS();
+  virtual ~LoginRS();
+
+  LoginRS(const LoginRS& from);
+
+  inline LoginRS& operator=(const LoginRS& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  LoginRS(LoginRS&& from) noexcept
+    : LoginRS() {
+    *this = ::std::move(from);
+  }
+
+  inline LoginRS& operator=(LoginRS&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const LoginRS& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const LoginRS* internal_default_instance() {
+    return reinterpret_cast<const LoginRS*>(
+               &_LoginRS_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  void Swap(LoginRS* other);
+  friend void swap(LoginRS& a, LoginRS& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline LoginRS* New() const final {
+    return CreateMaybeMessage<LoginRS>(NULL);
+  }
+
+  LoginRS* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<LoginRS>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const LoginRS& from);
+  void MergeFrom(const LoginRS& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(LoginRS* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // int32 logicID = 1;
+  void clear_logicid();
+  static const int kLogicIDFieldNumber = 1;
+  ::google::protobuf::int32 logicid() const;
+  void set_logicid(::google::protobuf::int32 value);
+
+  // int32 result = 2;
+  void clear_result();
+  static const int kResultFieldNumber = 2;
+  ::google::protobuf::int32 result() const;
+  void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:CPGClient.LoginRS)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::int32 logicid_;
   ::google::protobuf::int32 result_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_CPGClient_2eproto;
@@ -555,180 +583,236 @@ class LoginRQ : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// ConnectGateRQ
+// ConnectRQ
+
+// int32 logicID = 1;
+inline void ConnectRQ::clear_logicid() {
+  logicid_ = 0;
+}
+inline ::google::protobuf::int32 ConnectRQ::logicid() const {
+  // @@protoc_insertion_point(field_get:CPGClient.ConnectRQ.logicID)
+  return logicid_;
+}
+inline void ConnectRQ::set_logicid(::google::protobuf::int32 value) {
+  
+  logicid_ = value;
+  // @@protoc_insertion_point(field_set:CPGClient.ConnectRQ.logicID)
+}
 
 // -------------------------------------------------------------------
 
-// ConnectGateRS
+// ConnectRS
 
-// int32 result = 1;
-inline void ConnectGateRS::clear_result() {
+// int32 logicID = 1;
+inline void ConnectRS::clear_logicid() {
+  logicid_ = 0;
+}
+inline ::google::protobuf::int32 ConnectRS::logicid() const {
+  // @@protoc_insertion_point(field_get:CPGClient.ConnectRS.logicID)
+  return logicid_;
+}
+inline void ConnectRS::set_logicid(::google::protobuf::int32 value) {
+  
+  logicid_ = value;
+  // @@protoc_insertion_point(field_set:CPGClient.ConnectRS.logicID)
+}
+
+// int32 result = 2;
+inline void ConnectRS::clear_result() {
   result_ = 0;
 }
-inline ::google::protobuf::int32 ConnectGateRS::result() const {
-  // @@protoc_insertion_point(field_get:CPGClient.ConnectGateRS.result)
+inline ::google::protobuf::int32 ConnectRS::result() const {
+  // @@protoc_insertion_point(field_get:CPGClient.ConnectRS.result)
   return result_;
 }
-inline void ConnectGateRS::set_result(::google::protobuf::int32 value) {
+inline void ConnectRS::set_result(::google::protobuf::int32 value) {
   
   result_ = value;
-  // @@protoc_insertion_point(field_set:CPGClient.ConnectGateRS.result)
+  // @@protoc_insertion_point(field_set:CPGClient.ConnectRS.result)
 }
 
-// int32 port = 2;
-inline void ConnectGateRS::clear_port() {
+// int32 port = 3;
+inline void ConnectRS::clear_port() {
   port_ = 0;
 }
-inline ::google::protobuf::int32 ConnectGateRS::port() const {
-  // @@protoc_insertion_point(field_get:CPGClient.ConnectGateRS.port)
+inline ::google::protobuf::int32 ConnectRS::port() const {
+  // @@protoc_insertion_point(field_get:CPGClient.ConnectRS.port)
   return port_;
 }
-inline void ConnectGateRS::set_port(::google::protobuf::int32 value) {
+inline void ConnectRS::set_port(::google::protobuf::int32 value) {
   
   port_ = value;
-  // @@protoc_insertion_point(field_set:CPGClient.ConnectGateRS.port)
+  // @@protoc_insertion_point(field_set:CPGClient.ConnectRS.port)
 }
 
-// string ip = 3;
-inline void ConnectGateRS::clear_ip() {
+// string ip = 4;
+inline void ConnectRS::clear_ip() {
   ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& ConnectGateRS::ip() const {
-  // @@protoc_insertion_point(field_get:CPGClient.ConnectGateRS.ip)
+inline const ::std::string& ConnectRS::ip() const {
+  // @@protoc_insertion_point(field_get:CPGClient.ConnectRS.ip)
   return ip_.GetNoArena();
 }
-inline void ConnectGateRS::set_ip(const ::std::string& value) {
+inline void ConnectRS::set_ip(const ::std::string& value) {
   
   ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CPGClient.ConnectGateRS.ip)
+  // @@protoc_insertion_point(field_set:CPGClient.ConnectRS.ip)
 }
 #if LANG_CXX11
-inline void ConnectGateRS::set_ip(::std::string&& value) {
+inline void ConnectRS::set_ip(::std::string&& value) {
   
   ip_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CPGClient.ConnectGateRS.ip)
+  // @@protoc_insertion_point(field_set_rvalue:CPGClient.ConnectRS.ip)
 }
 #endif
-inline void ConnectGateRS::set_ip(const char* value) {
+inline void ConnectRS::set_ip(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CPGClient.ConnectGateRS.ip)
+  // @@protoc_insertion_point(field_set_char:CPGClient.ConnectRS.ip)
 }
-inline void ConnectGateRS::set_ip(const char* value, size_t size) {
+inline void ConnectRS::set_ip(const char* value, size_t size) {
   
   ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CPGClient.ConnectGateRS.ip)
+  // @@protoc_insertion_point(field_set_pointer:CPGClient.ConnectRS.ip)
 }
-inline ::std::string* ConnectGateRS::mutable_ip() {
+inline ::std::string* ConnectRS::mutable_ip() {
   
-  // @@protoc_insertion_point(field_mutable:CPGClient.ConnectGateRS.ip)
+  // @@protoc_insertion_point(field_mutable:CPGClient.ConnectRS.ip)
   return ip_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* ConnectGateRS::release_ip() {
-  // @@protoc_insertion_point(field_release:CPGClient.ConnectGateRS.ip)
+inline ::std::string* ConnectRS::release_ip() {
+  // @@protoc_insertion_point(field_release:CPGClient.ConnectRS.ip)
   
   return ip_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void ConnectGateRS::set_allocated_ip(::std::string* ip) {
+inline void ConnectRS::set_allocated_ip(::std::string* ip) {
   if (ip != NULL) {
     
   } else {
     
   }
   ip_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip);
-  // @@protoc_insertion_point(field_set_allocated:CPGClient.ConnectGateRS.ip)
-}
-
-// -------------------------------------------------------------------
-
-// LoginRS
-
-// int32 uid = 1;
-inline void LoginRS::clear_uid() {
-  uid_ = 0;
-}
-inline ::google::protobuf::int32 LoginRS::uid() const {
-  // @@protoc_insertion_point(field_get:CPGClient.LoginRS.uid)
-  return uid_;
-}
-inline void LoginRS::set_uid(::google::protobuf::int32 value) {
-  
-  uid_ = value;
-  // @@protoc_insertion_point(field_set:CPGClient.LoginRS.uid)
-}
-
-// string token = 2;
-inline void LoginRS::clear_token() {
-  token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& LoginRS::token() const {
-  // @@protoc_insertion_point(field_get:CPGClient.LoginRS.token)
-  return token_.GetNoArena();
-}
-inline void LoginRS::set_token(const ::std::string& value) {
-  
-  token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CPGClient.LoginRS.token)
-}
-#if LANG_CXX11
-inline void LoginRS::set_token(::std::string&& value) {
-  
-  token_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CPGClient.LoginRS.token)
-}
-#endif
-inline void LoginRS::set_token(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CPGClient.LoginRS.token)
-}
-inline void LoginRS::set_token(const char* value, size_t size) {
-  
-  token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CPGClient.LoginRS.token)
-}
-inline ::std::string* LoginRS::mutable_token() {
-  
-  // @@protoc_insertion_point(field_mutable:CPGClient.LoginRS.token)
-  return token_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* LoginRS::release_token() {
-  // @@protoc_insertion_point(field_release:CPGClient.LoginRS.token)
-  
-  return token_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void LoginRS::set_allocated_token(::std::string* token) {
-  if (token != NULL) {
-    
-  } else {
-    
-  }
-  token_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), token);
-  // @@protoc_insertion_point(field_set_allocated:CPGClient.LoginRS.token)
+  // @@protoc_insertion_point(field_set_allocated:CPGClient.ConnectRS.ip)
 }
 
 // -------------------------------------------------------------------
 
 // LoginRQ
 
-// int32 result = 1;
-inline void LoginRQ::clear_result() {
+// int32 logicID = 1;
+inline void LoginRQ::clear_logicid() {
+  logicid_ = 0;
+}
+inline ::google::protobuf::int32 LoginRQ::logicid() const {
+  // @@protoc_insertion_point(field_get:CPGClient.LoginRQ.logicID)
+  return logicid_;
+}
+inline void LoginRQ::set_logicid(::google::protobuf::int32 value) {
+  
+  logicid_ = value;
+  // @@protoc_insertion_point(field_set:CPGClient.LoginRQ.logicID)
+}
+
+// int32 uid = 2;
+inline void LoginRQ::clear_uid() {
+  uid_ = 0;
+}
+inline ::google::protobuf::int32 LoginRQ::uid() const {
+  // @@protoc_insertion_point(field_get:CPGClient.LoginRQ.uid)
+  return uid_;
+}
+inline void LoginRQ::set_uid(::google::protobuf::int32 value) {
+  
+  uid_ = value;
+  // @@protoc_insertion_point(field_set:CPGClient.LoginRQ.uid)
+}
+
+// string token = 3;
+inline void LoginRQ::clear_token() {
+  token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& LoginRQ::token() const {
+  // @@protoc_insertion_point(field_get:CPGClient.LoginRQ.token)
+  return token_.GetNoArena();
+}
+inline void LoginRQ::set_token(const ::std::string& value) {
+  
+  token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:CPGClient.LoginRQ.token)
+}
+#if LANG_CXX11
+inline void LoginRQ::set_token(::std::string&& value) {
+  
+  token_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:CPGClient.LoginRQ.token)
+}
+#endif
+inline void LoginRQ::set_token(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:CPGClient.LoginRQ.token)
+}
+inline void LoginRQ::set_token(const char* value, size_t size) {
+  
+  token_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:CPGClient.LoginRQ.token)
+}
+inline ::std::string* LoginRQ::mutable_token() {
+  
+  // @@protoc_insertion_point(field_mutable:CPGClient.LoginRQ.token)
+  return token_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* LoginRQ::release_token() {
+  // @@protoc_insertion_point(field_release:CPGClient.LoginRQ.token)
+  
+  return token_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void LoginRQ::set_allocated_token(::std::string* token) {
+  if (token != NULL) {
+    
+  } else {
+    
+  }
+  token_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), token);
+  // @@protoc_insertion_point(field_set_allocated:CPGClient.LoginRQ.token)
+}
+
+// -------------------------------------------------------------------
+
+// LoginRS
+
+// int32 logicID = 1;
+inline void LoginRS::clear_logicid() {
+  logicid_ = 0;
+}
+inline ::google::protobuf::int32 LoginRS::logicid() const {
+  // @@protoc_insertion_point(field_get:CPGClient.LoginRS.logicID)
+  return logicid_;
+}
+inline void LoginRS::set_logicid(::google::protobuf::int32 value) {
+  
+  logicid_ = value;
+  // @@protoc_insertion_point(field_set:CPGClient.LoginRS.logicID)
+}
+
+// int32 result = 2;
+inline void LoginRS::clear_result() {
   result_ = 0;
 }
-inline ::google::protobuf::int32 LoginRQ::result() const {
-  // @@protoc_insertion_point(field_get:CPGClient.LoginRQ.result)
+inline ::google::protobuf::int32 LoginRS::result() const {
+  // @@protoc_insertion_point(field_get:CPGClient.LoginRS.result)
   return result_;
 }
-inline void LoginRQ::set_result(::google::protobuf::int32 value) {
+inline void LoginRS::set_result(::google::protobuf::int32 value) {
   
   result_ = value;
-  // @@protoc_insertion_point(field_set:CPGClient.LoginRQ.result)
+  // @@protoc_insertion_point(field_set:CPGClient.LoginRS.result)
 }
 
 #ifdef __GNUC__

@@ -29,7 +29,7 @@ void GateSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& sess
                 CSKernel::instance().serverRegistRQ(session, buffer, header->size);
                 break;
             }
-            case kServerLoginRQ:
+            case kLoginRQ:
             {
                 CSKernel::instance().serverLoginRQ(session, buffer, header->size);
                 break;

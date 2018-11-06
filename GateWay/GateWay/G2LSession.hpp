@@ -19,18 +19,13 @@ public:
     ClientSession()
     {
         messageCallback_ = std::bind(&G2LSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-        connectionCallback_ = std::bind(&G2LSession::defaultConnectionCallback, this, std::placeholders::_1);
+//        connectionCallback_ = std::bind(&G2LSession::defaultConnectionCallback, this, std::placeholders::_1);
     }
     
 private:
     
     void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data)
-    {
-        std::string content(data->peek(), data->readableBytes());
-        data->retrieveAll();
-        session->send(content);
-    }
+                                DataBuffer*const data);
     
     void defaultConnectionCallback(const TCPSessionPtr& session)
     {
@@ -38,4 +33,5 @@ private:
     }
     
 private:
+    void loginRS(const void* data, int size);
 };

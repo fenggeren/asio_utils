@@ -10,17 +10,14 @@
 #include <Net/TCPSessionManager.hpp>
 #include <Net/TCPSessionFactory.h>
 #include "Robot.hpp"
+#include "RobotManager.hpp"
 
 
 using namespace fasio;
 
-
- 
 int main(int argc, const char * argv[]) {
     
-    Robots robots;
-    robots.start();
-    
-    
+    gRobotManager.setRobotNum(1);
+    gRobotManager.start();
     return 0;
 }

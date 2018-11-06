@@ -8,10 +8,16 @@
 
 #include "CSKernel.hpp"
 #include <CPG/CPGToCentral.pb.h>
+#include <CPG/CPGClient.pb.h>
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"
 #include "CSSessionManager.hpp"
+#include "BalanceSession.hpp"
+#include "GateSession.hpp"
+#include "MatchSession.hpp"
+#include "LoginSession.hpp"
+
 using namespace fasio::logging;
 
 void CSKernel::start()
@@ -23,6 +29,9 @@ void CSKernel::start()
     SessionManager.createListener(7802, false, matchFactory);
     auto loginFactory = std::make_shared<LoginSessionFactory>(g_IoContext);
     SessionManager.createListener(7803, false, loginFactory);
+    auto balanceFactory = std::make_shared<BalanceSessionFactory>(g_IoContext);
+    SessionManager.createListener(7804, false, balanceFactory);
+    
     g_IoContext.run();
 }
 
@@ -83,11 +92,11 @@ void CSKernel::serverRegistRQ(TCPSessionPtr session,
         else if (session->type() == ServerType_LoginServer ||
                  session->type() == ServerType_MatchServer)
         {
-            serverRegistRS(session ,info);
+            serverRegistRS(nullptr ,info);
         }
         else
         {
-            LOG_ERROR << "invalid type : " << session->type();
+            serverRegistRS(session, info);
         }
     }
     else
@@ -111,7 +120,8 @@ void CSKernel::gateServerRegistRS(TCPSessionPtr session,
     for (auto& server : servers_)
     {
         auto& serinfo = server.second;
-        if (serinfo->type != ServerType_GateServer)
+        if (serinfo->type == ServerType_LoginServer ||
+            serinfo->type == ServerType_MatchServer)
         {
             auto conn = rs.add_connservers();
             conn->set_port(serinfo->port);
@@ -136,9 +146,15 @@ void CSKernel::serverRegistRS(TCPSessionPtr session,
     conn->set_ip(info->ip);
     conn->set_type(info->type);
     
-    auto packet = NetPacket::createPacket(rs.SerializeAsString(), kServerRegistRS);
-    
-   SessionManager.sendMsgToSession(0, packet, ServerType_GateServer);
+    if (!session)
+    {
+        auto packet = NetPacket::createPacket(rs.SerializeAsString(), kServerRegistRS);
+        SessionManager.sendMsgToSession(0, packet, ServerType_GateServer);
+    }
+    else
+    {
+        SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
+    }
 }
 
 void CSKernel::serverLoginRQ(TCPSessionPtr session,
@@ -183,11 +199,54 @@ void CSKernel::serverLoginRQ(TCPSessionPtr session,
         rs.set_result(-1);
         LOG_ERROR << "invalid data len: " << len;
     }
-    SessionManager.sendMsgToSession(session, rs, kServerLoginRS);
+    SessionManager.sendMsgToSession(session, rs, kLoginRS);
 }
 
 
-
+void CSKernel::requestBestGateServer(TCPSessionPtr session,
+                                     const void* data, int len)
+{
+    CPGClient::ConnectRS rs;
+    
+    CPGClient::ConnectRQ rq;
+    if (parseProtoMsg(data, len, rq))
+    {
+        rs.set_result(0);
+        rs.set_logicid(rq.logicid());
+        std::shared_ptr<ServerInfo> smalleastLoadedGS = nullptr;
+        int loaded = INT_MAX;
+        for (auto& pair : servers_)
+        {
+            if (pair.second->type == ServerType_GateServer)
+            {
+                if (loaded > pair.second->loaded)
+                {
+                    loaded = pair.second->loaded;
+                    smalleastLoadedGS = pair.second;
+                }
+            }
+        }
+        
+        if (smalleastLoadedGS)
+        {
+            rs.set_ip(smalleastLoadedGS->exportIp);
+            rs.set_port(smalleastLoadedGS->port);
+        }
+        else
+        {
+            rs.set_result(-1);
+            LOG_ERROR << "has no valid gate server  all size: "
+            << servers_.size();
+        }
+    }
+    else
+    {
+        rs.set_result(-1);
+        LOG_ERROR << "invalid data len: " << len;
+    }
+    
+    SessionManager.sendMsgToSession(session, rs, kConnectRS);
+}
 
 
 

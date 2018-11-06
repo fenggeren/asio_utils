@@ -144,10 +144,10 @@ void TCPSession::handClose()
         state_ = kDisconnected;
         socket_->close();
         socket_ = nullptr;
+        onClose();
         if (closeCallback_) {
             closeCallback_(shared_from_this());
         }
-        onClose();
     }
 }
 

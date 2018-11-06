@@ -240,8 +240,8 @@
 		81994CDD21907AF30034623E /* CPG */ = {
 			isa = PBXGroup;
 			children = (
-				81994CF021907E000034623E /* CPGClient.pb.cc */,
 				81994CEF21907E000034623E /* CPGClient.pb.h */,
+				81994CF021907E000034623E /* CPGClient.pb.cc */,
 				81994CE221907AF30034623E /* CPGHeader.h */,
 				81994CE721907AF30034623E /* CPGServerDefine.h */,
 			);

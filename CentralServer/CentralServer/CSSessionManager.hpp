@@ -13,10 +13,7 @@
 #include <google/protobuf/message.h>
 #include <CPG/CPGHeader.h>
 #include <CPG/CPGServerDefine.h>
-#include "GateSession.hpp"
-#include "MatchSession.hpp"
-#include "LoginSession.hpp"
-
+ 
 using namespace fasio;
 
 #define SessionManager CSSessionManager::instance()
