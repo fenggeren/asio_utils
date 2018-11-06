@@ -13,7 +13,7 @@
 
 std::shared_ptr<ClientSession> MSSessionManager::createConnectorSession(uint8 type) 
 {
-    if (type == ServerType_Match_Central)
+    if (type == ServerType_CentralServer)
     {
         return std::make_shared<M2CSession>();
     }

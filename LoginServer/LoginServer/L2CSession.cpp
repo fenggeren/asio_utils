@@ -21,7 +21,7 @@ void L2CSession::sendInitData()
 {
     CPGToCentral::ServerRegisterRQ rq;
     rq.set_type(ServerType_GateServer);
-    rq.set_port(7802);
+    rq.set_port(7831);
     rq.set_sid(0);
     rq.set_ip("127.0.0.1");
     rq.set_ip("127.0.0.1");

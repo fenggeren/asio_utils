@@ -19,7 +19,7 @@ void LSKernel::start()
 {
     auto factory = std::make_shared<GateSessionFactory>(g_IoContext);
     SessionManager.createListener(7831, false, factory);
-   SessionManager.createConnector(ServerType_Login_Central, g_IoContext, "127.0.0.1", 7803);
+   SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7803);
     g_IoContext.run();
 }
 

@@ -19,7 +19,7 @@ void MSKernel::start()
 {
     auto factory = std::make_shared<GateSessionFactory>(g_IoContext);
     SessionManager.createListener(7851, false, factory);
-    SessionManager.createConnector(ServerType_Match_Central, g_IoContext, "127.0.0.1", 7802);
+    SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7802);
     g_IoContext.run();
     
 }

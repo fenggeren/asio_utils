@@ -15,11 +15,11 @@
 std::shared_ptr<ClientSession>
 RobotSessionManager::createConnectorSession(uint8 type)
 {
-    if (type == ServerType_Client_Balance)
+    if (type == ServerType_BalanceServer)
     {
         return std::make_shared<C2BSession>();
     }
-    else if (type == ServerType_Client_Gate)
+    else if (type == ServerType_GateServer)
     {
         return std::make_shared<RobotSession>();
     }

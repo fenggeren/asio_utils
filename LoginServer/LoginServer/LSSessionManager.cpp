@@ -12,7 +12,7 @@
 
 std::shared_ptr<ClientSession> LSSessionManager::createConnectorSession(uint8 type) 
 {
-    if (type == ServerType_Login_Central)
+    if (type == ServerType_CentralServer)
     {
         return std::make_shared<L2CSession>();
     }

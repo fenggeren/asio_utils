@@ -20,7 +20,7 @@ void BSKernel::start()
 {
     auto factory = std::make_shared<CBSessionFactory>(g_IoContext);
     SessionManager.createListener(7835, false, factory);
-    SessionManager.createConnector(ServerType_Balance_Central, g_IoContext, "127.0.0.1", 7804);
+    SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7804);
     g_IoContext.run();
 }
 

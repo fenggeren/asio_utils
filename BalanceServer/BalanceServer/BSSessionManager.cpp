@@ -19,7 +19,7 @@ using namespace fasio::logging;
 std::shared_ptr<ClientSession>
 BSSessionManager::createConnectorSession(uint8 type)
 {
-    if (type == ServerType_Balance_Central)
+    if (type == ServerType_CentralServer)
     {
         return std::make_shared<B2CSession>();
     }

@@ -22,7 +22,7 @@ void RobotManager::start()
     for(int i = 0; i < robotNums_; ++i)
     {
         auto robot = std::make_shared<Robot>(ip_, port_);
-        auto session = SessionManager.createConnector(ServerType_Client_Balance, io_context_, robot->ip(), robot->port());
+        auto session = SessionManager.createConnector(ServerType_BalanceServer, io_context_, robot->ip(), robot->port());
         session->setLogicID(i);
         robot->setLogicID(session->logicID());
         robots_[i] = robot;
@@ -32,7 +32,7 @@ void RobotManager::start()
 
 void RobotManager::postConnect(std::shared_ptr<Robot> robot)
 {
-    auto session = SessionManager.createConnector(ServerType_Client_Gate, io_context_, robot->ip(), robot->port());
+    auto session = SessionManager.createConnector(ServerType_GateServer, io_context_, robot->ip(), robot->port());
     session->setLogicID(robot->logicID());
 }
 
