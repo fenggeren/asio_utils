@@ -36,15 +36,15 @@ void GSSessionManager::transToMatchServer(int32 mid, const google::protobuf::Mes
 std::shared_ptr<ClientSession>
 GSSessionManager::createConnectorSession(uint8 type)
 {
-    if (type == ServerType_Gate_Central)
+    if (type == ServerType_CentralServer)
     {
         return std::make_shared<G2CSession>();
     }
-    else if (type == ServerType_Gate_Match)
+    else if (type == ServerType_MatchServer)
     {
         return std::make_shared<G2MSession>();
     }
-    else if (type == ServerType_Gate_Login)
+    else if (type == ServerType_LoginServer)
     {
         return std::make_shared<G2LSession>();
     }

@@ -46,7 +46,9 @@ public:
 private:
     
     void gateServerRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
+    // @stype 分发给指定的服务
     void serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
+    void distServices(std::shared_ptr<ServerInfo> info, uint8 stype);
 public:
     
     std::shared_ptr<ServerInfo> getService(uint32 sid);

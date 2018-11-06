@@ -29,6 +29,11 @@ message ServerRegisterRS
 	repeated ServerInfo connServers	= 3;  // 需要连接的服务
 }
 
+// 需要连接的新服务 通知
+message NewConnServiceNotify
+{
+    repeated ServerInfo connServers    = 3;
+};
 
 // GateServer的信息， 
 message GateServerInfo

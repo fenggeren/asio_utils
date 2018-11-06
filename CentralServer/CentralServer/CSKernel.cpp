@@ -92,7 +92,8 @@ void CSKernel::serverRegistRQ(TCPSessionPtr session,
         else if (session->type() == ServerType_LoginServer ||
                  session->type() == ServerType_MatchServer)
         {
-            serverRegistRS(nullptr ,info);
+            serverRegistRS(session ,info);
+            distServices(info, ServerType_GateServer);
         }
         else
         {
@@ -134,27 +135,26 @@ void CSKernel::gateServerRegistRS(TCPSessionPtr session,
 }
 
 // 将消息直接返回给所有连接的 GS
-void CSKernel::serverRegistRS(TCPSessionPtr session,
-                                      std::shared_ptr<ServerInfo> info)
+void CSKernel::serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info)
 {
     CPGToCentral::ServerRegisterRS rs;
     rs.set_result(0);
     rs.set_sid(info->sid);
+    
+    SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
+}
+
+void CSKernel::distServices(std::shared_ptr<ServerInfo> info, uint8 stype)
+{
+    CPGToCentral::NewConnServiceNotify rs;
     auto conn = rs.add_connservers();
     conn->set_port(info->port);
     conn->set_sid(info->sid);
     conn->set_ip(info->ip);
     conn->set_type(info->type);
     
-    if (!session)
-    {
-        auto packet = NetPacket::createPacket(rs.SerializeAsString(), kServerRegistRS);
-        SessionManager.sendMsgToSession(0, packet, ServerType_GateServer);
-    }
-    else
-    {
-        SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
-    }
+    auto packet = NetPacket::createPacket(rs.SerializeAsString(), kServerNewServicesNotify);
+    SessionManager.sendMsgToSession(-1, packet, stype);
 }
 
 void CSKernel::serverLoginRQ(TCPSessionPtr session,

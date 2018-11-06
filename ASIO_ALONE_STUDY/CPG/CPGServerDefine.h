@@ -16,6 +16,8 @@
 #define kLoginRQ      20003
 #define kLoginRS      20004
 
+#define kServerNewServicesNotify 21001
+
 #define kConnectRQ    10001
 #define kConnectRS    10002
 
@@ -30,20 +32,20 @@
 
 enum ServerType
 {
-    ServerType_Gate_Login = 0,
-    ServerType_Gate_Match,
-    ServerType_Gate_Central,
-    ServerType_Match_Central,
-    ServerType_Login_Central,
-    ServerType_Balance_Central,
-    ServerType_Client_Balance,
-    ServerType_Client_Gate,
+//    ServerType_Gate_Login = 0,
+//    ServerType_Gate_Match,
+//    ServerType_Gate_Central,
+//    ServerType_Match_Central,
+//    ServerType_Login_Central,
+//    ServerType_Balance_Central,
+//    ServerType_Client_Balance,
+//    ServerType_Client_Gate,
+    ServerType_Client = 0,
     ServerType_GateServer,
     ServerType_LoginServer,
     ServerType_MatchServer,
     ServerType_CentralServer,
     ServerType_BalanceServer,
-    ServerType_Client,
 };
 
 // 动态启动新的服务,配置

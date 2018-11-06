@@ -41,7 +41,7 @@ struct TableStruct_CPGToCentral_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[6]
+  static const ::google::protobuf::internal::ParseTable schema[7]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -52,6 +52,9 @@ namespace CPGToCentral {
 class GateServerInfo;
 class GateServerInfoDefaultTypeInternal;
 extern GateServerInfoDefaultTypeInternal _GateServerInfo_default_instance_;
+class NewConnServiceNotify;
+class NewConnServiceNotifyDefaultTypeInternal;
+extern NewConnServiceNotifyDefaultTypeInternal _NewConnServiceNotify_default_instance_;
 class ServerInfo;
 class ServerInfoDefaultTypeInternal;
 extern ServerInfoDefaultTypeInternal _ServerInfo_default_instance_;
@@ -71,6 +74,7 @@ extern ServerRegisterRSDefaultTypeInternal _ServerRegisterRS_default_instance_;
 namespace google {
 namespace protobuf {
 template<> ::CPGToCentral::GateServerInfo* Arena::CreateMaybeMessage<::CPGToCentral::GateServerInfo>(Arena*);
+template<> ::CPGToCentral::NewConnServiceNotify* Arena::CreateMaybeMessage<::CPGToCentral::NewConnServiceNotify>(Arena*);
 template<> ::CPGToCentral::ServerInfo* Arena::CreateMaybeMessage<::CPGToCentral::ServerInfo>(Arena*);
 template<> ::CPGToCentral::ServerLoginRQ* Arena::CreateMaybeMessage<::CPGToCentral::ServerLoginRQ>(Arena*);
 template<> ::CPGToCentral::ServerLoginRS* Arena::CreateMaybeMessage<::CPGToCentral::ServerLoginRS>(Arena*);
@@ -508,6 +512,123 @@ class ServerRegisterRS : public ::google::protobuf::Message /* @@protoc_insertio
 };
 // -------------------------------------------------------------------
 
+class NewConnServiceNotify : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGToCentral.NewConnServiceNotify) */ {
+ public:
+  NewConnServiceNotify();
+  virtual ~NewConnServiceNotify();
+
+  NewConnServiceNotify(const NewConnServiceNotify& from);
+
+  inline NewConnServiceNotify& operator=(const NewConnServiceNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  NewConnServiceNotify(NewConnServiceNotify&& from) noexcept
+    : NewConnServiceNotify() {
+    *this = ::std::move(from);
+  }
+
+  inline NewConnServiceNotify& operator=(NewConnServiceNotify&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const NewConnServiceNotify& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const NewConnServiceNotify* internal_default_instance() {
+    return reinterpret_cast<const NewConnServiceNotify*>(
+               &_NewConnServiceNotify_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  void Swap(NewConnServiceNotify* other);
+  friend void swap(NewConnServiceNotify& a, NewConnServiceNotify& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline NewConnServiceNotify* New() const final {
+    return CreateMaybeMessage<NewConnServiceNotify>(NULL);
+  }
+
+  NewConnServiceNotify* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<NewConnServiceNotify>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const NewConnServiceNotify& from);
+  void MergeFrom(const NewConnServiceNotify& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NewConnServiceNotify* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .CPGToCentral.ServerInfo connServers = 3;
+  int connservers_size() const;
+  void clear_connservers();
+  static const int kConnServersFieldNumber = 3;
+  ::CPGToCentral::ServerInfo* mutable_connservers(int index);
+  ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo >*
+      mutable_connservers();
+  const ::CPGToCentral::ServerInfo& connservers(int index) const;
+  ::CPGToCentral::ServerInfo* add_connservers();
+  const ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo >&
+      connservers() const;
+
+  // @@protoc_insertion_point(class_scope:CPGToCentral.NewConnServiceNotify)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo > connservers_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_CPGToCentral_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GateServerInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGToCentral.GateServerInfo) */ {
  public:
   GateServerInfo();
@@ -545,7 +666,7 @@ class GateServerInfo : public ::google::protobuf::Message /* @@protoc_insertion_
                &_GateServerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   void Swap(GateServerInfo* other);
   friend void swap(GateServerInfo& a, GateServerInfo& b) {
@@ -693,7 +814,7 @@ class ServerLoginRQ : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_ServerLoginRQ_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   void Swap(ServerLoginRQ* other);
   friend void swap(ServerLoginRQ& a, ServerLoginRQ& b) {
@@ -811,7 +932,7 @@ class ServerLoginRS : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_ServerLoginRS_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   void Swap(ServerLoginRS* other);
   friend void swap(ServerLoginRS& a, ServerLoginRS& b) {
@@ -1222,6 +1343,40 @@ ServerRegisterRS::connservers() const {
 
 // -------------------------------------------------------------------
 
+// NewConnServiceNotify
+
+// repeated .CPGToCentral.ServerInfo connServers = 3;
+inline int NewConnServiceNotify::connservers_size() const {
+  return connservers_.size();
+}
+inline void NewConnServiceNotify::clear_connservers() {
+  connservers_.Clear();
+}
+inline ::CPGToCentral::ServerInfo* NewConnServiceNotify::mutable_connservers(int index) {
+  // @@protoc_insertion_point(field_mutable:CPGToCentral.NewConnServiceNotify.connServers)
+  return connservers_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo >*
+NewConnServiceNotify::mutable_connservers() {
+  // @@protoc_insertion_point(field_mutable_list:CPGToCentral.NewConnServiceNotify.connServers)
+  return &connservers_;
+}
+inline const ::CPGToCentral::ServerInfo& NewConnServiceNotify::connservers(int index) const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.NewConnServiceNotify.connServers)
+  return connservers_.Get(index);
+}
+inline ::CPGToCentral::ServerInfo* NewConnServiceNotify::add_connservers() {
+  // @@protoc_insertion_point(field_add:CPGToCentral.NewConnServiceNotify.connServers)
+  return connservers_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo >&
+NewConnServiceNotify::connservers() const {
+  // @@protoc_insertion_point(field_list:CPGToCentral.NewConnServiceNotify.connServers)
+  return connservers_;
+}
+
+// -------------------------------------------------------------------
+
 // GateServerInfo
 
 // int32 port = 1;
@@ -1476,6 +1631,8 @@ inline void ServerLoginRS::set_allocated_gsinfo(::CPGToCentral::GateServerInfo* 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

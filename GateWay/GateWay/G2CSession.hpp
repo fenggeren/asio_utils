@@ -35,10 +35,11 @@ private:
     {
         session->send("HELLO Central Server");
     }
+    
 private:
     
     void serverRegistRS(const void* data, int len);
     void serverLoginRS(const void* data, int len);
-    
+    void newServicesNotify(const void* data, int len);
 private:
 };
