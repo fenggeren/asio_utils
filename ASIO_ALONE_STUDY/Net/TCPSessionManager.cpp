@@ -246,6 +246,45 @@ void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
     }
 }
     
+    
+void TCPSessionManager::transMsgToSession(TCPSessionPtr session, const void* data,
+                                          int len,  int msgID,  int32 extraID,
+                                          uint8 stype)
+{
+    PacketHeader header{msgID, len, extraID};
+    if (session)
+    {
+        session->addMore(&header, kPacketHeaderSize);
+        session->send(data, len);
+    }
+    else
+    {
+        for (auto& pair : sessionMap_)
+        {
+            if (pair.second->type() == stype)
+            {
+                pair.second->addMore(&header, kPacketHeaderSize);
+                pair.second->send(data, len);
+            }
+        }
+    }
+}
+    
+void TCPSessionManager::transMsgToSession(TCPSessionPtr session,
+                                          const std::string& msg,
+                                          int32 msgID, int32 extraID,
+                                          uint8 stype)
+{
+    transMsgToSession(session, msg.data(), msg.size(), msgID, extraID, stype);
+}
+void TCPSessionManager::transMsgToSession(TCPSessionPtr session,
+                                          google::protobuf::Message& msg,
+                                          int32 msgID, int32 extraID,
+                                          uint8 stype)
+{
+    transMsgToSession(session, msg.SerializeAsString(), msgID, extraID, stype);
+}
+    
 }
 
 

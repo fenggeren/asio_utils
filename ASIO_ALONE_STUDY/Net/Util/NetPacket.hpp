@@ -22,11 +22,11 @@ class NetPacket
 public:
     
     static NetPacketPtr getPacket(const void* data,int len);
-    static NetPacketPtr createPacket(const void* data,int len, int msgid);
-    static NetPacketPtr createPacket(const std::string& data, int msgid);
+    static NetPacketPtr createPacket(const void* data,int len, int msgid, int extraid = 0);
+    static NetPacketPtr createPacket(const std::string& data, int msgid, int extraid = 0);
     
     NetPacket(const void* data, int size);
-    NetPacket(const void* data, int size, int msgid);
+    NetPacket(const void* data, int size, int msgid, int extraid = 0);
     ~NetPacket();
     
     const void* buffer() const { return buffer_;}

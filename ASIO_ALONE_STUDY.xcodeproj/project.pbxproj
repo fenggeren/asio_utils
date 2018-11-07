@@ -45,6 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F2463302192D779009A67AC /* ObjectIndexPool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ObjectIndexPool.hpp; sourceTree = "<group>"; };
 		1F365403215A15B1003B9FAD /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
 		1F365404215A15B1003B9FAD /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
 		1F365405215A15B1003B9FAD /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 				8123E22421889FC20050FD4D /* TCPSessionFactory.h */,
 				8123E22521889FC20050FD4D /* TCPSessionManager.cpp */,
 				8123E22621889FC20050FD4D /* TCPSessionManager.hpp */,
+				1F2463302192D779009A67AC /* ObjectIndexPool.hpp */,
 				1F365409215A15B1003B9FAD /* Queue.hpp */,
 				1F365410215A15B1003B9FAD /* Queue.cpp */,
 				1F365404215A15B1003B9FAD /* DataHandler.hpp */,

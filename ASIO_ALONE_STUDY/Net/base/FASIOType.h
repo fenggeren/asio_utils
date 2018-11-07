@@ -24,8 +24,9 @@ typedef unsigned long long 	uint64;
 
 struct PacketHeader
 {
-    int32 type;
-    int32 size;
+    int32 type{0};
+    int32 size{0};
+    int32 extraID{0};
 };
 
 

@@ -20,11 +20,11 @@ size_(size)
     memcpy(buffer_, data, size);
 }
     
-NetPacket::NetPacket(const void* data, int size, int msgid)
+NetPacket::NetPacket(const void* data, int size, int msgid, int extraid)
 :buffer_(new char[size+kPacketHeaderSize]),
 size_(size + kPacketHeaderSize)
 {
-    PacketHeader header{msgid, size};
+    PacketHeader header{msgid, size, extraid};
     memcpy(buffer_, &header, kPacketHeaderSize);
     memcpy(buffer_+kPacketHeaderSize, data, size);
 }
@@ -53,14 +53,14 @@ NetPacketPtr NetPacket::getPacket(const void* data,int len)
     return packet;
 }
     
-NetPacketPtr NetPacket::createPacket(const void* data,int len, int msgid)
+NetPacketPtr NetPacket::createPacket(const void* data,int len, int msgid, int extraid)
 {
-    return NetPacketPtr(new NetPacket(data, len, msgid));
+    return NetPacketPtr(new NetPacket(data, len, msgid, extraid));
 }
     
-NetPacketPtr NetPacket::createPacket(const std::string& str, int msgid)
+NetPacketPtr NetPacket::createPacket(const std::string& str, int msgid, int extraid)
 {
-    return NetPacketPtr(new NetPacket(str.data(), str.size(), msgid));
+    return NetPacketPtr(new NetPacket(str.data(), str.size(), msgid, extraid));
 }
     
 
