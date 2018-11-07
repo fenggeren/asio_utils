@@ -66,9 +66,21 @@ public:
                           int msgID, uint8 stype = 0);
     void sendMsgToSession(TCPSessionPtr session, const std::string& msg,
                           int msgID, uint8 stype = 0);
-    void sendMsgToSession(TCPSessionPtr session, std::shared_ptr<NetPacket> packet,
-                          uint8 stype = 0);
+    void sendMsgToSession(TCPSessionPtr session,
+                          std::shared_ptr<NetPacket> packet,uint8 stype = 0);
     void sendMsgToSession(TCPSessionPtr session, const void* data, int len, uint8 stype = 0);
+    
+    ///
+    
+    void transMsgToSession(TCPSessionPtr session, const void* data,
+                           int32 len, int32 msgID, int32 extraID,
+                           uint8 stype = 0);
+    void transMsgToSession(TCPSessionPtr session, const std::string& msg,
+                           int32 msgID, int32 extraID,
+                           uint8 stype = 0);
+    void transMsgToSession(TCPSessionPtr session, google::protobuf::Message& msg,
+                           int32 msgID, int32 extraID,
+                           uint8 stype = 0); 
 public:
 
 	void newSession(std::shared_ptr<TCPSession> session);
