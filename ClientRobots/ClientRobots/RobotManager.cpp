@@ -26,6 +26,10 @@ void RobotManager::start()
         session->setLogicID(i);
         robot->setLogicID(session->logicID());
         robots_[i] = robot;
+        if (i % 100 == 0)
+        {
+            usleep(10000);
+        }
     }
     io_context_.run();
 }
