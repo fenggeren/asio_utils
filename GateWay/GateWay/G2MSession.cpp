@@ -7,3 +7,14 @@
 //
 
 #include "G2MSession.hpp"
+#include "GSKernel.hpp"
+
+bool G2MSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer, const PacketHeader& header)
+{
+    return true;
+}
+void G2MSession::onClose()
+{
+    GSKernel::instance().removeConnectService(uuid());
+}

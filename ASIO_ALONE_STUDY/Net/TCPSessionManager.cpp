@@ -33,7 +33,6 @@ std::shared_ptr<ClientSession> TCPSessionManager::createConnector(uint8 type, as
     auto session = createConnectorSession(type);
     session->setType(type);
     addSession(session);
-    addClientSession(session);
     session->setConnector(connector);
     connector->start();
     return session;
@@ -47,10 +46,11 @@ std::shared_ptr<ClientSession>
 
 void TCPSessionManager::newSession(std::shared_ptr<TCPSession> session)
 {
-    LOG_MINFO << "sessionid: " << session->uuid()
-            << " type: " << session->type() ;
-    
+ 
     addSession(session);
+    
+    LOG_MINFO << "sessionid: " << session->uuid()
+    << " type: " << session->type() ;
 }
  
     
@@ -70,120 +70,53 @@ void TCPSessionManager::removeSessionPtr(const TCPSessionPtr& session)
         }
         else
         {
-            removeSession(session->uuid());
-            removeClientSession(session->uuid());
+            removeSession(session->uuid()); 
         }
     }
 }
     
 void TCPSessionManager::removeSession(int32 uuid)
 {
-    sessionMap_.erase(uuid);
+//    sessionMap_.erase(uuid);
+    sessionMap_.removeObject(uuid);
 }
 
-void TCPSessionManager::removeClientSession(int32 logicid)
-{
-    auto iter = std::find_if(clientSessions_.begin(), clientSessions_.end(),
-                             [logicid](const TCPSessionPtr& session)
-              {
-                  return session->logicID() == logicid;
-              });
-    if (iter != clientSessions_.end())
-    {
-        clientSessions_.erase(iter);
-    }
-    else
-    {
-        LOG_ERROR << " can't found client session :" << logicid;
-    }
-}
-TCPSessionPtr TCPSessionManager::getClientSession(int32 logicid)
-{
-    auto iter = std::find_if(clientSessions_.begin(), clientSessions_.end(),
-                             [logicid](const TCPSessionPtr& session)
-                          {
-                              return session->logicID() == logicid;
-                          });
-    if (iter != clientSessions_.end())
-    {
-        return *iter;
-    }
-    else
-    {
-        LOG_ERROR << " can't found client session :" << logicid;
-        return nullptr;
-    }
-}
-void TCPSessionManager::addClientSession(TCPSessionPtr session)
-{
-    clientSessions_.push_back(session);
-}
+ 
 
 void TCPSessionManager::addSession(TCPSessionPtr session)
 {
-    if (sessionMap_.find(session->uuid()) != sessionMap_.end())
-    {
-        LOG_MINFO << " session has exist: " << session->uuid();
-    }
-    sessionMap_[session->uuid()] = session;
+    int32 index = sessionMap_.addObject(session);
+    session->setUUID(index);
     session->setCloseCallback(std::bind(&TCPSessionManager::removeSessionPtr, this, std::placeholders::_1));
 }
 
 TCPSessionPtr TCPSessionManager::getSession(int32 uuid)
 {
-    auto iter = sessionMap_.find(uuid);
-    if (iter != sessionMap_.end()) {
-        return iter->second;
-    }
-    return nullptr;
+    return (uuid >= 0 ? sessionMap_.getObject(uuid) : nullptr);
 }
 
 void TCPSessionManager::sendMsgToSession(int32 uuid, const void* data, int len, int msgID, uint8 stype)
 {
-    TCPSessionPtr session = nullptr;
-    auto iter = sessionMap_.find(uuid);
-    if (iter != sessionMap_.end())
-    {
-        session = iter->second;
-    }
-    sendMsgToSession(session, data, len, msgID, stype);
+    sendMsgToSession(getSession(uuid), data, len, msgID, stype);
 }
  
 void TCPSessionManager::sendMsgToSession(int32 uuid,
                                          google::protobuf::Message& msg,
                                          int msgID, uint8 stype)
 {
-    TCPSessionPtr session = nullptr;
-    auto iter = sessionMap_.find(uuid);
-    if (iter != sessionMap_.end())
-    {
-        session = iter->second;
-    }
-    sendMsgToSession(session, msg, msgID, stype);
+    sendMsgToSession(getSession(uuid), msg, msgID, stype);
 }
 void TCPSessionManager::sendMsgToSession(int32 uuid,
                                          const std::string& msg,
                                          int msgID, uint8 stype)
 {
-    TCPSessionPtr session = nullptr;
-    auto iter = sessionMap_.find(uuid);
-    if (iter != sessionMap_.end())
-    {
-        session = iter->second;
-    }
-    sendMsgToSession(session, msg, msgID, stype);
+    sendMsgToSession(getSession(uuid), msg, msgID, stype);
 }
 void TCPSessionManager::sendMsgToSession(int32 uuid,
                                          std::shared_ptr<NetPacket> packet,
                                          uint8 stype)
 {
-    TCPSessionPtr session = nullptr;
-    auto iter = sessionMap_.find(uuid);
-    if (iter != sessionMap_.end())
-    {
-        session = iter->second;
-    }
-    sendMsgToSession(session, packet, stype);
+    sendMsgToSession(getSession(uuid), packet, stype);
 }
 void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
                                          const void* data, int len,
@@ -197,14 +130,10 @@ void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
     }
     else
     {
-        for (auto& pair : sessionMap_)
-        {
-            if (pair.second->type() == stype)
-            {
-                pair.second->addMore(&header, kPacketHeaderSize);
-                pair.second->send(data, len);
-            }
-        }
+        sessionMap_.foreach([&] (const std::shared_ptr<TCPSession> &session){
+            session->addMore(&header, kPacketHeaderSize);
+            session->send(data, len);
+        });
     }
 }
 void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
@@ -236,13 +165,9 @@ void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
     }
     else
     {
-        for (auto& pair : sessionMap_)
-        {
-            if (pair.second->type() == stype)
-            {
-                pair.second->send(data, len);
-            }
-        }
+        sessionMap_.foreach([&] (const std::shared_ptr<TCPSession> &session){
+            session->send(data, len);
+        });
     }
 }
     
@@ -259,14 +184,10 @@ void TCPSessionManager::transMsgToSession(TCPSessionPtr session, const void* dat
     }
     else
     {
-        for (auto& pair : sessionMap_)
-        {
-            if (pair.second->type() == stype)
-            {
-                pair.second->addMore(&header, kPacketHeaderSize);
-                pair.second->send(data, len);
-            }
-        }
+        sessionMap_.foreach([&] (const std::shared_ptr<TCPSession> &session){
+            session->addMore(&header, kPacketHeaderSize);
+            session->send(data, len);
+        });
     }
 }
     

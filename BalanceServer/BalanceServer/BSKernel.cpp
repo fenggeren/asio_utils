@@ -20,47 +20,39 @@ void BSKernel::start()
 {
     auto factory = std::make_shared<CBSessionFactory>(g_IoContext);
     SessionManager.createListener(7835, false, factory);
-    SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7804);
+    centralSession_ = SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7804);
     g_IoContext.run();
 }
-
-void BSKernel::serverRegistRS(TCPSessionPtr session,
-                              const void* data, int len)
+ 
+void BSKernel::removeConnectService(int uuid)
 {
-    CPGToCentral::ServerRegisterRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
+    connectServices_.erase(uuid);
+    
+    if (uuid == centralSession_->uuid())
     {
-        //    SessionManager.getSession(<#int32 uuid#>)
-        if (rs.result() == 0)
-        {
-            
-        }
-        else
-        {
-            LOG_ERROR << " gs regist failure result: " << rs.result();
-        }
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << session->uuid();
+        centralSession_ = nullptr;
     }
 }
 
-void BSKernel::addNewConnect(int type, int port, int serverid,
-                             const std::string& ip)
+std::shared_ptr<TCPSession>
+BSKernel::connectService(unsigned short type,
+                         unsigned short port,
+                         unsigned short sid,
+                         const std::string& ip)
 {
-    if(SessionManager.getClientSession(serverid))
+    return SessionManager.createConnector(type, g_IoContext,  ip, port);
+}
+
+void BSKernel::transToCS(google::protobuf::Message& msg, int msgID, int clientID)
+{
+    if (centralSession_)
     {
-        // 已经连接到 该服务. 添加连接状态？！
-        LOG_MINFO << " has connect service: type" << type
-        << " port: " << port
-        << " ip: " << ip
-        << " serverid: " << serverid;
+        SessionManager.transMsgToSession(centralSession_, msg, msgID, clientID);
     }
     else
     {
-        auto clientSession =  SessionManager.createConnector(type, g_IoContext, ip, port);
-        clientSession->setLogicID(serverid);
+        LOG_ERROR << " not connect central server"
+        << " msgid: " << msgID;
     }
 }
+

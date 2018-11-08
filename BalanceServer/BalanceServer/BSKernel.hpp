@@ -10,6 +10,7 @@
 
 #include <unordered_map>
 #include <Net/TCPSession.hpp>
+#include <Net/ServiceKernel.hpp>
 #include <CPG/CPGHeader.h>
 #include <google/protobuf/message.h>
 
@@ -18,7 +19,7 @@ static asio::io_context g_IoContext;
 
 class B2CSession;
 
-class BSKernel
+class BSKernel : public ServiceKernel
 {
 public:
     
@@ -30,14 +31,18 @@ public:
     
     void start();
     
-public:
-    void addNewConnect(int type, int port, int serverid, const std::string& ip);
+    void removeConnectService(int uuid);
     
-public:
+    void transToCS(google::protobuf::Message& msg, int msgID, int clientID);
+protected:
     
-    void serverRegistRS(TCPSessionPtr session,
-                        const void* data, int len);
+    virtual std::shared_ptr<TCPSession>
+    connectService(unsigned short type,
+                   unsigned short port,
+                   unsigned short sid,
+                   const std::string& ip) override;
+    
 private:
-    
+    TCPSessionPtr centralSession_;
 };
 

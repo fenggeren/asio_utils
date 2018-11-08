@@ -57,6 +57,13 @@ struct ServerConfig
     unsigned short port;
     unsigned short sid;
     std::string    ip;
+    
+    bool operator==(const ServerConfig& other)
+    {
+        return type == other.type &&
+                port == other.port &&
+                ip == other.ip;
+    }
 };
 
 // GateServer是对外客户端的唯一服务， 需要区别内网/外网ip

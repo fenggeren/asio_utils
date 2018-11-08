@@ -8,32 +8,26 @@
 
 #pragma once
 
-#include <Net/TCPSession.hpp>
+#include <CPG/Net/CPGNetSession.hpp>
 #include <Net/TCPSessionFactory.h>
 #include <CPG/CPGServerDefine.h>
 
 
 using namespace fasio;
 
-class GateSession : public TCPSession
+class GateSession : public CPGServerSession
 {
 public:
     GateSession(SocketPtr socket, const std::string& name):
-    TCPSession(socket, name)
+    CPGServerSession(socket, name)
     {
-        messageCallback_ = std::bind(&GateSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
     }
     
 private:
     
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data)
-    {
-        std::string content(data->peek(), data->readableBytes());
-        data->retrieveAll();
-        session->send(content);
-    }
-private:
+    virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer,
+                            const PacketHeader& header) override;
 };
 
 class GateSessionFactory : public TCPSessionFactory

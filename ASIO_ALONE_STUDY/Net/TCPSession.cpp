@@ -29,8 +29,8 @@ TCPSession::TCPSession()
 :sendBuffer_(new DataBuffer),
 outputBuffer_(new DataBuffer),
 inputBuffer_(new DataBuffer),
-state_(kConnecting),
-uuid_(num_++)
+state_(kConnecting)
+//,uuid_(num_++)
 {
     
 }
@@ -166,7 +166,6 @@ void TCPSession::connectDestroyed()
 {
     if (state_ == kConnected)
     {
-        state_ = kDisconnected;
         forceClose();
     }
 }
@@ -183,7 +182,7 @@ void TCPSession::forceClose()
 {
     if (state_ == kConnected || state_ == kDisconnecting)
     {
-        state_ = kDisconnecting;
+        retry_ = false;
         handClose();
     }
 }

@@ -7,3 +7,9 @@
 //
 
 #include "GateSession.hpp"
+
+bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                           const void* buffer, const PacketHeader& header)
+{
+    return true;
+}

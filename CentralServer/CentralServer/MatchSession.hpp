@@ -7,34 +7,27 @@
 //
 #pragma once
 
-#include <Net/TCPSession.hpp>
+#include <CPG/Net/CPGNetSession.hpp> 
 #include <Net/TCPSessionFactory.h>
 #include <CPG/CPGServerDefine.h>
 
 
 using namespace fasio;
 
-class MatchSession : public TCPSession
+class MatchSession : public CPGServerSession
 {
 public:
     MatchSession(SocketPtr socket, const std::string& name):
-    TCPSession(socket, name)
+    CPGServerSession(socket, name)
     {
-        messageCallback_ = std::bind(&MatchSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-        
     }
 public:
     
     virtual void onClose() override;
 private:
     
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data)
-    {
-        std::string content(data->peek(), data->readableBytes());
-        data->retrieveAll();
-        session->send(content);
-    }
+    virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer, const PacketHeader& header) override;
 private:
 };
 

@@ -19,25 +19,26 @@ void MSKernel::start()
 {
     auto factory = std::make_shared<GateSessionFactory>(g_IoContext);
     SessionManager.createListener(7851, false, factory);
-    SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7802);
+    centralSession_ = SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7802);
     g_IoContext.run();
     
 }
 
-void MSKernel::addNewConnect(int type, int port, int serverid,
-                             const std::string& ip)
+void MSKernel::removeConnectService(int uuid)
 {
-    if(SessionManager.getClientSession(serverid))
+    connectServices_.erase(uuid);
+    
+    if (uuid == centralSession_->uuid())
     {
-        // 已经连接到 该服务. 添加连接状态？！
-        LOG_MINFO << " has connect service: type" << type
-        << " port: " << port
-        << " ip: " << ip
-        << " serverid: " << serverid;
-    }
-    else
-    {
-        auto clientSession =  SessionManager.createConnector(type, g_IoContext, ip, port);
-        clientSession->setLogicID(serverid);
+        centralSession_ = nullptr;
     }
 }
+std::shared_ptr<TCPSession>
+MSKernel::connectService(unsigned short type,
+                         unsigned short port,
+                         unsigned short sid,
+                         const std::string& ip)
+{
+    return SessionManager.createConnector(type, g_IoContext,  ip, port);
+}
+

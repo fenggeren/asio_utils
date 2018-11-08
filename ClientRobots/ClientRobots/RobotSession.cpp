@@ -32,27 +32,22 @@ void C2BSession::sendInitData()
 }
 
 
-void C2BSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                        DataBuffer*const data)
+bool C2BSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer, const PacketHeader& header)
 {
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kConnectRS:
-            {
-                connectRS(buffer, header->size);
-                break;
-            }
-            default:
-            {
-                LOG_ERROR << " error msg :" << header->type;
-                break;
-            }
+    switch (header.type) {
+        case kConnectRS:
+        {
+            connectRS(buffer, header.size);
+            break;
         }
-        data->retrieve(kPacketHeaderSize + header->size);
+        default:
+        {
+            LOG_ERROR << " error msg :" << header.type;
+            break;
+        }
     }
+    return true;
 }
 
 void C2BSession::connectRS(const void* data, int len)
@@ -91,25 +86,23 @@ void RobotSession::onClose()
 }
 
 
-void RobotSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session, DataBuffer*const data)
+bool RobotSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer, const PacketHeader& header)
 {
-   while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kLoginRS:
-            {
-                loginRS(buffer, header->size);
-                break;
-            } 
-            default:
-                break;
+    switch (header.type) {
+        case kLoginRS:
+        {
+            loginRS(buffer, header.size);
+            break;
         }
-        data->retrieve(kPacketHeaderSize + header->size);
+        default:
+            break;
     }
+    return true;
 }
 void RobotSession::loginRS(const void* data, int len)
 {
-    
+    CPGClient::LoginRS rs;
+    parseProtoMsg(data, len, rs);
+    rs.PrintDebugString();
 }

@@ -17,28 +17,24 @@ void GateSession::onClose()
     CSKernel::instance().removeService(logicID());
 }
 
-void GateSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session, DataBuffer*const data)
+bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                             const void* buffer, const PacketHeader& header)
 {
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kServerRegistRQ:
-            {
-                CSKernel::instance().serverRegistRQ(session, buffer, header->size);
-                break;
-            }
-            case kLoginRQ:
-            {
-                CSKernel::instance().serverLoginRQ(session, buffer, header->size);
-                break;
-            }
-            default:
-                break;
+    switch (header.type) {
+        case kServerRegistRQ:
+        {
+            CSKernel::instance().serverRegistRQ(session, buffer, header.size);
+            break;
         }
-        data->retrieve(kPacketHeaderSize + header->size);
+        case kLoginRQ:
+        {
+            CSKernel::instance().serverLoginRQ(session, buffer, header.size);
+            break;
+        }
+        default:
+            break;
     }
+    return true;
 }
 
 

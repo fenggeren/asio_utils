@@ -19,6 +19,7 @@
 namespace fasio
 {
 
+#define INVALID_UUID -1
     
 using asio::ip::tcp;
 class TCPSession;
@@ -31,7 +32,7 @@ class TCPSession : public std::enable_shared_from_this<TCPSession>
 {
 public:
     
-    TCPSession(SocketPtr socket, const std::string& name);
+    TCPSession(SocketPtr socket, const std::string& name = "");
     virtual ~TCPSession();
     
     TCPSession();
@@ -68,7 +69,7 @@ public:
     
     const std::string& name() const { return name_; }
     
-    // void setUUID(uint32 uuid) { uuid_ = uuid; }
+    void setUUID(int32 uuid) { uuid_ = uuid; }
     uint32 uuid() const { return uuid_; }
     
     void setType(int type) {type_ = type;}
@@ -130,11 +131,12 @@ protected:
     
     uint16 type_{0};
     
-    const uint16 uuid_;
+    int32 uuid_{INVALID_UUID};
     
     uint32 logicID_{0};
     
     bool client_{false};
+    bool retry_{true};
     static std::atomic<int> num_;
 };
 
@@ -166,7 +168,6 @@ private:
 private:
     std::shared_ptr<TCPConnector> connector_{nullptr};
     
-    bool retry_{true};
     bool connect_{false};
 };
 

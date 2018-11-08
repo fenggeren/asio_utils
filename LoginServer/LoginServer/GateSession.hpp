@@ -9,23 +9,23 @@
 #include <Net/TCPSessionFactory.h>
 #include <Net/TCPSessionManager.hpp>
 #include <CPG/CPGServerDefine.h>
+#include <CPG/Net/CPGNetSession.hpp>
 
 using namespace fasio;
 
-class GateSession : public TCPSession
+class GateSession : public CPGServerSession
 {
 public:
     GateSession(SocketPtr socket, const std::string& name):
-    TCPSession(socket, name)
+    CPGServerSession(socket, name)
     {
-        messageCallback_ = std::bind(&GateSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-        
     }
     
 private:
-    
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data);
+    virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer,
+                            const PacketHeader& header) override;
+ 
 private:
     
     void loginRQ(const void* data, int size);

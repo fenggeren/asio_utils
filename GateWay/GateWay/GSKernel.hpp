@@ -10,13 +10,17 @@
 
 #include <unordered_map>
 #include <Net/TCPSession.hpp>
+#include <Net/ServiceKernel.hpp>
 #include <CPG/CPGHeader.h>
+#include <CPG/CPGServerDefine.h>
+#include <google/protobuf/message.h>
+#include <list>
 
 using namespace fasio;
 static asio::io_context g_IoContext;
 
 
-class GSKernel
+class GSKernel : public ServiceKernel
 {
 public:
     
@@ -28,19 +32,27 @@ public:
     
     void start();
     
-public:
-    void addNewConnect(int type, int port, int serverid, const std::string& ip);
+    void removeConnectService(int uuid);
     
 public:
     
-    void serverRegistRS(TCPSessionPtr session,
-                        const void* data, int len);
-    void serverLoginRS(TCPSessionPtr session,
-                       const void* data, int len);
+    void transToLS(google::protobuf::Message& msg, int msgID, int clientID);
+    void transToCS(google::protobuf::Message& msg, int msgID, int clientID);
+    void transToMS(google::protobuf::Message& msg, int msgID, int clientID, int mid);
+protected:
+    
+    virtual std::shared_ptr<TCPSession>
+    connectService(unsigned short type,
+                   unsigned short port,
+                   unsigned short sid,
+                   const std::string& ip) override;
     
 private:
     // 比赛id <=> match info
     std::unordered_map<uint32, TCPSessionPtr> matchesServices_;
+    
+    TCPSessionPtr loginSession_;
+    TCPSessionPtr centralSession_;
 };
 
 

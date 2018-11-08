@@ -22,57 +22,78 @@ void GSKernel::start()
     auto factory = std::make_shared<CGSessionFactory>(g_IoContext);
     GSSessionManager::instance().createListener(7890, false, factory);
     
-    GSSessionManager::instance().createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7801);
-//    GSSessionManager::instance().createConnector(ServerType_Gate_Match, g_IoContext, "127.0.0.1", 7851);
-//    GSSessionManager::instance().createConnector(ServerType_Gate_Login, g_IoContext, "127.0.0.1", 7831);
+    centralSession_ = GSSessionManager::instance().createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7801);
     g_IoContext.run();
 }
 
-void GSKernel::serverRegistRS(TCPSessionPtr session,
-                              const void* data, int len)
+
+std::shared_ptr<TCPSession>
+GSKernel::connectService(unsigned short type,
+                           unsigned short port,
+                           unsigned short sid,
+                           const std::string& ip)
 {
-    CPGToCentral::ServerRegisterRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
+    auto session = SessionManager.createConnector(type, g_IoContext,  ip, port);
+    if (type == ServerType_LoginServer)
     {
-//        SessionManager.getSession(<#int32 uuid#>)
-        if (rs.result() == 0)
+        if (loginSession_)
         {
-            
+            LOG_MINFO << " has connect login server:"
+            << " port: " << port
+            << " sid: " << sid
+            << " ip: " << ip;
         }
-        else
-        {
-            LOG_ERROR << " gs regist failure result: " << rs.result();
-        }
+        loginSession_ = session;
+    }
+    return session;
+}
+
+void GSKernel::removeConnectService(int uuid)
+{
+    connectServices_.erase(uuid);
+    
+    if (uuid == loginSession_->uuid())
+    {
+        loginSession_ = nullptr;
+    }
+    else if (uuid == centralSession_->uuid())
+    {
+        centralSession_ = nullptr;
+    }
+}
+
+
+
+void GSKernel::transToLS(google::protobuf::Message& msg, int msgID, int clientID)
+{
+    if (loginSession_)
+    {
+        SessionManager.transMsgToSession(loginSession_, msg, msgID, clientID);
     }
     else
     {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << session->uuid();
+        LOG_ERROR << " not connect login server"
+        << " msgid: " << msgID;
     }
 }
-void GSKernel::serverLoginRS(TCPSessionPtr session,
-                             const void* data, int len)
+void GSKernel::transToMS(google::protobuf::Message& msg, int msgID, int clientID, int mid)
 {
     
 }
-
-void GSKernel::addNewConnect(int type, int port, int serverid,
-                             const std::string& ip)
+void GSKernel::transToCS(google::protobuf::Message& msg, int msgID, int clientID)
 {
-    if(SessionManager.getClientSession(serverid))
+    if (centralSession_)
     {
-        // 已经连接到 该服务. 添加连接状态？！
-        LOG_MINFO << " has connect service: type" << type
-        << " port: " << port
-        << " ip: " << ip
-        << " serverid: " << serverid;
+        SessionManager.transMsgToSession(centralSession_, msg, msgID, clientID);
     }
     else
     {
-        auto clientSession =  SessionManager.createConnector(type, g_IoContext, ip, port);
-        clientSession->setLogicID(serverid);
+        LOG_ERROR << " not connect central server"
+        << " msgid: " << msgID;
     }
 }
+
+
 
 
 

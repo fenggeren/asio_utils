@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2463352193E731009A67AC /* ServiceKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463332193E731009A67AC /* ServiceKernel.cpp */; };
+		1F2463532193F3D2009A67AC /* CPGNetSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463512193F3D2009A67AC /* CPGNetSession.cpp */; };
 		1F36541A215A15B1003B9FAD /* Logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F365407215A15B1003B9FAD /* Logging.cpp */; };
 		1F36541B215A15B1003B9FAD /* DataBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F36540B215A15B1003B9FAD /* DataBuffer.cpp */; };
 		1F36541C215A15B1003B9FAD /* TCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F36540E215A15B1003B9FAD /* TCPClient.cpp */; };
@@ -46,6 +48,10 @@
 
 /* Begin PBXFileReference section */
 		1F2463302192D779009A67AC /* ObjectIndexPool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ObjectIndexPool.hpp; sourceTree = "<group>"; };
+		1F2463332193E731009A67AC /* ServiceKernel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceKernel.cpp; sourceTree = "<group>"; };
+		1F2463342193E731009A67AC /* ServiceKernel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ServiceKernel.hpp; sourceTree = "<group>"; };
+		1F2463512193F3D2009A67AC /* CPGNetSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPGNetSession.cpp; sourceTree = "<group>"; };
+		1F2463522193F3D2009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
 		1F365403215A15B1003B9FAD /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
 		1F365404215A15B1003B9FAD /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
 		1F365405215A15B1003B9FAD /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
@@ -112,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F24634D2193F330009A67AC /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				1F2463512193F3D2009A67AC /* CPGNetSession.cpp */,
+				1F2463522193F3D2009A67AC /* CPGNetSession.hpp */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
 		1F365402215A15B1003B9FAD /* Net */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +149,8 @@
 				8123E22421889FC20050FD4D /* TCPSessionFactory.h */,
 				8123E22521889FC20050FD4D /* TCPSessionManager.cpp */,
 				8123E22621889FC20050FD4D /* TCPSessionManager.hpp */,
+				1F2463332193E731009A67AC /* ServiceKernel.cpp */,
+				1F2463342193E731009A67AC /* ServiceKernel.hpp */,
 				1F2463302192D779009A67AC /* ObjectIndexPool.hpp */,
 				1F365409215A15B1003B9FAD /* Queue.hpp */,
 				1F365410215A15B1003B9FAD /* Queue.cpp */,
@@ -196,6 +213,7 @@
 		1F95CE72218BFCE90057618A /* CPG */ = {
 			isa = PBXGroup;
 			children = (
+				1F24634D2193F330009A67AC /* Net */,
 				1F95CE73218BFCE90057618A /* CPGToCentral.proto */,
 				81994CD9219074960034623E /* CPGClient.proto */,
 				81994CDB21907A190034623E /* CPGCommon.proto */,
@@ -300,6 +318,7 @@
 				1FE3E87821894B7100A2F52D /* NetPacket.cpp in Sources */,
 				1F95CE7A218BFCE90057618A /* CPGToCentral.pb.cc in Sources */,
 				1F5B1AC12186F3F200752C8B /* ParseProto.cpp in Sources */,
+				1F2463532193F3D2009A67AC /* CPGNetSession.cpp in Sources */,
 				1F365421215A15B1003B9FAD /* Timestamp.cpp in Sources */,
 				1F365420215A15B1003B9FAD /* TCPAcceptor.cpp in Sources */,
 				1F36541A215A15B1003B9FAD /* Logging.cpp in Sources */,
@@ -307,6 +326,7 @@
 				1F36541F215A15B1003B9FAD /* TCPSession.cpp in Sources */,
 				28C200B120CD600900A9ECC5 /* main.cpp in Sources */,
 				1F365423215A15B1003B9FAD /* TCPConnector.cpp in Sources */,
+				1F2463352193E731009A67AC /* ServiceKernel.cpp in Sources */,
 				8123E1FA216B9C4A0050FD4D /* Thread.cpp in Sources */,
 				8123E200216CDD280050FD4D /* Conv.cpp in Sources */,
 				1F36541D215A15B1003B9FAD /* Queue.cpp in Sources */,

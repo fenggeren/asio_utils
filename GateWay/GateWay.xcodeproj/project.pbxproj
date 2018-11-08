@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2463382193F020009A67AC /* ServiceKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463362193F01F009A67AC /* ServiceKernel.cpp */; };
+		1F24635F219407E8009A67AC /* CPGNetSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24635D219407E8009A67AC /* CPGNetSession.cpp */; };
 		1F95CE4C218BECB60057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CE4B218BECB60057618A /* libprotobuf.a */; };
 		1F95CE8A218BFD2E0057618A /* CPGToCentral.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE88218BFD2E0057618A /* CPGToCentral.pb.cc */; };
 		1F95CEA3218FEA5A0057618A /* GSKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CEA1218FEA5A0057618A /* GSKernel.cpp */; };
@@ -50,6 +52,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F2463362193F01F009A67AC /* ServiceKernel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceKernel.cpp; sourceTree = "<group>"; };
+		1F2463372193F020009A67AC /* ServiceKernel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceKernel.hpp; sourceTree = "<group>"; };
+		1F24635D219407E8009A67AC /* CPGNetSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGNetSession.cpp; sourceTree = "<group>"; };
+		1F24635E219407E8009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
 		1F95CE47218BEB240057618A /* libprotoc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotoc.a; path = ../../../../../../usr/local/lib/libprotoc.a; sourceTree = "<group>"; };
 		1F95CE49218BEC660057618A /* libprotoc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotoc.dylib; path = ../../../../../../usr/local/lib/libprotoc.dylib; sourceTree = "<group>"; };
 		1F95CE4B218BECB60057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
@@ -132,6 +138,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F24635C219407E8009A67AC /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				1F24635D219407E8009A67AC /* CPGNetSession.cpp */,
+				1F24635E219407E8009A67AC /* CPGNetSession.hpp */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
 		1F95CE46218BEB230057618A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +160,7 @@
 		1F95CE83218BFD2E0057618A /* CPG */ = {
 			isa = PBXGroup;
 			children = (
+				1F24635C219407E8009A67AC /* Net */,
 				1F95CF2321919AE70057618A /* CPGClient.pb.cc */,
 				1F95CF2421919AE70057618A /* CPGClient.pb.h */,
 				1F95CE84218BFD2E0057618A /* CPGToCentral.proto */,
@@ -200,6 +216,8 @@
 		8123E2452189DCE50050FD4D /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				1F2463362193F01F009A67AC /* ServiceKernel.cpp */,
+				1F2463372193F020009A67AC /* ServiceKernel.hpp */,
 				8123E2462189DCE50050FD4D /* Thread.cpp */,
 				8123E2472189DCE50050FD4D /* DataHandler.hpp */,
 				8123E2482189DCE50050FD4D /* RunLoop.cpp */,
@@ -345,6 +363,7 @@
 				8123E2742189DCE60050FD4D /* Thread.cpp in Sources */,
 				8123E27A2189DCE60050FD4D /* TCPClient.cpp in Sources */,
 				8123E2782189DCE60050FD4D /* TCPListener.cpp in Sources */,
+				1F24635F219407E8009A67AC /* CPGNetSession.cpp in Sources */,
 				8123E2812189DCE60050FD4D /* TCPSessionManager.cpp in Sources */,
 				1FE3EA13218AE5A200A2F52D /* G2LSession.cpp in Sources */,
 				8123E27F2189DCE60050FD4D /* TCPAcceptor.cpp in Sources */,
@@ -352,6 +371,7 @@
 				8123E2822189DCE60050FD4D /* Logging.cpp in Sources */,
 				8123E2752189DCE60050FD4D /* RunLoop.cpp in Sources */,
 				1FE3EA0D218AE55200A2F52D /* G2CSession.cpp in Sources */,
+				1F2463382193F020009A67AC /* ServiceKernel.cpp in Sources */,
 				8123E2852189DCE60050FD4D /* FASIOType.cpp in Sources */,
 				8123E2802189DCE60050FD4D /* DataHandler.cpp in Sources */,
 				1F95CE8A218BFD2E0057618A /* CPGToCentral.pb.cc in Sources */,

@@ -14,25 +14,19 @@
 #include "GSSessionManager.hpp"
 
 using namespace fasio::logging;
-
-void CGSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                            DataBuffer*const data)
+bool CGSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                             const void* buffer, const PacketHeader& header)
 {
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kLoginRQ:
-            {
-                loginRQ(buffer, header->size);
-                break;
-            }
-            default:
-                break;
+    switch (header.type) {
+        case kLoginRQ:
+        {
+            loginRQ(buffer, header.size);
+            break;
         }
-        data->retrieve(kPacketHeaderSize + header->size);
+        default:
+            break;
     }
+    return true;
 }
 
 
@@ -42,8 +36,8 @@ void CGSession::loginRQ(const void* data, int len)
     if (fasio::parseProtoMsg(data, len, rq))
     {
         rq.set_logicid(uuid());
-        // 转发消息给CentralServer
-        SessionManager.sendMsgToSession(0, rq, kLoginRQ, ServerType_Gate_Login);
+        // 转发消息给CentralServer 
+        GSKernel::instance().transToLS(rq, kLoginRQ, uuid());
     }
     else
     {

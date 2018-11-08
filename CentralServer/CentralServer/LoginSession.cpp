@@ -17,21 +17,19 @@ void LoginSession::onClose()
     CSKernel::instance().removeService(logicID());
 }
 
-void LoginSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session, DataBuffer*const data)
+
+
+bool LoginSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                             const void* buffer, const PacketHeader& header)
 {
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kServerRegistRQ:
-            {
-                CSKernel::instance().serverRegistRQ(session, buffer, header->size);
-                break;
-            } 
-            default:
-                break;
+    switch (header.type) {
+        case kServerRegistRQ:
+        {
+            CSKernel::instance().serverRegistRQ(session, buffer, header.size);
+            break;
         }
-        data->retrieve(kPacketHeaderSize + header->size);
+        default:
+            break;
     }
+    return true;
 }

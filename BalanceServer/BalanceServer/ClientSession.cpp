@@ -15,26 +15,22 @@
 
 using namespace logging;
 
-void CBSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                      DataBuffer*const data)
-{
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kConnectRQ:
-            {
-                connectRQ(buffer, header->size);
-                break;
-            } 
-            default:
-                break;
-        }
-        data->retrieve(kPacketHeaderSize + header->size);
-    }
-}
 
+
+bool CBSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                             const void* buffer, const PacketHeader& header)
+{
+    switch (header.type) {
+        case kConnectRQ:
+        {
+            connectRQ(buffer, header.size);
+            break;
+        }
+        default:
+            break;
+    }
+    return false;
+}
 
 void CBSession::connectRQ(const void* data, int len)
 {
@@ -42,8 +38,8 @@ void CBSession::connectRQ(const void* data, int len)
     if (fasio::parseProtoMsg(data, len, rq))
     {
         rq.set_logicid(uuid());
-        // 转发消息给CentralServer
-        SessionManager.sendMsgToSession(0, rq, kConnectRQ, ServerType_Balance_Central);
+        // 转发消息给CentralServer 
+        BSKernel::instance().transToCS(rq, kConnectRQ, uuid());
     }
     else
     {

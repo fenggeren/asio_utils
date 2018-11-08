@@ -6,35 +6,22 @@
 //  Copyright © 2018年 guanrui fu. All rights reserved.
 //
 #pragma once
-#include <Net/TCPSession.hpp>
+#include <CPG/Net/CPGNetSession.hpp>
 
 using namespace fasio;
 
 // GateServer -> MatchServer
-class G2MSession : public ClientSession
+class G2MSession : public CPGClientSession
 {
 public:
-    G2MSession():
-    ClientSession()
-    {
-        messageCallback_ = std::bind(&G2MSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-        connectionCallback_ = std::bind(&G2MSession::defaultConnectionCallback, this, std::placeholders::_1);
-    }
-    
+    virtual void onClose() override;
 private:
     
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data)
-    {
-        std::string content(data->peek(), data->readableBytes());
-        data->retrieveAll();
-        session->send(content);
-    }
     
-    void defaultConnectionCallback(const TCPSessionPtr& session)
-    {
-        session->send("HELLO Match Server");
-    }
+    
+    virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer,
+                            const PacketHeader& header) override;
     
 private:
 };

@@ -8,21 +8,15 @@
 
 #pragma once
 
+#include <CPG/Net/CPGNetSession.hpp>
 #include <Net/TCPSession.hpp>
 
 using namespace fasio;
 
 
-class C2BSession : public ClientSession
+class C2BSession : public CPGClientSession
 {
 public:
-    
-    C2BSession():
-    ClientSession()
-    {
-        messageCallback_ = std::bind(&C2BSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-//        connectionCallback_ = std::bind(&C2BSession::defaultConnectionCallback, this, std::placeholders::_1);
-    }
     
 private:
     
@@ -30,14 +24,9 @@ private:
     virtual void sendInitData() override;
     
 private:
-    
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data);
-    
-    void defaultConnectionCallback(const TCPSessionPtr& session)
-    {
-        session->send("HELLO Central Server");
-    }
+    virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer,
+                            const PacketHeader& header) override;
 private:
     
     void connectRS(const void* buffer, int len);
@@ -45,29 +34,18 @@ private:
 
 
 // GateServer -> MatchServer
-class RobotSession : public ClientSession
+class RobotSession : public CPGClientSession
 {
 public:
-    RobotSession():
-    ClientSession()
-    {
-        messageCallback_ = std::bind(&RobotSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-//        connectionCallback_ = std::bind(&RobotSession::defaultConnectionCallback, this, std::placeholders::_1);
-    }
-    
 public:
 
     virtual void sendInitData() override;
 
     virtual void onClose() override;
 private:
-    
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session, DataBuffer*const data);
-    
-    void defaultConnectionCallback(const TCPSessionPtr& session)
-    {
-        session->send("HELLO Match Server");
-    }
+    virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer,
+                            const PacketHeader& header) override;
     
 private:
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F24634C2193F0F5009A67AC /* ServiceKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463492193F0F5009A67AC /* ServiceKernel.cpp */; };
+		1F24636B21942268009A67AC /* CPGNetSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24636921942268009A67AC /* CPGNetSession.cpp */; };
 		1FE3E889218983F800A2F52D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E888218983F800A2F52D /* main.cpp */; };
 		1FE3E8B22189896400A2F52D /* Robot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8B02189896400A2F52D /* Robot.cpp */; };
 		1FE3E8E521899E6600A2F52D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8B721899E6600A2F52D /* Thread.cpp */; };
@@ -47,6 +49,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F2463492193F0F5009A67AC /* ServiceKernel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceKernel.cpp; sourceTree = "<group>"; };
+		1F24634A2193F0F5009A67AC /* ServiceKernel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceKernel.hpp; sourceTree = "<group>"; };
+		1F24634B2193F0F5009A67AC /* ObjectIndexPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectIndexPool.hpp; sourceTree = "<group>"; };
+		1F24636921942268009A67AC /* CPGNetSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGNetSession.cpp; sourceTree = "<group>"; };
+		1F24636A21942268009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
 		1FE3E885218983F800A2F52D /* ClientRobots */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ClientRobots; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE3E888218983F800A2F52D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1FE3E8B02189896400A2F52D /* Robot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Robot.cpp; sourceTree = "<group>"; };
@@ -119,6 +126,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F24636821942268009A67AC /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				1F24636921942268009A67AC /* CPGNetSession.cpp */,
+				1F24636A21942268009A67AC /* CPGNetSession.hpp */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
 		1FE3E87C218983F800A2F52D = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +181,9 @@
 		1FE3E8B621899E6600A2F52D /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				1F24634B2193F0F5009A67AC /* ObjectIndexPool.hpp */,
+				1F2463492193F0F5009A67AC /* ServiceKernel.cpp */,
+				1F24634A2193F0F5009A67AC /* ServiceKernel.hpp */,
 				1FE3E8B721899E6600A2F52D /* Thread.cpp */,
 				1FE3E8B821899E6600A2F52D /* DataHandler.hpp */,
 				1FE3E8B921899E6600A2F52D /* RunLoop.cpp */,
@@ -240,6 +259,7 @@
 		81994CDD21907AF30034623E /* CPG */ = {
 			isa = PBXGroup;
 			children = (
+				1F24636821942268009A67AC /* Net */,
 				81994CEF21907E000034623E /* CPGClient.pb.h */,
 				81994CF021907E000034623E /* CPGClient.pb.cc */,
 				81994CE221907AF30034623E /* CPGHeader.h */,
@@ -306,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FE3E8EF21899E6600A2F52D /* TCPSession.cpp in Sources */,
+				1F24636B21942268009A67AC /* CPGNetSession.cpp in Sources */,
 				1FE3E8B22189896400A2F52D /* Robot.cpp in Sources */,
 				1FE3E8E721899E6600A2F52D /* NetPacket.cpp in Sources */,
 				1FE3E8ED21899E6600A2F52D /* TCPServer.cpp in Sources */,
@@ -318,6 +339,7 @@
 				1FE3E889218983F800A2F52D /* main.cpp in Sources */,
 				1FE3E8E521899E6600A2F52D /* Thread.cpp in Sources */,
 				1FE3E8EB21899E6600A2F52D /* TCPClient.cpp in Sources */,
+				1F24634C2193F0F5009A67AC /* ServiceKernel.cpp in Sources */,
 				81994CFA219081B00034623E /* RobotSessionManager.cpp in Sources */,
 				1FE3E8E921899E6600A2F52D /* TCPListener.cpp in Sources */,
 				1FE3E8F221899E6600A2F52D /* TCPSessionManager.cpp in Sources */,

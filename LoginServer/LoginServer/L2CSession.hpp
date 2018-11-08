@@ -7,35 +7,26 @@
 //
 
 #pragma once
-#include <Net/TCPSession.hpp>
+#include <CPG/Net/CPGNetSession.hpp>
+
 using namespace fasio;
 
 
-class L2CSession : public ClientSession
+class L2CSession : public CPGClientSession
 {
 public:
-    L2CSession():
-    ClientSession()
-    {
-        messageCallback_ = std::bind(&L2CSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-//        connectionCallback_ = std::bind(&L2CSession::defaultConnectionCallback, this, std::placeholders::_1);
-    }
     
 private:
     virtual void sendInitData() override;
+    virtual void onClose() override;
+    
+    virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer,
+                            const PacketHeader& header) override;
 private:
     void serverRegistRS(const void* data, int len);
 private:
-    
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data);
-    
-    void defaultConnectionCallback(const TCPSessionPtr& session)
-    {
-        session->send("HELLO Central Server");
-    }
-    
-private:
+ 
 };
 
 

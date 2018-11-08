@@ -31,25 +31,24 @@ void L2CSession::sendInitData()
 }
 
 
-
-void L2CSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                        DataBuffer*const data)
+void L2CSession::onClose()
 {
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kServerRegistRS:
-            {
-                serverRegistRS(buffer, header->size);
-                break;
-            }
-            default:
-                break;
+    LSKernel::instance().removeConnectService(uuid());
+}
+
+bool L2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer, const PacketHeader& header)
+{
+    switch (header.type) {
+        case kServerRegistRS:
+        {
+            serverRegistRS(buffer, header.size);
+            break;
         }
-        data->retrieve(kPacketHeaderSize + header->size);
+        default:
+            break;
     }
+    return true;
 }
 
 void L2CSession::serverRegistRS(const void* data, int len)

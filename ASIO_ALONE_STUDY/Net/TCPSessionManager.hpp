@@ -13,7 +13,7 @@
 #include <list>
 #include <google/protobuf/message.h>
 #include "TCPSession.hpp"
-
+#include "ObjectIndexPool.hpp"
 
 namespace fasio
 {
@@ -23,6 +23,7 @@ class TCPSession;
 class TCPAcceptor;
 class TCPListener;
 class NetPacket;
+
 struct Listener 
 {
 	std::shared_ptr<TCPSessionFactory> factory_;
@@ -46,10 +47,7 @@ public:
     void addSession(TCPSessionPtr session);
 	void removeSession(int32 uuid);
 	TCPSessionPtr getSession(int32 uuid);
-    
-    void addClientSession(TCPSessionPtr session);
-    void removeClientSession(int32 logicid);
-    TCPSessionPtr getClientSession(int32 logicid);
+     
     
 	// stype:  服务器类型
 	void sendMsgToSession(int32 uuid, const void* data, int len,
@@ -93,8 +91,9 @@ private:
     void removeSessionPtr(const TCPSessionPtr& session); 
 protected:
     std::unordered_map<uint16 ,std::shared_ptr<TCPListener>> listeners_;
-    std::unordered_map<int32, TCPSessionPtr> sessionMap_;
-    std::list<TCPSessionPtr> clientSessions_;
+//    std::unordered_map<int32, TCPSessionPtr>
+    ObjectIndexPool<TCPSessionPtr> sessionMap_;
+     
 };
 
 

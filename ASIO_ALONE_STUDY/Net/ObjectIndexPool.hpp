@@ -27,7 +27,12 @@ public:
     ObjectIndexPool()
     {
         maxIndex_ = 0;
+        size_ = 0;
         invalidIndexs_.push_back(MAX_NUM);
+        for(auto iter = objectArray_.begin(); iter != objectArray_.end(); iter++)
+        {
+            *iter = nullptr;
+        }
     }
     
     
@@ -36,6 +41,7 @@ public:
         if (maxIndex_ <= MAX_NUM)
         {
             objectArray_[maxIndex_] = object;
+            size_ ++;
             return maxIndex_++;
         }
         else if (invalidIndexs_.size() > 0)
@@ -46,6 +52,7 @@ public:
                 {
                     objectArray_[invalidIndex] = object;
                     invalidIndexs_.pop_front();
+                    size_++;
                     return invalidIndex;
                 }
             }
@@ -57,11 +64,18 @@ public:
     {
         if (index <= MAX_NUM)
         {
+            size_--;
             objectArray_[index] = nullptr;
             invalidIndexs_.push_back(index);
         }
     }
     T& getObject(unsigned int index)
+    {
+        assert(index<=MAX_NUM);
+        return objectArray_[index];
+    }
+    
+    T& operator[](unsigned int index)
     {
         assert(index<=MAX_NUM);
         return objectArray_[index];
@@ -74,9 +88,21 @@ public:
     
     bool isFull()
     {
-        return invalidIndexs_.size() == 0 ;
+        return size_ == MAX_NUM + 1;
     }
     
+    void foreach(const std::function<void(const T&)>& cb)
+    {
+        int count = 0;
+        for(int i = 0; i <= MAX_NUM || count < size_; i++)
+        {
+            if (objectArray_[i])
+            {
+                count++;
+                cb(objectArray_[i]);
+            }
+        }
+    }
     
     
 private:

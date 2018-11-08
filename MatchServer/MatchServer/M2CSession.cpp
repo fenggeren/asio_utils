@@ -17,6 +17,11 @@
 
 using namespace fasio::logging;
 
+void M2CSession::onClose()
+{
+    MSKernel::instance().removeConnectService(uuid());
+}
+
 
 void M2CSession::sendInitData()
 {
@@ -31,24 +36,20 @@ void M2CSession::sendInitData()
                                     kServerRegistRQ, ServerType_CentralServer);
 }
 
-void M2CSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                            DataBuffer*const data)
+
+bool M2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer, const PacketHeader& header)
 {
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kServerRegistRS:
-            {
-                serverRegistRS(buffer, header->size);
-                break;
-            }
-            default:
-                break;
+    switch (header.type) {
+        case kServerRegistRS:
+        {
+            serverRegistRS(buffer, header.size);
+            break;
         }
-        data->retrieve(kPacketHeaderSize + header->size);
+        default:
+            break;
     }
+    return true;
 }
 
 void M2CSession::serverRegistRS(const void* data, int len)
@@ -63,7 +64,7 @@ void M2CSession::serverRegistRS(const void* data, int len)
             
             for(auto& connsvr : rs.connservers())
             {
-                MSKernel::instance().addNewConnect(connsvr.type(), connsvr.port(), connsvr.sid(), connsvr.ip());
+                 
             }
         }
         else

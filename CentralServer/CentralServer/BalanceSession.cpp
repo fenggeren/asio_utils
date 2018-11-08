@@ -24,32 +24,25 @@ void BalanceSession::onClose()
 }
 
 
-void BalanceSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                            DataBuffer*const data)
+bool BalanceSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                             const void* buffer, const PacketHeader& header)
 {
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kServerRegistRQ:
-            {
-                CSKernel::instance().serverRegistRQ(session, buffer, header->size);
-                break;
-            }
-            case kConnectRQ:
-            {
-                CSKernel::instance().requestBestGateServer(shared_from_this(), buffer, header->size); 
-                break;
-            }
-            default:
-                break;
+    switch (header.type) {
+        case kServerRegistRQ:
+        {
+            CSKernel::instance().serverRegistRQ(session, buffer, header.size);
+            break;
         }
-        data->retrieve(kPacketHeaderSize + header->size);
+        case kConnectRQ:
+        {
+            CSKernel::instance().requestBestGateServer(shared_from_this(), buffer, header.size);
+            break;
+        }
+        default:
+            break;
     }
+    return true;
 }
-
-
 
 
 

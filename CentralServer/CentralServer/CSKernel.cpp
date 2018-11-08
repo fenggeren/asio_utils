@@ -154,7 +154,7 @@ void CSKernel::distServices(std::shared_ptr<ServerInfo> info, uint8 stype)
     conn->set_type(info->type);
     
     auto packet = NetPacket::createPacket(rs.SerializeAsString(), kServerNewServicesNotify);
-    SessionManager.sendMsgToSession(-1, packet, stype);
+    SessionManager.sendMsgToSession(INVALID_UUID, packet, stype);
 }
 
 void CSKernel::serverLoginRQ(TCPSessionPtr session,

@@ -16,3 +16,9 @@ void MatchSession::onClose()
 {
     CSKernel::instance().removeService(logicID());
 }
+
+bool MatchSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                             const void* buffer, const PacketHeader& header)
+{
+    return true;
+}

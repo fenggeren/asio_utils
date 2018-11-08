@@ -7,31 +7,19 @@
 //
 
 #pragma once
-#include <Net/TCPSession.hpp>
+#include <CPG/Net/CPGNetSession.hpp>
 
 using namespace fasio;
 
 // GateServer -> LoginServer
-class G2LSession : public ClientSession
+class G2LSession : public CPGClientSession
 {
 public:
-    G2LSession():
-    ClientSession()
-    {
-        messageCallback_ = std::bind(&G2LSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-//        connectionCallback_ = std::bind(&G2LSession::defaultConnectionCallback, this, std::placeholders::_1);
-    }
-    
+    virtual void onClose() override;
 private:
-    
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data);
-    
-    void defaultConnectionCallback(const TCPSessionPtr& session)
-    {
-        session->send("HELLO Login Server");
-    }
-    
+    virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer,
+                            const PacketHeader& header) override;
 private:
     void loginRS(const void* data, int size);
 };

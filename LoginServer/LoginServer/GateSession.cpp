@@ -17,24 +17,19 @@
 
 using namespace fasio::logging;
 
-void GateSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                            DataBuffer*const data)
+bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                             const void* buffer, const PacketHeader& header)
 {
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
-            case kLoginRQ:
-            {
-                loginRQ(buffer, header->size);
-                break;
-            }
-            default:
-                break;
+    switch (header.type) {
+        case kLoginRQ:
+        {
+            loginRQ(buffer, header.size);
+            break;
         }
-        data->retrieve(kPacketHeaderSize + header->size);
+        default:
+            break;
     }
+    return true;
 }
 
 void GateSession::loginRQ(const void* data, int len)

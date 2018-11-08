@@ -18,7 +18,7 @@ using namespace fasio::logging;
 
 void G2CSession::onClose()
 {
-    
+    GSKernel::instance().removeConnectService(uuid());
 }
 
 void G2CSession::sendInitData()
@@ -35,34 +35,29 @@ void G2CSession::sendInitData()
 }
 
 
-void G2CSession::defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                            DataBuffer*const data)
+bool G2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer, const PacketHeader& header)
 {
-    while (hasPacket(data->peek(), data->readableBytes()))
-    {
-        PacketHeader* header = (PacketHeader*)data->peek();
-        const void* buffer = data->peek() + kPacketHeaderSize;
-        switch (header->type) {
+    switch (header.type) {
             case kServerRegistRS:
             {
-                serverRegistRS(buffer, header->size);
+                serverRegistRS(buffer, header.size);
                 break;
             }
             case kLoginRS:
             {
-                serverLoginRS(buffer, header->size);
+                serverLoginRS(buffer, header.size);
                 break;
             }
             case kServerNewServicesNotify:
             {
-                newServicesNotify(buffer, header->size);
+                newServicesNotify(buffer, header.size);
                 break;
             }
             default:
                 break;
-        }
-        data->retrieve(kPacketHeaderSize + header->size);
     }
+    return true;
 }
 
 void G2CSession::serverRegistRS(const void* data, int len)

@@ -7,20 +7,14 @@
 //
 
 #pragma once
-#include <Net/TCPSession.hpp>
+#include <CPG/Net/CPGNetSession.hpp>
 
 using namespace fasio;
 
 // GateServer -> CentralServer
-class B2CSession : public ClientSession
+class B2CSession : public CPGClientSession
 {
 public:
-    B2CSession():
-    ClientSession()
-    {
-        messageCallback_ = std::bind(&B2CSession::defaultMessageCallback, this, std::placeholders::_1, std::placeholders::_2);
-//        connectionCallback_ = std::bind(&B2CSession::defaultConnectionCallback, this, std::placeholders::_1);
-    }
     
 private:
     
@@ -29,12 +23,9 @@ private:
     
 private:
     
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
-                                DataBuffer*const data);
     
-    void defaultConnectionCallback(const TCPSessionPtr& session)
-    {
-    }
+    virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
+                            const void* buffer, const PacketHeader& header) override;
 private:
     
     void serverRegistRS(const void* data, int len);
