@@ -28,7 +28,7 @@ void MSKernel::removeConnectService(int uuid)
 {
     connectServices_.erase(uuid);
     
-    if (uuid == centralSession_->uuid())
+    if (centralSession_ && uuid == centralSession_->uuid())
     {
         centralSession_ = nullptr;
     }

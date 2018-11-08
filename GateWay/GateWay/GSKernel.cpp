@@ -52,11 +52,11 @@ void GSKernel::removeConnectService(int uuid)
 {
     connectServices_.erase(uuid);
     
-    if (uuid == loginSession_->uuid())
+    if (loginSession_ && uuid == loginSession_->uuid())
     {
         loginSession_ = nullptr;
     }
-    else if (uuid == centralSession_->uuid())
+    else if (centralSession_ && uuid == centralSession_->uuid())
     {
         centralSession_ = nullptr;
     }
