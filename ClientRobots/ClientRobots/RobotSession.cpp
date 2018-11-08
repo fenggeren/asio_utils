@@ -102,7 +102,7 @@ bool RobotSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 }
 void RobotSession::loginRS(const void* data, int len)
 {
-    LOG_MINFO << " ";
+    LOG_MINFO << " id: " << logicID();
     CPGClient::LoginRS rs;
     parseProtoMsg(data, len, rs);
     rs.PrintDebugString();

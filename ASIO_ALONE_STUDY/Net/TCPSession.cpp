@@ -46,6 +46,7 @@ void TCPSession::startAsyncRead()
 {
     if (state_ == kConnected)
     {
+        inputBuffer_->ensureWritableBytes(1024);
         socket_->async_read_some(asio::buffer(inputBuffer_->beginWrite(),
                                               inputBuffer_->writableBytes()),
                                  std::bind(&TCPSession::handRead,this,
