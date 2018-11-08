@@ -9,22 +9,19 @@ message ConnectRQ
 }
 // 返回负载最小的 GateServer信息
 message ConnectRS
-{
-	int32 logicID  = 1;
-    int32   result  = 2;
-    int32   port    = 3;
-    string  ip      = 4;
+{ 
+    int32   result  = 1;
+    int32   port    = 2;
+    string  ip      = 3;
 }
 
 message LoginRQ
-{
-	int32 logicID = 1;
-    int32   uid  = 2;
-    string token = 3;
+{ 
+    int32   uid  = 1;
+    string token = 2;
 }
 
 message LoginRS
-{
-	int32 logicID = 1;
-    int32   result = 2;
+{ 
+    int32  result = 1;
 }

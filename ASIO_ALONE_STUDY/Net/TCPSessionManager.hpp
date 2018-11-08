@@ -78,7 +78,13 @@ public:
                            uint8 stype = 0);
     void transMsgToSession(TCPSessionPtr session, google::protobuf::Message& msg,
                            int32 msgID, int32 extraID,
-                           uint8 stype = 0); 
+                           uint8 stype = 0);
+    
+    
+    void sendMsg(TCPSessionPtr session, const void* body,
+                const PacketHeader& header, uint8 stype = 0);
+    void sendMsg(int32 uuid, const void* body,
+                 const PacketHeader& header, uint8 stype = 0);
 public:
 
 	void newSession(std::shared_ptr<TCPSession> session);

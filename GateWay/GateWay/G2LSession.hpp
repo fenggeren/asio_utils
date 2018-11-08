@@ -21,5 +21,5 @@ private:
                             const void* buffer,
                             const PacketHeader& header) override;
 private:
-    void loginRS(const void* data, int size);
+    void loginRS(const void* data, const PacketHeader& header);
 };

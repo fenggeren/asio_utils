@@ -204,15 +204,15 @@ void CSKernel::serverLoginRQ(TCPSessionPtr session,
 
 
 void CSKernel::requestBestGateServer(TCPSessionPtr session,
-                                     const void* data, int len)
+                                     const void* data,
+                                     const PacketHeader& header)
 {
     CPGClient::ConnectRS rs;
     
     CPGClient::ConnectRQ rq;
-    if (parseProtoMsg(data, len, rq))
+    if (parseProtoMsg(data, header.size, rq))
     {
-        rs.set_result(0);
-        rs.set_logicid(rq.logicid());
+        rs.set_result(0); 
         std::shared_ptr<ServerInfo> smalleastLoadedGS = nullptr;
         int loaded = INT_MAX;
         for (auto& pair : servers_)
@@ -242,10 +242,13 @@ void CSKernel::requestBestGateServer(TCPSessionPtr session,
     else
     {
         rs.set_result(-1);
-        LOG_ERROR << "invalid data len: " << len;
+        LOG_ERROR << "invalid data len: " << header.size;
     }
     
-    SessionManager.sendMsgToSession(session, rs, kConnectRS);
+    auto body = rs.SerializeAsString();
+    SessionManager.sendMsg(session, body.data(),
+                           {kConnectRS, rs.ByteSize(),
+                            header.extraID});
 }
 
 

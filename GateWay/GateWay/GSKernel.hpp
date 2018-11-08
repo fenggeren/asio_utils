@@ -36,9 +36,9 @@ public:
     
 public:
     
-    void transToLS(google::protobuf::Message& msg, int msgID, int clientID);
-    void transToCS(google::protobuf::Message& msg, int msgID, int clientID);
-    void transToMS(google::protobuf::Message& msg, int msgID, int clientID, int mid);
+    void transToLS(const void* data, const PacketHeader& header);
+    void transToCS(const void* data, const PacketHeader& header);
+    void transToMS(const void* data, const PacketHeader& header, int mid);
 protected:
     
     virtual std::shared_ptr<TCPSession>

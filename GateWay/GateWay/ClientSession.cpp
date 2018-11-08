@@ -32,19 +32,16 @@ bool CGSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 
 void CGSession::loginRQ(const void* data, int len)
 {
-    CPGClient::LoginRQ rq;
-    if (fasio::parseProtoMsg(data, len, rq))
-    {
-        rq.set_logicid(uuid());
-        // 转发消息给CentralServer 
-        GSKernel::instance().transToLS(rq, kLoginRQ, uuid());
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
-    }
+    LOG_MINFO << " ";
+    GSKernel::instance().transToLS(data, {kLoginRQ, len, static_cast<int32>(uuid())});
 }
+
+
+
+
+
+
+
 
 
 

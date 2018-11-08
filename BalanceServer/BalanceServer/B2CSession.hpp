@@ -29,7 +29,7 @@ private:
 private:
     
     void serverRegistRS(const void* data, int len);
-    void connectRS(const void* data, int len);
+    void connectRS(const void* data, const PacketHeader& header);
 private:
 };
 

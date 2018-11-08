@@ -41,7 +41,8 @@ public:
                        const void* data, int len);
     
 public:
-    void requestBestGateServer(TCPSessionPtr session, const void* data, int len);
+    void requestBestGateServer(TCPSessionPtr session, const void* data,
+                               const PacketHeader& header);
     
 private:
     

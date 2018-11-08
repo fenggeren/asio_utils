@@ -23,7 +23,7 @@ bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
     switch (header.type) {
         case kLoginRQ:
         {
-            loginRQ(buffer, header.size);
+            loginRQ(buffer, header);
             break;
         }
         default:
@@ -32,23 +32,23 @@ bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
     return true;
 }
 
-void GateSession::loginRQ(const void* data, int len)
+void GateSession::loginRQ(const void* data, const PacketHeader& header)
 {
     CPGClient::LoginRS rs;
     // token 校验
     CPGClient::LoginRQ rq;
-    if (fasio::parseProtoMsg(data, len, rq))
+    if (fasio::parseProtoMsg(data, header.size, rq))
     {
         rs.set_result(0);
-        rs.set_logicid(rq.logicid());
     }
     else
     {
         rs.set_result(-1);
-        LOG_ERROR << " cant parse proto msg len: " << len
+        LOG_ERROR << " cant parse proto msg len: " << header.size
         << " sessionID: " << uuid();
     }
-    SessionManager.sendMsgToSession(shared_from_this(), rs, kLoginRS);
+    SessionManager.sendMsg(shared_from_this(), rs.SerializeAsString().data(),
+                        {kLoginRS, rs.ByteSize(), header.extraID});
 }
 
 

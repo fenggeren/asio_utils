@@ -33,7 +33,7 @@ public:
     
     void removeConnectService(int uuid);
     
-    void transToCS(google::protobuf::Message& msg, int msgID, int clientID);
+    void transToCS(const void* data, const PacketHeader& header);
 protected:
     
     virtual std::shared_ptr<TCPSession>

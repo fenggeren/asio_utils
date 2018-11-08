@@ -52,6 +52,7 @@ bool C2BSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 
 void C2BSession::connectRS(const void* data, int len)
 {
+    LOG_MINFO << " ";
     CPGClient::ConnectRS rs;
     if (fasio::parseProtoMsg(data, len, rs))
     {
@@ -77,7 +78,6 @@ void RobotSession::sendInitData()
     char buf[64] = {0};
     snprintf(buf, sizeof(buf), "Robot-%d",uuid());
     rq.set_token(buf);
-    rq.set_logicid(uuid());
     SessionManager.sendMsgToSession(shared_from_this(), rq, kLoginRQ,ServerType_GateServer);
 }
 
@@ -102,6 +102,7 @@ bool RobotSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 }
 void RobotSession::loginRS(const void* data, int len)
 {
+    LOG_MINFO << " ";
     CPGClient::LoginRS rs;
     parseProtoMsg(data, len, rs);
     rs.PrintDebugString();

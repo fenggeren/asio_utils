@@ -113,7 +113,6 @@ const ::google::protobuf::uint32 TableStruct_CPGClient_2eproto::offsets[] PROTOB
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRS, logicid_),
   PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRS, result_),
   PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRS, port_),
   PROTOBUF_FIELD_OFFSET(::CPGClient::ConnectRS, ip_),
@@ -122,7 +121,6 @@ const ::google::protobuf::uint32 TableStruct_CPGClient_2eproto::offsets[] PROTOB
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRQ, logicid_),
   PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRQ, uid_),
   PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRQ, token_),
   ~0u,  // no _has_bits_
@@ -130,14 +128,13 @@ const ::google::protobuf::uint32 TableStruct_CPGClient_2eproto::offsets[] PROTOB
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRS, logicid_),
   PROTOBUF_FIELD_OFFSET(::CPGClient::LoginRS, result_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::CPGClient::ConnectRQ)},
   { 6, -1, sizeof(::CPGClient::ConnectRS)},
-  { 15, -1, sizeof(::CPGClient::LoginRQ)},
-  { 23, -1, sizeof(::CPGClient::LoginRS)},
+  { 14, -1, sizeof(::CPGClient::LoginRQ)},
+  { 21, -1, sizeof(::CPGClient::LoginRS)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -156,13 +153,12 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 ::google::protobuf::internal::DescriptorTable descriptor_table_CPGClient_2eproto = {
   false, InitDefaults_CPGClient_2eproto, 
   "\n\017CPGClient.proto\022\tCPGClient\"\034\n\tConnectR"
-  "Q\022\017\n\007logicID\030\001 \001(\005\"F\n\tConnectRS\022\017\n\007logic"
-  "ID\030\001 \001(\005\022\016\n\006result\030\002 \001(\005\022\014\n\004port\030\003 \001(\005\022\n"
-  "\n\002ip\030\004 \001(\t\"6\n\007LoginRQ\022\017\n\007logicID\030\001 \001(\005\022\013"
-  "\n\003uid\030\002 \001(\005\022\r\n\005token\030\003 \001(\t\"*\n\007LoginRS\022\017\n"
-  "\007logicID\030\001 \001(\005\022\016\n\006result\030\002 \001(\005b\006proto3"
+  "Q\022\017\n\007logicID\030\001 \001(\005\"5\n\tConnectRS\022\016\n\006resul"
+  "t\030\001 \001(\005\022\014\n\004port\030\002 \001(\005\022\n\n\002ip\030\003 \001(\t\"%\n\007Log"
+  "inRQ\022\013\n\003uid\030\001 \001(\005\022\r\n\005token\030\002 \001(\t\"\031\n\007Logi"
+  "nRS\022\016\n\006result\030\001 \001(\005b\006proto3"
 ,
-  "CPGClient.proto", &assign_descriptors_table_CPGClient_2eproto, 238,
+  "CPGClient.proto", &assign_descriptors_table_CPGClient_2eproto, 187,
 };
 
 void AddDescriptors_CPGClient_2eproto() {
@@ -456,7 +452,6 @@ class ConnectRS::HasBitSetters {
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ConnectRS::kLogicIDFieldNumber;
 const int ConnectRS::kResultFieldNumber;
 const int ConnectRS::kPortFieldNumber;
 const int ConnectRS::kIpFieldNumber;
@@ -475,9 +470,9 @@ ConnectRS::ConnectRS(const ConnectRS& from)
   if (from.ip().size() > 0) {
     ip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_);
   }
-  ::memcpy(&logicid_, &from.logicid_,
+  ::memcpy(&result_, &from.result_,
     static_cast<size_t>(reinterpret_cast<char*>(&port_) -
-    reinterpret_cast<char*>(&logicid_)) + sizeof(port_));
+    reinterpret_cast<char*>(&result_)) + sizeof(port_));
   // @@protoc_insertion_point(copy_constructor:CPGClient.ConnectRS)
 }
 
@@ -485,9 +480,9 @@ void ConnectRS::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_ConnectRS_CPGClient_2eproto.base);
   ip_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&logicid_, 0, static_cast<size_t>(
+  ::memset(&result_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&port_) -
-      reinterpret_cast<char*>(&logicid_)) + sizeof(port_));
+      reinterpret_cast<char*>(&result_)) + sizeof(port_));
 }
 
 ConnectRS::~ConnectRS() {
@@ -515,9 +510,9 @@ void ConnectRS::Clear() {
   (void) cached_has_bits;
 
   ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&logicid_, 0, static_cast<size_t>(
+  ::memset(&result_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&port_) -
-      reinterpret_cast<char*>(&logicid_)) + sizeof(port_));
+      reinterpret_cast<char*>(&result_)) + sizeof(port_));
   _internal_metadata_.Clear();
 }
 
@@ -534,19 +529,9 @@ const char* ConnectRS::_InternalParse(const char* begin, const char* end, void* 
     ptr = Varint::Parse32Inline(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // int32 logicID = 1;
+      // int32 result = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        ::google::protobuf::uint64 val;
-        ptr = Varint::Parse64(ptr, &val);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ::google::protobuf::int32 value = val;
-        msg->set_logicid(value);
-        break;
-      }
-      // int32 result = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
@@ -554,9 +539,9 @@ const char* ConnectRS::_InternalParse(const char* begin, const char* end, void* 
         msg->set_result(value);
         break;
       }
-      // int32 port = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+      // int32 port = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
@@ -564,9 +549,9 @@ const char* ConnectRS::_InternalParse(const char* begin, const char* end, void* 
         msg->set_port(value);
         break;
       }
-      // string ip = 4;
-      case 4: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+      // string ip = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
         ptr = Varint::Parse32Inline(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         ctx->extra_parse_data().SetFieldName("CPGClient.ConnectRS.ip");
@@ -614,22 +599,9 @@ bool ConnectRS::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 logicID = 1;
+      // int32 result = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &logicid_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 result = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -640,9 +612,9 @@ bool ConnectRS::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 port = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+      // int32 port = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -653,9 +625,9 @@ bool ConnectRS::MergePartialFromCodedStream(
         break;
       }
 
-      // string ip = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+      // string ip = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_ip()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -695,29 +667,24 @@ void ConnectRS::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 logicID = 1;
-  if (this->logicid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->logicid(), output);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->result() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
-  // int32 port = 3;
+  // int32 port = 2;
   if (this->port() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->port(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->port(), output);
   }
 
-  // string ip = 4;
+  // string ip = 3;
   if (this->ip().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->ip().data(), static_cast<int>(this->ip().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "CPGClient.ConnectRS.ip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->ip(), output);
+      3, this->ip(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -734,22 +701,17 @@ void ConnectRS::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 logicID = 1;
-  if (this->logicid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->logicid(), target);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->result() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
-  // int32 port = 3;
+  // int32 port = 2;
   if (this->port() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->port(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->port(), target);
   }
 
-  // string ip = 4;
+  // string ip = 3;
   if (this->ip().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->ip().data(), static_cast<int>(this->ip().length()),
@@ -757,7 +719,7 @@ void ConnectRS::SerializeWithCachedSizes(
       "CPGClient.ConnectRS.ip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->ip(), target);
+        3, this->ip(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -781,28 +743,21 @@ size_t ConnectRS::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string ip = 4;
+  // string ip = 3;
   if (this->ip().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->ip());
   }
 
-  // int32 logicID = 1;
-  if (this->logicid() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->logicid());
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->result() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->result());
   }
 
-  // int32 port = 3;
+  // int32 port = 2;
   if (this->port() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -840,9 +795,6 @@ void ConnectRS::MergeFrom(const ConnectRS& from) {
 
     ip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_);
   }
-  if (from.logicid() != 0) {
-    set_logicid(from.logicid());
-  }
   if (from.result() != 0) {
     set_result(from.result());
   }
@@ -878,7 +830,6 @@ void ConnectRS::InternalSwap(ConnectRS* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   ip_.Swap(&other->ip_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(logicid_, other->logicid_);
   swap(result_, other->result_);
   swap(port_, other->port_);
 }
@@ -898,7 +849,6 @@ class LoginRQ::HasBitSetters {
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int LoginRQ::kLogicIDFieldNumber;
 const int LoginRQ::kUidFieldNumber;
 const int LoginRQ::kTokenFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -916,9 +866,7 @@ LoginRQ::LoginRQ(const LoginRQ& from)
   if (from.token().size() > 0) {
     token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.token_);
   }
-  ::memcpy(&logicid_, &from.logicid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&uid_) -
-    reinterpret_cast<char*>(&logicid_)) + sizeof(uid_));
+  uid_ = from.uid_;
   // @@protoc_insertion_point(copy_constructor:CPGClient.LoginRQ)
 }
 
@@ -926,9 +874,7 @@ void LoginRQ::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_LoginRQ_CPGClient_2eproto.base);
   token_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&logicid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&uid_) -
-      reinterpret_cast<char*>(&logicid_)) + sizeof(uid_));
+  uid_ = 0;
 }
 
 LoginRQ::~LoginRQ() {
@@ -956,9 +902,7 @@ void LoginRQ::Clear() {
   (void) cached_has_bits;
 
   token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&logicid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&uid_) -
-      reinterpret_cast<char*>(&logicid_)) + sizeof(uid_));
+  uid_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -975,19 +919,9 @@ const char* LoginRQ::_InternalParse(const char* begin, const char* end, void* ob
     ptr = Varint::Parse32Inline(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // int32 logicID = 1;
+      // int32 uid = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        ::google::protobuf::uint64 val;
-        ptr = Varint::Parse64(ptr, &val);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ::google::protobuf::int32 value = val;
-        msg->set_logicid(value);
-        break;
-      }
-      // int32 uid = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
@@ -995,9 +929,9 @@ const char* LoginRQ::_InternalParse(const char* begin, const char* end, void* ob
         msg->set_uid(value);
         break;
       }
-      // string token = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+      // string token = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
         ptr = Varint::Parse32Inline(ptr, &size);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         ctx->extra_parse_data().SetFieldName("CPGClient.LoginRQ.token");
@@ -1045,22 +979,9 @@ bool LoginRQ::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 logicID = 1;
+      // int32 uid = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &logicid_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 uid = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1071,9 +992,9 @@ bool LoginRQ::MergePartialFromCodedStream(
         break;
       }
 
-      // string token = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+      // string token = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_token()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -1113,24 +1034,19 @@ void LoginRQ::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 logicID = 1;
-  if (this->logicid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->logicid(), output);
-  }
-
-  // int32 uid = 2;
+  // int32 uid = 1;
   if (this->uid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->uid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->uid(), output);
   }
 
-  // string token = 3;
+  // string token = 2;
   if (this->token().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->token().data(), static_cast<int>(this->token().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "CPGClient.LoginRQ.token");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->token(), output);
+      2, this->token(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1147,17 +1063,12 @@ void LoginRQ::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 logicID = 1;
-  if (this->logicid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->logicid(), target);
-  }
-
-  // int32 uid = 2;
+  // int32 uid = 1;
   if (this->uid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->uid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->uid(), target);
   }
 
-  // string token = 3;
+  // string token = 2;
   if (this->token().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->token().data(), static_cast<int>(this->token().length()),
@@ -1165,7 +1076,7 @@ void LoginRQ::SerializeWithCachedSizes(
       "CPGClient.LoginRQ.token");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->token(), target);
+        2, this->token(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1189,21 +1100,14 @@ size_t LoginRQ::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string token = 3;
+  // string token = 2;
   if (this->token().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->token());
   }
 
-  // int32 logicID = 1;
-  if (this->logicid() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->logicid());
-  }
-
-  // int32 uid = 2;
+  // int32 uid = 1;
   if (this->uid() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -1241,9 +1145,6 @@ void LoginRQ::MergeFrom(const LoginRQ& from) {
 
     token_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.token_);
   }
-  if (from.logicid() != 0) {
-    set_logicid(from.logicid());
-  }
   if (from.uid() != 0) {
     set_uid(from.uid());
   }
@@ -1276,7 +1177,6 @@ void LoginRQ::InternalSwap(LoginRQ* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   token_.Swap(&other->token_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(logicid_, other->logicid_);
   swap(uid_, other->uid_);
 }
 
@@ -1295,7 +1195,6 @@ class LoginRS::HasBitSetters {
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int LoginRS::kLogicIDFieldNumber;
 const int LoginRS::kResultFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -1308,16 +1207,12 @@ LoginRS::LoginRS(const LoginRS& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&logicid_, &from.logicid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&logicid_)) + sizeof(result_));
+  result_ = from.result_;
   // @@protoc_insertion_point(copy_constructor:CPGClient.LoginRS)
 }
 
 void LoginRS::SharedCtor() {
-  ::memset(&logicid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&result_) -
-      reinterpret_cast<char*>(&logicid_)) + sizeof(result_));
+  result_ = 0;
 }
 
 LoginRS::~LoginRS() {
@@ -1343,9 +1238,7 @@ void LoginRS::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&logicid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&result_) -
-      reinterpret_cast<char*>(&logicid_)) + sizeof(result_));
+  result_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -1362,19 +1255,9 @@ const char* LoginRS::_InternalParse(const char* begin, const char* end, void* ob
     ptr = Varint::Parse32Inline(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // int32 logicID = 1;
+      // int32 result = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        ::google::protobuf::uint64 val;
-        ptr = Varint::Parse64(ptr, &val);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ::google::protobuf::int32 value = val;
-        msg->set_logicid(value);
-        break;
-      }
-      // int32 result = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
@@ -1416,22 +1299,9 @@ bool LoginRS::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 logicID = 1;
+      // int32 result = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &logicid_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 result = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1469,14 +1339,9 @@ void LoginRS::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 logicID = 1;
-  if (this->logicid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->logicid(), output);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->result() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1493,14 +1358,9 @@ void LoginRS::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 logicID = 1;
-  if (this->logicid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->logicid(), target);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->result() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1524,14 +1384,7 @@ size_t LoginRS::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 logicID = 1;
-  if (this->logicid() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->logicid());
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->result() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -1565,9 +1418,6 @@ void LoginRS::MergeFrom(const LoginRS& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.logicid() != 0) {
-    set_logicid(from.logicid());
-  }
   if (from.result() != 0) {
     set_result(from.result());
   }
@@ -1598,7 +1448,6 @@ void LoginRS::Swap(LoginRS* other) {
 void LoginRS::InternalSwap(LoginRS* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(logicid_, other->logicid_);
   swap(result_, other->result_);
 }
 

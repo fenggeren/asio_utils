@@ -123,18 +123,7 @@ void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
                                          int msgID, uint8 stype)
 {
     PacketHeader header{msgID, len};
-    if (session)
-    {
-        session->addMore(&header, kPacketHeaderSize);
-        session->send(data, len);
-    }
-    else
-    {
-        sessionMap_.foreach([&] (const std::shared_ptr<TCPSession> &session){
-            session->addMore(&header, kPacketHeaderSize);
-            session->send(data, len);
-        });
-    }
+    sendMsg(session, data, header, stype);
 }
 void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
                                          google::protobuf::Message& msg,
@@ -166,7 +155,10 @@ void TCPSessionManager::sendMsgToSession(TCPSessionPtr session,
     else
     {
         sessionMap_.foreach([&] (const std::shared_ptr<TCPSession> &session){
-            session->send(data, len);
+            if (session->type() == stype)
+            {
+                session->send(data, len);
+            }
         });
     }
 }
@@ -177,18 +169,7 @@ void TCPSessionManager::transMsgToSession(TCPSessionPtr session, const void* dat
                                           uint8 stype)
 {
     PacketHeader header{msgID, len, extraID};
-    if (session)
-    {
-        session->addMore(&header, kPacketHeaderSize);
-        session->send(data, len);
-    }
-    else
-    {
-        sessionMap_.foreach([&] (const std::shared_ptr<TCPSession> &session){
-            session->addMore(&header, kPacketHeaderSize);
-            session->send(data, len);
-        });
-    }
+    sendMsg(session, data, header, stype);
 }
     
 void TCPSessionManager::transMsgToSession(TCPSessionPtr session,
@@ -204,6 +185,33 @@ void TCPSessionManager::transMsgToSession(TCPSessionPtr session,
                                           uint8 stype)
 {
     transMsgToSession(session, msg.SerializeAsString(), msgID, extraID, stype);
+}
+    
+    
+void TCPSessionManager::sendMsg(TCPSessionPtr session, const void* body,
+                                const PacketHeader& header, uint8 stype)
+{
+    if (session)
+    {
+        session->addMore(&header, kPacketHeaderSize);
+        session->send(body, header.size);
+    }
+    else
+    {
+        sessionMap_.foreach([&] (const std::shared_ptr<TCPSession> &session){
+            if (session->type() == stype)
+            {
+                session->addMore(&header, kPacketHeaderSize);
+                session->send(body, header.size);
+            }
+        });
+    }
+}
+    
+void TCPSessionManager::sendMsg(int32 uuid, const void* body,
+             const PacketHeader& header, uint8 stype)
+{
+    sendMsg(getSession(uuid), body, header, stype);
 }
     
 }

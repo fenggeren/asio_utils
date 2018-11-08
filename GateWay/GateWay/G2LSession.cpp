@@ -28,7 +28,7 @@ bool G2LSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
     switch (header.type) {
         case kLoginRS:
         {
-            loginRS(buffer, header.size);
+            loginRS(buffer, header);
             break;
         }
         default:
@@ -38,17 +38,8 @@ bool G2LSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 }
 
 
-void G2LSession::loginRS(const void* data, int len)
+void G2LSession::loginRS(const void* data, const PacketHeader& header)
 {
-    CPGClient::LoginRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
-    {
-        // 转发消息给 客户端
-        SessionManager.sendMsgToSession(rs.logicid(), rs, kLoginRS);
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
-    }
+    LOG_MINFO << " ";
+    SessionManager.sendMsg(header.extraID, data, header);
 }

@@ -34,12 +34,16 @@ bool CBSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 
 void CBSession::connectRQ(const void* data, int len)
 {
+    LOG_MINFO << " ";
+    BSKernel::instance().transToCS(data, {kConnectRQ, len, static_cast<int32>(uuid())});
+    
+    
     CPGClient::ConnectRQ rq;
     if (fasio::parseProtoMsg(data, len, rq))
     {
         rq.set_logicid(uuid());
         // 转发消息给CentralServer 
-        BSKernel::instance().transToCS(rq, kConnectRQ, uuid());
+        
     }
     else
     {

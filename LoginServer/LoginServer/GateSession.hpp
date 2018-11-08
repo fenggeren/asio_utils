@@ -28,7 +28,7 @@ private:
  
 private:
     
-    void loginRQ(const void* data, int size);
+    void loginRQ(const void* data, const PacketHeader& header);
     
 };
 

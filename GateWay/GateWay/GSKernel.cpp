@@ -63,33 +63,41 @@ void GSKernel::removeConnectService(int uuid)
 }
 
 
-
-void GSKernel::transToLS(google::protobuf::Message& msg, int msgID, int clientID)
+void GSKernel::transToLS(const void* data, const PacketHeader& header)
 {
     if (loginSession_)
     {
-        SessionManager.transMsgToSession(loginSession_, msg, msgID, clientID);
+        SessionManager.sendMsg(loginSession_, data, header);
     }
     else
     {
         LOG_ERROR << " not connect login server"
-        << " msgid: " << msgID;
+        << " msgid: " << header.type;
     }
 }
-void GSKernel::transToMS(google::protobuf::Message& msg, int msgID, int clientID, int mid)
-{
-    
-}
-void GSKernel::transToCS(google::protobuf::Message& msg, int msgID, int clientID)
+
+void GSKernel::transToCS(const void* data, const PacketHeader& header)
 {
     if (centralSession_)
     {
-        SessionManager.transMsgToSession(centralSession_, msg, msgID, clientID);
+        SessionManager.sendMsg(centralSession_, data, header);
+    }
+    else
+    {
+        LOG_ERROR << " not connect login server"
+        << " msgid: " << header.type;
+    }
+}
+void GSKernel::transToMS(const void* data, const PacketHeader& header, int mid)
+{
+    if (matchesServices_.size() > 0)
+    {
+        
     }
     else
     {
         LOG_ERROR << " not connect central server"
-        << " msgid: " << msgID;
+        << " msgid: " << header.type;
     }
 }
 

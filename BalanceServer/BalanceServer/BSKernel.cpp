@@ -43,16 +43,16 @@ BSKernel::connectService(unsigned short type,
     return SessionManager.createConnector(type, g_IoContext,  ip, port);
 }
 
-void BSKernel::transToCS(google::protobuf::Message& msg, int msgID, int clientID)
+void BSKernel::transToCS(const void* data, const PacketHeader& header)
 {
     if (centralSession_)
     {
-        SessionManager.transMsgToSession(centralSession_, msg, msgID, clientID);
+        SessionManager.sendMsg(centralSession_, data, header);
     }
     else
     {
         LOG_ERROR << " not connect central server"
-        << " msgid: " << msgID;
+        << " msgid: " << header.type;
     }
 }
 

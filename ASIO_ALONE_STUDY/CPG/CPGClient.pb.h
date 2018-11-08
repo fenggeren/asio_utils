@@ -279,9 +279,9 @@ class ConnectRS : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // string ip = 4;
+  // string ip = 3;
   void clear_ip();
-  static const int kIpFieldNumber = 4;
+  static const int kIpFieldNumber = 3;
   const ::std::string& ip() const;
   void set_ip(const ::std::string& value);
   #if LANG_CXX11
@@ -293,21 +293,15 @@ class ConnectRS : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::std::string* release_ip();
   void set_allocated_ip(::std::string* ip);
 
-  // int32 logicID = 1;
-  void clear_logicid();
-  static const int kLogicIDFieldNumber = 1;
-  ::google::protobuf::int32 logicid() const;
-  void set_logicid(::google::protobuf::int32 value);
-
-  // int32 result = 2;
+  // int32 result = 1;
   void clear_result();
-  static const int kResultFieldNumber = 2;
+  static const int kResultFieldNumber = 1;
   ::google::protobuf::int32 result() const;
   void set_result(::google::protobuf::int32 value);
 
-  // int32 port = 3;
+  // int32 port = 2;
   void clear_port();
-  static const int kPortFieldNumber = 3;
+  static const int kPortFieldNumber = 2;
   ::google::protobuf::int32 port() const;
   void set_port(::google::protobuf::int32 value);
 
@@ -317,7 +311,6 @@ class ConnectRS : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr ip_;
-  ::google::protobuf::int32 logicid_;
   ::google::protobuf::int32 result_;
   ::google::protobuf::int32 port_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -419,9 +412,9 @@ class LoginRQ : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // string token = 3;
+  // string token = 2;
   void clear_token();
-  static const int kTokenFieldNumber = 3;
+  static const int kTokenFieldNumber = 2;
   const ::std::string& token() const;
   void set_token(const ::std::string& value);
   #if LANG_CXX11
@@ -433,15 +426,9 @@ class LoginRQ : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::std::string* release_token();
   void set_allocated_token(::std::string* token);
 
-  // int32 logicID = 1;
-  void clear_logicid();
-  static const int kLogicIDFieldNumber = 1;
-  ::google::protobuf::int32 logicid() const;
-  void set_logicid(::google::protobuf::int32 value);
-
-  // int32 uid = 2;
+  // int32 uid = 1;
   void clear_uid();
-  static const int kUidFieldNumber = 2;
+  static const int kUidFieldNumber = 1;
   ::google::protobuf::int32 uid() const;
   void set_uid(::google::protobuf::int32 value);
 
@@ -451,7 +438,6 @@ class LoginRQ : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr token_;
-  ::google::protobuf::int32 logicid_;
   ::google::protobuf::int32 uid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_CPGClient_2eproto;
@@ -552,15 +538,9 @@ class LoginRS : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // int32 logicID = 1;
-  void clear_logicid();
-  static const int kLogicIDFieldNumber = 1;
-  ::google::protobuf::int32 logicid() const;
-  void set_logicid(::google::protobuf::int32 value);
-
-  // int32 result = 2;
+  // int32 result = 1;
   void clear_result();
-  static const int kResultFieldNumber = 2;
+  static const int kResultFieldNumber = 1;
   ::google::protobuf::int32 result() const;
   void set_result(::google::protobuf::int32 value);
 
@@ -569,7 +549,6 @@ class LoginRS : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 logicid_;
   ::google::protobuf::int32 result_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_CPGClient_2eproto;
@@ -603,21 +582,7 @@ inline void ConnectRQ::set_logicid(::google::protobuf::int32 value) {
 
 // ConnectRS
 
-// int32 logicID = 1;
-inline void ConnectRS::clear_logicid() {
-  logicid_ = 0;
-}
-inline ::google::protobuf::int32 ConnectRS::logicid() const {
-  // @@protoc_insertion_point(field_get:CPGClient.ConnectRS.logicID)
-  return logicid_;
-}
-inline void ConnectRS::set_logicid(::google::protobuf::int32 value) {
-  
-  logicid_ = value;
-  // @@protoc_insertion_point(field_set:CPGClient.ConnectRS.logicID)
-}
-
-// int32 result = 2;
+// int32 result = 1;
 inline void ConnectRS::clear_result() {
   result_ = 0;
 }
@@ -631,7 +596,7 @@ inline void ConnectRS::set_result(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:CPGClient.ConnectRS.result)
 }
 
-// int32 port = 3;
+// int32 port = 2;
 inline void ConnectRS::clear_port() {
   port_ = 0;
 }
@@ -645,7 +610,7 @@ inline void ConnectRS::set_port(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:CPGClient.ConnectRS.port)
 }
 
-// string ip = 4;
+// string ip = 3;
 inline void ConnectRS::clear_ip() {
   ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -702,21 +667,7 @@ inline void ConnectRS::set_allocated_ip(::std::string* ip) {
 
 // LoginRQ
 
-// int32 logicID = 1;
-inline void LoginRQ::clear_logicid() {
-  logicid_ = 0;
-}
-inline ::google::protobuf::int32 LoginRQ::logicid() const {
-  // @@protoc_insertion_point(field_get:CPGClient.LoginRQ.logicID)
-  return logicid_;
-}
-inline void LoginRQ::set_logicid(::google::protobuf::int32 value) {
-  
-  logicid_ = value;
-  // @@protoc_insertion_point(field_set:CPGClient.LoginRQ.logicID)
-}
-
-// int32 uid = 2;
+// int32 uid = 1;
 inline void LoginRQ::clear_uid() {
   uid_ = 0;
 }
@@ -730,7 +681,7 @@ inline void LoginRQ::set_uid(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:CPGClient.LoginRQ.uid)
 }
 
-// string token = 3;
+// string token = 2;
 inline void LoginRQ::clear_token() {
   token_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -787,21 +738,7 @@ inline void LoginRQ::set_allocated_token(::std::string* token) {
 
 // LoginRS
 
-// int32 logicID = 1;
-inline void LoginRS::clear_logicid() {
-  logicid_ = 0;
-}
-inline ::google::protobuf::int32 LoginRS::logicid() const {
-  // @@protoc_insertion_point(field_get:CPGClient.LoginRS.logicID)
-  return logicid_;
-}
-inline void LoginRS::set_logicid(::google::protobuf::int32 value) {
-  
-  logicid_ = value;
-  // @@protoc_insertion_point(field_set:CPGClient.LoginRS.logicID)
-}
-
-// int32 result = 2;
+// int32 result = 1;
 inline void LoginRS::clear_result() {
   result_ = 0;
 }

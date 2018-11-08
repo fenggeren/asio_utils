@@ -45,7 +45,7 @@ bool B2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
         }
         case kConnectRS:
         {
-            connectRS(buffer, header.size);
+            connectRS(buffer, header);
             break;
         }
         default:
@@ -78,24 +78,10 @@ void B2CSession::serverRegistRS(const void* data, int len)
     }
 }
 
-void B2CSession::connectRS(const void* data, int len)
+void B2CSession::connectRS(const void* data, const PacketHeader& header)
 {
-    CPGClient::ConnectRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
-    {
-        if (rs.result() == 0)
-        {
-            SessionManager.sendMsgToSession(rs.logicid(), data, len, kConnectRS);
-        }
-        else
-        {
-            LOG_ERROR << " bs connectrs failure result: " << rs.result();
-        }
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
-    }
+    LOG_MINFO << "";
+    
+    SessionManager.sendMsg(header.extraID, data, header);
 }
 
