@@ -52,6 +52,7 @@
 		1F2463342193E731009A67AC /* ServiceKernel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ServiceKernel.hpp; sourceTree = "<group>"; };
 		1F2463512193F3D2009A67AC /* CPGNetSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPGNetSession.cpp; sourceTree = "<group>"; };
 		1F2463522193F3D2009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
+		1F24637B21956873009A67AC /* ObjectPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectPool.hpp; sourceTree = "<group>"; };
 		1F365403215A15B1003B9FAD /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
 		1F365404215A15B1003B9FAD /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
 		1F365405215A15B1003B9FAD /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
@@ -151,7 +152,6 @@
 				8123E22621889FC20050FD4D /* TCPSessionManager.hpp */,
 				1F2463332193E731009A67AC /* ServiceKernel.cpp */,
 				1F2463342193E731009A67AC /* ServiceKernel.hpp */,
-				1F2463302192D779009A67AC /* ObjectIndexPool.hpp */,
 				1F365409215A15B1003B9FAD /* Queue.hpp */,
 				1F365410215A15B1003B9FAD /* Queue.cpp */,
 				1F365404215A15B1003B9FAD /* DataHandler.hpp */,
@@ -185,6 +185,8 @@
 		1F5B1ABE2186F3DE00752C8B /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				1F2463302192D779009A67AC /* ObjectIndexPool.hpp */,
+				1F24637B21956873009A67AC /* ObjectPool.hpp */,
 				1F5B1ABF2186F3F200752C8B /* ParseProto.cpp */,
 				1F5B1AC02186F3F200752C8B /* ParseProto.hpp */,
 				1FE3E87621894B7100A2F52D /* NetPacket.cpp */,

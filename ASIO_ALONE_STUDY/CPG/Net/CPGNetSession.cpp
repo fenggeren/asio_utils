@@ -12,7 +12,7 @@
 #include "../../Net/logging/Logging.hpp"
 #include "../../Net/ServiceKernel.hpp"
 #include "CPGServerDefine.h"
-#include <CPG/CPGToCentral.pb.h>
+#include "../CPGToCentral.pb.h"
 using namespace logging;
 
 CPGServerSession::CPGServerSession(const SocketPtr& sock, const std::string& name)

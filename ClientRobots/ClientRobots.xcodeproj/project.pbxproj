@@ -51,7 +51,6 @@
 /* Begin PBXFileReference section */
 		1F2463492193F0F5009A67AC /* ServiceKernel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceKernel.cpp; sourceTree = "<group>"; };
 		1F24634A2193F0F5009A67AC /* ServiceKernel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceKernel.hpp; sourceTree = "<group>"; };
-		1F24634B2193F0F5009A67AC /* ObjectIndexPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectIndexPool.hpp; sourceTree = "<group>"; };
 		1F24636921942268009A67AC /* CPGNetSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGNetSession.cpp; sourceTree = "<group>"; };
 		1F24636A21942268009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
 		1FE3E885218983F800A2F52D /* ClientRobots */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ClientRobots; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,7 +180,6 @@
 		1FE3E8B621899E6600A2F52D /* Net */ = {
 			isa = PBXGroup;
 			children = (
-				1F24634B2193F0F5009A67AC /* ObjectIndexPool.hpp */,
 				1F2463492193F0F5009A67AC /* ServiceKernel.cpp */,
 				1F24634A2193F0F5009A67AC /* ServiceKernel.hpp */,
 				1FE3E8B721899E6600A2F52D /* Thread.cpp */,

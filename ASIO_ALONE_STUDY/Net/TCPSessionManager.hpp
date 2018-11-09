@@ -13,7 +13,7 @@
 #include <list>
 #include <google/protobuf/message.h>
 #include "TCPSession.hpp"
-#include "ObjectIndexPool.hpp"
+#include "Util/ObjectIndexPool.hpp"
 
 namespace fasio
 {
