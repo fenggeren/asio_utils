@@ -8,9 +8,15 @@
 
 #pragma once
 
-#include "../../Net/TCPSession.hpp"
+#include "../../Net/TCPSession.hpp" 
+
 using namespace fasio;
 struct PacketHeader;
+
+namespace fasio
+{
+    class ServiceKernel;
+}
 
 class CPGServerSession : public TCPSession
 {
@@ -23,6 +29,8 @@ private:
 protected:
     virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header) = 0;
+    
+    
 };
 
 
@@ -32,11 +40,12 @@ public:
     CPGClientSession();
     
 private:
-    void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
+    virtual void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
                                 DataBuffer*const data);
 protected:
     virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header) = 0;
+    
 };
 
 

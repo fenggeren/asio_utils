@@ -7,24 +7,22 @@
 //
 
 #pragma once
-#include <CPG/Net/CPGNetSession.hpp>
+#include <CPG/Net/CPGToCentralSession.hpp>
 
 using namespace fasio;
 
 
-class L2CSession : public CPGClientSession
+class L2CSession : public CPGToCentralSession
 {
 public:
     
 private:
     virtual void sendInitData() override;
     virtual void onClose() override;
-    
+    virtual ServiceKernel& serviceKernel() override;
     virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer,
-                            const PacketHeader& header) override;
-private:
-    void serverRegistRS(const void* data, int len);
+                            const PacketHeader& header) override; 
 private:
  
 };

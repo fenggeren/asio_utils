@@ -40,43 +40,16 @@ bool L2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header)
 {
     switch (header.type) {
-        case kServerRegistRS:
-        {
-            serverRegistRS(buffer, header.size);
-            break;
-        }
         default:
             break;
     }
     return true;
 }
-
-void L2CSession::serverRegistRS(const void* data, int len)
+ServiceKernel& L2CSession::serviceKernel()
 {
-    CPGToCentral::ServerRegisterRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
-    {
-        if (rs.result() == 0)
-        {
-            setLogicID(rs.sid()); // 设置server id
-            LOG_MINFO << " server id: " << rs.sid();
-            
-            for(auto& connsvr : rs.connservers())
-            {
-                LSKernel::instance().addNewConnect(connsvr.type(), connsvr.port(), connsvr.sid(), connsvr.ip());
-            }
-        }
-        else
-        {
-            LOG_ERROR << " gs regist failure result: " << rs.result();
-        }
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
-    }
+    return LSKernel::instance();
 }
+
 
 
 

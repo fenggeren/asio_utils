@@ -20,5 +20,14 @@ void MatchSession::onClose()
 bool MatchSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                              const void* buffer, const PacketHeader& header)
 {
+    switch (header.type) {
+        case kServerRegistRQ:
+        {
+            CSKernel::instance().serverRegistRQ(session, buffer, header.size);
+            break;
+        }
+        default:
+            break;
+    }
     return true;
 }

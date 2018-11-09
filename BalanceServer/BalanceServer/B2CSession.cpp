@@ -34,15 +34,17 @@ void B2CSession::sendInitData()
     SessionManager.sendMsgToSession(shared_from_this(), rq,
                                     kServerRegistRQ, ServerType_CentralServer);
 }
+
+ServiceKernel& B2CSession::serviceKernel()
+{
+    return BSKernel::instance();
+}
+
+
 bool B2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                              const void* buffer, const PacketHeader& header)
 {
     switch (header.type) {
-        case kServerRegistRS:
-        {
-            serverRegistRS(buffer, header.size);
-            break;
-        }
         case kConnectRS:
         {
             connectRS(buffer, header);
@@ -54,29 +56,6 @@ bool B2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
     return true;
 }
 
-
-void B2CSession::serverRegistRS(const void* data, int len)
-{
-    CPGToCentral::ServerRegisterRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
-    {
-        if (rs.result() == 0)
-        {
-            setLogicID(rs.sid()); // 设置server id
-            LOG_MINFO << " server id: " << rs.sid();
-            
-        }
-        else
-        {
-            LOG_ERROR << " gs regist failure result: " << rs.result();
-        }
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
-    }
-}
 
 void B2CSession::connectRS(const void* data, const PacketHeader& header)
 {

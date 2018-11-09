@@ -50,7 +50,7 @@ void CSKernel::removeService(uint32 sid)
 {
     if (servers_.erase(sid) == 0)
     {
-        LOG_ERROR << " not found service  sid: " << sid;
+        LOG_MINFO << " not found service  sid: " << sid;
     }
 }
 

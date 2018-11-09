@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F2463442193F06E009A67AC /* ServiceKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463412193F06D009A67AC /* ServiceKernel.cpp */; };
 		1F246367219407FC009A67AC /* CPGNetSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F246365219407FC009A67AC /* CPGNetSession.cpp */; };
+		1F24637421952C58009A67AC /* CPGToCentralSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24637221952C57009A67AC /* CPGToCentralSession.cpp */; };
 		1F95CEB7219133B60057618A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CEB6219133B60057618A /* main.cpp */; };
 		1F95CEBF219133C60057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CEBE219133C60057618A /* libprotobuf.a */; };
 		1F95CECB219134000057618A /* CPGClient.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CEC1219134000057618A /* CPGClient.pb.cc */; };
@@ -55,6 +56,8 @@
 		1F2463432193F06D009A67AC /* ObjectIndexPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectIndexPool.hpp; sourceTree = "<group>"; };
 		1F246365219407FC009A67AC /* CPGNetSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGNetSession.cpp; sourceTree = "<group>"; };
 		1F246366219407FC009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
+		1F24637221952C57009A67AC /* CPGToCentralSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentralSession.cpp; sourceTree = "<group>"; };
+		1F24637321952C58009A67AC /* CPGToCentralSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGToCentralSession.hpp; sourceTree = "<group>"; };
 		1F95CEB3219133B60057618A /* BalanceServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BalanceServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F95CEB6219133B60057618A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1F95CEBE219133C60057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
@@ -136,6 +139,8 @@
 		1F246364219407FC009A67AC /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				1F24637221952C57009A67AC /* CPGToCentralSession.cpp */,
+				1F24637321952C58009A67AC /* CPGToCentralSession.hpp */,
 				1F246365219407FC009A67AC /* CPGNetSession.cpp */,
 				1F246366219407FC009A67AC /* CPGNetSession.hpp */,
 			);
@@ -344,6 +349,7 @@
 				1F95CEB7219133B60057618A /* main.cpp in Sources */,
 				1F95CF0C219134080057618A /* TCPConnector.cpp in Sources */,
 				1F95CF10219134480057618A /* BSSessionManager.cpp in Sources */,
+				1F24637421952C58009A67AC /* CPGToCentralSession.cpp in Sources */,
 				1F2463442193F06E009A67AC /* ServiceKernel.cpp in Sources */,
 				1F95CF0B219134080057618A /* Timestamp.cpp in Sources */,
 				1F95CF03219134080057618A /* Queue.cpp in Sources */,

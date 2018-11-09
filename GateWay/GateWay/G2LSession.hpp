@@ -19,7 +19,7 @@ public:
 private:
     virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer,
-                            const PacketHeader& header) override;
+                            const PacketHeader& header) override; 
 private:
     void loginRS(const void* data, const PacketHeader& header);
 };

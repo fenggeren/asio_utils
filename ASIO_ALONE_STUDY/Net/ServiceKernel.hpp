@@ -25,8 +25,6 @@ namespace fasio
     class ServiceKernel
     {
     public:
-         
-    public:
         
         int checkConnectService(const ServiceConfig& config);
         

@@ -136,7 +136,6 @@ protected:
     uint32 logicID_{0};
     
     bool client_{false};
-    bool retry_{true};
     static std::atomic<int> num_;
 };
 
@@ -167,7 +166,7 @@ private:
     
 private:
     std::shared_ptr<TCPConnector> connector_{nullptr};
-    
+    bool retry_{true};
     bool connect_{false};
 };
 

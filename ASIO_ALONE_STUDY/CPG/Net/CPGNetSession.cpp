@@ -9,7 +9,11 @@
 #include "CPGNetSession.hpp"
 #include "../../Net/Util/NetPacket.hpp"
 #include "../../Net/Util/ParseProto.hpp"
-
+#include "../../Net/logging/Logging.hpp"
+#include "../../Net/ServiceKernel.hpp"
+#include "CPGServerDefine.h"
+#include <CPG/CPGToCentral.pb.h>
+using namespace logging;
 
 CPGServerSession::CPGServerSession(const SocketPtr& sock, const std::string& name)
 :TCPSession(sock, name)
@@ -44,13 +48,10 @@ void CPGClientSession::defaultMessageCallback(
     {
         PacketHeader* header = (PacketHeader*)data->peek();
         const void* buffer = data->peek() + kPacketHeaderSize;
-        handlerMsg(session, buffer, *header);
+        handlerMsg(session, buffer, *header); 
         data->retrieve(kPacketHeaderSize + header->size);
     }
 }
-
-
-
 
 
 

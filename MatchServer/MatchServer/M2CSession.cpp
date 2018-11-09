@@ -22,12 +22,17 @@ void M2CSession::onClose()
     MSKernel::instance().removeConnectService(uuid());
 }
 
+ServiceKernel& M2CSession::serviceKernel()
+{
+    return MSKernel::instance();
+}
+
 
 void M2CSession::sendInitData()
 {
     CPGToCentral::ServerRegisterRQ rq;
     rq.set_type(ServerType_GateServer);
-    rq.set_port(7802);
+    rq.set_port(7851);
     rq.set_sid(0);
     rq.set_ip("127.0.0.1");
     rq.set_ip("127.0.0.1");
@@ -36,46 +41,10 @@ void M2CSession::sendInitData()
                                     kServerRegistRQ, ServerType_CentralServer);
 }
 
-
 bool M2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
-                            const void* buffer, const PacketHeader& header)
+                        const void* buffer,
+                        const PacketHeader& header)
 {
-    switch (header.type) {
-        case kServerRegistRS:
-        {
-            serverRegistRS(buffer, header.size);
-            break;
-        }
-        default:
-            break;
-    }
     return true;
-}
-
-void M2CSession::serverRegistRS(const void* data, int len)
-{
-    CPGToCentral::ServerRegisterRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
-    {
-        if (rs.result() == 0)
-        {
-            setLogicID(rs.sid()); // 设置server id
-            LOG_MINFO << " server id: " << rs.sid();
-            
-            for(auto& connsvr : rs.connservers())
-            {
-                 
-            }
-        }
-        else
-        {
-            LOG_ERROR << " gs regist failure result: " << rs.result();
-        }
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
-    }
 }
 

@@ -183,7 +183,6 @@ void TCPSession::forceClose()
 {
     if (state_ == kConnected || state_ == kDisconnecting)
     {
-        retry_ = false;
         handClose();
     }
 }

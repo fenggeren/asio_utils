@@ -7,12 +7,12 @@
 //
 
 #pragma once
-#include <CPG/Net/CPGNetSession.hpp>
+#include <CPG/Net/CPGToCentralSession.hpp>
 
 using namespace fasio;
 
 // GateServer -> CentralServer
-class B2CSession : public CPGClientSession
+class B2CSession : public CPGToCentralSession
 {
 public:
     
@@ -23,12 +23,11 @@ private:
     
 private:
     
-    
     virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header) override;
+    virtual ServiceKernel& serviceKernel() override;
 private:
     
-    void serverRegistRS(const void* data, int len);
     void connectRS(const void* data, const PacketHeader& header);
 private:
 };

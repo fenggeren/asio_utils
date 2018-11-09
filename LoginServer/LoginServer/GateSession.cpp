@@ -34,6 +34,7 @@ bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 
 void GateSession::loginRQ(const void* data, const PacketHeader& header)
 {
+    LOG_MINFO << " csid: " << header.extraID;
     CPGClient::LoginRS rs;
     // token 校验
     CPGClient::LoginRQ rq;

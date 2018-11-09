@@ -20,7 +20,7 @@ using namespace fasio::logging;
 
 void C2BSession::onClose()
 {
-    
+    unenableRetry();
 }
 
 void C2BSession::sendInitData()

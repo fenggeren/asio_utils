@@ -16,5 +16,7 @@ bool G2MSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 }
 void G2MSession::onClose()
 {
+    unenableRetry();
     GSKernel::instance().removeConnectService(uuid());
 }
+ 

@@ -39,19 +39,9 @@ bool G2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header)
 {
     switch (header.type) {
-            case kServerRegistRS:
-            {
-                serverRegistRS(buffer, header.size);
-                break;
-            }
             case kLoginRS:
             {
                 serverLoginRS(buffer, header.size);
-                break;
-            }
-            case kServerNewServicesNotify:
-            {
-                newServicesNotify(buffer, header.size);
                 break;
             }
             default:
@@ -59,50 +49,11 @@ bool G2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
     }
     return true;
 }
-
-void G2CSession::serverRegistRS(const void* data, int len)
+ServiceKernel& G2CSession::serviceKernel()
 {
-    CPGToCentral::ServerRegisterRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
-    {
-        if (rs.result() == 0)
-        {
-            setLogicID(rs.sid()); // 设置server id
-            LOG_MINFO << " server id: " << rs.sid();
-            
-            for(auto& connsvr : rs.connservers())
-            {
-                GSKernel::instance().addNewConnect(connsvr.type(), connsvr.port(), connsvr.sid(), connsvr.ip());
-            }
-        }
-        else
-        {
-            LOG_ERROR << " gs regist failure result: " << rs.result();
-        }
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
-    }
+    return GSKernel::instance();
 }
 
-void G2CSession::newServicesNotify(const void* data, int len)
-{
-    CPGToCentral::NewConnServiceNotify rs;
-    if (fasio::parseProtoMsg(data, len, rs))
-    {
-        for(auto& connsvr : rs.connservers())
-        {
-            GSKernel::instance().addNewConnect(connsvr.type(), connsvr.port(), connsvr.sid(), connsvr.ip());
-        }
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
-    }
-}
 
 void G2CSession::serverLoginRS(const void* data, int len)
 {

@@ -18,6 +18,7 @@ using namespace fasio::logging;
 
 void G2LSession::onClose()
 {
+    unenableRetry();
     GSKernel::instance().removeConnectService(uuid());
 }
 
@@ -35,11 +36,16 @@ bool G2LSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
             break;
     }
     return true;
-}
-
+} 
 
 void G2LSession::loginRS(const void* data, const PacketHeader& header)
 {
     LOG_MINFO << " ";
     SessionManager.sendMsg(header.extraID, data, header);
 }
+
+
+
+
+
+
