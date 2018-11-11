@@ -3,3 +3,4 @@
 *.pbxuser
 *.xcworkspace
 xuserdata
+*/xuserdata/

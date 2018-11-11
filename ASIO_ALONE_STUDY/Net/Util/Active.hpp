@@ -15,44 +15,82 @@
 #include <thread>
 #include "ObjectPool.hpp"
 
-class Event;
 
-using EventPtr = std::shared_ptr<Event>;
-
-class Event
-{
-    
-};
-
+template <typename T>
 class Active
 {
+    using ActiveCallback = std::function<void(T*)>;
 public:
     
-    Active();
     
-    
-    void start();
-    void stop()
+    Active(const ActiveCallback& cb)
+    :eventPool_(1024),
+    callback_(cb)
     {
-        stop_ = true;
-        condition_.notify_all();
     }
     
-    void send(Event* event);
-    Event* getFreeEvent();
-
+    void setCallback(const ActiveCallback &cb)
+    {
+        callback_ = cb;
+    }
+    
+    void start()
+    {
+        thread_ = std::make_shared<std::thread>(&Active::run, this);
+    }
+    
+    void send(T* event)
+    {
+        std::unique_lock<std::mutex> lock(mutex_);
+        events_.push_back(event);
+        condition_.notify_one();
+    }
+    
+    template<typename ...Value>
+    T* getFreeEvent(Value&& ...values)
+    {
+        return eventPool_.createObject(std::forward<Value>(values)...);
+    }
+    
 private:
     
-    void run();
+    void run()
+    {
+        while (!stop_)
+        {
+            {
+                std::unique_lock<std::mutex> lock(mutex_);
+                while (events_.empty())
+                {
+                    condition_.wait(lock);
+                }
+                swapEvents_.swap(events_);
+            }
+            
+            while (!swapEvents_.empty())
+            {
+                T* event = swapEvents_.front();
+                swapEvents_.pop_front();
+                
+                // exec event
+                callback_(event);
+                if (event)
+                {
+                    eventPool_.releaseObject(event);
+                }
+            }
+        }
+    }
     
 private:
     std::mutex mutex_;
     std::condition_variable condition_;
     std::shared_ptr<std::thread> thread_;
-    std::list<Event*> events_;
-    std::list<Event*> swapEvents_;
+    std::list<T*> events_;
+    std::list<T*> swapEvents_;
     std::atomic<bool> stop_{false};
-    ThreadSafeObjectPool<Event, Event*> eventPool_;
+    ThreadSafeObjectPool<T, T*> eventPool_;
+    ActiveCallback callback_;
 };
 
 
