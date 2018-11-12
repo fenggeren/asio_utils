@@ -30,6 +30,7 @@ public:
     
     Active(const ActiveCallback& cb)
     :eventPool_(1024),
+    activeID_(++globalActiveID_),
     callback_(cb)
     {
     }
@@ -62,9 +63,17 @@ public:
     
     void send(Tptr& t)
     {
-        std::unique_lock<std::mutex> lock(mutex_);
-        events_.push_back(t);
-        condition_.notify_one();
+        bool needSig = false;
+        {
+            std::unique_lock<std::mutex> lock(mutex_);
+            needSig = events_.empty();
+            events_.push_back(t);
+        }
+        ++pendingWorkNum_;
+        if (needSig)
+        {
+            condition_.notify_one();
+        }
     }
     
     template<typename ...Value>
@@ -98,7 +107,7 @@ private:
             {
                 auto event(std::move(swapEvents_.front()));
                 swapEvents_.pop_front();
-                
+                --pendingWorkNum_;
                 // exec event
                 callback_(event);
                 if (event)
@@ -116,9 +125,14 @@ private:
     std::list<Tptr> events_;
     std::list<Tptr> swapEvents_;
     std::atomic<bool> stop_{false};
+    std::atomic<int> pendingWorkNum_{0};
+    int activeID_{0};
+    static std::atomic<int> globalActiveID_;
     ThreadSafeObjectPool<T, Tptr> eventPool_;
     ActiveCallback callback_;
 };
+    template <typename T>
+    std::atomic<int> Active<T>::globalActiveID_{0};
 
 
 }

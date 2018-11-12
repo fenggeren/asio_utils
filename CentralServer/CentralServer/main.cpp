@@ -7,11 +7,14 @@
 //
 
 #include <iostream>
-#include "CSKernel.hpp"
+#include "Class/Net/CSKernel.hpp"
+#include "Class/MatchManager/CSMatchManager.hpp"
 
 int main(int argc, const char * argv[]) {
     
-    CSKernel::instance().start();
+    CSMatchManager::instance().initialize();
+    
+//    CSKernel::instance().start();
     
     return 0;
 }

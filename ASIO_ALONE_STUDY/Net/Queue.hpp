@@ -11,6 +11,7 @@
 #include "Header.h"
 #include <iostream>
 #include "Conv.hpp"
+#include "TimerManager.hpp"
 
 namespace fasio
 {
@@ -19,101 +20,6 @@ namespace fasio
 namespace queue
 {
  
-#define S2M(S) (int)(S*1000)
-
-    class TimerManager
-    {
-        using BasicTimer = asio::basic_waitable_timer<std::chrono::steady_clock>;
-    public:
-        using TimerPtr = std::shared_ptr<BasicTimer>;
-        
-        TimerManager(asio::io_context& io)
-        :io_context_(io)
-        {}
-        
-        TimerPtr createTimer(double delay, Handler&& handler)
-        {
-            return createTimer(delay, std::forward<Handler>(handler), io_context_);
-        }
-        
-        static TimerPtr createTimer(double delay, Handler&& handler, asio::io_context& io)
-        {
-            TimerPtr timer(new BasicTimer(io));
-            timer->expires_after(std::chrono::milliseconds(S2M(delay)));
-            timer->async_wait([timer, handler=std::move(handler)](std::error_code ec)
-                              {
-                                  handler();
-                                  (void)timer;
-                              });
-            return timer;
-        }
-        
-        struct RepeatHandler
-        {
-            RepeatHandler(TimerPtr timer, double interval, int count,
-                          const Handler& handler)
-            : timer_(timer)
-            , interval_(interval)
-            , count_(count)
-            , handler_(handler)
-            {}
-            
-            void operator()(std::error_code ec)
-            {
-                handler_();
-                if (--count_ > 0)
-                {
-                    timer_->expires_after(std::chrono::milliseconds(S2M(interval_)));
-                    timer_->async_wait(std::forward<RepeatHandler>(*this));
-                }
-            }
-            
-            TimerPtr timer_;
-            double interval_;
-            int count_;
-            Handler handler_;
-        };
-        
-        static TimerPtr createRepeatTimer(double delay,
-                                   double interval,
-                                   int count,
-                                   Handler&& handler,
-                                   asio::io_context& io)
-        {
-            TimerPtr timer(new BasicTimer(io));
-            timer->expires_after(std::chrono::milliseconds(S2M(delay)));
-            
-            std::function<void(std::error_code)> timerHandler;
-            timerHandler = [&, timer, delay, interval, count]
-            (std::error_code ec) mutable
-            {
-                handler();
-                count -= 1;
-                if (count > 0) {
-                    timer->expires_after(std::chrono::milliseconds(S2M(delay)));
-                    timer->async_wait(RepeatHandler(timer, interval, count, handler));
-                }
-            };
-            
-            timer->async_wait(timerHandler);
-            return timer;
-        }
-
-        TimerPtr createRepeatTimer(double delay,
-                               double interval,
-                               int count,
-                               Handler&& handler)
-        {
-            return createRepeatTimer(delay, interval, count, std::forward<Handler>(handler), io_context_);
-        }
- 
-    private:
-        
-    private:
-        asio::io_context& io_context_;
-    };
-    
-
 #define MainQueue Queue::mainQueue()
     
     class Queue
@@ -161,7 +67,7 @@ namespace queue
         
         void dispatchAfter(double delay, Handler&& handler)
         {
-            TimerManager::createTimer(delay, std::forward<Handler>(handler), io_context_);
+            TimerManager::createTimer(std::forward<Handler>(handler), io_context_, delay);
         }
         
     private:

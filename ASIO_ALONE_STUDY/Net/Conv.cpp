@@ -50,7 +50,7 @@ namespace fasio
     
     void dispatchAfter(double delay, Handler&& handler)
     {
-        queue::TimerManager::createTimer(delay, std::forward<Handler>(handler), getIoContext());
+        TimerManager::createTimer(std::forward<Handler>(handler), getIoContext(), delay);
     }
     
     void dispatchAsync(Handler&& handler, asio::io_context& io)
