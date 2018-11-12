@@ -66,7 +66,6 @@ public:
                 objects_.push_back(newBlock + i);
             }
         }
-        printf("objects size begin: %lu\n", objects_.size());
         T* obj = &(*objects_.front());
         objects_.pop_front();
         return obj;
@@ -135,7 +134,6 @@ public:
                 objects_.push_back(newBlock + i);
             }
         }
-        printf("objects size begin: %lu\n", objects_.size());
         T* obj = &(*objects_.front());
         objects_.pop_front();
         return obj;
@@ -196,13 +194,14 @@ public:
         {
             std::lock_guard<std::mutex> lock(mutex_);
             objects_.push_back(obj);
+            printf("%lu -- %lu \n", blocks_.size(), objects_.size());
         }
     }
 private:
     T* getFreeObjectMem()
     {
+//        printf("%lu -- %lu \n", blocks_.size(), objects_.size());
         enableEnoughObjects();
-        printf("objects size begin: %lu\n", objects_.size());
         T* obj = &(*objects_.front());
         objects_.pop_front();
         return obj;
@@ -290,7 +289,6 @@ private:
     T* getFreeObjectMem()
     {
         enableEnoughObjects();
-        printf("objects size begin: %lu\n", objects_.size());
         T* obj = &(*objects_.front());
         objects_.pop_front();
         return obj;

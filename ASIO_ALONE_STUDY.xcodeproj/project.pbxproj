@@ -30,7 +30,6 @@
 		8123E200216CDD280050FD4D /* Conv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1FE216CDD280050FD4D /* Conv.cpp */; };
 		8123E22921889FC20050FD4D /* TCPListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E22321889FC20050FD4D /* TCPListener.cpp */; };
 		8123E22A21889FC20050FD4D /* TCPSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E22521889FC20050FD4D /* TCPSessionManager.cpp */; };
-		8139F5F42196B9CD00684D69 /* Active.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F5F22196B9CD00684D69 /* Active.cpp */; };
 		81994CDA219074960034623E /* CPGClient.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CD9219074960034623E /* CPGClient.proto */; };
 		81994CDC21907A190034623E /* CPGCommon.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CDB21907A190034623E /* CPGCommon.proto */; };
 /* End PBXBuildFile section */
@@ -48,12 +47,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1F2463302192D779009A67AC /* ObjectIndexPool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ObjectIndexPool.hpp; sourceTree = "<group>"; };
 		1F2463332193E731009A67AC /* ServiceKernel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ServiceKernel.cpp; sourceTree = "<group>"; };
 		1F2463342193E731009A67AC /* ServiceKernel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ServiceKernel.hpp; sourceTree = "<group>"; };
 		1F2463512193F3D2009A67AC /* CPGNetSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPGNetSession.cpp; sourceTree = "<group>"; };
 		1F2463522193F3D2009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
 		1F24637B21956873009A67AC /* ObjectPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectPool.hpp; sourceTree = "<group>"; };
+		1F246388219910C8009A67AC /* ObjectIndexPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectIndexPool.hpp; sourceTree = "<group>"; };
 		1F365403215A15B1003B9FAD /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
 		1F365404215A15B1003B9FAD /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
 		1F365405215A15B1003B9FAD /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
@@ -104,7 +103,6 @@
 		8123E22621889FC20050FD4D /* TCPSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPSessionManager.hpp; sourceTree = "<group>"; };
 		8123E22721889FC20050FD4D /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
 		8123E22821889FC20050FD4D /* NetBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetBase.hpp; sourceTree = "<group>"; };
-		8139F5F22196B9CD00684D69 /* Active.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Active.cpp; sourceTree = "<group>"; };
 		8139F5F32196B9CD00684D69 /* Active.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Active.hpp; sourceTree = "<group>"; };
 		81994CD9219074960034623E /* CPGClient.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGClient.proto; sourceTree = "<group>"; };
 		81994CDB21907A190034623E /* CPGCommon.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGCommon.proto; sourceTree = "<group>"; };
@@ -188,13 +186,12 @@
 		1F5B1ABE2186F3DE00752C8B /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				1F2463302192D779009A67AC /* ObjectIndexPool.hpp */,
+				1F246388219910C8009A67AC /* ObjectIndexPool.hpp */,
 				1F24637B21956873009A67AC /* ObjectPool.hpp */,
 				1F5B1ABF2186F3F200752C8B /* ParseProto.cpp */,
 				1F5B1AC02186F3F200752C8B /* ParseProto.hpp */,
 				1FE3E87621894B7100A2F52D /* NetPacket.cpp */,
 				1FE3E87721894B7100A2F52D /* NetPacket.hpp */,
-				8139F5F22196B9CD00684D69 /* Active.cpp */,
 				8139F5F32196B9CD00684D69 /* Active.hpp */,
 			);
 			path = Util;
@@ -327,7 +324,6 @@
 				1F5B1AC12186F3F200752C8B /* ParseProto.cpp in Sources */,
 				1F2463532193F3D2009A67AC /* CPGNetSession.cpp in Sources */,
 				1F365421215A15B1003B9FAD /* Timestamp.cpp in Sources */,
-				8139F5F42196B9CD00684D69 /* Active.cpp in Sources */,
 				1F365420215A15B1003B9FAD /* TCPAcceptor.cpp in Sources */,
 				1F36541A215A15B1003B9FAD /* Logging.cpp in Sources */,
 				1F365422215A15B1003B9FAD /* DataHandler.cpp in Sources */,

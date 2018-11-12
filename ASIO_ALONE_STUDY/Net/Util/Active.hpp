@@ -15,11 +15,16 @@
 #include <thread>
 #include "ObjectPool.hpp"
 
+namespace fasio
+{
+    
 
 template <typename T>
 class Active
 {
-    using ActiveCallback = std::function<void(T*)>;
+    using Tptr = T*;
+    using ActiveCallback = std::function<void(const Tptr&)>;
+    
 public:
     
     
@@ -29,9 +34,25 @@ public:
     {
     }
     
+    ~Active()
+    {
+        condition_.notify_one();
+        if (thread_)
+        {
+            thread_->join();
+            thread_ = nullptr;
+        }
+    }
+    
     void setCallback(const ActiveCallback &cb)
     {
         callback_ = cb;
+    }
+    
+    void stop()
+    {
+        stop_ = true;
+        condition_.notify_all();
     }
     
     void start()
@@ -39,21 +60,27 @@ public:
         thread_ = std::make_shared<std::thread>(&Active::run, this);
     }
     
-    void send(T* event)
+    void send(Tptr& t)
     {
         std::unique_lock<std::mutex> lock(mutex_);
-        events_.push_back(event);
+        events_.push_back(t);
         condition_.notify_one();
     }
     
     template<typename ...Value>
-    T* getFreeEvent(Value&& ...values)
+    Tptr getFreeEvent(Value&& ...values)
     {
         return eventPool_.createObject(std::forward<Value>(values)...);
     }
     
 private:
     
+    void releaseEvent(Tptr& event)
+    {
+        eventPool_.releaseObject(event);
+    }
+    
+ 
     void run()
     {
         while (!stop_)
@@ -69,7 +96,7 @@ private:
             
             while (!swapEvents_.empty())
             {
-                T* event = swapEvents_.front();
+                auto event(std::move(swapEvents_.front()));
                 swapEvents_.pop_front();
                 
                 // exec event
@@ -86,15 +113,15 @@ private:
     std::mutex mutex_;
     std::condition_variable condition_;
     std::shared_ptr<std::thread> thread_;
-    std::list<T*> events_;
-    std::list<T*> swapEvents_;
+    std::list<Tptr> events_;
+    std::list<Tptr> swapEvents_;
     std::atomic<bool> stop_{false};
-    ThreadSafeObjectPool<T, T*> eventPool_;
+    ThreadSafeObjectPool<T, Tptr> eventPool_;
     ActiveCallback callback_;
 };
 
 
-
+}
 
 
 
