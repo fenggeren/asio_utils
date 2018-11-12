@@ -54,6 +54,11 @@ namespace fasio
             {
             }
             
+            ~RepeatHandler()
+            {
+                printf("%ld\n",  timer_.use_count());
+            }
+            
             void operator()(std::error_code ec)
             {
                 handler_();
