@@ -28,7 +28,7 @@ public:
         return manager;
     }
     
-     
+    
 public:
   
 private:

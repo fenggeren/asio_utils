@@ -17,6 +17,7 @@
 #include "GateSession.hpp"
 #include "MatchSession.hpp"
 #include "LoginSession.hpp"
+#include "CSMatchManager.hpp"
 
 using namespace fasio::logging;
 
@@ -48,9 +49,18 @@ std::shared_ptr<ServerInfo> CSKernel::getService(uint32 sid)
 
 void CSKernel::removeService(uint32 sid)
 {
-    if (servers_.erase(sid) == 0)
+    auto iter = servers_.find(sid);
+    if (iter == servers_.end())
     {
         LOG_MINFO << " not found service  sid: " << sid;
+    }
+    else
+    {
+        if (iter->second->sid == ServerType_MatchServer)
+        {
+            CSMatchManager::instance().removeMatchService(sid);
+        }
+        servers_.erase(iter);
     }
 }
 
@@ -132,6 +142,7 @@ void CSKernel::gateServerRegistRS(TCPSessionPtr session,
         }
     }
     SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
+    CSMatchManager::instance().updateMatchService(info);
 }
 
 // 将消息直接返回给所有连接的 GS

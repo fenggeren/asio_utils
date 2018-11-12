@@ -40,7 +40,6 @@ public:
     void serverLoginRQ(TCPSessionPtr session,
                        const void* data, int len);
     
-public:
     void requestBestGateServer(TCPSessionPtr session, const void* data,
                                const PacketHeader& header);
     
@@ -50,15 +49,21 @@ private:
     // @stype 分发给指定的服务
     void serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
     void distServices(std::shared_ptr<ServerInfo> info, uint8 stype);
+    
+    
+private:
+    
+    // 重新分配比赛
+    void distributeMatch();
+    
 public:
     
     std::shared_ptr<ServerInfo> getService(uint32 sid);
     void removeService(uint32 sid);
     
 private:
-    
     std::unordered_map<uint32, std::shared_ptr<ServerInfo>> servers_;
-     
+    
 private:
     static int32 serverID;
 };

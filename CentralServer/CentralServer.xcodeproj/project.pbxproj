@@ -12,6 +12,7 @@
 		1F24639C21995146009A67AC /* cpg_match_create_factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24639B21995146009A67AC /* cpg_match_create_factory.cpp */; };
 		1F2463A12199527F009A67AC /* cpg_json_struct_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24639F2199527E009A67AC /* cpg_json_struct_helper.cpp */; };
 		1F2463A721995329009A67AC /* BetAlgorithm.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463A621995329009A67AC /* BetAlgorithm.cc */; };
+		1F2463B0219978E9009A67AC /* TimerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463AE219978E8009A67AC /* TimerManager.cpp */; };
 		1F95CE68218BFC780057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CE67218BFC780057618A /* libprotobuf.a */; };
 		1F95CE9A218BFD450057618A /* CPGToCentral.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE98218BFD450057618A /* CPGToCentral.pb.cc */; };
 		1F95CE9D218C3C6C0057618A /* CSKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE9B218C3C6C0057618A /* CSKernel.cpp */; };
@@ -20,7 +21,6 @@
 		1F95CF1F219177550057618A /* CPGClient.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CF1D219177550057618A /* CPGClient.pb.cc */; };
 		1FE3E9042189A5B500A2F52D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9032189A5B500A2F52D /* main.cpp */; };
 		1FE3E9392189A5FB00A2F52D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E90B2189A5FB00A2F52D /* Thread.cpp */; };
-		1FE3E93A2189A5FB00A2F52D /* RunLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E90D2189A5FB00A2F52D /* RunLoop.cpp */; };
 		1FE3E93B2189A5FB00A2F52D /* NetPacket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9142189A5FB00A2F52D /* NetPacket.cpp */; };
 		1FE3E93C2189A5FB00A2F52D /* ParseProto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9162189A5FB00A2F52D /* ParseProto.cpp */; };
 		1FE3E93D2189A5FB00A2F52D /* TCPListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9182189A5FB00A2F52D /* TCPListener.cpp */; };
@@ -69,6 +69,8 @@
 		1F2463A02199527F009A67AC /* cpg_json_struct_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpg_json_struct_helper.h; sourceTree = "<group>"; };
 		1F2463A521995329009A67AC /* BetAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetAlgorithm.h; sourceTree = "<group>"; };
 		1F2463A621995329009A67AC /* BetAlgorithm.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BetAlgorithm.cc; sourceTree = "<group>"; };
+		1F2463AE219978E8009A67AC /* TimerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimerManager.cpp; sourceTree = "<group>"; };
+		1F2463AF219978E8009A67AC /* TimerManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TimerManager.hpp; sourceTree = "<group>"; };
 		1F95CE67218BFC780057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
 		1F95CE94218BFD450057618A /* CPGToCentral.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPGToCentral.proto; sourceTree = "<group>"; };
 		1F95CE95218BFD450057618A /* ng */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ng; sourceTree = "<group>"; };
@@ -88,7 +90,6 @@
 		1FE3E9032189A5B500A2F52D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1FE3E90B2189A5FB00A2F52D /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
 		1FE3E90C2189A5FB00A2F52D /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
-		1FE3E90D2189A5FB00A2F52D /* RunLoop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RunLoop.cpp; sourceTree = "<group>"; };
 		1FE3E90E2189A5FB00A2F52D /* NetSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetSessionManager.hpp; sourceTree = "<group>"; };
 		1FE3E90F2189A5FB00A2F52D /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
 		1FE3E9102189A5FB00A2F52D /* TCPSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPSessionManager.hpp; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		1FE3E92A2189A5FB00A2F52D /* TCPClient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPClient.hpp; sourceTree = "<group>"; };
 		1FE3E92B2189A5FB00A2F52D /* Thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Thread.hpp; sourceTree = "<group>"; };
 		1FE3E92C2189A5FB00A2F52D /* DataHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataHandler.cpp; sourceTree = "<group>"; };
-		1FE3E92D2189A5FB00A2F52D /* RunLoop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RunLoop.hpp; sourceTree = "<group>"; };
 		1FE3E92E2189A5FB00A2F52D /* TCPSessionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPSessionManager.cpp; sourceTree = "<group>"; };
 		1FE3E9302189A5FB00A2F52D /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
 		1FE3E9312189A5FB00A2F52D /* Logging.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logging.cpp; sourceTree = "<group>"; };
@@ -278,11 +278,12 @@
 		1FE3E90A2189A5FB00A2F52D /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				1F2463AE219978E8009A67AC /* TimerManager.cpp */,
+				1F2463AF219978E8009A67AC /* TimerManager.hpp */,
 				1F2463392193F03F009A67AC /* ServiceKernel.cpp */,
 				1F24633A2193F03F009A67AC /* ServiceKernel.hpp */,
 				1FE3E90B2189A5FB00A2F52D /* Thread.cpp */,
 				1FE3E90C2189A5FB00A2F52D /* DataHandler.hpp */,
-				1FE3E90D2189A5FB00A2F52D /* RunLoop.cpp */,
 				1FE3E90E2189A5FB00A2F52D /* NetSessionManager.hpp */,
 				1FE3E90F2189A5FB00A2F52D /* TCPConnector.hpp */,
 				1FE3E9102189A5FB00A2F52D /* TCPSessionManager.hpp */,
@@ -310,7 +311,6 @@
 				1FE3E92A2189A5FB00A2F52D /* TCPClient.hpp */,
 				1FE3E92B2189A5FB00A2F52D /* Thread.hpp */,
 				1FE3E92C2189A5FB00A2F52D /* DataHandler.cpp */,
-				1FE3E92D2189A5FB00A2F52D /* RunLoop.hpp */,
 				1FE3E92E2189A5FB00A2F52D /* TCPSessionManager.cpp */,
 				1FE3E92F2189A5FB00A2F52D /* logging */,
 				1FE3E9342189A5FB00A2F52D /* TCPConnector.cpp */,
@@ -410,13 +410,13 @@
 			files = (
 				1F24639C21995146009A67AC /* cpg_match_create_factory.cpp in Sources */,
 				1F2463A12199527F009A67AC /* cpg_json_struct_helper.cpp in Sources */,
-				1FE3E93A2189A5FB00A2F52D /* RunLoop.cpp in Sources */,
 				1FE3E94A2189A5FB00A2F52D /* FASIOType.cpp in Sources */,
 				1FE3EA22218AE86E00A2F52D /* LoginSession.cpp in Sources */,
 				1FE3E93C2189A5FB00A2F52D /* ParseProto.cpp in Sources */,
 				1FE3E9482189A5FB00A2F52D /* Timestamp.cpp in Sources */,
 				1FE3E9412189A5FB00A2F52D /* TCPServer.cpp in Sources */,
 				1FE3E9472189A5FB00A2F52D /* Logging.cpp in Sources */,
+				1F2463B0219978E9009A67AC /* TimerManager.cpp in Sources */,
 				1F246363219407EF009A67AC /* CPGNetSession.cpp in Sources */,
 				1F95CEA0218C3F520057618A /* CSMatchManager.cpp in Sources */,
 				1FE3E93B2189A5FB00A2F52D /* NetPacket.cpp in Sources */,

@@ -10,7 +10,11 @@
 #include <string>
 #include <iostream>
 
-std::string matchConfig = R"(
+std::string matchConfig =
+#if 1
+"";
+#else
+R"(
 {
     \"patterns\": [{
     \"date_duration\": \"20181115\",
@@ -85,7 +89,12 @@ std::string matchConfig = R"(
 }]
 }
 )";
+#endif
 
+inline bool operator<(const MatchDisService& lv,const MatchDisService& other)
+{
+    return lv.sid < other.sid;
+}
 
 
 // 初始化
@@ -107,3 +116,41 @@ void CSMatchManager::updateConfigMatches()
 {
     
 }
+
+
+
+void
+CSMatchManager::updateMatchService(const std::shared_ptr<ServerInfo>& service)
+{
+    MatchDisService ms{service->sid, service->loaded};
+    auto iter = matchServices_.find(ms);
+    // 服务已存在，根据负载是否从新分配比赛
+    if (iter != matchServices_.end())
+    {
+        // 遍历所有比赛服务，是否有负载超出预期的。
+    }
+    else
+    {
+        
+    }
+}
+
+void
+CSMatchManager::removeMatchService(int sid)
+{ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
