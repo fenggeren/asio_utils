@@ -9,7 +9,7 @@
 #pragma once
 #include <string>
 
-
+#define MAIN "main"
 
 #define kServerRegistRQ     20001
 #define kServerRegistRS     20002
@@ -85,11 +85,11 @@ struct ServerInfo
     unsigned int            sid{0};
     unsigned int            connectTimes{0};
     unsigned int            lastHeartTimes{0};
+             int            loaded{0};  // 负载
     unsigned long long      msgReceived{0};
     unsigned long long      msgSended{0};
     unsigned long long      dataReceived{0};
     unsigned long long      dataSended{0};
-    unsigned long long      loaded{0};  // 负载
     std::string             ip;
     std::string    exportIp;      // 对外ip  只有GateWay有效，其他服务是无效的！
 };

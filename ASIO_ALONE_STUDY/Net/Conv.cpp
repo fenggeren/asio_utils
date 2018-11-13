@@ -14,33 +14,58 @@ namespace fasio
     
 #define ioContexts ioContextMap()
 #define nameThreads nameThreadMap()
-
-    std::map<std::__thread_id, asio::io_context>&
+    
+    std::map<pthread_t, asio::io_context>&
     ioContextMap()
     {
-        static std::map<std::__thread_id, asio::io_context>* map = new std::map<std::__thread_id, asio::io_context>;
+        static auto* map = new std::map<pthread_t, asio::io_context>;
         return *map;
     }
-
-    std::map<std::string, std::__thread_id>&
+    
+    std::map<std::string, pthread_t>&
     nameThreadMap()
     {
-        static std::map<std::string, std::__thread_id>* map = new std::map<std::string, std::__thread_id>;
+        static auto* map = new std::map<std::string, pthread_t>;
         return *map;
     }
 
     asio::io_context& getIoContext()
     {
-        //        auto iter = ioContexts.find(std::this_thread::get_id());
-        //        if (iter == ioContexts.end()) {
-        //        }
-        return ioContexts[std::this_thread::get_id()];
+        return ioContexts[pthread_self()];
     }
 
+    asio::io_context& getIoContext(const pthread_t& id)
+    {
+        auto iter = ioContexts.find(id);
+        if (iter == ioContexts.end())
+        {
+            assert(0);
+        }
+        return ioContexts[id];
+    }
     asio::io_context& getIoContext(const std::string& name)
     {
-        return ioContexts[std::this_thread::get_id()];
+        auto iter = nameThreads.find(name);
+        if (iter == nameThreads.end())
+        {
+            assert(0);
+        }
+        return ioContexts[iter->second];
     }
+    
+    void setCurThreadName(const std::string& name)
+    {
+        nameThreads[name] = pthread_self();
+        pthread_setname_np(name.data());
+    }
+    std::string getThreadName(const pthread_t& pid)
+    {
+        char name[128] = {0};
+        pthread_getname_np(pid, name, sizeof(name));
+        return name;
+    }
+    
+     
 
     void ioContextLoopForever()
     {

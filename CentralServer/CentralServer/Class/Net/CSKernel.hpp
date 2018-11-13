@@ -14,10 +14,7 @@
 #include <CPG/CPGServerDefine.h>
 
 using namespace fasio;
-
-static asio::io_context g_IoContext;
-
-
+ 
 // 网络中心
 class CSKernel
 {
@@ -54,7 +51,7 @@ private:
 private:
     
     // 重新分配比赛
-    void distributeMatch();
+    void distributeMatch(const std::map<unsigned int, std::list<int>>& updateMap);
     
 public:
     

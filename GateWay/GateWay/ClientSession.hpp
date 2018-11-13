@@ -55,6 +55,7 @@ public:
     }
     virtual asio::io_context& io_context()
     {
+        // 可以使用 IOContextPool 返回， 但是一些数据要做多线程同步处理.
         return io_context_;
     }
     virtual uint8 type()

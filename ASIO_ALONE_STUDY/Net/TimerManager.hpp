@@ -18,8 +18,8 @@ namespace fasio
     class TimerManager
     {
         using TimerHandler = std::function<void()>;
-        using BasicTimer = asio::basic_waitable_timer<std::chrono::steady_clock>;
     public:
+        using BasicTimer = asio::basic_waitable_timer<std::chrono::steady_clock>;
         using TimerPtr = std::shared_ptr<BasicTimer>;
         
         TimerManager(asio::io_context& ioc)
@@ -61,11 +61,14 @@ namespace fasio
             
             void operator()(std::error_code ec)
             {
-                handler_();
-                if (--count_ > 0)
+                if (!ec)
                 {
-                    timer_->expires_after(std::chrono::milliseconds(S2M(interval_)));
-                    timer_->async_wait(std::forward<RepeatHandler>(*this));
+                    handler_();
+                    if (--count_ > 0)
+                    {
+                        timer_->expires_after(std::chrono::milliseconds(S2M(interval_)));
+                        timer_->async_wait(std::forward<RepeatHandler>(*this));
+                    }
                 }
             }
             

@@ -7,14 +7,17 @@
 //
 
 #include <iostream>
+#include <Net/Conv.hpp>
 #include "Class/Net/CSKernel.hpp"
 #include "Class/MatchManager/CSMatchManager.hpp"
 
 int main(int argc, const char * argv[]) {
     
+    fasio::setCurThreadName("main");
+    
     CSMatchManager::instance().initialize();
     
-//    CSKernel::instance().start();
+    CSKernel::instance().start();
     
     return 0;
 }
