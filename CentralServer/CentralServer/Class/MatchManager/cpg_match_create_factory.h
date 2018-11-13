@@ -20,10 +20,18 @@
 二：
 直接添加比赛
 */
+
+// 线程不安全，必须在逻辑线程处理！！！
 class cpg_match_create_factory
 {
 public:
-  
+    
+    static cpg_match_create_factory& instance()
+    {
+        static cpg_match_create_factory factory;
+        return factory;
+    }
+    
     // redis加载所有比赛；
     // 规则和pattern创建完比赛后，其数据对于比赛就无关了！
     // 也不存储到redis
@@ -31,7 +39,6 @@ public:
     // @return:  存储的比赛
     std::list<std::shared_ptr<cpg_match_info>>
     load_from_reids();
-
 
     // file 加载所有, 并存储到redis
     // @return: 添加的新的比赛

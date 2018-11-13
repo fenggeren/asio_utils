@@ -18,22 +18,27 @@
 #include "MatchSession.hpp"
 #include "LoginSession.hpp"
 #include "CSMatchManager.hpp"
+#include <Net/Conv.hpp>
 
 using namespace fasio::logging;
 
 void CSKernel::start()
 {
+
+    CSMatchManager::instance().setChangedMatchMapCB(std::bind(&CSKernel::distributeMatch, this, std::placeholders::_1));
+    
+    auto& curIoCtx = getIoContext(MAIN);
     //
-    auto gateFactory = std::make_shared<GateSessionFactory>(g_IoContext);
+    auto gateFactory = std::make_shared<GateSessionFactory>(curIoCtx);
     SessionManager.createListener(7801, false, gateFactory);
-    auto matchFactory = std::make_shared<MatchSessionFactory>(g_IoContext);
+    auto matchFactory = std::make_shared<MatchSessionFactory>(curIoCtx);
     SessionManager.createListener(7802, false, matchFactory);
-    auto loginFactory = std::make_shared<LoginSessionFactory>(g_IoContext);
+    auto loginFactory = std::make_shared<LoginSessionFactory>(curIoCtx);
     SessionManager.createListener(7803, false, loginFactory);
-    auto balanceFactory = std::make_shared<BalanceSessionFactory>(g_IoContext);
+    auto balanceFactory = std::make_shared<BalanceSessionFactory>(curIoCtx);
     SessionManager.createListener(7804, false, balanceFactory);
     
-    g_IoContext.run();
+    curIoCtx.run();
 }
 
 std::shared_ptr<ServerInfo> CSKernel::getService(uint32 sid)
@@ -58,7 +63,7 @@ void CSKernel::removeService(uint32 sid)
     {
         if (iter->second->sid == ServerType_MatchServer)
         {
-            CSMatchManager::instance().removeMatchService(sid);
+            CSMatchManager::instance().removeMatchService(iter->second);
         }
         servers_.erase(iter);
     }
@@ -262,7 +267,10 @@ void CSKernel::requestBestGateServer(TCPSessionPtr session,
                             header.extraID});
 }
 
-
+void CSKernel::distributeMatch(const std::map<unsigned int, std::list<int>>& updateMap)
+{
+    
+}
 
 
 

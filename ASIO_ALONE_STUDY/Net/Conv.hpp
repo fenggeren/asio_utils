@@ -16,7 +16,12 @@ namespace fasio
     using CompleteHandler = std::function<void()>;
     
     asio::io_context& getIoContext();
+    asio::io_context& getIoContext(const pthread_t& id);
  
+    asio::io_context& getIoContext(const std::string& name);
+    void setCurThreadName(const std::string& name);
+    std::string getThreadName(const pthread_t& pid);
+    
     void dispatchAfter(double delay, Handler&& handler);
     void dispatchAsync(Handler&& handler, asio::io_context& io);
     
