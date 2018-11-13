@@ -31,6 +31,8 @@
 		8123E200216CDD280050FD4D /* Conv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E1FE216CDD280050FD4D /* Conv.cpp */; };
 		8123E22921889FC20050FD4D /* TCPListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E22321889FC20050FD4D /* TCPListener.cpp */; };
 		8123E22A21889FC20050FD4D /* TCPSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E22521889FC20050FD4D /* TCPSessionManager.cpp */; };
+		8139F607219B0FCD00684D69 /* SQLManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F605219B0FCC00684D69 /* SQLManager.cpp */; };
+		8139F60C219B109400684D69 /* libmysqlclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8139F60B219B109300684D69 /* libmysqlclient.a */; };
 		81994CDA219074960034623E /* CPGClient.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CD9219074960034623E /* CPGClient.proto */; };
 		81994CDC21907A190034623E /* CPGCommon.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CDB21907A190034623E /* CPGCommon.proto */; };
 /* End PBXBuildFile section */
@@ -110,6 +112,9 @@
 		8123E22721889FC20050FD4D /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
 		8123E22821889FC20050FD4D /* NetBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetBase.hpp; sourceTree = "<group>"; };
 		8139F5F32196B9CD00684D69 /* Active.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Active.hpp; sourceTree = "<group>"; };
+		8139F605219B0FCC00684D69 /* SQLManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SQLManager.cpp; sourceTree = "<group>"; };
+		8139F606219B0FCC00684D69 /* SQLManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SQLManager.hpp; sourceTree = "<group>"; };
+		8139F60B219B109300684D69 /* libmysqlclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmysqlclient.a; path = "../../../../../usr/local/mysql-8.0.13-macos10.14-x86_64/lib/libmysqlclient.a"; sourceTree = "<group>"; };
 		81994CD9219074960034623E /* CPGClient.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGClient.proto; sourceTree = "<group>"; };
 		81994CDB21907A190034623E /* CPGCommon.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGCommon.proto; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F95CE5F218BFC580057618A /* libprotobuf.a in Frameworks */,
+				8139F60C219B109400684D69 /* libmysqlclient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +237,7 @@
 		1F95CE5D218BFC570057618A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8139F60B219B109300684D69 /* libmysqlclient.a */,
 				1F95CE5E218BFC570057618A /* libprotobuf.a */,
 			);
 			name = Frameworks;
@@ -239,6 +246,7 @@
 		1F95CE72218BFCE90057618A /* CPG */ = {
 			isa = PBXGroup;
 			children = (
+				8139F604219B0FC500684D69 /* DB */,
 				1F246394219950C9009A67AC /* Third */,
 				1F24634D2193F330009A67AC /* Net */,
 				1F95CE73218BFCE90057618A /* CPGToCentral.proto */,
@@ -282,6 +290,15 @@
 				28C200B020CD600900A9ECC5 /* main.cpp */,
 			);
 			path = ASIO_ALONE_STUDY;
+			sourceTree = "<group>";
+		};
+		8139F604219B0FC500684D69 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				8139F605219B0FCC00684D69 /* SQLManager.cpp */,
+				8139F606219B0FCC00684D69 /* SQLManager.hpp */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +373,7 @@
 				1F365420215A15B1003B9FAD /* TCPAcceptor.cpp in Sources */,
 				1F36541A215A15B1003B9FAD /* Logging.cpp in Sources */,
 				1F365422215A15B1003B9FAD /* DataHandler.cpp in Sources */,
+				8139F607219B0FCD00684D69 /* SQLManager.cpp in Sources */,
 				1F36541F215A15B1003B9FAD /* TCPSession.cpp in Sources */,
 				28C200B120CD600900A9ECC5 /* main.cpp in Sources */,
 				1F365423215A15B1003B9FAD /* TCPConnector.cpp in Sources */,
@@ -476,8 +494,13 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/ASIO_ALONE_STUDY/include",
 					/usr/local/include,
+					/usr/local/mysql/include,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/mysql/lib,
+					"/usr/local/mysql-8.0.13-macos10.14-x86_64/lib",
+				);
 				OTHER_LDFLAGS = (
 					"-l",
 					boost_system,
@@ -495,8 +518,13 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/ASIO_ALONE_STUDY/include",
 					/usr/local/include,
+					/usr/local/mysql/include,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/mysql/lib,
+					"/usr/local/mysql-8.0.13-macos10.14-x86_64/lib",
+				);
 				OTHER_LDFLAGS = (
 					"-l",
 					boost_system,
