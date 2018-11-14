@@ -11,6 +11,9 @@
 #include "GateSession.hpp"
 #include "M2CSession.hpp"
 #include <CPG/CPGHeader.h>
+#include "MSMatchManager.hpp"
+#include <CPG/CPGToCentral.pb.h>
+#include <Net/Util/ParseProto.hpp>
 
 using namespace fasio::logging;
 
@@ -33,6 +36,20 @@ void MSKernel::removeConnectService(int uuid)
         centralSession_ = nullptr;
     }
 }
+
+void MSKernel::transToCS(const void* data, const PacketHeader& header)
+{
+    if (centralSession_)
+    {
+        SessionManager.sendMsg(centralSession_, data, header);
+    }
+    else
+    {
+        LOG_ERROR << " not connect login server"
+        << " msgid: " << header.type;
+    }
+}
+
 std::shared_ptr<TCPSession>
 MSKernel::connectService(unsigned short type,
                          unsigned short port,
@@ -41,4 +58,37 @@ MSKernel::connectService(unsigned short type,
 {
     return SessionManager.createConnector(type, g_IoContext,  ip, port);
 }
+
+
+void MSKernel::checkMatchDistributeRS(const void* buffer, const PacketHeader& header)
+{
+    
+}
+
+void MSKernel::distibuteMatchesNotify(const void* buffer, const PacketHeader& header)
+{
+    CPGToCentral::ServiceMatchDistibuteNotify notify;
+    if (parseProtoMsg(buffer, header.size, notify))
+    {
+        std::string midStr;
+        
+        std::list<int> mids;
+        for(int i = 0; i < notify.mid_size(); i++)
+        {
+            int mid = notify.mid(i);
+            mids.push_back(mid);
+            midStr += (std::to_string(mid) + ", " );
+        }
+        MSMatchManager::instance().updateMatches(mids);
+        
+        LOG_MINFO << "distribute matches: " << midStr;
+    }
+}
+
+
+
+
+
+
+
 

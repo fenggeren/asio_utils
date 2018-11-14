@@ -57,7 +57,30 @@ message ServerLoginRS
 	GateServerInfo gsinfo 	= 3; 
 }
 
+message ServiceMatchDistibuteNotify
+{
+    int32 sid = 1;
+    repeated int32 mid = 2;
+};
+message ServerAllMatchDistributeNotify
+{
+    repeated ServiceMatchDistibuteNotify services = 1;
+};
 
+// 校验 比赛分配信息
+message CheckMatchDistributeRQ
+{
+    int32 sid = 1;
+    int32 type = 2;
+    repeated int32 mid = 3;
+};
+// 校验 比赛分配信息
+message CheckMatchDistributeRS
+{
+    int32 sid = 1;
+    int32 type = 2;
+    int32 result = 3;
+};
 
 
 

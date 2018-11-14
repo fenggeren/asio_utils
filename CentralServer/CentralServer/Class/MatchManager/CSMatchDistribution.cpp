@@ -10,13 +10,19 @@
 #include "cpg_match_create_factory.h"
 #include <algorithm>
 #include <vector>
+#include <Net/logging/Logging.hpp>
 
+using namespace fasio::logging;
 
 std::list<unsigned int>
 MatchDistribution::operator()(
         std::map<MatchDisService, std::list<int>>& matchServices,
            std::list<int>& undistMatches)
 {
+    if (matchServices.size() == 0)
+    {
+        return {};
+    }
     auto matches = cpg_match_create_factory::instance().get_all_matches();
     auto allLoaded = matches.size();
     
@@ -76,6 +82,8 @@ MatchDistribution::distributeFill(
             undistMatches.pop_front();
             iter->second.push_back(mid);
         }
+        LOG_DEBUG << " service sid: " << iter->first.sid
+        << " count: " << iter->second.size();
         changedServices.insert(srv.sid);
     }
     

@@ -16,7 +16,21 @@
 
 
 
+/*
+ ① CS重启
+    其他服务直接重连，需要recover分配的比赛信息。
+ ② MS重启
+    连接MS， 重新分配比赛信息。
+ 
+ 心跳包机制，判断某个MS已经失联。 相关分配策略。
+ */
+
 // 负责管理所有比赛
+/*
+ 如果CS崩溃重启？
+ 其他服务自动重连。
+ MS将自己分配的所有比赛发送给CS
+ */
 class CSMatchManager
 {
     using ChangedMatchMap = std::map<unsigned int, std::list<int>>;
@@ -38,11 +52,16 @@ public:
     }
     
     std::map<MatchDisService, std::list<int>>
-    getAllMatchServices();
+    getAllMatchServices()
+    {
+        return matchServices_;
+    }
     
     std::list<int> getDistMatch(unsigned int sid);
-public:
     
+    
+    void addUndistriteMatches(std::list<int>&& mids);
+public:
     // 启动/暂停新的比赛服务.
     // 可能需要从新分配比赛
     // 都应该具有滞后性，即调用后，延时更新比赛对应服务配置表。
@@ -55,6 +74,9 @@ public:
     removeMatchService(const std::shared_ptr<ServerInfo>& service);
     
     
+    // 校验 比赛分配信息
+    bool checkServiceDistMap(const MatchDisService& service,
+                             std::list<int>& mids);
 private:
     // 加载所有比赛
     void loadAllMatches();

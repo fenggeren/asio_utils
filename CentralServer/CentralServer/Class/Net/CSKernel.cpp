@@ -61,7 +61,7 @@ void CSKernel::removeService(uint32 sid)
     }
     else
     {
-        if (iter->second->sid == ServerType_MatchServer)
+        if (iter->second->type == ServerType_MatchServer)
         {
             CSMatchManager::instance().removeMatchService(iter->second);
         }
@@ -83,7 +83,7 @@ void CSKernel::serverRegistRQ(TCPSessionPtr session,
             servers_[rq.sid()] == nullptr)
         {
             info = std::make_shared<ServerInfo>();
-            info->sid = ++serverID;
+            info->sid = session->uuid();
             session->setLogicID(info->sid);
             servers_[info->sid] = info;
         }
@@ -113,6 +113,11 @@ void CSKernel::serverRegistRQ(TCPSessionPtr session,
         else
         {
             serverRegistRS(session, info);
+        }
+        
+        if (session->type() == ServerType_MatchServer)
+        {
+            CSMatchManager::instance().updateMatchService(info);
         }
     }
     else
@@ -147,7 +152,6 @@ void CSKernel::gateServerRegistRS(TCPSessionPtr session,
         }
     }
     SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
-    CSMatchManager::instance().updateMatchService(info);
 }
 
 // 将消息直接返回给所有连接的 GS
@@ -269,6 +273,30 @@ void CSKernel::requestBestGateServer(TCPSessionPtr session,
 
 void CSKernel::distributeMatch(const std::map<unsigned int, std::list<int>>& updateMap)
 {
+    LOG_MINFO << "";
+    // 1. 将所有的分配信息发送个给所有的GS
+    CPGToCentral::ServerAllMatchDistributeNotify notify;
+    
+    for(auto& pair : updateMap)
+    {
+        auto distri = notify.add_services();
+        distri->set_sid(pair.first);
+        for(auto mid : pair.second)
+        {
+            distri->add_mid(mid);
+        }
+        
+        // 2.将sid对应的比赛列表 发送给该sid -- MS
+        PacketHeader header{kServerMatchDistributeNotify, distri->ByteSize(), 0};
+        SessionManager.sendMsg(getService(pair.first)->sid,
+                               distri->SerializeAsString().data(),
+                               header);
+    }
+    
+    PacketHeader header{kServerAllMatchDistributeNotify, notify.ByteSize(), 0};
+    SessionManager.sendMsg(nullptr,
+                           notify.SerializeAsString().data(),
+                           header, ServerType_GateServer);
     
 }
 

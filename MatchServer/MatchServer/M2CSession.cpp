@@ -13,6 +13,7 @@
 #include <Net/Util/NetPacket.hpp>
 #include <Net/logging/Logging.hpp>
 #include <Net/Util/ParseProto.hpp>
+#include "MSMatchManager.hpp"
 #include "MSKernel.hpp"
 
 using namespace fasio::logging;
@@ -35,16 +36,62 @@ void M2CSession::sendInitData()
     rq.set_port(7851);
     rq.set_sid(0);
     rq.set_ip("127.0.0.1");
-    rq.set_ip("127.0.0.1");
+    rq.set_exportip("127.0.0.1");
     
     SessionManager.sendMsgToSession(shared_from_this(), rq,
                                     kServerRegistRQ, ServerType_CentralServer);
+    if (firstConnect_)
+    {
+        firstConnect_ = false;
+    }
+    else
+    {
+        // 重连, check
+        checkMatchDistribute();
+    }
+}
+
+void M2CSession::checkMatchDistribute()
+{
+    auto matches = MSMatchManager::instance().matches();
+    
+    CPGToCentral::CheckMatchDistributeRQ rq;
+    rq.set_sid(logicID());
+    rq.set_type(ServerType_MatchServer);
+    for(auto mid : matches)
+    {
+        rq.add_mid(mid);
+    }
+    PacketHeader header{kCheckMatchDistributeRQ, rq.ByteSize(), static_cast<int32>(uuid())};
+    SessionManager.sendMsg(shared_from_this(), rq.SerializeAsString().data(), header);
 }
 
 bool M2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                         const void* buffer,
                         const PacketHeader& header)
 {
+    switch (header.type) {
+        case kCheckMatchDistributeRS:
+        {
+            MSKernel::instance().checkMatchDistributeRS(buffer, header);
+            break;
+        }
+        case kServerMatchDistributeNotify:
+        {
+            MSKernel::instance().distibuteMatchesNotify(buffer, header);
+            break;
+        }
+        default:
+            break;
+    }
     return true;
 }
+
+
+
+
+
+
+
+
 

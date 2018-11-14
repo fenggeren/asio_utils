@@ -41,7 +41,7 @@ struct TableStruct_CPGToCentral_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[7]
+  static const ::google::protobuf::internal::ParseTable schema[11]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -49,12 +49,21 @@ struct TableStruct_CPGToCentral_2eproto {
 };
 void AddDescriptors_CPGToCentral_2eproto();
 namespace CPGToCentral {
+class CheckMatchDistributeRQ;
+class CheckMatchDistributeRQDefaultTypeInternal;
+extern CheckMatchDistributeRQDefaultTypeInternal _CheckMatchDistributeRQ_default_instance_;
+class CheckMatchDistributeRS;
+class CheckMatchDistributeRSDefaultTypeInternal;
+extern CheckMatchDistributeRSDefaultTypeInternal _CheckMatchDistributeRS_default_instance_;
 class GateServerInfo;
 class GateServerInfoDefaultTypeInternal;
 extern GateServerInfoDefaultTypeInternal _GateServerInfo_default_instance_;
 class NewConnServiceNotify;
 class NewConnServiceNotifyDefaultTypeInternal;
 extern NewConnServiceNotifyDefaultTypeInternal _NewConnServiceNotify_default_instance_;
+class ServerAllMatchDistributeNotify;
+class ServerAllMatchDistributeNotifyDefaultTypeInternal;
+extern ServerAllMatchDistributeNotifyDefaultTypeInternal _ServerAllMatchDistributeNotify_default_instance_;
 class ServerInfo;
 class ServerInfoDefaultTypeInternal;
 extern ServerInfoDefaultTypeInternal _ServerInfo_default_instance_;
@@ -70,16 +79,23 @@ extern ServerRegisterRQDefaultTypeInternal _ServerRegisterRQ_default_instance_;
 class ServerRegisterRS;
 class ServerRegisterRSDefaultTypeInternal;
 extern ServerRegisterRSDefaultTypeInternal _ServerRegisterRS_default_instance_;
+class ServiceMatchDistibuteNotify;
+class ServiceMatchDistibuteNotifyDefaultTypeInternal;
+extern ServiceMatchDistibuteNotifyDefaultTypeInternal _ServiceMatchDistibuteNotify_default_instance_;
 }  // namespace CPGToCentral
 namespace google {
 namespace protobuf {
+template<> ::CPGToCentral::CheckMatchDistributeRQ* Arena::CreateMaybeMessage<::CPGToCentral::CheckMatchDistributeRQ>(Arena*);
+template<> ::CPGToCentral::CheckMatchDistributeRS* Arena::CreateMaybeMessage<::CPGToCentral::CheckMatchDistributeRS>(Arena*);
 template<> ::CPGToCentral::GateServerInfo* Arena::CreateMaybeMessage<::CPGToCentral::GateServerInfo>(Arena*);
 template<> ::CPGToCentral::NewConnServiceNotify* Arena::CreateMaybeMessage<::CPGToCentral::NewConnServiceNotify>(Arena*);
+template<> ::CPGToCentral::ServerAllMatchDistributeNotify* Arena::CreateMaybeMessage<::CPGToCentral::ServerAllMatchDistributeNotify>(Arena*);
 template<> ::CPGToCentral::ServerInfo* Arena::CreateMaybeMessage<::CPGToCentral::ServerInfo>(Arena*);
 template<> ::CPGToCentral::ServerLoginRQ* Arena::CreateMaybeMessage<::CPGToCentral::ServerLoginRQ>(Arena*);
 template<> ::CPGToCentral::ServerLoginRS* Arena::CreateMaybeMessage<::CPGToCentral::ServerLoginRS>(Arena*);
 template<> ::CPGToCentral::ServerRegisterRQ* Arena::CreateMaybeMessage<::CPGToCentral::ServerRegisterRQ>(Arena*);
 template<> ::CPGToCentral::ServerRegisterRS* Arena::CreateMaybeMessage<::CPGToCentral::ServerRegisterRS>(Arena*);
+template<> ::CPGToCentral::ServiceMatchDistibuteNotify* Arena::CreateMaybeMessage<::CPGToCentral::ServiceMatchDistibuteNotify>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace CPGToCentral {
@@ -1021,6 +1037,505 @@ class ServerLoginRS : public ::google::protobuf::Message /* @@protoc_insertion_p
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_CPGToCentral_2eproto;
 };
+// -------------------------------------------------------------------
+
+class ServiceMatchDistibuteNotify : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGToCentral.ServiceMatchDistibuteNotify) */ {
+ public:
+  ServiceMatchDistibuteNotify();
+  virtual ~ServiceMatchDistibuteNotify();
+
+  ServiceMatchDistibuteNotify(const ServiceMatchDistibuteNotify& from);
+
+  inline ServiceMatchDistibuteNotify& operator=(const ServiceMatchDistibuteNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ServiceMatchDistibuteNotify(ServiceMatchDistibuteNotify&& from) noexcept
+    : ServiceMatchDistibuteNotify() {
+    *this = ::std::move(from);
+  }
+
+  inline ServiceMatchDistibuteNotify& operator=(ServiceMatchDistibuteNotify&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const ServiceMatchDistibuteNotify& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ServiceMatchDistibuteNotify* internal_default_instance() {
+    return reinterpret_cast<const ServiceMatchDistibuteNotify*>(
+               &_ServiceMatchDistibuteNotify_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  void Swap(ServiceMatchDistibuteNotify* other);
+  friend void swap(ServiceMatchDistibuteNotify& a, ServiceMatchDistibuteNotify& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ServiceMatchDistibuteNotify* New() const final {
+    return CreateMaybeMessage<ServiceMatchDistibuteNotify>(NULL);
+  }
+
+  ServiceMatchDistibuteNotify* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ServiceMatchDistibuteNotify>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const ServiceMatchDistibuteNotify& from);
+  void MergeFrom(const ServiceMatchDistibuteNotify& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ServiceMatchDistibuteNotify* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated int32 mid = 2;
+  int mid_size() const;
+  void clear_mid();
+  static const int kMidFieldNumber = 2;
+  ::google::protobuf::int32 mid(int index) const;
+  void set_mid(int index, ::google::protobuf::int32 value);
+  void add_mid(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      mid() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_mid();
+
+  // int32 sid = 1;
+  void clear_sid();
+  static const int kSidFieldNumber = 1;
+  ::google::protobuf::int32 sid() const;
+  void set_sid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:CPGToCentral.ServiceMatchDistibuteNotify)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > mid_;
+  mutable std::atomic<int> _mid_cached_byte_size_;
+  ::google::protobuf::int32 sid_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_CPGToCentral_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ServerAllMatchDistributeNotify : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGToCentral.ServerAllMatchDistributeNotify) */ {
+ public:
+  ServerAllMatchDistributeNotify();
+  virtual ~ServerAllMatchDistributeNotify();
+
+  ServerAllMatchDistributeNotify(const ServerAllMatchDistributeNotify& from);
+
+  inline ServerAllMatchDistributeNotify& operator=(const ServerAllMatchDistributeNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ServerAllMatchDistributeNotify(ServerAllMatchDistributeNotify&& from) noexcept
+    : ServerAllMatchDistributeNotify() {
+    *this = ::std::move(from);
+  }
+
+  inline ServerAllMatchDistributeNotify& operator=(ServerAllMatchDistributeNotify&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const ServerAllMatchDistributeNotify& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ServerAllMatchDistributeNotify* internal_default_instance() {
+    return reinterpret_cast<const ServerAllMatchDistributeNotify*>(
+               &_ServerAllMatchDistributeNotify_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  void Swap(ServerAllMatchDistributeNotify* other);
+  friend void swap(ServerAllMatchDistributeNotify& a, ServerAllMatchDistributeNotify& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ServerAllMatchDistributeNotify* New() const final {
+    return CreateMaybeMessage<ServerAllMatchDistributeNotify>(NULL);
+  }
+
+  ServerAllMatchDistributeNotify* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ServerAllMatchDistributeNotify>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const ServerAllMatchDistributeNotify& from);
+  void MergeFrom(const ServerAllMatchDistributeNotify& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ServerAllMatchDistributeNotify* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .CPGToCentral.ServiceMatchDistibuteNotify services = 1;
+  int services_size() const;
+  void clear_services();
+  static const int kServicesFieldNumber = 1;
+  ::CPGToCentral::ServiceMatchDistibuteNotify* mutable_services(int index);
+  ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServiceMatchDistibuteNotify >*
+      mutable_services();
+  const ::CPGToCentral::ServiceMatchDistibuteNotify& services(int index) const;
+  ::CPGToCentral::ServiceMatchDistibuteNotify* add_services();
+  const ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServiceMatchDistibuteNotify >&
+      services() const;
+
+  // @@protoc_insertion_point(class_scope:CPGToCentral.ServerAllMatchDistributeNotify)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServiceMatchDistibuteNotify > services_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_CPGToCentral_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CheckMatchDistributeRQ : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGToCentral.CheckMatchDistributeRQ) */ {
+ public:
+  CheckMatchDistributeRQ();
+  virtual ~CheckMatchDistributeRQ();
+
+  CheckMatchDistributeRQ(const CheckMatchDistributeRQ& from);
+
+  inline CheckMatchDistributeRQ& operator=(const CheckMatchDistributeRQ& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CheckMatchDistributeRQ(CheckMatchDistributeRQ&& from) noexcept
+    : CheckMatchDistributeRQ() {
+    *this = ::std::move(from);
+  }
+
+  inline CheckMatchDistributeRQ& operator=(CheckMatchDistributeRQ&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const CheckMatchDistributeRQ& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const CheckMatchDistributeRQ* internal_default_instance() {
+    return reinterpret_cast<const CheckMatchDistributeRQ*>(
+               &_CheckMatchDistributeRQ_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  void Swap(CheckMatchDistributeRQ* other);
+  friend void swap(CheckMatchDistributeRQ& a, CheckMatchDistributeRQ& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CheckMatchDistributeRQ* New() const final {
+    return CreateMaybeMessage<CheckMatchDistributeRQ>(NULL);
+  }
+
+  CheckMatchDistributeRQ* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<CheckMatchDistributeRQ>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const CheckMatchDistributeRQ& from);
+  void MergeFrom(const CheckMatchDistributeRQ& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CheckMatchDistributeRQ* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated int32 mid = 3;
+  int mid_size() const;
+  void clear_mid();
+  static const int kMidFieldNumber = 3;
+  ::google::protobuf::int32 mid(int index) const;
+  void set_mid(int index, ::google::protobuf::int32 value);
+  void add_mid(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      mid() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_mid();
+
+  // int32 sid = 1;
+  void clear_sid();
+  static const int kSidFieldNumber = 1;
+  ::google::protobuf::int32 sid() const;
+  void set_sid(::google::protobuf::int32 value);
+
+  // int32 type = 2;
+  void clear_type();
+  static const int kTypeFieldNumber = 2;
+  ::google::protobuf::int32 type() const;
+  void set_type(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:CPGToCentral.CheckMatchDistributeRQ)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > mid_;
+  mutable std::atomic<int> _mid_cached_byte_size_;
+  ::google::protobuf::int32 sid_;
+  ::google::protobuf::int32 type_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_CPGToCentral_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CheckMatchDistributeRS : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CPGToCentral.CheckMatchDistributeRS) */ {
+ public:
+  CheckMatchDistributeRS();
+  virtual ~CheckMatchDistributeRS();
+
+  CheckMatchDistributeRS(const CheckMatchDistributeRS& from);
+
+  inline CheckMatchDistributeRS& operator=(const CheckMatchDistributeRS& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CheckMatchDistributeRS(CheckMatchDistributeRS&& from) noexcept
+    : CheckMatchDistributeRS() {
+    *this = ::std::move(from);
+  }
+
+  inline CheckMatchDistributeRS& operator=(CheckMatchDistributeRS&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const CheckMatchDistributeRS& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const CheckMatchDistributeRS* internal_default_instance() {
+    return reinterpret_cast<const CheckMatchDistributeRS*>(
+               &_CheckMatchDistributeRS_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  void Swap(CheckMatchDistributeRS* other);
+  friend void swap(CheckMatchDistributeRS& a, CheckMatchDistributeRS& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CheckMatchDistributeRS* New() const final {
+    return CreateMaybeMessage<CheckMatchDistributeRS>(NULL);
+  }
+
+  CheckMatchDistributeRS* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<CheckMatchDistributeRS>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const CheckMatchDistributeRS& from);
+  void MergeFrom(const CheckMatchDistributeRS& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CheckMatchDistributeRS* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // int32 sid = 1;
+  void clear_sid();
+  static const int kSidFieldNumber = 1;
+  ::google::protobuf::int32 sid() const;
+  void set_sid(::google::protobuf::int32 value);
+
+  // int32 type = 2;
+  void clear_type();
+  static const int kTypeFieldNumber = 2;
+  ::google::protobuf::int32 type() const;
+  void set_type(::google::protobuf::int32 value);
+
+  // int32 result = 3;
+  void clear_result();
+  static const int kResultFieldNumber = 3;
+  ::google::protobuf::int32 result() const;
+  void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:CPGToCentral.CheckMatchDistributeRS)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::int32 sid_;
+  ::google::protobuf::int32 type_;
+  ::google::protobuf::int32 result_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_CPGToCentral_2eproto;
+};
 // ===================================================================
 
 
@@ -1628,9 +2143,207 @@ inline void ServerLoginRS::set_allocated_gsinfo(::CPGToCentral::GateServerInfo* 
   // @@protoc_insertion_point(field_set_allocated:CPGToCentral.ServerLoginRS.gsinfo)
 }
 
+// -------------------------------------------------------------------
+
+// ServiceMatchDistibuteNotify
+
+// int32 sid = 1;
+inline void ServiceMatchDistibuteNotify::clear_sid() {
+  sid_ = 0;
+}
+inline ::google::protobuf::int32 ServiceMatchDistibuteNotify::sid() const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.ServiceMatchDistibuteNotify.sid)
+  return sid_;
+}
+inline void ServiceMatchDistibuteNotify::set_sid(::google::protobuf::int32 value) {
+  
+  sid_ = value;
+  // @@protoc_insertion_point(field_set:CPGToCentral.ServiceMatchDistibuteNotify.sid)
+}
+
+// repeated int32 mid = 2;
+inline int ServiceMatchDistibuteNotify::mid_size() const {
+  return mid_.size();
+}
+inline void ServiceMatchDistibuteNotify::clear_mid() {
+  mid_.Clear();
+}
+inline ::google::protobuf::int32 ServiceMatchDistibuteNotify::mid(int index) const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.ServiceMatchDistibuteNotify.mid)
+  return mid_.Get(index);
+}
+inline void ServiceMatchDistibuteNotify::set_mid(int index, ::google::protobuf::int32 value) {
+  mid_.Set(index, value);
+  // @@protoc_insertion_point(field_set:CPGToCentral.ServiceMatchDistibuteNotify.mid)
+}
+inline void ServiceMatchDistibuteNotify::add_mid(::google::protobuf::int32 value) {
+  mid_.Add(value);
+  // @@protoc_insertion_point(field_add:CPGToCentral.ServiceMatchDistibuteNotify.mid)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+ServiceMatchDistibuteNotify::mid() const {
+  // @@protoc_insertion_point(field_list:CPGToCentral.ServiceMatchDistibuteNotify.mid)
+  return mid_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+ServiceMatchDistibuteNotify::mutable_mid() {
+  // @@protoc_insertion_point(field_mutable_list:CPGToCentral.ServiceMatchDistibuteNotify.mid)
+  return &mid_;
+}
+
+// -------------------------------------------------------------------
+
+// ServerAllMatchDistributeNotify
+
+// repeated .CPGToCentral.ServiceMatchDistibuteNotify services = 1;
+inline int ServerAllMatchDistributeNotify::services_size() const {
+  return services_.size();
+}
+inline void ServerAllMatchDistributeNotify::clear_services() {
+  services_.Clear();
+}
+inline ::CPGToCentral::ServiceMatchDistibuteNotify* ServerAllMatchDistributeNotify::mutable_services(int index) {
+  // @@protoc_insertion_point(field_mutable:CPGToCentral.ServerAllMatchDistributeNotify.services)
+  return services_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServiceMatchDistibuteNotify >*
+ServerAllMatchDistributeNotify::mutable_services() {
+  // @@protoc_insertion_point(field_mutable_list:CPGToCentral.ServerAllMatchDistributeNotify.services)
+  return &services_;
+}
+inline const ::CPGToCentral::ServiceMatchDistibuteNotify& ServerAllMatchDistributeNotify::services(int index) const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.ServerAllMatchDistributeNotify.services)
+  return services_.Get(index);
+}
+inline ::CPGToCentral::ServiceMatchDistibuteNotify* ServerAllMatchDistributeNotify::add_services() {
+  // @@protoc_insertion_point(field_add:CPGToCentral.ServerAllMatchDistributeNotify.services)
+  return services_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServiceMatchDistibuteNotify >&
+ServerAllMatchDistributeNotify::services() const {
+  // @@protoc_insertion_point(field_list:CPGToCentral.ServerAllMatchDistributeNotify.services)
+  return services_;
+}
+
+// -------------------------------------------------------------------
+
+// CheckMatchDistributeRQ
+
+// int32 sid = 1;
+inline void CheckMatchDistributeRQ::clear_sid() {
+  sid_ = 0;
+}
+inline ::google::protobuf::int32 CheckMatchDistributeRQ::sid() const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.CheckMatchDistributeRQ.sid)
+  return sid_;
+}
+inline void CheckMatchDistributeRQ::set_sid(::google::protobuf::int32 value) {
+  
+  sid_ = value;
+  // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRQ.sid)
+}
+
+// int32 type = 2;
+inline void CheckMatchDistributeRQ::clear_type() {
+  type_ = 0;
+}
+inline ::google::protobuf::int32 CheckMatchDistributeRQ::type() const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.CheckMatchDistributeRQ.type)
+  return type_;
+}
+inline void CheckMatchDistributeRQ::set_type(::google::protobuf::int32 value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRQ.type)
+}
+
+// repeated int32 mid = 3;
+inline int CheckMatchDistributeRQ::mid_size() const {
+  return mid_.size();
+}
+inline void CheckMatchDistributeRQ::clear_mid() {
+  mid_.Clear();
+}
+inline ::google::protobuf::int32 CheckMatchDistributeRQ::mid(int index) const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.CheckMatchDistributeRQ.mid)
+  return mid_.Get(index);
+}
+inline void CheckMatchDistributeRQ::set_mid(int index, ::google::protobuf::int32 value) {
+  mid_.Set(index, value);
+  // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRQ.mid)
+}
+inline void CheckMatchDistributeRQ::add_mid(::google::protobuf::int32 value) {
+  mid_.Add(value);
+  // @@protoc_insertion_point(field_add:CPGToCentral.CheckMatchDistributeRQ.mid)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+CheckMatchDistributeRQ::mid() const {
+  // @@protoc_insertion_point(field_list:CPGToCentral.CheckMatchDistributeRQ.mid)
+  return mid_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+CheckMatchDistributeRQ::mutable_mid() {
+  // @@protoc_insertion_point(field_mutable_list:CPGToCentral.CheckMatchDistributeRQ.mid)
+  return &mid_;
+}
+
+// -------------------------------------------------------------------
+
+// CheckMatchDistributeRS
+
+// int32 sid = 1;
+inline void CheckMatchDistributeRS::clear_sid() {
+  sid_ = 0;
+}
+inline ::google::protobuf::int32 CheckMatchDistributeRS::sid() const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.CheckMatchDistributeRS.sid)
+  return sid_;
+}
+inline void CheckMatchDistributeRS::set_sid(::google::protobuf::int32 value) {
+  
+  sid_ = value;
+  // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRS.sid)
+}
+
+// int32 type = 2;
+inline void CheckMatchDistributeRS::clear_type() {
+  type_ = 0;
+}
+inline ::google::protobuf::int32 CheckMatchDistributeRS::type() const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.CheckMatchDistributeRS.type)
+  return type_;
+}
+inline void CheckMatchDistributeRS::set_type(::google::protobuf::int32 value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRS.type)
+}
+
+// int32 result = 3;
+inline void CheckMatchDistributeRS::clear_result() {
+  result_ = 0;
+}
+inline ::google::protobuf::int32 CheckMatchDistributeRS::result() const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.CheckMatchDistributeRS.result)
+  return result_;
+}
+inline void CheckMatchDistributeRS::set_result(::google::protobuf::int32 value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRS.result)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

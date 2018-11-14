@@ -26,6 +26,14 @@ public:
     
     void removeConnectService(int uuid);
     
+    void transToCS(const void* data, const PacketHeader& header);
+    
+    
+    
+public:
+    
+    void checkMatchDistributeRS(const void* buffer, const PacketHeader& header);
+    void distibuteMatchesNotify(const void* buffer, const PacketHeader& header);
 protected:
     
     virtual std::shared_ptr<TCPSession>

@@ -15,6 +15,9 @@ class M2CSession : public CPGToCentralSession
 {
 public:
     
+    
+    void checkMatchDistribute();
+    
 private:
     
     virtual void sendInitData() override;
@@ -29,4 +32,5 @@ private:
                             const PacketHeader& header) override;
     virtual ServiceKernel& serviceKernel() override;
 private:
+    bool firstConnect_{true};
 };

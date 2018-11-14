@@ -24,6 +24,7 @@ template <typename T, size_t MAX_NUM = OB_MAX>
 class ObjectIndexPool
 {
 public:
+    
     ObjectIndexPool()
     {
         maxIndex_ = 0;
@@ -41,6 +42,7 @@ public:
         if (maxIndex_ <= MAX_NUM)
         {
             objectArray_[maxIndex_] = object;
+            objects_.push_back(object);
             size_ ++;
             return maxIndex_++;
         }
@@ -51,6 +53,7 @@ public:
                 if (invalidIndex != POOL_INVALID_INDEX)
                 {
                     objectArray_[invalidIndex] = object;
+                    objects_.push_back(object);
                     invalidIndexs_.pop_front();
                     size_++;
                     return invalidIndex;
@@ -65,6 +68,7 @@ public:
         if (index <= MAX_NUM)
         {
             size_--;
+            objects_.remove(objectArray_[index]);
             objectArray_[index] = nullptr;
             invalidIndexs_.push_back(index);
         }
@@ -93,14 +97,9 @@ public:
     
     void foreach(const std::function<void(const T&)>& cb)
     {
-        int count = 0;
-        for(int i = 0; i <= MAX_NUM || count < size_; i++)
+        for (auto& obj : objects_)
         {
-            if (objectArray_[i])
-            {
-                count++;
-                cb(objectArray_[i]);
-            }
+            cb(obj);
         }
     }
     
@@ -110,6 +109,7 @@ private:
     unsigned int size_;
 //    std::vector<T> objectMap_;
     std::array<T, MAX_NUM + 1> objectArray_;
+    std::list<T> objects_;
     std::list<unsigned int> invalidIndexs_;
 };
 
