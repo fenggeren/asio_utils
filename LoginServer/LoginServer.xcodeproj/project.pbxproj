@@ -31,7 +31,6 @@
 		1FE3E9F5218AA2E300A2F52D /* Logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9DF218AA2E200A2F52D /* Logging.cpp */; };
 		1FE3E9F6218AA2E300A2F52D /* Timestamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9E0218AA2E200A2F52D /* Timestamp.cpp */; };
 		1FE3E9F7218AA2E300A2F52D /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9E2218AA2E200A2F52D /* TCPConnector.cpp */; };
-		1FE3E9F8218AA2E300A2F52D /* FASIOType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9E6218AA2E200A2F52D /* FASIOType.cpp */; };
 		1FE3E9FB218AA31E00A2F52D /* LSSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9F9218AA31E00A2F52D /* LSSessionManager.cpp */; };
 		1FE3E9FE218AE01600A2F52D /* GateSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9FC218AE01600A2F52D /* GateSession.cpp */; };
 		1FE3EA05218AE2DD00A2F52D /* L2CSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA03218AE2DD00A2F52D /* L2CSession.cpp */; };
@@ -366,7 +365,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FE3E9F8218AA2E300A2F52D /* FASIOType.cpp in Sources */,
 				1FE3EA05218AE2DD00A2F52D /* L2CSession.cpp in Sources */,
 				1FE3E9EA218AA2E300A2F52D /* ParseProto.cpp in Sources */,
 				1FE3E9F6218AA2E300A2F52D /* Timestamp.cpp in Sources */,

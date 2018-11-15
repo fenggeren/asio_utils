@@ -37,7 +37,6 @@
 		1FE3E9472189A5FB00A2F52D /* Logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9312189A5FB00A2F52D /* Logging.cpp */; };
 		1FE3E9482189A5FB00A2F52D /* Timestamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9322189A5FB00A2F52D /* Timestamp.cpp */; };
 		1FE3E9492189A5FB00A2F52D /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9342189A5FB00A2F52D /* TCPConnector.cpp */; };
-		1FE3E94A2189A5FB00A2F52D /* FASIOType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9382189A5FB00A2F52D /* FASIOType.cpp */; };
 		1FE3E94D2189A65800A2F52D /* CSSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E94B2189A65800A2F52D /* CSSessionManager.cpp */; };
 		1FE3EA1C218AE85800A2F52D /* GateSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA1A218AE85800A2F52D /* GateSession.cpp */; };
 		1FE3EA1F218AE86300A2F52D /* MatchSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA1D218AE86300A2F52D /* MatchSession.cpp */; };
@@ -440,7 +439,6 @@
 			files = (
 				1F24639C21995146009A67AC /* cpg_match_create_factory.cpp in Sources */,
 				1F2463A12199527F009A67AC /* cpg_json_struct_helper.cpp in Sources */,
-				1FE3E94A2189A5FB00A2F52D /* FASIOType.cpp in Sources */,
 				1FE3EA22218AE86E00A2F52D /* LoginSession.cpp in Sources */,
 				1FE3E93C2189A5FB00A2F52D /* ParseProto.cpp in Sources */,
 				1F2463BC219AB46F009A67AC /* CSMatchDistribution.cpp in Sources */,

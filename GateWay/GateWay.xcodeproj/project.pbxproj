@@ -40,7 +40,6 @@
 		8123E2822189DCE60050FD4D /* Logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E26C2189DCE50050FD4D /* Logging.cpp */; };
 		8123E2832189DCE60050FD4D /* Timestamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E26D2189DCE50050FD4D /* Timestamp.cpp */; };
 		8123E2842189DCE60050FD4D /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E26F2189DCE50050FD4D /* TCPConnector.cpp */; };
-		8123E2852189DCE60050FD4D /* FASIOType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8123E2732189DCE50050FD4D /* FASIOType.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -410,7 +409,6 @@
 				1FE3EA0D218AE55200A2F52D /* G2CSession.cpp in Sources */,
 				1FF0857C219D79FE00A05710 /* TimerManager.cpp in Sources */,
 				1F2463382193F020009A67AC /* ServiceKernel.cpp in Sources */,
-				8123E2852189DCE60050FD4D /* FASIOType.cpp in Sources */,
 				8123E2802189DCE60050FD4D /* DataHandler.cpp in Sources */,
 				1F95CE8A218BFD2E0057618A /* CPGToCentral.pb.cc in Sources */,
 			);

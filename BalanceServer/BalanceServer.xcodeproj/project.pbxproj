@@ -30,7 +30,6 @@
 		1F95CF0A219134080057618A /* Logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CEF4219134080057618A /* Logging.cpp */; };
 		1F95CF0B219134080057618A /* Timestamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CEF5219134080057618A /* Timestamp.cpp */; };
 		1F95CF0C219134080057618A /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CEF7219134080057618A /* TCPConnector.cpp */; };
-		1F95CF0D219134080057618A /* FASIOType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CEFB219134080057618A /* FASIOType.cpp */; };
 		1F95CF10219134480057618A /* BSSessionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CF0E219134480057618A /* BSSessionManager.cpp */; };
 		1F95CF13219134550057618A /* B2CSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CF11219134550057618A /* B2CSession.cpp */; };
 		1F95CF16219134630057618A /* BSKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CF14219134620057618A /* BSKernel.cpp */; };
@@ -362,7 +361,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F95CECB219134000057618A /* CPGClient.pb.cc in Sources */,
-				1F95CF0D219134080057618A /* FASIOType.cpp in Sources */,
 				1F95CEFE219134080057618A /* NetPacket.cpp in Sources */,
 				1F95CEB7219133B60057618A /* main.cpp in Sources */,
 				1FF0856A219D772F00A05710 /* ConvFunctional.cpp in Sources */,
