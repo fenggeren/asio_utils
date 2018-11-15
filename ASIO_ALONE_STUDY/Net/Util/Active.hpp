@@ -20,14 +20,13 @@ namespace fasio
 {
     
 
-template <typename T>
+template <typename T, typename Tptr>
 class Active
 {
-    using Tptr = T*;
-    using ActiveCallback = std::function<void(const Tptr&)>;
     
 public:
     
+    using ActiveCallback = std::function<void(const Tptr&)>;
     
     Active(const ActiveCallback& cb)
     :eventPool_(1024),
@@ -96,14 +95,14 @@ public:
     {
         return eventPool_.createObject(std::forward<Value>(values)...);
     }
-    
-private:
+
     
     void releaseEvent(Tptr& event)
     {
         eventPool_.releaseObject(event);
     }
     
+private:
  
     void run()
     {
@@ -129,6 +128,7 @@ private:
                 --pendingWorkNum_;
                 // exec event
                 callback_(event);
+                
                 if (event)
                 {
                     eventPool_.releaseObject(event);
@@ -153,8 +153,8 @@ private:
     std::shared_ptr<TimerManager> timerManager_;
     std::shared_ptr<asio::io_context> io_context_;
 };
-template <typename T>
-std::atomic<int> Active<T>::globalActiveID_{0};
+template <typename T, typename Tptr>
+std::atomic<int> Active<T, Tptr>::globalActiveID_{0};
 
 
 }

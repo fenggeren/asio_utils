@@ -90,7 +90,7 @@ public:
     std::shared_ptr<T>
     createObject(Type&& ...values)
     {
-        std::shared_ptr<T> obj(new (getFreeObject())T(std::forward<Type>(values)...), std::bind(&ObjectPool::releaseObject, this, std::placeholders::_1));
+        std::shared_ptr<T> obj(new (getFreeObject())T(std::forward<Type>(values)...), std::bind(&ObjectPool::releaseObj, this, std::placeholders::_1));
         return std::move(obj);
     }
     
@@ -107,13 +107,12 @@ public:
         }
     }
     
-    void releaseObject(T* obj)
+    void releaseObject(const std::shared_ptr<T>& obj)
     {
-        if (obj != NULL)
-        {
-            objects_.push_back(obj);
-        }
+        
     }
+    
+
     
     T* getFreeObject()
     {
@@ -137,6 +136,16 @@ public:
         T* obj = &(*objects_.front());
         objects_.pop_front();
         return obj;
+    }
+    
+private:
+    
+    void releaseObj(T* obj)
+    {
+        if (obj != NULL)
+        {
+            objects_.push_back(obj);
+        }
     }
     
 private:
@@ -194,18 +203,17 @@ public:
         {
             std::lock_guard<std::mutex> lock(mutex_);
             objects_.push_back(obj);
-            printf("%lu -- %lu \n", blocks_.size(), objects_.size());
         }
     }
 private:
     T* getFreeObjectMem()
     {
-//        printf("%lu -- %lu \n", blocks_.size(), objects_.size());
         enableEnoughObjects();
         T* obj = &(*objects_.front());
         objects_.pop_front();
         return obj;
     }
+    
     
     void enableEnoughObjects()
     {
@@ -260,7 +268,7 @@ public:
             }
         }
         
-        std::shared_ptr<T> obj(new (mem)T(std::forward<Type>(values)...), std::bind(&ThreadSafeObjectPool::releaseObject, this, std::placeholders::_1));
+        std::shared_ptr<T> obj(new (mem)T(std::forward<Type>(values)...), std::bind(&ThreadSafeObjectPool::releaseObj, this, std::placeholders::_1));
         return std::move(obj);
     }
     
@@ -277,14 +285,12 @@ public:
         }
     }
     
-    void releaseObject(T* obj)
+    
+    void releaseObject(const std::shared_ptr<T>& obj)
     {
-        if (obj != NULL)
-        {
-            std::lock_guard<std::mutex> lock(mutex_);
-            objects_.push_back(obj);
-        }
+        
     }
+
 private:
     T* getFreeObjectMem()
     {
@@ -292,6 +298,14 @@ private:
         T* obj = &(*objects_.front());
         objects_.pop_front();
         return obj;
+    }
+    void releaseObj(T* obj)
+    {
+        if (obj != NULL)
+        {
+            std::lock_guard<std::mutex> lock(mutex_);
+            objects_.push_back(obj);
+        }
     }
     
     void enableEnoughObjects()
