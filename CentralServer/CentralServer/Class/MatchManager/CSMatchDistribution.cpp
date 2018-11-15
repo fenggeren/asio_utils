@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <vector>
 #include <Net/logging/Logging.hpp>
+#include "CSMatchLoadedEvaluation.hpp"
 
 using namespace fasio::logging;
 
@@ -87,6 +88,13 @@ MatchDistribution::distributeFill(
         changedServices.insert(srv.sid);
     }
     
+    
+    // 更新负载
+    for(auto& cid : changedServices)
+    {
+        CSMatchLoadedEvaluation::updateLoaded(cid, matchServices);
+    }
+    
     return changedServices;
 }
 
@@ -157,6 +165,12 @@ MatchDistribution::distributeClipping(
         {
             changedServices.insert(srv.sid);
         }
+    }
+    
+    // 更新负载
+    for(auto& cid : changedServices)
+    {
+        CSMatchLoadedEvaluation::updateLoaded(cid, matchServices);
     }
     
     return changedServices;

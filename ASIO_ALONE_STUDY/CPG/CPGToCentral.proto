@@ -72,7 +72,7 @@ message CheckMatchDistributeRQ
 {
     int32 sid = 1;
     int32 type = 2;
-    repeated int32 mid = 3;
+    repeated int32 mids = 3;
 };
 // 校验 比赛分配信息
 message CheckMatchDistributeRS
@@ -80,6 +80,7 @@ message CheckMatchDistributeRS
     int32 sid = 1;
     int32 type = 2;
     int32 result = 3;
+    repeated int32 mids = 4;
 };
 
 

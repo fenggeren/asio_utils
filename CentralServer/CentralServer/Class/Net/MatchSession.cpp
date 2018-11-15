@@ -26,6 +26,11 @@ bool MatchSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
             CSKernel::instance().serverRegistRQ(session, buffer, header.size);
             break;
         }
+        case kCheckMatchDistributeRQ:
+        {
+            CSKernel::instance().checkMatchDistributeRQ(session, buffer, header);
+            break;
+        }
         default:
             break;
     }

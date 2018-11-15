@@ -37,6 +37,7 @@
 		1FF08543219C01D700A05710 /* IOContextPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0853F219C01D700A05710 /* IOContextPool.cpp */; };
 		1FF08544219C01D700A05710 /* TimerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF08540219C01D700A05710 /* TimerManager.cpp */; };
 		1FF08548219C05B200A05710 /* MSMatchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF08546219C05B200A05710 /* MSMatchManager.cpp */; };
+		1FF08559219D240C00A05710 /* ConvFunctional.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF08557219D240C00A05710 /* ConvFunctional.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,6 +125,8 @@
 		1FF08547219C05B200A05710 /* MSMatchManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MSMatchManager.hpp; sourceTree = "<group>"; };
 		1FF08549219C061900A05710 /* cpg_match_struct_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpg_match_struct_define.h; sourceTree = "<group>"; };
 		1FF0854A219C066900A05710 /* GameDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefine.h; sourceTree = "<group>"; };
+		1FF08557219D240C00A05710 /* ConvFunctional.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConvFunctional.cpp; sourceTree = "<group>"; };
+		1FF08558219D240C00A05710 /* ConvFunctional.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConvFunctional.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,7 @@
 		1F95CE7B218BFD150057618A /* CPG */ = {
 			isa = PBXGroup;
 			children = (
+				1FF08556219D240C00A05710 /* Util */,
 				1FF0854A219C066900A05710 /* GameDefine.h */,
 				1FF08549219C061900A05710 /* cpg_match_struct_define.h */,
 				1F246354219407D3009A67AC /* Net */,
@@ -290,6 +294,15 @@
 			path = base;
 			sourceTree = "<group>";
 		};
+		1FF08556219D240C00A05710 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				1FF08557219D240C00A05710 /* ConvFunctional.cpp */,
+				1FF08558219D240C00A05710 /* ConvFunctional.hpp */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -352,6 +365,7 @@
 				1FE3E99F218A970500A2F52D /* Timestamp.cpp in Sources */,
 				1FE3E998218A970500A2F52D /* TCPServer.cpp in Sources */,
 				1FE3EA19218AE72900A2F52D /* M2CSession.cpp in Sources */,
+				1FF08559219D240C00A05710 /* ConvFunctional.cpp in Sources */,
 				1F95CEA621903C4E0057618A /* MSKernel.cpp in Sources */,
 				1FE3E99E218A970500A2F52D /* Logging.cpp in Sources */,
 				1FE3E992218A970500A2F52D /* NetPacket.cpp in Sources */,

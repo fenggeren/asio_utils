@@ -40,6 +40,14 @@ public:
     void requestBestGateServer(TCPSessionPtr session, const void* data,
                                const PacketHeader& header);
     
+    
+    
+public:
+    // MatchServer
+    void checkMatchDistributeRQ(TCPSessionPtr session, const void* data,
+                                const PacketHeader& header);
+    
+    
 private:
     
     void gateServerRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);

@@ -19,6 +19,7 @@
 #include "LoginSession.hpp"
 #include "CSMatchManager.hpp"
 #include <Net/Conv.hpp>
+#include "CSMatchLoadedEvaluation.hpp"
 
 using namespace fasio::logging;
 
@@ -274,31 +275,93 @@ void CSKernel::requestBestGateServer(TCPSessionPtr session,
 void CSKernel::distributeMatch(const std::map<unsigned int, std::list<int>>& updateMap)
 {
     LOG_MINFO << "";
-    // 1. 将所有的分配信息发送个给所有的GS
-    CPGToCentral::ServerAllMatchDistributeNotify notify;
-    
+ 
     for(auto& pair : updateMap)
     {
-        auto distri = notify.add_services();
-        distri->set_sid(pair.first);
+        CPGToCentral::ServiceMatchDistibuteNotify notify;
+        notify.set_sid(pair.first);
         for(auto mid : pair.second)
         {
-            distri->add_mid(mid);
+            notify.add_mid(mid);
         }
         
+        LOG_MINFO << " sendTo MS"
+        << " sid: " << pair.first
+        << " mids: " << jointContainer(pair.second);
+        
         // 2.将sid对应的比赛列表 发送给该sid -- MS
-        PacketHeader header{kServerMatchDistributeNotify, distri->ByteSize(), 0};
+        PacketHeader header{kServerMatchDistributeNotify,
+            notify.ByteSize(), 0};
         SessionManager.sendMsg(getService(pair.first)->sid,
-                               distri->SerializeAsString().data(),
+                               notify.SerializeAsString().data(),
                                header);
     }
     
+    // 1. 将所有的分配信息发送个给所有的GS
+    CPGToCentral::ServerAllMatchDistributeNotify notify;
+    auto map = CSMatchManager::instance().getAllMatchServices();
+    for(auto& pair : map)
+    {
+        CPGToCentral::ServiceMatchDistibuteNotify notify;
+        notify.set_sid(pair.first.sid);
+        for(auto mid : pair.second)
+        {
+            notify.add_mid(mid);
+        }
+        
+        LOG_MINFO << "sendToGS "
+        << " sid: " << pair.first.sid
+        << " mids: " << jointContainer(pair.second);
+    }
+    
+    // 如果 GS还再连接着MS A，
+    // 但是MS A已经从CS断开
+    // 是否需要清除掉 比赛分配信息？
     PacketHeader header{kServerAllMatchDistributeNotify, notify.ByteSize(), 0};
     SessionManager.sendMsg(nullptr,
                            notify.SerializeAsString().data(),
                            header, ServerType_GateServer);
     
 }
+
+void CSKernel::checkMatchDistributeRQ(TCPSessionPtr session, const void* data,
+                            const PacketHeader& header)
+{
+    CPGToCentral::CheckMatchDistributeRQ rq;
+    if (parseProtoMsg(data, header.size, rq))
+    {
+        std::list<int> mids;
+        for (int i = 0; i <rq.mids_size(); i++)
+        {
+            mids.push_back(rq.mids(i));
+        }
+        
+        int loaded = CSMatchLoadedEvaluation::evaluate(session->logicID(),
+                                          mids);
+        MatchDisService service{session->logicID(), loaded};
+        auto res = CSMatchManager::instance().checkServiceDistMap(service, mids);
+        
+        CPGToCentral::CheckMatchDistributeRS rs;
+        rs.set_sid(session->logicID());
+        rs.set_type(session->type());
+        rs.set_result(res);
+        if (res == CSMatchManager::ErrorMatchServerMore
+            || res == CSMatchManager::ErrorMatchServerMore)
+        {
+            for(auto mid : mids)
+            {
+                rs.add_mids(mid);
+            }
+        }
+        
+        PacketHeader header{kCheckMatchDistributeRS, rs.ByteSize(),
+            static_cast<int32>(session->logicID())};
+        SessionManager.sendMsg(session, rs.SerializeAsString().data(), header);
+    }
+}
+
+
+
 
 
 

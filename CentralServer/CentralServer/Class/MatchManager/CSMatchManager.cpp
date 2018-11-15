@@ -14,6 +14,7 @@
 #include <algorithm>
 #include "cpg_match_create_factory.h"
 #include "CSMatchDistribution.hpp"
+#include "CSMatchLoadedEvaluation.hpp"
 
 using namespace fasio::logging;
 
@@ -189,8 +190,7 @@ CSMatchManager::removeMatchService(const std::shared_ptr<ServerInfo>& service)
 bool CSMatchManager::checkDistMatchServices()
 {
     time_t now = time(NULL);
-    time_t before = now;
-    time_t after = now;
+    time_t after = 0;
     
     for (auto& changed : changedServices_)
     {
@@ -198,14 +198,10 @@ bool CSMatchManager::checkDistMatchServices()
         {
             after = changed.stamp;
         }
-        else if (changed.stamp < before)
-        {
-            before = changed.stamp;
-        }
     }
     
     // 时间间隔大于指定时间， 更新比赛分配信息
-    if (after - before >= updateDuration)
+    if (now - after >= updateDuration)
     {
         return true;
     }
@@ -280,10 +276,18 @@ void CSMatchManager::updateDistMatchServices()
         {
             changedMap[sid] = getDistMatch(sid);
         }
+        
+        // 更新负载
+        
+        
         // 清除
         // 后期可以根据负载，发送警报给运维/自动化，启动更多MS,已降低负载。
         changedServices_.clear();
-        undistMatches_.clear();
+        // 还存在为分配的比赛
+        if (undistriMatches.size() > 0)
+        {
+            startTimerCheckDistMatchServices();
+        }
         
         // 调用更新回调
         if (changedMatchMapCB_)
@@ -300,13 +304,34 @@ void CSMatchManager::updateDistMatchServices()
 // 基准！！！
 // 只有CS有分配比赛的功能
 // 其余service不能删掉，添加比赛。
-bool CSMatchManager::checkServiceDistMap(const MatchDisService& service,
+CSMatchManager::CheckError
+CSMatchManager::checkServiceDistMap(const MatchDisService& service,
                                          std::list<int>& mids)
 {
-    bool res = true;
+    // 校验 mids是否都有效，祛除无效的mids
+    {
+        auto invalidMids = filterValidMatch(mids);
+        if (invalidMids.size() > 0)
+        {
+            LOG_MINFO << "matchserver check invalid  sid: " << service.sid
+            << " invalidmids: " << jointContainer(invalidMids);
+        }
+    }
+    
+    
+    CheckError res = ErrorNo;
     auto iter = matchServices_.find(service);
     if (iter != matchServices_.end())
     {
+        {
+            auto invalidMids = filterValidMatch(mids);
+            if (invalidMids.size() > 0)
+            {
+                LOG_MINFO << "CentralServer check invalid  sid: "
+                << service.sid
+                << " invalidmids: " << jointContainer(invalidMids);
+            }
+        }
         // 判断 交集
         auto& distMids = iter->second;
         distMids.sort();
@@ -317,6 +342,7 @@ bool CSMatchManager::checkServiceDistMap(const MatchDisService& service,
                             mids.begin(), mids.end(),
                             std::inserter(diff, diff.begin()));
         
+        // 应该把多余的比赛，放入undist中
         if (diff.size() > 0)
         {
             std::string mids;
@@ -326,10 +352,10 @@ bool CSMatchManager::checkServiceDistMap(const MatchDisService& service,
             }
             LOG_ERROR << " MatchService: " << service.sid
             << " lack mids: " << mids;
-            res = false;
+            res = ErrorMatchServerLess;
         }
         
-        //
+        // 返回给ms，新的分配比赛
         diff.clear();
         std::set_difference(mids.begin(), mids.end(),
                             distMids.begin(), distMids.end(),
@@ -343,23 +369,23 @@ bool CSMatchManager::checkServiceDistMap(const MatchDisService& service,
             }
             LOG_ERROR << " MatchService: " << service.sid
             << " more mids: " << mids;
-            res = false;
+            res = ErrorMatchServerMore;
         }
     }
     else if (mids.size() > 0)
     {
-        std::string midStr;
+        res = ErrorReconnect;
         matchServices_[service] = mids;
         for(auto& mid : mids)
         {
-            midStr += (std::to_string(mid) + ", " );
             undistMatches_.remove(mid);
         }
         
-        LOG_MINFO << " reconnect recover: " << midStr;
+        LOG_MINFO << " reconnect recover: " << jointContainer(mids);
     }
     else
     {
+        res = ErrorNoMatch;
         // 已经0负载。
         startTimerCheckDistMatchServices();
     }
@@ -368,7 +394,11 @@ bool CSMatchManager::checkServiceDistMap(const MatchDisService& service,
 }
 
 
-
+std::list<int>
+CSMatchManager::filterValidMatch(std::list<int>& mids)
+{
+    return {};
+}
 
 
 

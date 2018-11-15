@@ -60,7 +60,7 @@ void M2CSession::checkMatchDistribute()
     rq.set_type(ServerType_MatchServer);
     for(auto mid : matches)
     {
-        rq.add_mid(mid);
+        rq.add_mids(mid);
     }
     PacketHeader header{kCheckMatchDistributeRQ, rq.ByteSize(), static_cast<int32>(uuid())};
     SessionManager.sendMsg(shared_from_this(), rq.SerializeAsString().data(), header);

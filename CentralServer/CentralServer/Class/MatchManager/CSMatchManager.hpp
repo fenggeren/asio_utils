@@ -9,6 +9,7 @@
 #pragma once
 
 #include <CPG/CPGServerDefine.h>
+#include <CPG/Util/ConvFunctional.hpp>
 #include <Net/TimerManager.hpp>
 #include <map>
 #include <list>
@@ -70,12 +71,23 @@ public:
     // @return  返回重新分配的比赛服务对应信息。 不改变的比赛无需返回
     void
     updateMatchService(const std::shared_ptr<ServerInfo>& service);
+    // 判断比赛严重性！
+    // 如果有MS运行的比赛已经开赛，需要重新评估
+    // 重新分配该比赛，重新开赛？<崩溃故障还是网络故障>
     void
     removeMatchService(const std::shared_ptr<ServerInfo>& service);
     
     
+    enum CheckError
+    {
+        ErrorNo = 0,
+        ErrorMatchServerMore = 1,  // MS有多的比赛
+        ErrorMatchServerLess = 2, // MS 缺少分配的比赛
+        ErrorNoMatch = 3, // 没有比赛
+        ErrorReconnect = 4, // 重新连接
+    };
     // 校验 比赛分配信息
-    bool checkServiceDistMap(const MatchDisService& service,
+    CheckError checkServiceDistMap(const MatchDisService& service,
                              std::list<int>& mids);
 private:
     // 加载所有比赛
@@ -91,6 +103,11 @@ private:
     void startTimerCheckDistMatchServices();
     void stopTimerCheckDistMatchServices();
     
+    // 过滤比赛有效性
+    // @return返回无效的比赛
+    std::list<int>
+    filterValidMatch(std::list<int>& mids);
+    
 private:
     // 异步更新 比赛对应服务表--
     ChangedMatchMapCB changedMatchMapCB_;
@@ -102,7 +119,7 @@ private:
     // 比赛开始前1分钟？分配比赛？ CS会是流量瓶颈?
     std::list<int> undistMatches_; // 暂未分配的比赛。
     // 比赛对应表 滞后更新
-    const time_t updateDuration = 60;
+    const time_t updateDuration = 25;
     
     using AsioTimer = asio::basic_waitable_timer<std::chrono::steady_clock>;
     std::shared_ptr<AsioTimer> timer_;

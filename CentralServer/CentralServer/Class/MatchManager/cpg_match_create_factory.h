@@ -62,7 +62,7 @@ public:
 
     std::shared_ptr<cpg_match_info>
     create_match(const nlohmann::json& json, int begin_time);
-
+    
 private:
 
     bool check_match_valid(std::shared_ptr<cpg_match_info> info);

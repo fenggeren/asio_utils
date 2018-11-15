@@ -319,7 +319,7 @@ const ::google::protobuf::uint32 TableStruct_CPGToCentral_2eproto::offsets[] PRO
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::CPGToCentral::CheckMatchDistributeRQ, sid_),
   PROTOBUF_FIELD_OFFSET(::CPGToCentral::CheckMatchDistributeRQ, type_),
-  PROTOBUF_FIELD_OFFSET(::CPGToCentral::CheckMatchDistributeRQ, mid_),
+  PROTOBUF_FIELD_OFFSET(::CPGToCentral::CheckMatchDistributeRQ, mids_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::CPGToCentral::CheckMatchDistributeRS, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -328,6 +328,7 @@ const ::google::protobuf::uint32 TableStruct_CPGToCentral_2eproto::offsets[] PRO
   PROTOBUF_FIELD_OFFSET(::CPGToCentral::CheckMatchDistributeRS, sid_),
   PROTOBUF_FIELD_OFFSET(::CPGToCentral::CheckMatchDistributeRS, type_),
   PROTOBUF_FIELD_OFFSET(::CPGToCentral::CheckMatchDistributeRS, result_),
+  PROTOBUF_FIELD_OFFSET(::CPGToCentral::CheckMatchDistributeRS, mids_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::CPGToCentral::ServerInfo)},
@@ -383,12 +384,12 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   "\022\013\n\003sid\030\001 \001(\005\022\013\n\003mid\030\002 \003(\005\"]\n\036ServerAllM"
   "atchDistributeNotify\022;\n\010services\030\001 \003(\0132)"
   ".CPGToCentral.ServiceMatchDistibuteNotif"
-  "y\"@\n\026CheckMatchDistributeRQ\022\013\n\003sid\030\001 \001(\005"
-  "\022\014\n\004type\030\002 \001(\005\022\013\n\003mid\030\003 \003(\005\"C\n\026CheckMatc"
-  "hDistributeRS\022\013\n\003sid\030\001 \001(\005\022\014\n\004type\030\002 \001(\005"
-  "\022\016\n\006result\030\003 \001(\005b\006proto3"
+  "y\"A\n\026CheckMatchDistributeRQ\022\013\n\003sid\030\001 \001(\005"
+  "\022\014\n\004type\030\002 \001(\005\022\014\n\004mids\030\003 \003(\005\"Q\n\026CheckMat"
+  "chDistributeRS\022\013\n\003sid\030\001 \001(\005\022\014\n\004type\030\002 \001("
+  "\005\022\016\n\006result\030\003 \001(\005\022\014\n\004mids\030\004 \003(\005b\006proto3"
 ,
-  "CPGToCentral.proto", &assign_descriptors_table_CPGToCentral_2eproto, 864,
+  "CPGToCentral.proto", &assign_descriptors_table_CPGToCentral_2eproto, 879,
 };
 
 void AddDescriptors_CPGToCentral_2eproto() {
@@ -3868,7 +3869,7 @@ class CheckMatchDistributeRQ::HasBitSetters {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int CheckMatchDistributeRQ::kSidFieldNumber;
 const int CheckMatchDistributeRQ::kTypeFieldNumber;
-const int CheckMatchDistributeRQ::kMidFieldNumber;
+const int CheckMatchDistributeRQ::kMidsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CheckMatchDistributeRQ::CheckMatchDistributeRQ()
@@ -3879,7 +3880,7 @@ CheckMatchDistributeRQ::CheckMatchDistributeRQ()
 CheckMatchDistributeRQ::CheckMatchDistributeRQ(const CheckMatchDistributeRQ& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      mid_(from.mid_) {
+      mids_(from.mids_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&sid_, &from.sid_,
     static_cast<size_t>(reinterpret_cast<char*>(&type_) -
@@ -3916,7 +3917,7 @@ void CheckMatchDistributeRQ::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  mid_.Clear();
+  mids_.Clear();
   ::memset(&sid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&type_) -
       reinterpret_cast<char*>(&sid_)) + sizeof(type_));
@@ -3956,13 +3957,13 @@ const char* CheckMatchDistributeRQ::_InternalParse(const char* begin, const char
         msg->set_type(value);
         break;
       }
-      // repeated int32 mid = 3;
+      // repeated int32 mids = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) == 26) {
           ptr = Varint::Parse32Inline(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
           parser_till_end = ::google::protobuf::internal::PackedInt32Parser;
-          object = msg->mutable_mid();
+          object = msg->mutable_mids();
           if (size > end - ptr) goto len_delim_till_end;
           auto newend = ptr + size;
           if (size) ptr = parser_till_end(ptr, newend, object, ctx);
@@ -3974,7 +3975,7 @@ const char* CheckMatchDistributeRQ::_InternalParse(const char* begin, const char
           ptr = Varint::Parse64(ptr, &val);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
           ::google::protobuf::int32 value = val;
-          msg->add_mid(value);
+          msg->add_mids(value);
           if (ptr >= end) break;
         } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 24 && (ptr += 1));
         break;
@@ -4039,16 +4040,16 @@ bool CheckMatchDistributeRQ::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated int32 mid = 3;
+      // repeated int32 mids = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, this->mutable_mid())));
+                 input, this->mutable_mids())));
         } else if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 1, 26u, input, this->mutable_mid())));
+                 1, 26u, input, this->mutable_mids())));
         } else {
           goto handle_unusual;
         }
@@ -4092,15 +4093,15 @@ void CheckMatchDistributeRQ::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->type(), output);
   }
 
-  // repeated int32 mid = 3;
-  if (this->mid_size() > 0) {
+  // repeated int32 mids = 3;
+  if (this->mids_size() > 0) {
     ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(_mid_cached_byte_size_.load(
+    output->WriteVarint32(_mids_cached_byte_size_.load(
         std::memory_order_relaxed));
   }
-  for (int i = 0, n = this->mid_size(); i < n; i++) {
+  for (int i = 0, n = this->mids_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32NoTag(
-      this->mid(i), output);
+      this->mids(i), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4127,17 +4128,17 @@ void CheckMatchDistributeRQ::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->type(), target);
   }
 
-  // repeated int32 mid = 3;
-  if (this->mid_size() > 0) {
+  // repeated int32 mids = 3;
+  if (this->mids_size() > 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
       3,
       ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
       target);
     target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        _mid_cached_byte_size_.load(std::memory_order_relaxed),
+        _mids_cached_byte_size_.load(std::memory_order_relaxed),
          target);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteInt32NoTagToArray(this->mid_, target);
+      WriteInt32NoTagToArray(this->mids_, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4161,17 +4162,17 @@ size_t CheckMatchDistributeRQ::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated int32 mid = 3;
+  // repeated int32 mids = 3;
   {
     size_t data_size = ::google::protobuf::internal::WireFormatLite::
-      Int32Size(this->mid_);
+      Int32Size(this->mids_);
     if (data_size > 0) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
             static_cast<::google::protobuf::int32>(data_size));
     }
     int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    _mid_cached_byte_size_.store(cached_size,
+    _mids_cached_byte_size_.store(cached_size,
                                     std::memory_order_relaxed);
     total_size += data_size;
   }
@@ -4217,7 +4218,7 @@ void CheckMatchDistributeRQ::MergeFrom(const CheckMatchDistributeRQ& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  mid_.MergeFrom(from.mid_);
+  mids_.MergeFrom(from.mids_);
   if (from.sid() != 0) {
     set_sid(from.sid());
   }
@@ -4251,7 +4252,7 @@ void CheckMatchDistributeRQ::Swap(CheckMatchDistributeRQ* other) {
 void CheckMatchDistributeRQ::InternalSwap(CheckMatchDistributeRQ* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  mid_.InternalSwap(&other->mid_);
+  mids_.InternalSwap(&other->mids_);
   swap(sid_, other->sid_);
   swap(type_, other->type_);
 }
@@ -4274,6 +4275,7 @@ class CheckMatchDistributeRS::HasBitSetters {
 const int CheckMatchDistributeRS::kSidFieldNumber;
 const int CheckMatchDistributeRS::kTypeFieldNumber;
 const int CheckMatchDistributeRS::kResultFieldNumber;
+const int CheckMatchDistributeRS::kMidsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CheckMatchDistributeRS::CheckMatchDistributeRS()
@@ -4283,7 +4285,8 @@ CheckMatchDistributeRS::CheckMatchDistributeRS()
 }
 CheckMatchDistributeRS::CheckMatchDistributeRS(const CheckMatchDistributeRS& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      mids_(from.mids_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&sid_, &from.sid_,
     static_cast<size_t>(reinterpret_cast<char*>(&result_) -
@@ -4320,6 +4323,7 @@ void CheckMatchDistributeRS::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  mids_.Clear();
   ::memset(&sid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&sid_)) + sizeof(result_));
@@ -4367,6 +4371,29 @@ const char* CheckMatchDistributeRS::_InternalParse(const char* begin, const char
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         ::google::protobuf::int32 value = val;
         msg->set_result(value);
+        break;
+      }
+      // repeated int32 mids = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) == 34) {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          parser_till_end = ::google::protobuf::internal::PackedInt32Parser;
+          object = msg->mutable_mids();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (size) ptr = parser_till_end(ptr, newend, object, ctx);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr == newend);
+          break;
+        } else if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
+        do {
+          ::google::protobuf::uint64 val;
+          ptr = Varint::Parse64(ptr, &val);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          ::google::protobuf::int32 value = val;
+          msg->add_mids(value);
+          if (ptr >= end) break;
+        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 32 && (ptr += 1));
         break;
       }
       default: {
@@ -4442,6 +4469,22 @@ bool CheckMatchDistributeRS::MergePartialFromCodedStream(
         break;
       }
 
+      // repeated int32 mids = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_mids())));
+        } else if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 34u, input, this->mutable_mids())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -4484,6 +4527,17 @@ void CheckMatchDistributeRS::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->result(), output);
   }
 
+  // repeated int32 mids = 4;
+  if (this->mids_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(4, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_mids_cached_byte_size_.load(
+        std::memory_order_relaxed));
+  }
+  for (int i = 0, n = this->mids_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32NoTag(
+      this->mids(i), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -4513,6 +4567,19 @@ void CheckMatchDistributeRS::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->result(), target);
   }
 
+  // repeated int32 mids = 4;
+  if (this->mids_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      4,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        _mids_cached_byte_size_.load(std::memory_order_relaxed),
+         target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt32NoTagToArray(this->mids_, target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
@@ -4533,6 +4600,21 @@ size_t CheckMatchDistributeRS::ByteSizeLong() const {
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated int32 mids = 4;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      Int32Size(this->mids_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast<::google::protobuf::int32>(data_size));
+    }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    _mids_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
 
   // int32 sid = 1;
   if (this->sid() != 0) {
@@ -4582,6 +4664,7 @@ void CheckMatchDistributeRS::MergeFrom(const CheckMatchDistributeRS& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  mids_.MergeFrom(from.mids_);
   if (from.sid() != 0) {
     set_sid(from.sid());
   }
@@ -4618,6 +4701,7 @@ void CheckMatchDistributeRS::Swap(CheckMatchDistributeRS* other) {
 void CheckMatchDistributeRS::InternalSwap(CheckMatchDistributeRS* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  mids_.InternalSwap(&other->mids_);
   swap(sid_, other->sid_);
   swap(type_, other->type_);
   swap(result_, other->result_);

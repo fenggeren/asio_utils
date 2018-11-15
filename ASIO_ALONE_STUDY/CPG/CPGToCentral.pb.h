@@ -1375,17 +1375,17 @@ class CheckMatchDistributeRQ : public ::google::protobuf::Message /* @@protoc_in
 
   // accessors -------------------------------------------------------
 
-  // repeated int32 mid = 3;
-  int mid_size() const;
-  void clear_mid();
-  static const int kMidFieldNumber = 3;
-  ::google::protobuf::int32 mid(int index) const;
-  void set_mid(int index, ::google::protobuf::int32 value);
-  void add_mid(::google::protobuf::int32 value);
+  // repeated int32 mids = 3;
+  int mids_size() const;
+  void clear_mids();
+  static const int kMidsFieldNumber = 3;
+  ::google::protobuf::int32 mids(int index) const;
+  void set_mids(int index, ::google::protobuf::int32 value);
+  void add_mids(::google::protobuf::int32 value);
   const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-      mid() const;
+      mids() const;
   ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-      mutable_mid();
+      mutable_mids();
 
   // int32 sid = 1;
   void clear_sid();
@@ -1404,8 +1404,8 @@ class CheckMatchDistributeRQ : public ::google::protobuf::Message /* @@protoc_in
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > mid_;
-  mutable std::atomic<int> _mid_cached_byte_size_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > mids_;
+  mutable std::atomic<int> _mids_cached_byte_size_;
   ::google::protobuf::int32 sid_;
   ::google::protobuf::int32 type_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -1507,6 +1507,18 @@ class CheckMatchDistributeRS : public ::google::protobuf::Message /* @@protoc_in
 
   // accessors -------------------------------------------------------
 
+  // repeated int32 mids = 4;
+  int mids_size() const;
+  void clear_mids();
+  static const int kMidsFieldNumber = 4;
+  ::google::protobuf::int32 mids(int index) const;
+  void set_mids(int index, ::google::protobuf::int32 value);
+  void add_mids(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      mids() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_mids();
+
   // int32 sid = 1;
   void clear_sid();
   static const int kSidFieldNumber = 1;
@@ -1530,6 +1542,8 @@ class CheckMatchDistributeRS : public ::google::protobuf::Message /* @@protoc_in
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > mids_;
+  mutable std::atomic<int> _mids_cached_byte_size_;
   ::google::protobuf::int32 sid_;
   ::google::protobuf::int32 type_;
   ::google::protobuf::int32 result_;
@@ -2257,34 +2271,34 @@ inline void CheckMatchDistributeRQ::set_type(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRQ.type)
 }
 
-// repeated int32 mid = 3;
-inline int CheckMatchDistributeRQ::mid_size() const {
-  return mid_.size();
+// repeated int32 mids = 3;
+inline int CheckMatchDistributeRQ::mids_size() const {
+  return mids_.size();
 }
-inline void CheckMatchDistributeRQ::clear_mid() {
-  mid_.Clear();
+inline void CheckMatchDistributeRQ::clear_mids() {
+  mids_.Clear();
 }
-inline ::google::protobuf::int32 CheckMatchDistributeRQ::mid(int index) const {
-  // @@protoc_insertion_point(field_get:CPGToCentral.CheckMatchDistributeRQ.mid)
-  return mid_.Get(index);
+inline ::google::protobuf::int32 CheckMatchDistributeRQ::mids(int index) const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.CheckMatchDistributeRQ.mids)
+  return mids_.Get(index);
 }
-inline void CheckMatchDistributeRQ::set_mid(int index, ::google::protobuf::int32 value) {
-  mid_.Set(index, value);
-  // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRQ.mid)
+inline void CheckMatchDistributeRQ::set_mids(int index, ::google::protobuf::int32 value) {
+  mids_.Set(index, value);
+  // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRQ.mids)
 }
-inline void CheckMatchDistributeRQ::add_mid(::google::protobuf::int32 value) {
-  mid_.Add(value);
-  // @@protoc_insertion_point(field_add:CPGToCentral.CheckMatchDistributeRQ.mid)
+inline void CheckMatchDistributeRQ::add_mids(::google::protobuf::int32 value) {
+  mids_.Add(value);
+  // @@protoc_insertion_point(field_add:CPGToCentral.CheckMatchDistributeRQ.mids)
 }
 inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
-CheckMatchDistributeRQ::mid() const {
-  // @@protoc_insertion_point(field_list:CPGToCentral.CheckMatchDistributeRQ.mid)
-  return mid_;
+CheckMatchDistributeRQ::mids() const {
+  // @@protoc_insertion_point(field_list:CPGToCentral.CheckMatchDistributeRQ.mids)
+  return mids_;
 }
 inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
-CheckMatchDistributeRQ::mutable_mid() {
-  // @@protoc_insertion_point(field_mutable_list:CPGToCentral.CheckMatchDistributeRQ.mid)
-  return &mid_;
+CheckMatchDistributeRQ::mutable_mids() {
+  // @@protoc_insertion_point(field_mutable_list:CPGToCentral.CheckMatchDistributeRQ.mids)
+  return &mids_;
 }
 
 // -------------------------------------------------------------------
@@ -2331,6 +2345,36 @@ inline void CheckMatchDistributeRS::set_result(::google::protobuf::int32 value) 
   
   result_ = value;
   // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRS.result)
+}
+
+// repeated int32 mids = 4;
+inline int CheckMatchDistributeRS::mids_size() const {
+  return mids_.size();
+}
+inline void CheckMatchDistributeRS::clear_mids() {
+  mids_.Clear();
+}
+inline ::google::protobuf::int32 CheckMatchDistributeRS::mids(int index) const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.CheckMatchDistributeRS.mids)
+  return mids_.Get(index);
+}
+inline void CheckMatchDistributeRS::set_mids(int index, ::google::protobuf::int32 value) {
+  mids_.Set(index, value);
+  // @@protoc_insertion_point(field_set:CPGToCentral.CheckMatchDistributeRS.mids)
+}
+inline void CheckMatchDistributeRS::add_mids(::google::protobuf::int32 value) {
+  mids_.Add(value);
+  // @@protoc_insertion_point(field_add:CPGToCentral.CheckMatchDistributeRS.mids)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+CheckMatchDistributeRS::mids() const {
+  // @@protoc_insertion_point(field_list:CPGToCentral.CheckMatchDistributeRS.mids)
+  return mids_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+CheckMatchDistributeRS::mutable_mids() {
+  // @@protoc_insertion_point(field_mutable_list:CPGToCentral.CheckMatchDistributeRS.mids)
+  return &mids_;
 }
 
 #ifdef __GNUC__
