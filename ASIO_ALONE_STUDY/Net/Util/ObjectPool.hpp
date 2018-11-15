@@ -12,6 +12,21 @@
 #include <memory>
 #include <type_traits>
 
+
+template <typename T, typename R, typename ...Type>
+T* createObject(T* place, Type&& ...values)
+{
+    return new (place)T(std::forward<Type>(values)...);
+}
+template <typename T, typename R, typename ...Type>
+std::shared_ptr<T> createObject(T* place, Type&& ...values, void(deletor)(T*))
+{
+    std::shared_ptr<T> obj(new (place)T(std::forward<Type>(values)...),
+                           deletor);
+    return std::move(obj);
+}
+
+
 template <class T, class R>
 class ObjectPool
 {
@@ -23,7 +38,7 @@ public:
     T*
     createObject(Type&& ...values)
     {
-        return new T(std::forward<Type>(values)...);
+        return new (getFreeObject())T(std::forward<Type>(values)...);
     }
     
     ~ObjectPool()
@@ -90,7 +105,8 @@ public:
     std::shared_ptr<T>
     createObject(Type&& ...values)
     {
-        std::shared_ptr<T> obj(new (getFreeObject())T(std::forward<Type>(values)...), std::bind(&ObjectPool::releaseObj, this, std::placeholders::_1));
+        std::shared_ptr<T> obj(new (getFreeObject())T(std::forward<Type>(values)...),
+                               std::bind(&ObjectPool::releaseObj, this, std::placeholders::_1));
         return std::move(obj);
     }
     
@@ -268,7 +284,8 @@ public:
             }
         }
         
-        std::shared_ptr<T> obj(new (mem)T(std::forward<Type>(values)...), std::bind(&ThreadSafeObjectPool::releaseObj, this, std::placeholders::_1));
+        std::shared_ptr<T> obj(new (mem)T(std::forward<Type>(values)...),
+                               std::bind(&ThreadSafeObjectPool::releaseObj, this, std::placeholders::_1));
         return std::move(obj);
     }
     
