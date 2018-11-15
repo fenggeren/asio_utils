@@ -38,6 +38,7 @@
 		1FF08544219C01D700A05710 /* TimerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF08540219C01D700A05710 /* TimerManager.cpp */; };
 		1FF08548219C05B200A05710 /* MSMatchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF08546219C05B200A05710 /* MSMatchManager.cpp */; };
 		1FF08559219D240C00A05710 /* ConvFunctional.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF08557219D240C00A05710 /* ConvFunctional.cpp */; };
+		1FF08564219D685500A05710 /* ServerConfigManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF08563219D685500A05710 /* ServerConfigManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -127,6 +128,8 @@
 		1FF0854A219C066900A05710 /* GameDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefine.h; sourceTree = "<group>"; };
 		1FF08557219D240C00A05710 /* ConvFunctional.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConvFunctional.cpp; sourceTree = "<group>"; };
 		1FF08558219D240C00A05710 /* ConvFunctional.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConvFunctional.hpp; sourceTree = "<group>"; };
+		1FF08562219D685500A05710 /* ServerConfigManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServerConfigManager.hpp; sourceTree = "<group>"; };
+		1FF08563219D685500A05710 /* ServerConfigManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerConfigManager.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +300,8 @@
 		1FF08556219D240C00A05710 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				1FF08563219D685500A05710 /* ServerConfigManager.cpp */,
+				1FF08562219D685500A05710 /* ServerConfigManager.hpp */,
 				1FF08557219D240C00A05710 /* ConvFunctional.cpp */,
 				1FF08558219D240C00A05710 /* ConvFunctional.hpp */,
 			);
@@ -366,6 +371,7 @@
 				1FE3E998218A970500A2F52D /* TCPServer.cpp in Sources */,
 				1FE3EA19218AE72900A2F52D /* M2CSession.cpp in Sources */,
 				1FF08559219D240C00A05710 /* ConvFunctional.cpp in Sources */,
+				1FF08564219D685500A05710 /* ServerConfigManager.cpp in Sources */,
 				1F95CEA621903C4E0057618A /* MSKernel.cpp in Sources */,
 				1FE3E99E218A970500A2F52D /* Logging.cpp in Sources */,
 				1FE3E992218A970500A2F52D /* NetPacket.cpp in Sources */,

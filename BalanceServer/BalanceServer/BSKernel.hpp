@@ -34,6 +34,10 @@ public:
     void removeConnectService(int uuid);
     
     void transToCS(const void* data, const PacketHeader& header);
+    
+private:
+    void runOneService(const ServerNetConfig::ServerInfo& config);
+    
 protected:
     
     virtual std::shared_ptr<TCPSession>
@@ -41,7 +45,9 @@ protected:
                    unsigned short port,
                    unsigned short sid,
                    const std::string& ip) override;
-    
+    virtual
+    std::shared_ptr<TCPSessionFactory>
+    sessionFactory(int type, asio::io_context& ioc) override;
 private:
     TCPSessionPtr centralSession_;
 };

@@ -13,17 +13,46 @@
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"
 #include "GSSessionManager.hpp"
-
+#include <Net/Conv.hpp>
+#include <CPG/Util/ConvFunctional.hpp>
+#include <CPG/Util/ServerConfigManager.hpp>
 
 using namespace fasio::logging;
 
 void GSKernel::start()
 {
-    auto factory = std::make_shared<CGSessionFactory>(g_IoContext);
-    GSSessionManager::instance().createListener(7890, false, factory);
-    
-    centralSession_ = GSSessionManager::instance().createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7801);
-    g_IoContext.run();
+    auto& manager = ServerConfigManager::instance();
+    manager.setType(ServerType_MatchServer);
+    ServerNetConfig config;
+    if (manager.configForType(ServerType_MatchServer,  config))
+    {
+        for(auto& info : config.infos)
+        {
+            runOneService(info);
+        }
+    }
+    else
+    {
+        assert(0);
+    }
+}
+
+
+void GSKernel::runOneService(const ServerNetConfig::ServerInfo& config)
+{
+    auto& ioc = getIoContext();
+    netInitializer(config, ioc, SessionManager);
+    ioc.run();
+}
+
+std::shared_ptr<TCPSessionFactory>
+GSKernel::sessionFactory(int type, asio::io_context& ioc)
+{
+    if (type == ServerType_Client)
+    {
+        return std::make_shared<CGSessionFactory>(ioc);
+    }
+    return nullptr;
 }
 
 

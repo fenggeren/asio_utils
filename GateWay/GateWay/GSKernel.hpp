@@ -34,6 +34,9 @@ public:
     
     void removeConnectService(int uuid);
     
+private:
+     void runOneService(const ServerNetConfig::ServerInfo& config);
+    
 public:
     
     void transToLS(const void* data, const PacketHeader& header);
@@ -46,7 +49,9 @@ protected:
                    unsigned short port,
                    unsigned short sid,
                    const std::string& ip) override;
-    
+    virtual
+    std::shared_ptr<TCPSessionFactory>
+    sessionFactory(int type, asio::io_context& ioc) override;
 private:
     // 比赛id <=> match info
     std::unordered_map<uint32, TCPSessionPtr> matchesServices_;

@@ -13,6 +13,9 @@
 #include "../../Net/ServiceKernel.hpp"
 #include "CPGServerDefine.h"
 #include <CPG/CPGToCentral.pb.h>
+#include <list>
+#include "../Util/ServerConfigManager.hpp"
+#include "../../Net/TCPSessionManager.hpp"
 
 using namespace logging;
 
@@ -89,3 +92,43 @@ void CPGToCentralSession::serverRegistRS(const void* data, int len)
     }
 }
 
+std::list<ServerNetConfig::ServerNetInfo>
+listenInfos()
+{
+    std::list<ServerNetConfig::ServerNetInfo> listens;
+    const auto& config = ServerConfigManager::instance().config();
+    for(auto& info : config.infos)
+    {
+        for(auto& listen : info.listenInfos)
+        {
+            listens.push_back(listen);
+        }
+    }
+    
+    listens.unique([](const ServerNetConfig::ServerNetInfo& lv,
+                      const ServerNetConfig::ServerNetInfo& rv)
+                   {
+                       return lv.type == rv.type &&
+                       lv.ip == rv.ip &&
+                       lv.port == rv.port;
+                   });
+    
+    return listens;
+}
+
+void CPGToCentralSession::sendRegisterData(TCPSessionManager& sessionManager)
+{
+    auto listens = listenInfos();
+    for(auto& listen : listens )
+    {
+        CPGToCentral::ServerRegisterRQ rq;
+        rq.set_type(listen.type);
+        rq.set_port(listen.port);
+        rq.set_sid(logicID());
+        rq.set_ip(listen.ip);
+        rq.set_exportip(listen.ip);
+        
+        sessionManager.sendMsgToSession(shared_from_this(), rq,
+                                        kServerRegistRQ, ServerType_CentralServer);
+    }
+}

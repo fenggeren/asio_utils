@@ -14,18 +14,47 @@
 #include "MSMatchManager.hpp"
 #include <CPG/CPGToCentral.pb.h>
 #include <Net/Util/ParseProto.hpp>
+#include <Net/Conv.hpp>
 #include <CPG/Util/ConvFunctional.hpp>
+#include <CPG/Util/ServerConfigManager.hpp>
 
 using namespace fasio::logging;
 
+static asio::io_context g_IoContext;
 
 void MSKernel::start()
 {
-    auto factory = std::make_shared<GateSessionFactory>(g_IoContext);
-    SessionManager.createListener(7851, false, factory);
-    centralSession_ = SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7802);
-    g_IoContext.run();
-    
+    auto& manager = ServerConfigManager::instance();
+    manager.setType(ServerType_MatchServer);
+    ServerNetConfig config;
+    if (manager.configForType(ServerType_MatchServer,  config))
+    {
+        for(auto& info : config.infos)
+        {
+            runOneService(info);
+        }
+    }
+    else
+    {
+        assert(0);
+    }
+}
+
+void MSKernel::runOneService(const ServerNetConfig::ServerInfo& config)
+{
+    auto& ioc = getIoContext();
+    netInitializer(config, ioc, SessionManager);
+    ioc.run();
+}
+
+std::shared_ptr<TCPSessionFactory>
+MSKernel::sessionFactory(int type, asio::io_context& ioc)
+{
+    if (type == ServerType_GateServer)
+    {
+        return std::make_shared<GateSessionFactory>(ioc);
+    }
+    return nullptr;
 }
 
 void MSKernel::removeConnectService(int uuid)
@@ -57,7 +86,7 @@ MSKernel::connectService(unsigned short type,
                          unsigned short sid,
                          const std::string& ip)
 {
-    return SessionManager.createConnector(type, g_IoContext,  ip, port);
+    return SessionManager.createConnector(type, getIoContext(),  ip, port);
 }
 
 

@@ -9,6 +9,7 @@
 #include "ServiceKernel.hpp"
 #include "TCPSession.hpp"
 #include "logging/Logging.hpp"
+#include "TCPSessionManager.hpp"
 
 namespace fasio
 {
@@ -19,6 +20,24 @@ namespace fasio
         return sc1.type == sc2.type &&
                 sc1.port == sc2.port &&
                 sc1.ip == sc2.ip;
+    }
+    
+    void ServiceKernel::netInitializer(const ServerNetConfig::ServerInfo& info,
+                                       asio::io_context& ioc,
+                                       TCPSessionManager& manager)
+    {
+        for(auto& listen: info.listenInfos)
+        {
+            manager.createListener(listen.port, false,
+                                          sessionFactory(listen.type, ioc));
+        }
+        
+        for(auto& connect : info.connectInfos)
+        {
+            manager.createConnector(connect.type, ioc,
+                                           connect.ip,
+                                           connect.port);
+        }
     }
     
     int ServiceKernel::checkConnectService(const ServiceConfig& config)

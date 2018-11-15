@@ -44,7 +44,7 @@ void CSMatchManager::initialize()
     // 20s内，用于其他服务连接，恢复分配的比赛信息.
     fasio::TimerManager::createTimer(
          std::bind(&CSMatchManager::updateDistMatchServices, this),
-                                     fasio::getIoContext(MAIN), 20);
+                                     fasio::getIoContext(), 20);
     // 已经分配的比赛
 //    std::list<int> distedMatches;
 //    for(auto& pair : matchServices_)
@@ -79,7 +79,7 @@ void CSMatchManager::startTimerCheckDistMatchServices()
 {
     if (timer_ == nullptr)
     {
-        timer_ = std::make_shared<AsioTimer>(fasio::getIoContext(MAIN));
+        timer_ = std::make_shared<AsioTimer>(fasio::getIoContext());
         timer_->expires_from_now(std::chrono::milliseconds(S2M(10)));
         timer_->async_wait([&](std::error_code ec){
             if (!ec)

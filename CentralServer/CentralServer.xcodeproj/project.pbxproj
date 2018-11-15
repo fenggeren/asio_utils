@@ -44,6 +44,7 @@
 		1FE3EA22218AE86E00A2F52D /* LoginSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3EA20218AE86E00A2F52D /* LoginSession.cpp */; };
 		1FF0854D219D0BA300A05710 /* CSMatchLoadedEvaluation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0854B219D0BA300A05710 /* CSMatchLoadedEvaluation.cpp */; };
 		1FF08555219D190B00A05710 /* ConvFunctional.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF08553219D190B00A05710 /* ConvFunctional.cpp */; };
+		1FF08560219D5C1B00A05710 /* ServerConfigManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FF0855F219D5C1B00A05710 /* ServerConfigManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -147,6 +148,8 @@
 		1FF0854C219D0BA300A05710 /* CSMatchLoadedEvaluation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSMatchLoadedEvaluation.hpp; sourceTree = "<group>"; };
 		1FF08553219D190B00A05710 /* ConvFunctional.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConvFunctional.cpp; sourceTree = "<group>"; };
 		1FF08554219D190B00A05710 /* ConvFunctional.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConvFunctional.hpp; sourceTree = "<group>"; };
+		1FF0855E219D5C1B00A05710 /* ServerConfigManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServerConfigManager.hpp; sourceTree = "<group>"; };
+		1FF0855F219D5C1B00A05710 /* ServerConfigManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerConfigManager.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +374,8 @@
 		1FF08552219D190B00A05710 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				1FF0855F219D5C1B00A05710 /* ServerConfigManager.cpp */,
+				1FF0855E219D5C1B00A05710 /* ServerConfigManager.hpp */,
 				1FF08553219D190B00A05710 /* ConvFunctional.cpp */,
 				1FF08554219D190B00A05710 /* ConvFunctional.hpp */,
 			);
@@ -463,6 +468,7 @@
 				1FE3E9042189A5B500A2F52D /* main.cpp in Sources */,
 				1FF0854D219D0BA300A05710 /* CSMatchLoadedEvaluation.cpp in Sources */,
 				1F95CE9A218BFD450057618A /* CPGToCentral.pb.cc in Sources */,
+				1FF08560219D5C1B00A05710 /* ServerConfigManager.cpp in Sources */,
 				1F95CF1F219177550057618A /* CPGClient.pb.cc in Sources */,
 				1FE3E9392189A5FB00A2F52D /* Thread.cpp in Sources */,
 				1F2463A721995329009A67AC /* BetAlgorithm.cc in Sources */,

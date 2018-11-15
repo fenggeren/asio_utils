@@ -25,14 +25,7 @@ void B2CSession::onClose()
 
 void B2CSession::sendInitData()
 {
-    CPGToCentral::ServerRegisterRQ rq;
-    rq.set_type(ServerType_BalanceServer);
-    rq.set_port(7835);
-    rq.set_sid(0); 
-    rq.set_ip("127.0.0.1");
-    
-    SessionManager.sendMsgToSession(shared_from_this(), rq,
-                                    kServerRegistRQ, ServerType_CentralServer);
+    sendRegisterData(SessionManager);
 }
 
 ServiceKernel& B2CSession::serviceKernel()

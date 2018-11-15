@@ -8,10 +8,13 @@
 #pragma once
 #include <string>
 #include <unordered_map>
-
+#include "base/ServerNetConfig.h"
+#include "Header.h"
 namespace fasio
 {
     class TCPSession;
+    class TCPSessionFactory;
+    class TCPSessionManager;
     
     struct ServiceConfig
     {
@@ -33,7 +36,12 @@ namespace fasio
                            unsigned short sid,
                            const std::string& ip);
         
+        
     protected:
+        
+        void netInitializer(const ServerNetConfig::ServerInfo& info,
+                            asio::io_context& ioc,
+                            TCPSessionManager& manager);
         
         virtual std::shared_ptr<TCPSession>
         connectService(unsigned short type,
@@ -41,6 +49,9 @@ namespace fasio
                        unsigned short sid,
                        const std::string& ip) = 0;
         
+        virtual
+        std::shared_ptr<TCPSessionFactory>
+        sessionFactory(int type, asio::io_context& ioc) = 0;
     protected:
         std::unordered_map<int, ServiceConfig> connectServices_;
     };

@@ -10,6 +10,7 @@
 #include <Net/Conv.hpp>
 #include "Class/Net/CSKernel.hpp"
 #include "Class/MatchManager/CSMatchManager.hpp"
+#include <CPG/Util/ServerConfigManager.hpp>
 
 int main(int argc, const char * argv[]) {
     
@@ -17,7 +18,28 @@ int main(int argc, const char * argv[]) {
     
     CSMatchManager::instance().initialize();
     
-    CSKernel::instance().start();
+    
+    
+    auto manager = ServerConfigManager::instance();
+    manager.setType(ServerType_MatchServer);
+    ServerNetConfig config;
+    if (manager.configForType(ServerType_CentralServer, config))
+    {
+        if (config.infos.size() == 1)
+        {
+            CSKernel::instance().start(config.infos.front());
+        }
+    }
     
     return 0;
 }
+
+
+
+
+
+
+
+
+
+

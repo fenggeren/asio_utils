@@ -10,10 +10,18 @@
 
 #include "CPGNetSession.hpp"
 
+namespace fasio
+{
+    class TCPSessionManager;
+}
+
 class CPGToCentralSession : public CPGClientSession
 {
 public:
     
+protected:
+    
+    void sendRegisterData(TCPSessionManager& sessionManager);
     
 private:
     void serverRegistRS(const void* data, int len);

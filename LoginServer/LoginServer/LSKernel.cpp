@@ -11,16 +11,46 @@
 #include "GateSession.hpp"
 #include "L2CSession.hpp"
 #include <CPG/CPGHeader.h>
+#include <Net/Conv.hpp>
+#include <CPG/Util/ConvFunctional.hpp>
+#include <CPG/Util/ServerConfigManager.hpp>
 
 using namespace fasio::logging;
 
 
 void LSKernel::start()
 {
-    auto factory = std::make_shared<GateSessionFactory>(g_IoContext);
-    SessionManager.createListener(7831, false, factory);
-   centralSession_ = SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7803);
-    g_IoContext.run();
+    auto& manager = ServerConfigManager::instance();
+    manager.setType(ServerType_MatchServer);
+    ServerNetConfig config;
+    if (manager.configForType(ServerType_MatchServer,  config))
+    {
+        for(auto& info : config.infos)
+        {
+            runOneService(info);
+        }
+    }
+    else
+    {
+        assert(0);
+    }
+}
+
+void LSKernel::runOneService(const ServerNetConfig::ServerInfo& config)
+{
+    auto& ioc = getIoContext();
+    netInitializer(config, ioc, SessionManager);
+    ioc.run();
+}
+
+std::shared_ptr<TCPSessionFactory>
+LSKernel::sessionFactory(int type, asio::io_context& ioc)
+{
+    if (type == ServerType_GateServer)
+    {
+        return std::make_shared<GateSessionFactory>(ioc);
+    }
+    return nullptr;
 }
 
 

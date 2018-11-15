@@ -13,17 +13,49 @@
 #include "CPGServerDefine.h"
 #include "BSSessionManager.hpp"
 #include "ClientSession.hpp"
+#include <Net/Conv.hpp>
+#include <CPG/Util/ConvFunctional.hpp>
+#include <CPG/Util/ServerConfigManager.hpp>
+
 
 using namespace fasio::logging;
 
 void BSKernel::start()
 {
-    auto factory = std::make_shared<CBSessionFactory>(g_IoContext);
-    SessionManager.createListener(7835, false, factory);
-    centralSession_ = SessionManager.createConnector(ServerType_CentralServer, g_IoContext, "127.0.0.1", 7804);
-    g_IoContext.run();
+    auto& manager = ServerConfigManager::instance();
+    manager.setType(ServerType_MatchServer);
+    ServerNetConfig config;
+    if (manager.configForType(ServerType_MatchServer,  config))
+    {
+        for(auto& info : config.infos)
+        {
+            runOneService(info);
+        }
+    }
+    else
+    {
+        assert(0);
+    }
 }
- 
+
+void BSKernel::runOneService(const ServerNetConfig::ServerInfo& config)
+{
+    auto& ioc = getIoContext();
+    netInitializer(config, ioc, SessionManager);
+    ioc.run();
+}
+
+std::shared_ptr<TCPSessionFactory>
+BSKernel::sessionFactory(int type, asio::io_context& ioc)
+{
+    if (type == ServerType_Client)
+    {
+        return std::make_shared<CBSessionFactory>(ioc);
+    }
+    return nullptr;
+}
+
+
 void BSKernel::removeConnectService(int uuid)
 {
     connectServices_.erase(uuid);

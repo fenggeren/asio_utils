@@ -19,15 +19,7 @@ using namespace fasio::logging;
 
 void L2CSession::sendInitData()
 {
-    CPGToCentral::ServerRegisterRQ rq;
-    rq.set_type(ServerType_GateServer);
-    rq.set_port(7831);
-    rq.set_sid(0);
-    rq.set_ip("127.0.0.1");
-    rq.set_ip("127.0.0.1");
-    
-    SessionManager.sendMsgToSession(shared_from_this(), rq,
-                                    kServerRegistRQ, ServerType_CentralServer);
+    sendRegisterData(SessionManager);
 }
 
 

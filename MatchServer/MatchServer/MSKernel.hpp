@@ -10,8 +10,7 @@
 #include <CPG/CPGHeader.h>
 #include <Net/ServiceKernel.hpp>
 
-using namespace fasio;
-static asio::io_context g_IoContext;
+using namespace fasio; 
 
 class MSKernel : public ServiceKernel
 {
@@ -28,7 +27,9 @@ public:
     
     void transToCS(const void* data, const PacketHeader& header);
     
+private:
     
+    void runOneService(const ServerNetConfig::ServerInfo& config);
     
 public:
     
@@ -41,7 +42,9 @@ protected:
                    unsigned short port,
                    unsigned short sid,
                    const std::string& ip) override;
-    
+    virtual
+    std::shared_ptr<TCPSessionFactory>
+    sessionFactory(int type, asio::io_context& ioc) override;
 public: 
     
     std::shared_ptr<TCPSession> centralSession_;

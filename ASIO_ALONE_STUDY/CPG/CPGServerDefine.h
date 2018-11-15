@@ -49,8 +49,8 @@ enum ServerType
     ServerType_GateServer,
     ServerType_LoginServer,
     ServerType_MatchServer,
-    ServerType_CentralServer,
     ServerType_BalanceServer,
+    ServerType_CentralServer,
 };
 
 // 动态启动新的服务,配置

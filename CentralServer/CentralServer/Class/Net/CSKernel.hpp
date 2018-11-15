@@ -12,9 +12,16 @@
 #include <Net/TCPSession.hpp>
 #include <CPG/CPGHeader.h>
 #include <CPG/CPGServerDefine.h>
+#include <CPG/Util/ServerConfigManager.hpp>
+
 
 using namespace fasio;
- 
+
+namespace fasio
+{
+    class TCPSessionFactory;
+}
+
 // 网络中心
 class CSKernel
 {
@@ -27,8 +34,7 @@ public:
     }
     
     
-    void start();
-    
+    void start(const ServerNetConfig::ServerInfo& config);
 public:
     
     // sessionID, server type,
@@ -61,6 +67,8 @@ private:
     // 重新分配比赛
     void distributeMatch(const std::map<unsigned int, std::list<int>>& updateMap);
     
+    std::shared_ptr<TCPSessionFactory>
+    sessionFactory(ServerType type);
 public:
     
     std::shared_ptr<ServerInfo> getService(uint32 sid);
@@ -69,7 +77,6 @@ public:
 private:
     std::unordered_map<uint32, std::shared_ptr<ServerInfo>> servers_;
     
-private:
     static int32 serverID;
 };
 

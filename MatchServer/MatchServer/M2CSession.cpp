@@ -15,6 +15,9 @@
 #include <Net/Util/ParseProto.hpp>
 #include "MSMatchManager.hpp"
 #include "MSKernel.hpp"
+#include <CPG/Util/ServerConfigManager.hpp>
+#include <Net/Conv.hpp>
+#include <algorithm>
 
 using namespace fasio::logging;
 
@@ -29,17 +32,12 @@ ServiceKernel& M2CSession::serviceKernel()
 }
 
 
+
+
 void M2CSession::sendInitData()
 {
-    CPGToCentral::ServerRegisterRQ rq;
-    rq.set_type(ServerType_GateServer);
-    rq.set_port(7851);
-    rq.set_sid(0);
-    rq.set_ip("127.0.0.1");
-    rq.set_exportip("127.0.0.1");
     
-    SessionManager.sendMsgToSession(shared_from_this(), rq,
-                                    kServerRegistRQ, ServerType_CentralServer);
+    sendRegisterData(SessionManager);
     if (firstConnect_)
     {
         firstConnect_ = false;

@@ -23,23 +23,58 @@
 
 using namespace fasio::logging;
 
-void CSKernel::start()
+void CSKernel::start(const ServerNetConfig::ServerInfo& config)
 {
-
+ 
+    auto& curIoCtx = getIoContext();
+    for(auto& listen: config.listenInfos)
+    {
+        SessionManager.createListener(listen.port, false,
+                                      sessionFactory((ServerType)listen.type));
+    }
+    
+    for(auto& connect : config.connectInfos)
+    {
+        SessionManager.createConnector(connect.type, curIoCtx,
+                                       connect.ip,
+                                       connect.port);
+    }
+    
+    //
+//    auto gateFactory = ;
+//    SessionManager.createListener(7801, false, gateFactory);
+//    auto matchFactory = ;
+//    SessionManager.createListener(7802, false, matchFactory);
+//    auto loginFactory = ;
+//    SessionManager.createListener(7803, false, loginFactory);
+//    auto balanceFactory = ;
+//    SessionManager.createListener(7804, false, balanceFactory);
+    
     CSMatchManager::instance().setChangedMatchMapCB(std::bind(&CSKernel::distributeMatch, this, std::placeholders::_1));
     
-    auto& curIoCtx = getIoContext(MAIN);
-    //
-    auto gateFactory = std::make_shared<GateSessionFactory>(curIoCtx);
-    SessionManager.createListener(7801, false, gateFactory);
-    auto matchFactory = std::make_shared<MatchSessionFactory>(curIoCtx);
-    SessionManager.createListener(7802, false, matchFactory);
-    auto loginFactory = std::make_shared<LoginSessionFactory>(curIoCtx);
-    SessionManager.createListener(7803, false, loginFactory);
-    auto balanceFactory = std::make_shared<BalanceSessionFactory>(curIoCtx);
-    SessionManager.createListener(7804, false, balanceFactory);
-    
     curIoCtx.run();
+}
+
+std::shared_ptr<TCPSessionFactory>
+CSKernel::sessionFactory(ServerType type)
+{
+    auto& curIoCtx = getIoContext();
+    if (type == ServerType_GateServer) {
+        return std::make_shared<GateSessionFactory>(curIoCtx);
+    }
+    else if (type == ServerType_LoginServer)
+    {
+        return std::make_shared<LoginSessionFactory>(curIoCtx);
+    }
+    else if (type == ServerType_MatchServer)
+    {
+        return std::make_shared<MatchSessionFactory>(curIoCtx);
+    }
+    else if (type == ServerType_BalanceServer)
+    {
+        return std::make_shared<BalanceSessionFactory>(curIoCtx);
+    }
+    return nullptr;
 }
 
 std::shared_ptr<ServerInfo> CSKernel::getService(uint32 sid)
