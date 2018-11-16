@@ -11,7 +11,7 @@
 
 struct MatchDisService
 {
-    unsigned int        sid{0};
+    int  sid{-1};
     int  loaded{0};
 };
 

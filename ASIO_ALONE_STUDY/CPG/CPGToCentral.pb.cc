@@ -90,8 +90,9 @@ static void InitDefaultsServerRegisterRQ_CPGToCentral_2eproto() {
   ::CPGToCentral::ServerRegisterRQ::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_ServerRegisterRQ_CPGToCentral_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsServerRegisterRQ_CPGToCentral_2eproto}, {}};
+::google::protobuf::internal::SCCInfo<1> scc_info_ServerRegisterRQ_CPGToCentral_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsServerRegisterRQ_CPGToCentral_2eproto}, {
+      &scc_info_ServerInfo_CPGToCentral_2eproto.base,}};
 
 static void InitDefaultsServerRegisterRS_CPGToCentral_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -256,11 +257,10 @@ const ::google::protobuf::uint32 TableStruct_CPGToCentral_2eproto::offsets[] PRO
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::CPGToCentral::ServerRegisterRQ, type_),
-  PROTOBUF_FIELD_OFFSET(::CPGToCentral::ServerRegisterRQ, port_),
   PROTOBUF_FIELD_OFFSET(::CPGToCentral::ServerRegisterRQ, sid_),
-  PROTOBUF_FIELD_OFFSET(::CPGToCentral::ServerRegisterRQ, ip_),
-  PROTOBUF_FIELD_OFFSET(::CPGToCentral::ServerRegisterRQ, exportip_),
+  PROTOBUF_FIELD_OFFSET(::CPGToCentral::ServerRegisterRQ, type_),
+  PROTOBUF_FIELD_OFFSET(::CPGToCentral::ServerRegisterRQ, connecttypes_),
+  PROTOBUF_FIELD_OFFSET(::CPGToCentral::ServerRegisterRQ, listeners_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::CPGToCentral::ServerRegisterRS, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -333,15 +333,15 @@ const ::google::protobuf::uint32 TableStruct_CPGToCentral_2eproto::offsets[] PRO
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::CPGToCentral::ServerInfo)},
   { 9, -1, sizeof(::CPGToCentral::ServerRegisterRQ)},
-  { 19, -1, sizeof(::CPGToCentral::ServerRegisterRS)},
-  { 27, -1, sizeof(::CPGToCentral::NewConnServiceNotify)},
-  { 33, -1, sizeof(::CPGToCentral::GateServerInfo)},
-  { 42, -1, sizeof(::CPGToCentral::ServerLoginRQ)},
-  { 49, -1, sizeof(::CPGToCentral::ServerLoginRS)},
-  { 57, -1, sizeof(::CPGToCentral::ServiceMatchDistibuteNotify)},
-  { 64, -1, sizeof(::CPGToCentral::ServerAllMatchDistributeNotify)},
-  { 70, -1, sizeof(::CPGToCentral::CheckMatchDistributeRQ)},
-  { 78, -1, sizeof(::CPGToCentral::CheckMatchDistributeRS)},
+  { 18, -1, sizeof(::CPGToCentral::ServerRegisterRS)},
+  { 26, -1, sizeof(::CPGToCentral::NewConnServiceNotify)},
+  { 32, -1, sizeof(::CPGToCentral::GateServerInfo)},
+  { 41, -1, sizeof(::CPGToCentral::ServerLoginRQ)},
+  { 48, -1, sizeof(::CPGToCentral::ServerLoginRS)},
+  { 56, -1, sizeof(::CPGToCentral::ServiceMatchDistibuteNotify)},
+  { 63, -1, sizeof(::CPGToCentral::ServerAllMatchDistributeNotify)},
+  { 69, -1, sizeof(::CPGToCentral::CheckMatchDistributeRQ)},
+  { 77, -1, sizeof(::CPGToCentral::CheckMatchDistributeRS)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -368,28 +368,29 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   false, InitDefaults_CPGToCentral_2eproto, 
   "\n\022CPGToCentral.proto\022\014CPGToCentral\"A\n\nSe"
   "rverInfo\022\014\n\004type\030\001 \001(\005\022\014\n\004port\030\002 \001(\005\022\013\n\003"
-  "sid\030\003 \001(\005\022\n\n\002ip\030\004 \001(\t\"Y\n\020ServerRegisterR"
-  "Q\022\014\n\004type\030\001 \001(\005\022\014\n\004port\030\002 \001(\005\022\013\n\003sid\030\003 \001"
-  "(\005\022\n\n\002ip\030\004 \001(\t\022\020\n\010exportIP\030\005 \001(\t\"^\n\020Serv"
-  "erRegisterRS\022\016\n\006result\030\001 \001(\005\022\013\n\003sid\030\002 \001("
-  "\005\022-\n\013connServers\030\003 \003(\0132\030.CPGToCentral.Se"
-  "rverInfo\"E\n\024NewConnServiceNotify\022-\n\013conn"
-  "Servers\030\003 \003(\0132\030.CPGToCentral.ServerInfo\""
-  "I\n\016GateServerInfo\022\014\n\004port\030\001 \001(\005\022\013\n\003sid\030\002"
-  " \001(\005\022\n\n\002ip\030\003 \001(\t\022\020\n\010exportIP\030\004 \001(\t\")\n\rSe"
-  "rverLoginRQ\022\013\n\003cid\030\001 \001(\005\022\013\n\003sid\030\002 \001(\005\"Z\n"
-  "\rServerLoginRS\022\016\n\006result\030\001 \001(\005\022\013\n\003cid\030\002 "
-  "\001(\005\022,\n\006gsinfo\030\003 \001(\0132\034.CPGToCentral.GateS"
-  "erverInfo\"7\n\033ServiceMatchDistibuteNotify"
-  "\022\013\n\003sid\030\001 \001(\005\022\013\n\003mid\030\002 \003(\005\"]\n\036ServerAllM"
-  "atchDistributeNotify\022;\n\010services\030\001 \003(\0132)"
-  ".CPGToCentral.ServiceMatchDistibuteNotif"
-  "y\"A\n\026CheckMatchDistributeRQ\022\013\n\003sid\030\001 \001(\005"
-  "\022\014\n\004type\030\002 \001(\005\022\014\n\004mids\030\003 \003(\005\"Q\n\026CheckMat"
-  "chDistributeRS\022\013\n\003sid\030\001 \001(\005\022\014\n\004type\030\002 \001("
-  "\005\022\016\n\006result\030\003 \001(\005\022\014\n\004mids\030\004 \003(\005b\006proto3"
+  "sid\030\003 \001(\005\022\n\n\002ip\030\004 \001(\t\"p\n\020ServerRegisterR"
+  "Q\022\013\n\003sid\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\024\n\014connectT"
+  "ypes\030\003 \003(\005\022+\n\tlisteners\030\004 \003(\0132\030.CPGToCen"
+  "tral.ServerInfo\"^\n\020ServerRegisterRS\022\016\n\006r"
+  "esult\030\001 \001(\005\022\013\n\003sid\030\002 \001(\005\022-\n\013connServers\030"
+  "\003 \003(\0132\030.CPGToCentral.ServerInfo\"E\n\024NewCo"
+  "nnServiceNotify\022-\n\013connServers\030\003 \003(\0132\030.C"
+  "PGToCentral.ServerInfo\"I\n\016GateServerInfo"
+  "\022\014\n\004port\030\001 \001(\005\022\013\n\003sid\030\002 \001(\005\022\n\n\002ip\030\003 \001(\t\022"
+  "\020\n\010exportIP\030\004 \001(\t\")\n\rServerLoginRQ\022\013\n\003ci"
+  "d\030\001 \001(\005\022\013\n\003sid\030\002 \001(\005\"Z\n\rServerLoginRS\022\016\n"
+  "\006result\030\001 \001(\005\022\013\n\003cid\030\002 \001(\005\022,\n\006gsinfo\030\003 \001"
+  "(\0132\034.CPGToCentral.GateServerInfo\"7\n\033Serv"
+  "iceMatchDistibuteNotify\022\013\n\003sid\030\001 \001(\005\022\013\n\003"
+  "mid\030\002 \003(\005\"]\n\036ServerAllMatchDistributeNot"
+  "ify\022;\n\010services\030\001 \003(\0132).CPGToCentral.Ser"
+  "viceMatchDistibuteNotify\"A\n\026CheckMatchDi"
+  "stributeRQ\022\013\n\003sid\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\014\n"
+  "\004mids\030\003 \003(\005\"Q\n\026CheckMatchDistributeRS\022\013\n"
+  "\003sid\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\016\n\006result\030\003 \001(\005"
+  "\022\014\n\004mids\030\004 \003(\005b\006proto3"
 ,
-  "CPGToCentral.proto", &assign_descriptors_table_CPGToCentral_2eproto, 879,
+  "CPGToCentral.proto", &assign_descriptors_table_CPGToCentral_2eproto, 902,
 };
 
 void AddDescriptors_CPGToCentral_2eproto() {
@@ -854,11 +855,10 @@ class ServerRegisterRQ::HasBitSetters {
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int ServerRegisterRQ::kTypeFieldNumber;
-const int ServerRegisterRQ::kPortFieldNumber;
 const int ServerRegisterRQ::kSidFieldNumber;
-const int ServerRegisterRQ::kIpFieldNumber;
-const int ServerRegisterRQ::kExportIPFieldNumber;
+const int ServerRegisterRQ::kTypeFieldNumber;
+const int ServerRegisterRQ::kConnectTypesFieldNumber;
+const int ServerRegisterRQ::kListenersFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ServerRegisterRQ::ServerRegisterRQ()
@@ -868,30 +868,22 @@ ServerRegisterRQ::ServerRegisterRQ()
 }
 ServerRegisterRQ::ServerRegisterRQ(const ServerRegisterRQ& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      connecttypes_(from.connecttypes_),
+      listeners_(from.listeners_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ip_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.ip().size() > 0) {
-    ip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_);
-  }
-  exportip_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.exportip().size() > 0) {
-    exportip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.exportip_);
-  }
-  ::memcpy(&type_, &from.type_,
-    static_cast<size_t>(reinterpret_cast<char*>(&sid_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(sid_));
+  ::memcpy(&sid_, &from.sid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&type_) -
+    reinterpret_cast<char*>(&sid_)) + sizeof(type_));
   // @@protoc_insertion_point(copy_constructor:CPGToCentral.ServerRegisterRQ)
 }
 
 void ServerRegisterRQ::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_ServerRegisterRQ_CPGToCentral_2eproto.base);
-  ip_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  exportip_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&type_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&sid_) -
-      reinterpret_cast<char*>(&type_)) + sizeof(sid_));
+  ::memset(&sid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&type_) -
+      reinterpret_cast<char*>(&sid_)) + sizeof(type_));
 }
 
 ServerRegisterRQ::~ServerRegisterRQ() {
@@ -900,8 +892,6 @@ ServerRegisterRQ::~ServerRegisterRQ() {
 }
 
 void ServerRegisterRQ::SharedDtor() {
-  ip_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  exportip_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void ServerRegisterRQ::SetCachedSize(int size) const {
@@ -919,11 +909,11 @@ void ServerRegisterRQ::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  exportip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&type_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&sid_) -
-      reinterpret_cast<char*>(&type_)) + sizeof(sid_));
+  connecttypes_.Clear();
+  listeners_.Clear();
+  ::memset(&sid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&type_) -
+      reinterpret_cast<char*>(&sid_)) + sizeof(type_));
   _internal_metadata_.Clear();
 }
 
@@ -940,29 +930,9 @@ const char* ServerRegisterRQ::_InternalParse(const char* begin, const char* end,
     ptr = Varint::Parse32Inline(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // int32 type = 1;
+      // int32 sid = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
-        ::google::protobuf::uint64 val;
-        ptr = Varint::Parse64(ptr, &val);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ::google::protobuf::int32 value = val;
-        msg->set_type(value);
-        break;
-      }
-      // int32 port = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        ::google::protobuf::uint64 val;
-        ptr = Varint::Parse64(ptr, &val);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ::google::protobuf::int32 value = val;
-        msg->set_port(value);
-        break;
-      }
-      // int32 sid = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
         ::google::protobuf::uint64 val;
         ptr = Varint::Parse64(ptr, &val);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
@@ -970,36 +940,55 @@ const char* ServerRegisterRQ::_InternalParse(const char* begin, const char* end,
         msg->set_sid(value);
         break;
       }
-      // string ip = 4;
-      case 4: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
-        ptr = Varint::Parse32Inline(ptr, &size);
+      // int32 type = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("CPGToCentral.ServerRegisterRQ.ip");
-        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
-        ::std::string* str = msg->mutable_ip();
-        str->clear();
-        object = str;
-        if (size > end - ptr) goto len_delim_till_end;
-        auto newend = ptr + size;
-        if (size) ptr = parser_till_end(ptr, newend, object, ctx);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr == newend);
+        ::google::protobuf::int32 value = val;
+        msg->set_type(value);
         break;
       }
-      // string exportIP = 5;
-      case 5: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
-        ptr = Varint::Parse32Inline(ptr, &size);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("CPGToCentral.ServerRegisterRQ.exportIP");
-        parser_till_end = ::google::protobuf::internal::StringParserUTF8;
-        ::std::string* str = msg->mutable_exportip();
-        str->clear();
-        object = str;
-        if (size > end - ptr) goto len_delim_till_end;
-        auto newend = ptr + size;
-        if (size) ptr = parser_till_end(ptr, newend, object, ctx);
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr == newend);
+      // repeated int32 connectTypes = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) == 26) {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          parser_till_end = ::google::protobuf::internal::PackedInt32Parser;
+          object = msg->mutable_connecttypes();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          if (size) ptr = parser_till_end(ptr, newend, object, ctx);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr == newend);
+          break;
+        } else if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        do {
+          ::google::protobuf::uint64 val;
+          ptr = Varint::Parse64(ptr, &val);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          ::google::protobuf::int32 value = val;
+          msg->add_connecttypes(value);
+          if (ptr >= end) break;
+        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 24 && (ptr += 1));
+        break;
+      }
+      // repeated .CPGToCentral.ServerInfo listeners = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 34) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          parser_till_end = ::CPGToCentral::ServerInfo::_InternalParse;
+          object = msg->add_listeners();
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          bool ok = ctx->ParseExactRange({parser_till_end, object},
+                                         ptr, newend);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
+          ptr = newend;
+          if (ptr >= end) break;
+        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 34 && (ptr += 1));
         break;
       }
       default: {
@@ -1036,35 +1025,9 @@ bool ServerRegisterRQ::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 type = 1;
+      // int32 sid = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &type_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 port = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &port_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // int32 sid = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -1075,30 +1038,40 @@ bool ServerRegisterRQ::MergePartialFromCodedStream(
         break;
       }
 
-      // string ip = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_ip()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->ip().data(), static_cast<int>(this->ip().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "CPGToCentral.ServerRegisterRQ.ip"));
+      // int32 type = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &type_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // string exportIP = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_exportip()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->exportip().data(), static_cast<int>(this->exportip().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "CPGToCentral.ServerRegisterRQ.exportIP"));
+      // repeated int32 connectTypes = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_connecttypes())));
+        } else if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 26u, input, this->mutable_connecttypes())));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated .CPGToCentral.ServerInfo listeners = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (34 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+                input, add_listeners()));
         } else {
           goto handle_unusual;
         }
@@ -1132,39 +1105,34 @@ void ServerRegisterRQ::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 type = 1;
-  if (this->type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->type(), output);
-  }
-
-  // int32 port = 2;
-  if (this->port() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->port(), output);
-  }
-
-  // int32 sid = 3;
+  // int32 sid = 1;
   if (this->sid() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->sid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->sid(), output);
   }
 
-  // string ip = 4;
-  if (this->ip().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip().data(), static_cast<int>(this->ip().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CPGToCentral.ServerRegisterRQ.ip");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->ip(), output);
+  // int32 type = 2;
+  if (this->type() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->type(), output);
   }
 
-  // string exportIP = 5;
-  if (this->exportip().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->exportip().data(), static_cast<int>(this->exportip().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CPGToCentral.ServerRegisterRQ.exportIP");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->exportip(), output);
+  // repeated int32 connectTypes = 3;
+  if (this->connecttypes_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(3, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_connecttypes_cached_byte_size_.load(
+        std::memory_order_relaxed));
+  }
+  for (int i = 0, n = this->connecttypes_size(); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32NoTag(
+      this->connecttypes(i), output);
+  }
+
+  // repeated .CPGToCentral.ServerInfo listeners = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->listeners_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4,
+      this->listeners(static_cast<int>(i)),
+      output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1181,41 +1149,35 @@ void ServerRegisterRQ::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 type = 1;
-  if (this->type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->type(), target);
-  }
-
-  // int32 port = 2;
-  if (this->port() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->port(), target);
-  }
-
-  // int32 sid = 3;
+  // int32 sid = 1;
   if (this->sid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->sid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->sid(), target);
   }
 
-  // string ip = 4;
-  if (this->ip().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->ip().data(), static_cast<int>(this->ip().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CPGToCentral.ServerRegisterRQ.ip");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->ip(), target);
+  // int32 type = 2;
+  if (this->type() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->type(), target);
   }
 
-  // string exportIP = 5;
-  if (this->exportip().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->exportip().data(), static_cast<int>(this->exportip().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "CPGToCentral.ServerRegisterRQ.exportIP");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->exportip(), target);
+  // repeated int32 connectTypes = 3;
+  if (this->connecttypes_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      3,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+        _connecttypes_cached_byte_size_.load(std::memory_order_relaxed),
+         target);
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt32NoTagToArray(this->connecttypes_, target);
+  }
+
+  // repeated .CPGToCentral.ServerInfo listeners = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->listeners_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        4, this->listeners(static_cast<int>(i)), deterministic, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1239,39 +1201,44 @@ size_t ServerRegisterRQ::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string ip = 4;
-  if (this->ip().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->ip());
+  // repeated int32 connectTypes = 3;
+  {
+    size_t data_size = ::google::protobuf::internal::WireFormatLite::
+      Int32Size(this->connecttypes_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+            static_cast<::google::protobuf::int32>(data_size));
+    }
+    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
+    _connecttypes_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
   }
 
-  // string exportIP = 5;
-  if (this->exportip().size() > 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->exportip());
+  // repeated .CPGToCentral.ServerInfo listeners = 4;
+  {
+    unsigned int count = static_cast<unsigned int>(this->listeners_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->listeners(static_cast<int>(i)));
+    }
   }
 
-  // int32 type = 1;
-  if (this->type() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->type());
-  }
-
-  // int32 port = 2;
-  if (this->port() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->port());
-  }
-
-  // int32 sid = 3;
+  // int32 sid = 1;
   if (this->sid() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->sid());
+  }
+
+  // int32 type = 2;
+  if (this->type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->type());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1301,22 +1268,13 @@ void ServerRegisterRQ::MergeFrom(const ServerRegisterRQ& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.ip().size() > 0) {
-
-    ip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ip_);
-  }
-  if (from.exportip().size() > 0) {
-
-    exportip_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.exportip_);
+  connecttypes_.MergeFrom(from.connecttypes_);
+  listeners_.MergeFrom(from.listeners_);
+  if (from.sid() != 0) {
+    set_sid(from.sid());
   }
   if (from.type() != 0) {
     set_type(from.type());
-  }
-  if (from.port() != 0) {
-    set_port(from.port());
-  }
-  if (from.sid() != 0) {
-    set_sid(from.sid());
   }
 }
 
@@ -1345,13 +1303,10 @@ void ServerRegisterRQ::Swap(ServerRegisterRQ* other) {
 void ServerRegisterRQ::InternalSwap(ServerRegisterRQ* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  ip_.Swap(&other->ip_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  exportip_.Swap(&other->exportip_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  swap(type_, other->type_);
-  swap(port_, other->port_);
+  connecttypes_.InternalSwap(&other->connecttypes_);
+  CastToBase(&listeners_)->InternalSwap(CastToBase(&other->listeners_));
   swap(sid_, other->sid_);
+  swap(type_, other->type_);
 }
 
 ::google::protobuf::Metadata ServerRegisterRQ::GetMetadata() const {

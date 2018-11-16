@@ -16,11 +16,10 @@ message ServerInfo
 // 各服务启动后 需注册到CentralServer
 message ServerRegisterRQ
 {
-	int32	type 	= 1;
-	int32	port 	= 2;
-	int32   sid		= 3; 
-	string	ip   	= 4;
-	string exportIP = 5;
+    int32 sid = 1;
+    int32 type = 2;
+    repeated int32 connectTypes = 3;
+    repeated ServerInfo listeners = 4;
 }
 message ServerRegisterRS
 {
@@ -32,7 +31,7 @@ message ServerRegisterRS
 // 需要连接的新服务 通知
 message NewConnServiceNotify
 {
-    repeated ServerInfo connServers    = 3;
+    repeated ServerInfo connServers    = 1;
 };
 
 // GateServer的信息， 

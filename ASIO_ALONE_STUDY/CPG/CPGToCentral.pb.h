@@ -336,62 +336,52 @@ class ServerRegisterRQ : public ::google::protobuf::Message /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // string ip = 4;
-  void clear_ip();
-  static const int kIpFieldNumber = 4;
-  const ::std::string& ip() const;
-  void set_ip(const ::std::string& value);
-  #if LANG_CXX11
-  void set_ip(::std::string&& value);
-  #endif
-  void set_ip(const char* value);
-  void set_ip(const char* value, size_t size);
-  ::std::string* mutable_ip();
-  ::std::string* release_ip();
-  void set_allocated_ip(::std::string* ip);
+  // repeated int32 connectTypes = 3;
+  int connecttypes_size() const;
+  void clear_connecttypes();
+  static const int kConnectTypesFieldNumber = 3;
+  ::google::protobuf::int32 connecttypes(int index) const;
+  void set_connecttypes(int index, ::google::protobuf::int32 value);
+  void add_connecttypes(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      connecttypes() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_connecttypes();
 
-  // string exportIP = 5;
-  void clear_exportip();
-  static const int kExportIPFieldNumber = 5;
-  const ::std::string& exportip() const;
-  void set_exportip(const ::std::string& value);
-  #if LANG_CXX11
-  void set_exportip(::std::string&& value);
-  #endif
-  void set_exportip(const char* value);
-  void set_exportip(const char* value, size_t size);
-  ::std::string* mutable_exportip();
-  ::std::string* release_exportip();
-  void set_allocated_exportip(::std::string* exportip);
+  // repeated .CPGToCentral.ServerInfo listeners = 4;
+  int listeners_size() const;
+  void clear_listeners();
+  static const int kListenersFieldNumber = 4;
+  ::CPGToCentral::ServerInfo* mutable_listeners(int index);
+  ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo >*
+      mutable_listeners();
+  const ::CPGToCentral::ServerInfo& listeners(int index) const;
+  ::CPGToCentral::ServerInfo* add_listeners();
+  const ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo >&
+      listeners() const;
 
-  // int32 type = 1;
-  void clear_type();
-  static const int kTypeFieldNumber = 1;
-  ::google::protobuf::int32 type() const;
-  void set_type(::google::protobuf::int32 value);
-
-  // int32 port = 2;
-  void clear_port();
-  static const int kPortFieldNumber = 2;
-  ::google::protobuf::int32 port() const;
-  void set_port(::google::protobuf::int32 value);
-
-  // int32 sid = 3;
+  // int32 sid = 1;
   void clear_sid();
-  static const int kSidFieldNumber = 3;
+  static const int kSidFieldNumber = 1;
   ::google::protobuf::int32 sid() const;
   void set_sid(::google::protobuf::int32 value);
+
+  // int32 type = 2;
+  void clear_type();
+  static const int kTypeFieldNumber = 2;
+  ::google::protobuf::int32 type() const;
+  void set_type(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:CPGToCentral.ServerRegisterRQ)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr ip_;
-  ::google::protobuf::internal::ArenaStringPtr exportip_;
-  ::google::protobuf::int32 type_;
-  ::google::protobuf::int32 port_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > connecttypes_;
+  mutable std::atomic<int> _connecttypes_cached_byte_size_;
+  ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo > listeners_;
   ::google::protobuf::int32 sid_;
+  ::google::protobuf::int32 type_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_CPGToCentral_2eproto;
 };
@@ -1660,35 +1650,7 @@ inline void ServerInfo::set_allocated_ip(::std::string* ip) {
 
 // ServerRegisterRQ
 
-// int32 type = 1;
-inline void ServerRegisterRQ::clear_type() {
-  type_ = 0;
-}
-inline ::google::protobuf::int32 ServerRegisterRQ::type() const {
-  // @@protoc_insertion_point(field_get:CPGToCentral.ServerRegisterRQ.type)
-  return type_;
-}
-inline void ServerRegisterRQ::set_type(::google::protobuf::int32 value) {
-  
-  type_ = value;
-  // @@protoc_insertion_point(field_set:CPGToCentral.ServerRegisterRQ.type)
-}
-
-// int32 port = 2;
-inline void ServerRegisterRQ::clear_port() {
-  port_ = 0;
-}
-inline ::google::protobuf::int32 ServerRegisterRQ::port() const {
-  // @@protoc_insertion_point(field_get:CPGToCentral.ServerRegisterRQ.port)
-  return port_;
-}
-inline void ServerRegisterRQ::set_port(::google::protobuf::int32 value) {
-  
-  port_ = value;
-  // @@protoc_insertion_point(field_set:CPGToCentral.ServerRegisterRQ.port)
-}
-
-// int32 sid = 3;
+// int32 sid = 1;
 inline void ServerRegisterRQ::clear_sid() {
   sid_ = 0;
 }
@@ -1702,110 +1664,78 @@ inline void ServerRegisterRQ::set_sid(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:CPGToCentral.ServerRegisterRQ.sid)
 }
 
-// string ip = 4;
-inline void ServerRegisterRQ::clear_ip() {
-  ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// int32 type = 2;
+inline void ServerRegisterRQ::clear_type() {
+  type_ = 0;
 }
-inline const ::std::string& ServerRegisterRQ::ip() const {
-  // @@protoc_insertion_point(field_get:CPGToCentral.ServerRegisterRQ.ip)
-  return ip_.GetNoArena();
+inline ::google::protobuf::int32 ServerRegisterRQ::type() const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.ServerRegisterRQ.type)
+  return type_;
 }
-inline void ServerRegisterRQ::set_ip(const ::std::string& value) {
+inline void ServerRegisterRQ::set_type(::google::protobuf::int32 value) {
   
-  ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CPGToCentral.ServerRegisterRQ.ip)
-}
-#if LANG_CXX11
-inline void ServerRegisterRQ::set_ip(::std::string&& value) {
-  
-  ip_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CPGToCentral.ServerRegisterRQ.ip)
-}
-#endif
-inline void ServerRegisterRQ::set_ip(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CPGToCentral.ServerRegisterRQ.ip)
-}
-inline void ServerRegisterRQ::set_ip(const char* value, size_t size) {
-  
-  ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CPGToCentral.ServerRegisterRQ.ip)
-}
-inline ::std::string* ServerRegisterRQ::mutable_ip() {
-  
-  // @@protoc_insertion_point(field_mutable:CPGToCentral.ServerRegisterRQ.ip)
-  return ip_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* ServerRegisterRQ::release_ip() {
-  // @@protoc_insertion_point(field_release:CPGToCentral.ServerRegisterRQ.ip)
-  
-  return ip_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void ServerRegisterRQ::set_allocated_ip(::std::string* ip) {
-  if (ip != NULL) {
-    
-  } else {
-    
-  }
-  ip_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip);
-  // @@protoc_insertion_point(field_set_allocated:CPGToCentral.ServerRegisterRQ.ip)
+  type_ = value;
+  // @@protoc_insertion_point(field_set:CPGToCentral.ServerRegisterRQ.type)
 }
 
-// string exportIP = 5;
-inline void ServerRegisterRQ::clear_exportip() {
-  exportip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// repeated int32 connectTypes = 3;
+inline int ServerRegisterRQ::connecttypes_size() const {
+  return connecttypes_.size();
 }
-inline const ::std::string& ServerRegisterRQ::exportip() const {
-  // @@protoc_insertion_point(field_get:CPGToCentral.ServerRegisterRQ.exportIP)
-  return exportip_.GetNoArena();
+inline void ServerRegisterRQ::clear_connecttypes() {
+  connecttypes_.Clear();
 }
-inline void ServerRegisterRQ::set_exportip(const ::std::string& value) {
-  
-  exportip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:CPGToCentral.ServerRegisterRQ.exportIP)
+inline ::google::protobuf::int32 ServerRegisterRQ::connecttypes(int index) const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.ServerRegisterRQ.connectTypes)
+  return connecttypes_.Get(index);
 }
-#if LANG_CXX11
-inline void ServerRegisterRQ::set_exportip(::std::string&& value) {
-  
-  exportip_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:CPGToCentral.ServerRegisterRQ.exportIP)
+inline void ServerRegisterRQ::set_connecttypes(int index, ::google::protobuf::int32 value) {
+  connecttypes_.Set(index, value);
+  // @@protoc_insertion_point(field_set:CPGToCentral.ServerRegisterRQ.connectTypes)
 }
-#endif
-inline void ServerRegisterRQ::set_exportip(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  exportip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:CPGToCentral.ServerRegisterRQ.exportIP)
+inline void ServerRegisterRQ::add_connecttypes(::google::protobuf::int32 value) {
+  connecttypes_.Add(value);
+  // @@protoc_insertion_point(field_add:CPGToCentral.ServerRegisterRQ.connectTypes)
 }
-inline void ServerRegisterRQ::set_exportip(const char* value, size_t size) {
-  
-  exportip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:CPGToCentral.ServerRegisterRQ.exportIP)
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+ServerRegisterRQ::connecttypes() const {
+  // @@protoc_insertion_point(field_list:CPGToCentral.ServerRegisterRQ.connectTypes)
+  return connecttypes_;
 }
-inline ::std::string* ServerRegisterRQ::mutable_exportip() {
-  
-  // @@protoc_insertion_point(field_mutable:CPGToCentral.ServerRegisterRQ.exportIP)
-  return exportip_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+ServerRegisterRQ::mutable_connecttypes() {
+  // @@protoc_insertion_point(field_mutable_list:CPGToCentral.ServerRegisterRQ.connectTypes)
+  return &connecttypes_;
 }
-inline ::std::string* ServerRegisterRQ::release_exportip() {
-  // @@protoc_insertion_point(field_release:CPGToCentral.ServerRegisterRQ.exportIP)
-  
-  return exportip_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+
+// repeated .CPGToCentral.ServerInfo listeners = 4;
+inline int ServerRegisterRQ::listeners_size() const {
+  return listeners_.size();
 }
-inline void ServerRegisterRQ::set_allocated_exportip(::std::string* exportip) {
-  if (exportip != NULL) {
-    
-  } else {
-    
-  }
-  exportip_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), exportip);
-  // @@protoc_insertion_point(field_set_allocated:CPGToCentral.ServerRegisterRQ.exportIP)
+inline void ServerRegisterRQ::clear_listeners() {
+  listeners_.Clear();
+}
+inline ::CPGToCentral::ServerInfo* ServerRegisterRQ::mutable_listeners(int index) {
+  // @@protoc_insertion_point(field_mutable:CPGToCentral.ServerRegisterRQ.listeners)
+  return listeners_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo >*
+ServerRegisterRQ::mutable_listeners() {
+  // @@protoc_insertion_point(field_mutable_list:CPGToCentral.ServerRegisterRQ.listeners)
+  return &listeners_;
+}
+inline const ::CPGToCentral::ServerInfo& ServerRegisterRQ::listeners(int index) const {
+  // @@protoc_insertion_point(field_get:CPGToCentral.ServerRegisterRQ.listeners)
+  return listeners_.Get(index);
+}
+inline ::CPGToCentral::ServerInfo* ServerRegisterRQ::add_listeners() {
+  // @@protoc_insertion_point(field_add:CPGToCentral.ServerRegisterRQ.listeners)
+  return listeners_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo >&
+ServerRegisterRQ::listeners() const {
+  // @@protoc_insertion_point(field_list:CPGToCentral.ServerRegisterRQ.listeners)
+  return listeners_;
 }
 
 // -------------------------------------------------------------------

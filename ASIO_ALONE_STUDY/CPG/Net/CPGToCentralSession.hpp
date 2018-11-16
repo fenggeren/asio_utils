@@ -29,6 +29,16 @@ private:
     
     virtual void defaultMessageCallback(const std::shared_ptr<TCPSession>&      session, DataBuffer*const data);
      virtual ServiceKernel& serviceKernel() = 0;
+    
+    
+private:
+    
+    int testID_{0};
 };
+
+
+
+
+
 
 

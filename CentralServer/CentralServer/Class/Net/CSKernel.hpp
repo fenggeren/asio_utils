@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <vector>
 #include <Net/TCPSession.hpp>
+#include <Net/ServiceKernel.hpp>
 #include <CPG/CPGHeader.h>
 #include <CPG/CPGServerDefine.h>
 #include <CPG/Util/ServerConfigManager.hpp>
@@ -38,11 +39,15 @@ public:
 public:
     
     // sessionID, server type,
+    // 注册一个新服务。
+    // ①需要将其 监听的端口信息发送给所有 对应类型的服务.
+    // ②还需要将其 需要连接的服务信息，返回给他。
+    // !需要祛除掉CS服务。
     void serverRegistRQ(TCPSessionPtr session,
                          const void* data, int len);
-    void serverLoginRQ(TCPSessionPtr session,
-                       const void* data, int len);
+     
     
+    // 客户端连接BS 转发到this， 获取最合适的GS信息
     void requestBestGateServer(TCPSessionPtr session, const void* data,
                                const PacketHeader& header);
     
@@ -55,13 +60,12 @@ public:
     
     
 private:
-    
-    void gateServerRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
+     
     // @stype 分发给指定的服务
     void serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
-    void distServices(std::shared_ptr<ServerInfo> info, uint8 stype);
     
-    
+    // 发送所有的比赛分配信息
+    void sendAllDistributeMatchInfos(TCPSessionPtr session, int type);
 private:
     
     // 重新分配比赛

@@ -58,7 +58,7 @@ public:
         return matchServices_;
     }
     
-    std::list<int> getDistMatch(unsigned int sid);
+    std::list<int> getDistMatch(int sid);
     
     
     void addUndistriteMatches(std::list<int>&& mids);

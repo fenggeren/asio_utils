@@ -13,8 +13,7 @@
 #include "IOContextPool.hpp"
 #include "TCPClient.hpp"
 #include "TimerManager.hpp"
-#include "DataHandler.hpp"
-#include "NetBase.hpp"
+#include "DataHandler.hpp" 
 #include "ServiceKernel.hpp"
 #include "TCPServer.hpp"
 #include "TCPSessionManager.hpp"
@@ -31,7 +30,7 @@
 #include "TCPSessionFactory.h"
 #include "noncopyable.h"
 
-#include "logging/Logging.hpp "
+#include "logging/Logging.hpp"
 
 #include "Util/Active.hpp"
 #include "Util/NetPacket.hpp"
@@ -40,7 +39,6 @@
 #include "Util/ParseProto.hpp"
 
 #include "base/FASIOType.h"
-#include "base/NetBase.h"
 #include "base/ServerNetConfig.h"
 
 

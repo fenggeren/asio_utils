@@ -59,6 +59,7 @@
 		1F246356219407D3009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
 		1F24637521952CB3009A67AC /* CPGToCentralSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentralSession.cpp; sourceTree = "<group>"; };
 		1F24637621952CB3009A67AC /* CPGToCentralSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGToCentralSession.hpp; sourceTree = "<group>"; };
+		1F2E1E3E219EAEFA00882241 /* FASIO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FASIO.hpp; sourceTree = "<group>"; };
 		1F95CE64218BFC6E0057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
 		1F95CE7C218BFD150057618A /* CPGToCentral.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPGToCentral.proto; sourceTree = "<group>"; };
 		1F95CE7D218BFD150057618A /* ng */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ng; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		1FE3E96E218A970500A2F52D /* Callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callbacks.h; sourceTree = "<group>"; };
 		1FE3E96F218A970500A2F52D /* TCPListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPListener.cpp; sourceTree = "<group>"; };
 		1FE3E970218A970500A2F52D /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
-		1FE3E971218A970500A2F52D /* NetBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetBase.hpp; sourceTree = "<group>"; };
 		1FE3E972218A970500A2F52D /* TCPServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPServer.hpp; sourceTree = "<group>"; };
 		1FE3E973218A970500A2F52D /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
 		1FE3E974218A970500A2F52D /* Conv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Conv.hpp; sourceTree = "<group>"; };
@@ -110,7 +110,6 @@
 		1FE3E98B218A970500A2F52D /* TCPConnector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPConnector.cpp; sourceTree = "<group>"; };
 		1FE3E98D218A970500A2F52D /* NetBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetBase.h; sourceTree = "<group>"; };
 		1FE3E98E218A970500A2F52D /* FASIOType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FASIOType.h; sourceTree = "<group>"; };
-		1FE3E98F218A970500A2F52D /* FASIOType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FASIOType.cpp; sourceTree = "<group>"; };
 		1FE3E9A2218A974D00A2F52D /* MSSessionManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MSSessionManager.cpp; sourceTree = "<group>"; };
 		1FE3E9A3218A974D00A2F52D /* MSSessionManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MSSessionManager.hpp; sourceTree = "<group>"; };
 		1FE3EA14218AE69500A2F52D /* GateSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GateSession.cpp; sourceTree = "<group>"; };
@@ -220,6 +219,7 @@
 		1FE3E961218A970500A2F52D /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				1F2E1E3E219EAEFA00882241 /* FASIO.hpp */,
 				1F2463452193F07E009A67AC /* ServiceKernel.cpp */,
 				1F2463462193F07F009A67AC /* ServiceKernel.hpp */,
 				1FE3E962218A970500A2F52D /* Thread.cpp */,
@@ -232,7 +232,6 @@
 				1FE3E96E218A970500A2F52D /* Callbacks.h */,
 				1FE3E96F218A970500A2F52D /* TCPListener.cpp */,
 				1FE3E970218A970500A2F52D /* Queue.hpp */,
-				1FE3E971218A970500A2F52D /* NetBase.hpp */,
 				1FE3E972218A970500A2F52D /* TCPServer.hpp */,
 				1FE3E973218A970500A2F52D /* TCPListener.h */,
 				1FE3E974218A970500A2F52D /* Conv.hpp */,
@@ -291,7 +290,6 @@
 			children = (
 				1FE3E98D218A970500A2F52D /* NetBase.h */,
 				1FE3E98E218A970500A2F52D /* FASIOType.h */,
-				1FE3E98F218A970500A2F52D /* FASIOType.cpp */,
 			);
 			path = base;
 			sourceTree = "<group>";

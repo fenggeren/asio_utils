@@ -33,6 +33,7 @@ void MSKernel::start()
         {
             runOneService(info);
         }
+        getIoContext().run();
     }
     else
     {
@@ -42,9 +43,8 @@ void MSKernel::start()
 
 void MSKernel::runOneService(const ServerNetConfig::ServerInfo& config)
 {
-    auto& ioc = getIoContext();
-    netInitializer(config, ioc, SessionManager);
-    ioc.run();
+    netInitializer(config, getIoContext(), SessionManager);
+    
 }
 
 std::shared_ptr<TCPSessionFactory>

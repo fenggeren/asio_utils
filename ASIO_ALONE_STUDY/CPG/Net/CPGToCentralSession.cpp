@@ -7,15 +7,12 @@
 //
 
 #include "CPGToCentralSession.hpp"
-#include "../../Net/Util/NetPacket.hpp"
-#include "../../Net/Util/ParseProto.hpp"
-#include "../../Net/logging/Logging.hpp"
-#include "../../Net/ServiceKernel.hpp"
 #include "CPGServerDefine.h"
 #include <CPG/CPGToCentral.pb.h>
-#include <list>
 #include "../Util/ServerConfigManager.hpp"
-#include "../../Net/TCPSessionManager.hpp"
+#include "../../Net/FASIO.hpp"
+#include <list>
+#include <set>
 
 using namespace logging;
 
@@ -116,19 +113,43 @@ listenInfos()
     return listens;
 }
 
+std::set<int> connectTypes()
+{
+    std::list<ServerNetConfig::ServerNetInfo> listens;
+    const auto& config = ServerConfigManager::instance().config();
+    std::set<int> conTypes;
+    
+    for(auto& info : config.infos)
+    {
+        for(auto type : info.connectTypes)
+        {
+            conTypes.insert(type);
+        }
+    }
+    return conTypes;
+}
+
+
+
 void CPGToCentralSession::sendRegisterData(TCPSessionManager& sessionManager)
 {
+    CPGToCentral::ServerRegisterRQ rq;
+    rq.set_sid(logicID()); // 可能会重复注册，根据logicID判断
+    rq.set_type(ServerType_MatchServer);
+    
     auto listens = listenInfos();
     for(auto& listen : listens )
     {
-        CPGToCentral::ServerRegisterRQ rq;
-        rq.set_type(listen.type);
-        rq.set_port(listen.port);
-        rq.set_sid(logicID());
-        rq.set_ip(listen.ip);
-        rq.set_exportip(listen.ip);
-        
-        sessionManager.sendMsgToSession(shared_from_this(), rq,
-                                        kServerRegistRQ, ServerType_CentralServer);
+        auto lis = rq.add_listeners();
+        lis->set_ip(listen.ip);
+        lis->set_port(listen.port);
+        lis->set_type(listen.type);
     }
+    auto conTypes = connectTypes();
+    for(auto type : conTypes)
+    {
+        rq.add_connecttypes(type);
+    }
+    sessionManager.sendMsgToSession(shared_from_this(), rq,
+                                    kServerRegistRQ, ServerType_CentralServer);
 }

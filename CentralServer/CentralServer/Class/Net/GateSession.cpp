@@ -26,11 +26,6 @@ bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
             CSKernel::instance().serverRegistRQ(session, buffer, header.size);
             break;
         }
-        case kLoginRQ:
-        {
-            CSKernel::instance().serverLoginRQ(session, buffer, header.size);
-            break;
-        }
         default:
             break;
     }

@@ -22,9 +22,9 @@ using namespace fasio::logging;
 void GSKernel::start()
 {
     auto& manager = ServerConfigManager::instance();
-    manager.setType(ServerType_MatchServer);
+    manager.setType(ServerType_GateServer);
     ServerNetConfig config;
-    if (manager.configForType(ServerType_MatchServer,  config))
+    if (manager.configForType(ServerType_GateServer,  config))
     {
         for(auto& info : config.infos)
         {
@@ -43,6 +43,11 @@ void GSKernel::runOneService(const ServerNetConfig::ServerInfo& config)
     auto& ioc = getIoContext();
     netInitializer(config, ioc, SessionManager);
     ioc.run();
+}
+
+void GSKernel::distibuteMatchesNotify(const void* buffer, const PacketHeader& header)
+{
+    
 }
 
 std::shared_ptr<TCPSessionFactory>

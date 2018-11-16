@@ -20,6 +20,7 @@
 #include "CSMatchManager.hpp"
 #include <Net/Conv.hpp>
 #include "CSMatchLoadedEvaluation.hpp"
+#include <CPG/Util/ServerConfigManager.hpp>
 
 using namespace fasio::logging;
 
@@ -114,7 +115,7 @@ void CSKernel::serverRegistRQ(TCPSessionPtr session,
     if (fasio::parseProtoMsg(data, len, rq))
     {
         std::shared_ptr<ServerInfo> info = nullptr;
-        if (rq.sid() == 0 ||
+        if (rq.sid() == INVALID_LID ||
             rq.sid() >= servers_.size() ||
             servers_[rq.sid()] == nullptr)
         {
@@ -122,6 +123,18 @@ void CSKernel::serverRegistRQ(TCPSessionPtr session,
             info->sid = session->uuid();
             session->setLogicID(info->sid);
             servers_[info->sid] = info;
+            
+            for(auto& lsn : rq.listeners())
+            {
+                info->listeners.push_back(
+                {static_cast<unsigned char>(lsn.type()),
+                    static_cast<unsigned short>(lsn.port()),
+                    lsn.ip()});
+            }
+            for(auto t : rq.connecttypes())
+            {
+                info->connectTypes.push_back(t);
+            }
         }
         else
         {
@@ -129,31 +142,20 @@ void CSKernel::serverRegistRQ(TCPSessionPtr session,
         }
         uint32 cur = (uint32)time(NULL);
         info->type = session->type();
-        info->port = rq.port();
-        info->ip = rq.ip();
-        info->exportIp = rq.exportip();
         info->connectTimes++;
         info->lastHeartTimes = cur;
         
-        
-        if (session->type() == ServerType_GateServer)
-        {
-            gateServerRegistRS(session ,info);
-        }
-        else if (session->type() == ServerType_LoginServer ||
-                 session->type() == ServerType_MatchServer)
-        {
-            serverRegistRS(session ,info);
-            distServices(info, ServerType_GateServer);
-        }
-        else
-        {
-            serverRegistRS(session, info);
-        }
+ 
+        serverRegistRS(session, info);
         
         if (session->type() == ServerType_MatchServer)
         {
             CSMatchManager::instance().updateMatchService(info);
+        }
+        
+        if (session->type() == ServerType_GateServer)
+        {
+            sendAllDistributeMatchInfos(session, ServerType_GateServer);
         }
     }
     else
@@ -166,97 +168,55 @@ void CSKernel::serverRegistRQ(TCPSessionPtr session,
     
 }
 
-// 将所有 LoginServer & MatchServer信息返回给 GateServer
-void CSKernel::gateServerRegistRS(TCPSessionPtr session,
-                                          std::shared_ptr<ServerInfo> info)
-{
-    // 响应消息
-    CPGToCentral::ServerRegisterRS rs;
-    rs.set_result(0);
-    rs.set_sid(info->sid);
-    for (auto& server : servers_)
-    {
-        auto& serinfo = server.second;
-        if (serinfo->type == ServerType_LoginServer ||
-            serinfo->type == ServerType_MatchServer)
-        {
-            auto conn = rs.add_connservers();
-            conn->set_port(serinfo->port);
-            conn->set_sid(serinfo->sid);
-            conn->set_ip(serinfo->ip);
-            conn->set_type(serinfo->type);
-        }
-    }
-    SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
-}
 
 // 将消息直接返回给所有连接的 GS
 void CSKernel::serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info)
 {
+    // 获取需要连接的服务信息
+    // 注册返回
     CPGToCentral::ServerRegisterRS rs;
     rs.set_result(0);
     rs.set_sid(info->sid);
-    
-    SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
-}
 
-void CSKernel::distServices(std::shared_ptr<ServerInfo> info, uint8 stype)
-{
-    CPGToCentral::NewConnServiceNotify rs;
-    auto conn = rs.add_connservers();
-    conn->set_port(info->port);
-    conn->set_sid(info->sid);
-    conn->set_ip(info->ip);
-    conn->set_type(info->type);
-    
-    auto packet = NetPacket::createPacket(rs.SerializeAsString(), kServerNewServicesNotify);
-    SessionManager.sendMsgToSession(INVALID_UUID, packet, stype);
-}
-
-void CSKernel::serverLoginRQ(TCPSessionPtr session,
-                                     const void* data, int len)
-{
-    CPGToCentral::ServerLoginRS rs;
-    
-    CPGToCentral::ServerLoginRQ rq;
-    if (fasio::parseProtoMsg(data, len, rq))
+    for(auto type : info->connectTypes)
     {
-        std::shared_ptr<ServerInfo> smalleastLoadedGS = nullptr;
-        int loaded = INT_MAX;
-        for (auto& pair : servers_)
+        for(auto& pair : servers_)
         {
-            if (pair.second->type == ServerType_GateServer)
+            for (auto& listen : pair.second->listeners)
             {
-                if (loaded > pair.second->loaded)
+                if (type == listen.type)
                 {
-                    loaded = pair.second->loaded;
-                    smalleastLoadedGS = pair.second;
+                    auto conn = rs.add_connservers();
+                    conn->set_port(listen.port);
+                    conn->set_sid(pair.first);
+                    conn->set_ip(listen.ip);
+                    conn->set_type(type);
                 }
             }
         }
-        
-        if (smalleastLoadedGS)
-        {
-            auto gsinfo = rs.mutable_gsinfo();
-            gsinfo->set_port(smalleastLoadedGS->port);
-            gsinfo->set_sid(smalleastLoadedGS->sid);
-            gsinfo->set_ip(smalleastLoadedGS->ip);
-            gsinfo->set_exportip(smalleastLoadedGS->exportIp);
-        }
-        else
-        {
-            rs.set_result(-1);
-            LOG_ERROR << "has no valid gate server  all size: "
-                    << servers_.size();
-        }
     }
-    else
+    SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
+    
+    
+    if (info->listeners.size() > 0)
     {
-        rs.set_result(-1);
-        LOG_ERROR << "invalid data len: " << len;
+        for(auto& lis : info->listeners)
+        {
+            // 发送此服务信息给所有监听的类型服务信息
+            CPGToCentral::NewConnServiceNotify notify;
+            auto conn = notify.add_connservers();
+            conn->set_port(lis.port);
+            conn->set_sid(info->sid);
+            conn->set_ip(lis.ip);
+            conn->set_type(info->type);
+            auto packet = NetPacket::createPacket(notify.SerializeAsString(), kServerNewServicesNotify);
+            // 发送给所有的 所监听的服务
+            SessionManager.sendMsgToSession(INVALID_UUID, packet, lis.type);
+        }
     }
-    SessionManager.sendMsgToSession(session, rs, kLoginRS);
+
 }
+
 
 
 void CSKernel::requestBestGateServer(TCPSessionPtr session,
@@ -285,8 +245,15 @@ void CSKernel::requestBestGateServer(TCPSessionPtr session,
         
         if (smalleastLoadedGS)
         {
-            rs.set_ip(smalleastLoadedGS->exportIp);
-            rs.set_port(smalleastLoadedGS->port);
+            for(auto& lis : smalleastLoadedGS->listeners)
+            {
+                if (lis.type == ServerType_Client)
+                {
+                    rs.set_port(lis.port);
+                    rs.set_ip(lis.ip);
+                    break;
+                }
+            }
         }
         else
         {
@@ -332,6 +299,12 @@ void CSKernel::distributeMatch(const std::map<unsigned int, std::list<int>>& upd
                                header);
     }
     
+
+    sendAllDistributeMatchInfos(nullptr, ServerType_GateServer);
+}
+
+void CSKernel::sendAllDistributeMatchInfos(TCPSessionPtr session, int stype)
+{
     // 1. 将所有的分配信息发送个给所有的GS
     CPGToCentral::ServerAllMatchDistributeNotify notify;
     auto map = CSMatchManager::instance().getAllMatchServices();
@@ -352,11 +325,10 @@ void CSKernel::distributeMatch(const std::map<unsigned int, std::list<int>>& upd
     // 如果 GS还再连接着MS A，
     // 但是MS A已经从CS断开
     // 是否需要清除掉 比赛分配信息？
-    PacketHeader header{kServerAllMatchDistributeNotify, notify.ByteSize(), 0};
-    SessionManager.sendMsg(nullptr,
+    PacketHeader header{kServerMatchDistributeNotify, notify.ByteSize(), 0};
+    SessionManager.sendMsg(session,
                            notify.SerializeAsString().data(),
-                           header, ServerType_GateServer);
-    
+                           header, stype);
 }
 
 void CSKernel::checkMatchDistributeRQ(TCPSessionPtr session, const void* data,

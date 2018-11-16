@@ -53,7 +53,7 @@ void CSMatchManager::initialize()
 //    }
 }
 
-std::list<int> CSMatchManager::getDistMatch(unsigned int sid)
+std::list<int> CSMatchManager::getDistMatch(int sid)
 {
     MatchDisService serviceKey{sid, 0};
     auto iter = matchServices_.find(serviceKey);

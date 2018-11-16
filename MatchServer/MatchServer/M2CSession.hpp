@@ -23,8 +23,7 @@ private:
     virtual void sendInitData() override;
     virtual void onClose() override;
 private:
-    
-    void serverRegistRS(const void* data, int len); 
+     
 private:
      
     virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,

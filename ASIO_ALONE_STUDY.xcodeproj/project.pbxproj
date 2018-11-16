@@ -69,6 +69,7 @@
 		1F2463AC2199778A009A67AC /* TimerManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TimerManager.hpp; sourceTree = "<group>"; };
 		1F2463B1219A660D009A67AC /* IOContextPool.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IOContextPool.cpp; sourceTree = "<group>"; };
 		1F2463B2219A660D009A67AC /* IOContextPool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IOContextPool.hpp; sourceTree = "<group>"; };
+		1F2E1E3F219EB70200882241 /* ServerConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServerConfig.json; sourceTree = "<group>"; };
 		1F365403215A15B1003B9FAD /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
 		1F365404215A15B1003B9FAD /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
 		1F365405215A15B1003B9FAD /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
@@ -274,6 +275,7 @@
 				1F95CE74218BFCE90057618A /* ng */,
 				1F95CE75218BFCE90057618A /* CPGHeader.h */,
 				1F95CE76218BFCE90057618A /* CPGToCentral.pb.h */,
+				1F2E1E3F219EB70200882241 /* ServerConfig.json */,
 				1F95CE77218BFCE90057618A /* CPGToCentral.pb.cc */,
 				1F95CE79218BFCE90057618A /* CPGServerDefine.h */,
 				1F24639221994F29009A67AC /* cpg_match_struct_define.h */,

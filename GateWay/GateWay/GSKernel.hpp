@@ -31,17 +31,20 @@ public:
     }
     
     void start();
-    
     void removeConnectService(int uuid);
     
+    
+    
+    void transToLS(const void* data, const PacketHeader& header);
+    void transToCS(const void* data, const PacketHeader& header);
+    void transToMS(const void* data, const PacketHeader& header, int mid);
 private:
      void runOneService(const ServerNetConfig::ServerInfo& config);
     
 public:
     
-    void transToLS(const void* data, const PacketHeader& header);
-    void transToCS(const void* data, const PacketHeader& header);
-    void transToMS(const void* data, const PacketHeader& header, int mid);
+    void distibuteMatchesNotify(const void* buffer, const PacketHeader& header);
+    
 protected:
     
     virtual std::shared_ptr<TCPSession>

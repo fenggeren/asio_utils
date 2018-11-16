@@ -164,7 +164,10 @@ void ServerConfigManager::parseConnectors()
             // 通过json的连接类型， 获取连接信息
             for(auto type : types)
             {
-                info.connectInfos = connectInfos(type, service.type);
+                for (auto& conn : connectInfos(type, service.type))
+                {
+                    info.connectInfos.push_back(conn);
+                }
             }
         }
     }

@@ -11,12 +11,12 @@
 
 
 int
-CSMatchLoadedEvaluation::evaluate(unsigned int sid, const std::list<int>& mids)
+CSMatchLoadedEvaluation::evaluate(int sid, const std::list<int>& mids)
 {
     return mids.size();
 }
 
-void CSMatchLoadedEvaluation::updateLoaded(unsigned sid,
+void CSMatchLoadedEvaluation::updateLoaded(int sid,
                          std::map<MatchDisService, std::list<int>>& services)
 {
     auto iter = services.find({sid, 0});

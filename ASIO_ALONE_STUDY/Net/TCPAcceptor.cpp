@@ -39,9 +39,10 @@ void TCPAcceptor::listen(unsigned short port, bool ipv6)
         
         listenInternal();
     }
-    catch (...)
+    catch (const std::exception& ec)
     {
-        LOG_ERROR << "cannot bind/listen on port.";
+        LOG_ERROR << "cannot bind/listen on port." << port
+        << " err: " << ec.what();
     }
 }
 

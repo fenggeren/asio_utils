@@ -20,6 +20,7 @@ namespace fasio
 {
 
 #define INVALID_UUID -1
+#define INVALID_LID -1
     
 using asio::ip::tcp;
 class TCPSession;
@@ -77,8 +78,8 @@ public:
     
     bool isClient() const { return client_; }
     
-    void setLogicID(uint32 logicID) { logicID_ = logicID; }
-    uint32 logicID() const { return logicID_; }
+    void setLogicID(int32 logicID) { logicID_ = logicID; }
+    int32 logicID() const { return logicID_; }
     
 public:
     ///////  设置回调   /////////
@@ -133,7 +134,7 @@ protected:
     
     int32 uuid_{INVALID_UUID};
     
-    uint32 logicID_{0};
+    int32 logicID_{INVALID_LID};
     
     bool client_{false};
     static std::atomic<int> num_;

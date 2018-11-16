@@ -20,9 +20,9 @@ class CSMatchLoadedEvaluation
 {
 public:
     
-    static int evaluate(unsigned int sid, const std::list<int>& mids);
+    static int evaluate(int sid, const std::list<int>& mids);
     
-    static void updateLoaded(unsigned sid,
+    static void updateLoaded(int sid,
                     std::map<MatchDisService, std::list<int>>& services);
 private:
     

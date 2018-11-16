@@ -31,11 +31,16 @@ bool G2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header)
 {
     switch (header.type) {
-            case kLoginRS:
+        case kLoginRS:
             {
                 serverLoginRS(buffer, header.size);
                 break;
             }
+        case kServerMatchDistributeNotify:
+        {
+            GSKernel::instance().distibuteMatchesNotify(buffer, header);
+            break;
+        }
             default:
                 break;
     }

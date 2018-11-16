@@ -8,6 +8,7 @@
 
 #pragma once
 #include <string>
+#include <vector>
 
 #define MAIN "main"
 
@@ -25,13 +26,6 @@
 
 #define kConnectRQ    10001
 #define kConnectRS    10002
-
-
-
-
-
-
-
 
 
 
@@ -82,12 +76,20 @@ struct GateServerConfig
 };
 
 
+
 // 服务器统计信息
 struct ServerInfo
 {
+    // 服务器监听的信息.
+    struct Listener
+    {
+        unsigned char           type{0};
+        unsigned short          port{0};
+        std::string             ip;
+    };
+    
     unsigned char           type{0};
-    unsigned short          port{0};
-    unsigned int            sid{0};
+    int                     sid{0};
     unsigned int            connectTimes{0};
     unsigned int            lastHeartTimes{0};
              int            loaded{0};  // 负载
@@ -95,8 +97,8 @@ struct ServerInfo
     unsigned long long      msgSended{0};
     unsigned long long      dataReceived{0};
     unsigned long long      dataSended{0};
-    std::string             ip;
-    std::string    exportIp;      // 对外ip  只有GateWay有效，其他服务是无效的！
+    std::vector<Listener>     listeners; // 监听信息
+    std::vector<int>         connectTypes; //需要连接其他的服务类型
 };
 
 
