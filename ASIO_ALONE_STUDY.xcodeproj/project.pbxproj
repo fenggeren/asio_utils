@@ -39,6 +39,7 @@
 		8139F612219DA66200684D69 /* DBActiveWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F610219DA66200684D69 /* DBActiveWrapper.cpp */; };
 		8139F61721A2F03700684D69 /* ActiveBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F61521A2F03700684D69 /* ActiveBuffer.cpp */; };
 		8139F61A21A2F67400684D69 /* SQLConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F61821A2F67400684D69 /* SQLConnector.cpp */; };
+		8139F61D21A3051D00684D69 /* EventActive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F61B21A3051D00684D69 /* EventActive.cpp */; };
 		81994CDA219074960034623E /* CPGClient.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CD9219074960034623E /* CPGClient.proto */; };
 		81994CDC21907A190034623E /* CPGCommon.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CDB21907A190034623E /* CPGCommon.proto */; };
 /* End PBXBuildFile section */
@@ -135,6 +136,8 @@
 		8139F61621A2F03700684D69 /* ActiveBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ActiveBuffer.hpp; sourceTree = "<group>"; };
 		8139F61821A2F67400684D69 /* SQLConnector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SQLConnector.cpp; sourceTree = "<group>"; };
 		8139F61921A2F67400684D69 /* SQLConnector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SQLConnector.hpp; sourceTree = "<group>"; };
+		8139F61B21A3051D00684D69 /* EventActive.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EventActive.cpp; sourceTree = "<group>"; };
+		8139F61C21A3051D00684D69 /* EventActive.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventActive.hpp; sourceTree = "<group>"; };
 		81994CD9219074960034623E /* CPGClient.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGClient.proto; sourceTree = "<group>"; };
 		81994CDB21907A190034623E /* CPGCommon.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGCommon.proto; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,6 +246,8 @@
 				1FE3E87621894B7100A2F52D /* NetPacket.cpp */,
 				1FE3E87721894B7100A2F52D /* NetPacket.hpp */,
 				8139F5F32196B9CD00684D69 /* Active.hpp */,
+				8139F61B21A3051D00684D69 /* EventActive.cpp */,
+				8139F61C21A3051D00684D69 /* EventActive.hpp */,
 				8139F61521A2F03700684D69 /* ActiveBuffer.cpp */,
 				8139F61621A2F03700684D69 /* ActiveBuffer.hpp */,
 			);
@@ -425,6 +430,7 @@
 				8123E1FA216B9C4A0050FD4D /* Thread.cpp in Sources */,
 				1F2463B3219A660D009A67AC /* IOContextPool.cpp in Sources */,
 				8123E200216CDD280050FD4D /* Conv.cpp in Sources */,
+				8139F61D21A3051D00684D69 /* EventActive.cpp in Sources */,
 				8139F612219DA66200684D69 /* DBActiveWrapper.cpp in Sources */,
 				1F36541D215A15B1003B9FAD /* Queue.cpp in Sources */,
 				1F36541E215A15B1003B9FAD /* TCPServer.cpp in Sources */,
