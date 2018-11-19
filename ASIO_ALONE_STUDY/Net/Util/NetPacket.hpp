@@ -25,14 +25,20 @@ public:
     static NetPacketPtr createPacket(const void* data,int len, int msgid, int extraid = 0);
     static NetPacketPtr createPacket(const std::string& data, int msgid, int extraid = 0);
     
+    
     NetPacket(const void* data, int size);
+    NetPacket(const void* data, const PacketHeader& header);
     NetPacket(const void* data, int size, int msgid, int extraid = 0);
     ~NetPacket();
     
     const void* buffer() const { return buffer_;}
     size_t size() const { return size_;}
-
+    
+    void setLogicID(int logicID) { logicID_ = logicID;}
+    int logicID() const { return logicID_; }
+    
 private:
+    int logicID_;
     char* buffer_;
     size_t size_;
 };

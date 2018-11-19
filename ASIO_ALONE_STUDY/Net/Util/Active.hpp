@@ -15,6 +15,7 @@
 #include <thread>
 #include "ObjectPool.hpp"
 #include "TimerManager.hpp"
+#include "../Conv.hpp"
 
 namespace fasio
 {
@@ -43,22 +44,9 @@ public:
             thread_->join();
             thread_ = nullptr;
         }
-        if (io_context_)
-        {
-            io_context_->stop();
-        }
     }
     
-    void enableTimer(asio::io_context& io)
-    {
-        timerManager_ = std::make_shared<TimerManager>(io);
-    }
-    void enableTimer()
-    {
-        io_context_ = std::make_shared<asio::io_context>();
-        timerManager_ = std::make_shared<TimerManager>(*io_context_);
-    }
-    
+
     void setCallback(const ActiveCallback &cb)
     {
         callback_ = cb;
@@ -102,14 +90,12 @@ public:
         eventPool_.releaseObject(event);
     }
     
+    int actorID() const { return activeID_;}
+    
 private:
  
     void run()
     {
-        if (io_context_)
-        {
-            io_context_->run();
-        }
         while (!stop_)
         {
             {
@@ -149,9 +135,6 @@ private:
     static std::atomic<int> globalActiveID_;
     ThreadSafeObjectPool<T, Tptr> eventPool_;
     ActiveCallback callback_;
-    
-    std::shared_ptr<TimerManager> timerManager_;
-    std::shared_ptr<asio::io_context> io_context_;
 };
 template <typename T, typename Tptr>
 std::atomic<int> Active<T, Tptr>::globalActiveID_{0};
