@@ -11,6 +11,7 @@
 #include <Net/TCPSessionManager.hpp>
 #include <Net/TCPSession.hpp> 
 #include <CPG/CPGHeader.h>
+#include <list>
 
 using namespace fasio;
 
@@ -27,7 +28,9 @@ public:
         return manager;
     }
     
-
+    
+    void updateMatchDistri(const std::map<int, std::list<int>>& matchesDist);
+    
 public:
     
     void transToMatchServer(int32 mid, const google::protobuf::Message& msg, int32 msgType);

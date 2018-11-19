@@ -99,7 +99,6 @@ protected:
     std::unordered_map<uint16 ,std::shared_ptr<TCPListener>> listeners_;
 //    std::unordered_map<int32, TCPSessionPtr>
     ObjectIndexPool<TCPSessionPtr> sessionMap_;
-     
 };
 
 

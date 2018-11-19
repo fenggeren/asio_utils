@@ -7,11 +7,13 @@
 //
 
 #include "TCPConnector.hpp"
+#include "logging/Logging.hpp"
 #include <iostream>
 
 namespace fasio
 {
 
+using namespace logging;
     
 static const int kMaxRetryDelayMs = 30000;
 static const int kInitRetryDelayMs = 500;
@@ -125,11 +127,13 @@ void TCPConnector::retry(SocketPtr socket)
             start();
         });
         retryDelayMs_ = std::min(retryDelayMs_ * 2, kMaxRetryDelayMs);
-        std::cout << " retry delay ms_ " << retryDelayMs_ << std::endl;
+        LOG_MINFO << " retry delay remote endpoint: "
+        << address_ << ":" << port_
+        << "  " << retryDelayMs_ << " ms";
     }
     else
     {
-        std::cout << "do not connect" << std::endl;
+        LOG_MINFO << "do not connect";
     }
 }
 

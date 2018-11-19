@@ -16,8 +16,7 @@
 #include <google/protobuf/message.h>
 #include <list>
 
-using namespace fasio;
-static asio::io_context g_IoContext;
+using namespace fasio; 
 
 
 class GSKernel : public ServiceKernel
@@ -38,26 +37,32 @@ public:
     void transToLS(const void* data, const PacketHeader& header);
     void transToCS(const void* data, const PacketHeader& header);
     void transToMS(const void* data, const PacketHeader& header, int mid);
-private:
-     void runOneService(const ServerNetConfig::ServerInfo& config);
+
     
 public:
-    
+    // 比赛分配
     void distibuteMatchesNotify(const void* buffer, const PacketHeader& header);
+
+private:
+    void runOneService(const ServerNetConfig::ServerInfo& config);
+    // 比赛id 对应的 matchService session
+    TCPSessionPtr matchServiceSession(int mid);
     
 protected:
     
     virtual std::shared_ptr<TCPSession>
     connectService(unsigned short type,
                    unsigned short port,
-                   unsigned short sid,
+                   short sid,
                    const std::string& ip) override;
     virtual
     std::shared_ptr<TCPSessionFactory>
     sessionFactory(int type, asio::io_context& ioc) override;
 private:
-    // 比赛id <=> match info
-    std::unordered_map<uint32, TCPSessionPtr> matchesServices_;
+    // 比赛id, match service session
+    std::unordered_map<int, TCPSessionPtr> matchesServices_;
+    // sid , <mid>
+    std::map<int, std::list<int>> matchesDistriMaps_; //
     
     TCPSessionPtr loginSession_;
     TCPSessionPtr centralSession_;

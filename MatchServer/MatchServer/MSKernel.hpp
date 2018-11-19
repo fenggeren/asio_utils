@@ -9,6 +9,7 @@
 #pragma once 
 #include <CPG/CPGHeader.h>
 #include <Net/ServiceKernel.hpp>
+#include <google/protobuf/message.h>
 
 using namespace fasio; 
 
@@ -25,11 +26,16 @@ public:
     
     void removeConnectService(int uuid);
     
-    void transToCS(const void* data, const PacketHeader& header);
-    
-private:
-    
     void runOneService(const ServerNetConfig::ServerInfo& config);
+    
+    
+public: // send
+    
+     void transToCS(const void* data, const PacketHeader& header);
+    
+    void sendMsg(const std::shared_ptr<TCPSession>& session,
+                 google::protobuf::Message& msg,
+                 int type, int extraID);
     
 public:
     
@@ -40,7 +46,7 @@ protected:
     virtual std::shared_ptr<TCPSession>
     connectService(unsigned short type,
                    unsigned short port,
-                   unsigned short sid,
+                   short sid,
                    const std::string& ip) override;
     virtual
     std::shared_ptr<TCPSessionFactory>

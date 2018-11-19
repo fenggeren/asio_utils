@@ -47,7 +47,50 @@ void GSKernel::runOneService(const ServerNetConfig::ServerInfo& config)
 
 void GSKernel::distibuteMatchesNotify(const void* buffer, const PacketHeader& header)
 {
-    
+    LOG_DEBUG << "";
+    CPGToCentral::ServerAllMatchDistributeNotify notify;
+    if (fasio::parseProtoMsg(buffer, header.size, notify))
+    {
+        // sid : <mid>
+        std::map<int, std::list<int>> matchDistr;
+        for(auto& service : notify.services())
+        {
+            auto iter = matchDistr.find(service.sid());
+            if (iter != matchDistr.end())
+            {
+                LOG_MINFO << "old match distr sid: " << service.sid()
+                << " mids: " << jointContainer(iter->second);
+                matchDistr.erase(iter);
+            }
+            matchDistr[service.sid()].clear();
+            for(auto mid : service.mid())
+            {
+                matchDistr[service.sid()].push_back(mid);
+            }
+            
+            LOG_MINFO << "new match distr sid: " << service.sid()
+            << " mids: " << jointContainer(service.mid());
+        }
+        
+        // 转化---
+        //        SessionManager.updateMatchDistri(matchDistr);
+        for(auto& pair : matchDistr)
+        {
+            auto session = connectServiceSession(pair.first);
+            if (session)
+            {
+                for(auto mid : pair.second)
+                {
+                    matchesServices_[mid] = session;
+                }
+            }
+            else
+            {
+                LOG_ERROR << " cant found connect service session: " << pair.first;
+            }
+        }
+        matchesDistriMaps_ = matchDistr;
+    }
 }
 
 std::shared_ptr<TCPSessionFactory>
@@ -64,10 +107,10 @@ GSKernel::sessionFactory(int type, asio::io_context& ioc)
 std::shared_ptr<TCPSession>
 GSKernel::connectService(unsigned short type,
                            unsigned short port,
-                           unsigned short sid,
+                           short sid,
                            const std::string& ip)
 {
-    auto session = SessionManager.createConnector(type, g_IoContext,  ip, port);
+    auto session = SessionManager.createConnector(type, getIoContext(),  ip, port);
     if (type == ServerType_LoginServer)
     {
         if (loginSession_)
@@ -84,18 +127,53 @@ GSKernel::connectService(unsigned short type,
 
 void GSKernel::removeConnectService(int uuid)
 {
-    connectServices_.erase(uuid);
-    
-    if (loginSession_ && uuid == loginSession_->uuid())
+    auto session = connectSession(uuid);
+    if (session)
     {
-        loginSession_ = nullptr;
+        // 比赛服， 移除相关比赛分配信息
+        if (session->type() == ServerType_MatchServer)
+        {
+            std::list<int> rmvMids;
+            for (auto iter = matchesServices_.begin(); iter != matchesServices_.end();)
+            {
+                if (iter->second == session)
+                {
+                    rmvMids.push_back(iter->first);
+                    iter = matchesServices_.erase(iter);
+                }
+                else
+                {
+                    iter++;
+                }
+            }
+            
+            LOG_MINFO << "removed match service session for matches matches: "
+                << jointContainer(rmvMids);
+        }
+        
+        
+        connectServices_.erase(uuid);
+        
+        if (loginSession_ && uuid == loginSession_->uuid())
+        {
+            loginSession_ = nullptr;
+        }
+        else if (centralSession_ && uuid == centralSession_->uuid())
+        {
+            centralSession_ = nullptr;
+        }
     }
-    else if (centralSession_ && uuid == centralSession_->uuid())
-    {
-        centralSession_ = nullptr;
-    }
+ 
 }
-
+inline TCPSessionPtr GSKernel::matchServiceSession(int mid)
+{
+    auto iter = matchesServices_.find(mid);
+    if (iter != matchesServices_.end())
+    {
+        return iter->second;
+    }
+    return nullptr;
+}
 
 void GSKernel::transToLS(const void* data, const PacketHeader& header)
 {
@@ -122,11 +200,21 @@ void GSKernel::transToCS(const void* data, const PacketHeader& header)
         << " msgid: " << header.type;
     }
 }
+
 void GSKernel::transToMS(const void* data, const PacketHeader& header, int mid)
 {
     if (matchesServices_.size() > 0)
     {
-        
+        // mid 对应session 是否存在--
+        auto session = matchServiceSession(mid);
+        if (session)
+        {
+            SessionManager.sendMsg(session, data, header);
+        }
+        else
+        {
+            LOG_ERROR << " cant found match service for mid: " << mid;
+        }
     }
     else
     {

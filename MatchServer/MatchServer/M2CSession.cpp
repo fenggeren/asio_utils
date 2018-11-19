@@ -60,8 +60,8 @@ void M2CSession::checkMatchDistribute()
     {
         rq.add_mids(mid);
     }
-    PacketHeader header{kCheckMatchDistributeRQ, rq.ByteSize(), static_cast<int32>(uuid())};
-    SessionManager.sendMsg(shared_from_this(), rq.SerializeAsString().data(), header);
+    MSKernel::instance().sendMsg(shared_from_this(), rq,
+                                 kCheckMatchDistributeRQ,uuid());
 }
 
 bool M2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,

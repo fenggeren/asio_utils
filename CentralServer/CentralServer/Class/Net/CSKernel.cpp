@@ -40,18 +40,7 @@ void CSKernel::start(const ServerNetConfig::ServerInfo& config)
                                        connect.ip,
                                        connect.port);
     }
-    
-    //
-//    auto gateFactory = ;
-//    SessionManager.createListener(7801, false, gateFactory);
-//    auto matchFactory = ;
-//    SessionManager.createListener(7802, false, matchFactory);
-//    auto loginFactory = ;
-//    SessionManager.createListener(7803, false, loginFactory);
-//    auto balanceFactory = ;
-//    SessionManager.createListener(7804, false, balanceFactory);
-    
-    CSMatchManager::instance().setChangedMatchMapCB(std::bind(&CSKernel::distributeMatch, this, std::placeholders::_1));
+ CSMatchManager::instance().setChangedMatchMapCB(std::bind(&CSKernel::distributeMatch, this, std::placeholders::_1));
     
     curIoCtx.run();
 }
@@ -177,23 +166,30 @@ void CSKernel::serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo>
     CPGToCentral::ServerRegisterRS rs;
     rs.set_result(0);
     rs.set_sid(info->sid);
-
+ 
+    
     for(auto type : info->connectTypes)
     {
         for(auto& pair : servers_)
         {
-            for (auto& listen : pair.second->listeners)
+            // 找到连接服务类型 匹配的 服务
+            if (pair.second->type == type)
             {
-                if (type == listen.type)
+                // 遍历匹配服务所有的listener信息
+                for (auto& listen : pair.second->listeners)
                 {
-                    auto conn = rs.add_connservers();
-                    conn->set_port(listen.port);
-                    conn->set_sid(pair.first);
-                    conn->set_ip(listen.ip);
-                    conn->set_type(type);
+                    if (session->type() == listen.type)
+                    {
+                        auto conn = rs.add_connservers();
+                        conn->set_port(listen.port);
+                        conn->set_sid(pair.second->sid);
+                        conn->set_ip(listen.ip);
+                        conn->set_type(type);
+                    }
                 }
             }
         }
+
     }
     SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
     
@@ -310,11 +306,11 @@ void CSKernel::sendAllDistributeMatchInfos(TCPSessionPtr session, int stype)
     auto map = CSMatchManager::instance().getAllMatchServices();
     for(auto& pair : map)
     {
-        CPGToCentral::ServiceMatchDistibuteNotify notify;
-        notify.set_sid(pair.first.sid);
+        CPGToCentral::ServiceMatchDistibuteNotify& subnotify = *notify.add_services();;
+        subnotify.set_sid(pair.first.sid);
         for(auto mid : pair.second)
         {
-            notify.add_mid(mid);
+            subnotify.add_mid(mid);
         }
         
         LOG_MINFO << "sendToGS "
@@ -325,7 +321,7 @@ void CSKernel::sendAllDistributeMatchInfos(TCPSessionPtr session, int stype)
     // 如果 GS还再连接着MS A，
     // 但是MS A已经从CS断开
     // 是否需要清除掉 比赛分配信息？
-    PacketHeader header{kServerMatchDistributeNotify, notify.ByteSize(), 0};
+    PacketHeader header{kServerAllMatchDistributeNotify, notify.ByteSize(), 0};
     SessionManager.sendMsg(session,
                            notify.SerializeAsString().data(),
                            header, stype);

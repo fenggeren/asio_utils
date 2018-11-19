@@ -36,7 +36,7 @@ bool G2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                 serverLoginRS(buffer, header.size);
                 break;
             }
-        case kServerMatchDistributeNotify:
+        case kServerAllMatchDistributeNotify:
         {
             GSKernel::instance().distibuteMatchesNotify(buffer, header);
             break;

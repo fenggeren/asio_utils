@@ -69,7 +69,7 @@ void BSKernel::removeConnectService(int uuid)
 std::shared_ptr<TCPSession>
 BSKernel::connectService(unsigned short type,
                          unsigned short port,
-                         unsigned short sid,
+                         short sid,
                          const std::string& ip)
 {
     return SessionManager.createConnector(type, g_IoContext,  ip, port);

@@ -17,6 +17,14 @@
 using namespace fasio::logging;
 
 
+void GSSessionManager::updateMatchDistri(const std::map<int, std::list<int>>& matchesDist)
+{
+    for(auto& pair : matchesDist)
+    {
+        
+    }
+}
+
 void GSSessionManager::transToMatchServer(int32 mid, const google::protobuf::Message& msg, int32 msgType)
 {
     // 根据比赛 mid 获取对应的 G2MSession!
@@ -32,6 +40,8 @@ void GSSessionManager::transToMatchServer(int32 mid, const google::protobuf::Mes
         LOG_ERROR << " not found matchserver for mid: " << mid;
     }
 }
+
+
 
 std::shared_ptr<ClientSession>
 GSSessionManager::createConnectorSession(uint8 type)

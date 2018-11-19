@@ -18,9 +18,9 @@ namespace fasio
     
     struct ServiceConfig
     {
-        unsigned short type;
+        short type;
         unsigned short port;
-        unsigned short sid;
+        short sid;
         std::string    ip;
         std::shared_ptr<TCPSession> session_;
     };
@@ -31,12 +31,14 @@ namespace fasio
         
         int checkConnectService(const ServiceConfig& config);
         
-        void addNewConnect(unsigned short type,
+        void addNewConnect(short type,
                            unsigned short port,
-                           unsigned short sid,
+                           short sid,
                            const std::string& ip);
         
-        
+        // @sid  service id
+        std::shared_ptr<TCPSession> connectServiceSession(int sid) const;
+        std::shared_ptr<TCPSession> connectSession(int uuid) const;
     protected:
         
         void netInitializer(const ServerNetConfig::ServerInfo& info,
@@ -46,7 +48,7 @@ namespace fasio
         virtual std::shared_ptr<TCPSession>
         connectService(unsigned short type,
                        unsigned short port,
-                       unsigned short sid,
+                       short sid,
                        const std::string& ip) = 0;
         
         virtual

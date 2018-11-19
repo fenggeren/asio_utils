@@ -23,7 +23,7 @@ void LSKernel::start()
     auto& manager = ServerConfigManager::instance();
     manager.setType(ServerType_MatchServer);
     ServerNetConfig config;
-    if (manager.configForType(ServerType_MatchServer,  config))
+    if (manager.configForType(ServerType_LoginServer,  config))
     {
         for(auto& info : config.infos)
         {
@@ -67,7 +67,7 @@ void LSKernel::removeConnectService(int uuid)
 std::shared_ptr<TCPSession>
 LSKernel::connectService(unsigned short type,
                          unsigned short port,
-                         unsigned short sid,
+                         short sid,
                          const std::string& ip)
 {
     return SessionManager.createConnector(type, g_IoContext,  ip, port);

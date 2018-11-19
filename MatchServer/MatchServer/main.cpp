@@ -13,8 +13,7 @@
 
 int main(int argc, const char * argv[]) {
 
-    MSKernel kernel;
-    kernel.start();
+    MSKernel::instance().start();
     
     return 0;
 }

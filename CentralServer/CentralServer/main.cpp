@@ -17,9 +17,7 @@ int main(int argc, const char * argv[]) {
     fasio::setCurThreadName("main");
     
     CSMatchManager::instance().initialize();
-    
-    
-    
+
     auto manager = ServerConfigManager::instance();
     manager.setType(ServerType_MatchServer);
     ServerNetConfig config;

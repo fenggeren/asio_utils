@@ -2,4 +2,54 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CentralServer/Class/Net/CSKernel.cpp"
+            timestampString = "564305522.5632139"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "CSKernel::serverRegistRS(TCPSessionPtr session, std::shared_ptr&lt;ServerInfo&gt; info)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CSKernel::serverRegistRS(std::__1::shared_ptr&lt;fasio::TCPSession&gt;, std::__1::shared_ptr&lt;ServerInfo&gt;)"
+                  moduleName = "CentralServer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/huanao/Desktop/MyProjects/asio_utils/CentralServer/CentralServer/Class/Net/CSKernel.cpp"
+                  timestampString = "564305522.777537"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "169">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CSKernel::serverRegistRS(std::__1::shared_ptr&lt;fasio::TCPSession&gt;, std::__1::shared_ptr&lt;ServerInfo&gt;)"
+                  moduleName = "CentralServer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/huanao/Desktop/MyProjects/asio_utils/CentralServer/CentralServer/Class/Net/CSKernel.cpp"
+                  timestampString = "564305522.779256"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "621">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

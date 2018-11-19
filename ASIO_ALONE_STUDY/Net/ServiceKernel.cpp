@@ -34,9 +34,7 @@ namespace fasio
         
         for(auto& connect : info.connectInfos)
         {
-            manager.createConnector(connect.type, ioc,
-                                           connect.ip,
-                                           connect.port);
+            addNewConnect(connect.type, connect.port, INVALID_LID, connect.ip);
         }
     }
     
@@ -51,14 +49,42 @@ namespace fasio
         return INVALID_UUID;
     }
     
-    void ServiceKernel::addNewConnect(unsigned short type,
+    std::shared_ptr<TCPSession>
+    ServiceKernel::connectServiceSession(int sid) const
+    {
+        for(auto& pair : connectServices_)
+        {
+            if (pair.second.sid == sid)
+            {
+                return pair.second.session_;
+            }
+        }
+        return nullptr;
+    }
+    std::shared_ptr<TCPSession>
+    ServiceKernel::connectSession(int uuid) const
+    {
+        auto iter = connectServices_.find(uuid);
+        if (iter != connectServices_.end())
+        {
+            return iter->second.session_;
+        }
+        return nullptr;
+    }
+    
+    void ServiceKernel::addNewConnect(short type,
                        unsigned short port,
-                       unsigned short sid,
+                       short sid,
                        const std::string& ip)
     {
+        LOG_MINFO << " type: " << type
+        << " address: " << ip << ":" << port
+        << " sid: " << sid;
         ServiceConfig config{type, port, sid, ip};
         int uuid = checkConnectService(config);
-        if (uuid == INVALID_UUID)
+        // uuid: 动态返回的未连接该服务
+        // sid: 启动后就发起的连接。
+        if (uuid == INVALID_UUID || sid == INVALID_UUID)
         {
             // 正常创建新连接
             auto session = connectService(type, port, sid, ip);

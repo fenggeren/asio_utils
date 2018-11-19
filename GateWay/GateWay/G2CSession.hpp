@@ -14,19 +14,23 @@ using namespace fasio;
 class G2CSession : public CPGToCentralSession
 {
 public:
+    
+    
+    
+    
+    
 private:
     
     virtual void onClose() override;
     virtual void sendInitData() override;
     
-private:
-    
-    
-    
     virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer,
                             const PacketHeader& header) override;
     virtual ServiceKernel& serviceKernel() override;
+    
+    
+    
 private:
      
     void serverLoginRS(const void* data, int len);

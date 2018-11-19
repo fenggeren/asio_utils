@@ -79,11 +79,18 @@ void MSKernel::transToCS(const void* data, const PacketHeader& header)
         << " msgid: " << header.type;
     }
 }
+void MSKernel::sendMsg(const TCPSessionPtr& session,
+             google::protobuf::Message& msg,
+             int type, int extraID)
+{
+    PacketHeader header{kCheckMatchDistributeRQ, msg.ByteSize(), extraID};
+    SessionManager.sendMsg(session, msg.SerializeAsString().data(), header);
+}
 
 std::shared_ptr<TCPSession>
 MSKernel::connectService(unsigned short type,
                          unsigned short port,
-                         unsigned short sid,
+                         short sid,
                          const std::string& ip)
 {
     return SessionManager.createConnector(type, getIoContext(),  ip, port);

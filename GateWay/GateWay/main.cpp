@@ -11,8 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     
-    GSKernel kernel;
-    kernel.start();
+    GSKernel::instance().start();
     
     return 0;
 }

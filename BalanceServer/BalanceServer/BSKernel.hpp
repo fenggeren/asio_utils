@@ -43,7 +43,7 @@ protected:
     virtual std::shared_ptr<TCPSession>
     connectService(unsigned short type,
                    unsigned short port,
-                   unsigned short sid,
+                   short sid,
                    const std::string& ip) override;
     virtual
     std::shared_ptr<TCPSessionFactory>
