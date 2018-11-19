@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		1F24634C2193F0F5009A67AC /* ServiceKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463492193F0F5009A67AC /* ServiceKernel.cpp */; };
 		1F24636B21942268009A67AC /* CPGNetSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F24636921942268009A67AC /* CPGNetSession.cpp */; };
+		1F2E1E4721A2A60C00882241 /* IOContextPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1E4221A2A60700882241 /* IOContextPool.cpp */; };
+		1F2E1E4821A2A60C00882241 /* TimerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1E4421A2A60800882241 /* TimerManager.cpp */; };
 		1FE3E889218983F800A2F52D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E888218983F800A2F52D /* main.cpp */; };
 		1FE3E8B22189896400A2F52D /* Robot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8B02189896400A2F52D /* Robot.cpp */; };
 		1FE3E8E521899E6600A2F52D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8B721899E6600A2F52D /* Thread.cpp */; };
-		1FE3E8E621899E6600A2F52D /* RunLoop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8B921899E6600A2F52D /* RunLoop.cpp */; };
 		1FE3E8E721899E6600A2F52D /* NetPacket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8C021899E6600A2F52D /* NetPacket.cpp */; };
 		1FE3E8E821899E6600A2F52D /* ParseProto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8C221899E6600A2F52D /* ParseProto.cpp */; };
 		1FE3E8E921899E6600A2F52D /* TCPListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8C421899E6600A2F52D /* TCPListener.cpp */; };
@@ -28,7 +29,6 @@
 		1FE3E8F321899E6600A2F52D /* Logging.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8DD21899E6600A2F52D /* Logging.cpp */; };
 		1FE3E8F421899E6600A2F52D /* Timestamp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8DE21899E6600A2F52D /* Timestamp.cpp */; };
 		1FE3E8F521899E6600A2F52D /* TCPConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8E021899E6600A2F52D /* TCPConnector.cpp */; };
-		1FE3E8F621899E6600A2F52D /* FASIOType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E8E421899E6600A2F52D /* FASIOType.cpp */; };
 		81994CEE21907DE40034623E /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81994CED21907DE40034623E /* libprotobuf.a */; };
 		81994CF121907E010034623E /* CPGClient.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 81994CF021907E000034623E /* CPGClient.pb.cc */; };
 		81994CF4219080470034623E /* RobotSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81994CF2219080470034623E /* RobotSession.cpp */; };
@@ -53,13 +53,20 @@
 		1F24634A2193F0F5009A67AC /* ServiceKernel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ServiceKernel.hpp; sourceTree = "<group>"; };
 		1F24636921942268009A67AC /* CPGNetSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGNetSession.cpp; sourceTree = "<group>"; };
 		1F24636A21942268009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
+		1F2E1E4221A2A60700882241 /* IOContextPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOContextPool.cpp; sourceTree = "<group>"; };
+		1F2E1E4321A2A60700882241 /* FASIO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FASIO.hpp; sourceTree = "<group>"; };
+		1F2E1E4421A2A60800882241 /* TimerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimerManager.cpp; sourceTree = "<group>"; };
+		1F2E1E4521A2A60800882241 /* TimerManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TimerManager.hpp; sourceTree = "<group>"; };
+		1F2E1E4621A2A60800882241 /* IOContextPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOContextPool.hpp; sourceTree = "<group>"; };
+		1F2E1E4921A2A61800882241 /* Active.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Active.hpp; sourceTree = "<group>"; };
+		1F2E1E4A21A2A61800882241 /* ObjectPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectPool.hpp; sourceTree = "<group>"; };
+		1F2E1E4B21A2A61900882241 /* ObjectIndexPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObjectIndexPool.hpp; sourceTree = "<group>"; };
 		1FE3E885218983F800A2F52D /* ClientRobots */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ClientRobots; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE3E888218983F800A2F52D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1FE3E8B02189896400A2F52D /* Robot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Robot.cpp; sourceTree = "<group>"; };
 		1FE3E8B12189896400A2F52D /* Robot.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Robot.hpp; sourceTree = "<group>"; };
 		1FE3E8B721899E6600A2F52D /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
 		1FE3E8B821899E6600A2F52D /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
-		1FE3E8B921899E6600A2F52D /* RunLoop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RunLoop.cpp; sourceTree = "<group>"; };
 		1FE3E8BA21899E6600A2F52D /* NetSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetSessionManager.hpp; sourceTree = "<group>"; };
 		1FE3E8BB21899E6600A2F52D /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
 		1FE3E8BC21899E6600A2F52D /* TCPSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPSessionManager.hpp; sourceTree = "<group>"; };
@@ -71,7 +78,6 @@
 		1FE3E8C321899E6600A2F52D /* Callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callbacks.h; sourceTree = "<group>"; };
 		1FE3E8C421899E6600A2F52D /* TCPListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPListener.cpp; sourceTree = "<group>"; };
 		1FE3E8C521899E6600A2F52D /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
-		1FE3E8C621899E6600A2F52D /* NetBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetBase.hpp; sourceTree = "<group>"; };
 		1FE3E8C721899E6600A2F52D /* TCPServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPServer.hpp; sourceTree = "<group>"; };
 		1FE3E8C821899E6600A2F52D /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
 		1FE3E8C921899E6600A2F52D /* Conv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Conv.hpp; sourceTree = "<group>"; };
@@ -90,7 +96,6 @@
 		1FE3E8D621899E6600A2F52D /* TCPClient.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPClient.hpp; sourceTree = "<group>"; };
 		1FE3E8D721899E6600A2F52D /* Thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Thread.hpp; sourceTree = "<group>"; };
 		1FE3E8D821899E6600A2F52D /* DataHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataHandler.cpp; sourceTree = "<group>"; };
-		1FE3E8D921899E6600A2F52D /* RunLoop.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RunLoop.hpp; sourceTree = "<group>"; };
 		1FE3E8DA21899E6600A2F52D /* TCPSessionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPSessionManager.cpp; sourceTree = "<group>"; };
 		1FE3E8DC21899E6600A2F52D /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
 		1FE3E8DD21899E6600A2F52D /* Logging.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logging.cpp; sourceTree = "<group>"; };
@@ -184,7 +189,6 @@
 				1F24634A2193F0F5009A67AC /* ServiceKernel.hpp */,
 				1FE3E8B721899E6600A2F52D /* Thread.cpp */,
 				1FE3E8B821899E6600A2F52D /* DataHandler.hpp */,
-				1FE3E8B921899E6600A2F52D /* RunLoop.cpp */,
 				1FE3E8BA21899E6600A2F52D /* NetSessionManager.hpp */,
 				1FE3E8BB21899E6600A2F52D /* TCPConnector.hpp */,
 				1FE3E8BC21899E6600A2F52D /* TCPSessionManager.hpp */,
@@ -193,8 +197,12 @@
 				1FE3E8C321899E6600A2F52D /* Callbacks.h */,
 				1FE3E8C421899E6600A2F52D /* TCPListener.cpp */,
 				1FE3E8C521899E6600A2F52D /* Queue.hpp */,
-				1FE3E8C621899E6600A2F52D /* NetBase.hpp */,
 				1FE3E8C721899E6600A2F52D /* TCPServer.hpp */,
+				1F2E1E4321A2A60700882241 /* FASIO.hpp */,
+				1F2E1E4221A2A60700882241 /* IOContextPool.cpp */,
+				1F2E1E4621A2A60800882241 /* IOContextPool.hpp */,
+				1F2E1E4421A2A60800882241 /* TimerManager.cpp */,
+				1F2E1E4521A2A60800882241 /* TimerManager.hpp */,
 				1FE3E8C821899E6600A2F52D /* TCPListener.h */,
 				1FE3E8C921899E6600A2F52D /* Conv.hpp */,
 				1FE3E8CA21899E6600A2F52D /* DataBuffer.cpp */,
@@ -212,7 +220,6 @@
 				1FE3E8D621899E6600A2F52D /* TCPClient.hpp */,
 				1FE3E8D721899E6600A2F52D /* Thread.hpp */,
 				1FE3E8D821899E6600A2F52D /* DataHandler.cpp */,
-				1FE3E8D921899E6600A2F52D /* RunLoop.hpp */,
 				1FE3E8DA21899E6600A2F52D /* TCPSessionManager.cpp */,
 				1FE3E8DB21899E6600A2F52D /* logging */,
 				1FE3E8E021899E6600A2F52D /* TCPConnector.cpp */,
@@ -225,6 +232,9 @@
 		1FE3E8BE21899E6600A2F52D /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				1F2E1E4921A2A61800882241 /* Active.hpp */,
+				1F2E1E4B21A2A61900882241 /* ObjectIndexPool.hpp */,
+				1F2E1E4A21A2A61800882241 /* ObjectPool.hpp */,
 				1FE3E8BF21899E6600A2F52D /* ParseProto.hpp */,
 				1FE3E8C021899E6600A2F52D /* NetPacket.cpp */,
 				1FE3E8C121899E6600A2F52D /* NetPacket.hpp */,
@@ -331,6 +341,7 @@
 				1FE3E8F521899E6600A2F52D /* TCPConnector.cpp in Sources */,
 				1FE3E8EE21899E6600A2F52D /* Conv.cpp in Sources */,
 				1FE3E8E821899E6600A2F52D /* ParseProto.cpp in Sources */,
+				1F2E1E4821A2A60C00882241 /* TimerManager.cpp in Sources */,
 				81994CF4219080470034623E /* RobotSession.cpp in Sources */,
 				1FE3E8EC21899E6600A2F52D /* Queue.cpp in Sources */,
 				1FE3E8EA21899E6600A2F52D /* DataBuffer.cpp in Sources */,
@@ -342,11 +353,10 @@
 				1FE3E8E921899E6600A2F52D /* TCPListener.cpp in Sources */,
 				1FE3E8F221899E6600A2F52D /* TCPSessionManager.cpp in Sources */,
 				1FE3E8F021899E6600A2F52D /* TCPAcceptor.cpp in Sources */,
+				1F2E1E4721A2A60C00882241 /* IOContextPool.cpp in Sources */,
 				1FE3E8F421899E6600A2F52D /* Timestamp.cpp in Sources */,
 				1FE3E8F321899E6600A2F52D /* Logging.cpp in Sources */,
 				81994CF121907E010034623E /* CPGClient.pb.cc in Sources */,
-				1FE3E8E621899E6600A2F52D /* RunLoop.cpp in Sources */,
-				1FE3E8F621899E6600A2F52D /* FASIOType.cpp in Sources */,
 				1FE3E8F121899E6600A2F52D /* DataHandler.cpp in Sources */,
 				81994CF7219081470034623E /* RobotManager.cpp in Sources */,
 			);
