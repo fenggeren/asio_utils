@@ -22,18 +22,17 @@ port_(7841)
 {
     //
     TimerManager::createTimer([&]{
-
         int idx = arc4random_uniform(robotNums_);
         auto robot = robots_[idx];
         joinMatchRQ(robot);
-    }, io_context_, 10, 0.01, 10000);
-
+    }, io_context_, 11, 0.001, 10000000);
+    
     TimerManager::createTimer([&]{
         int idx = arc4random_uniform(robotNums_);
         auto robot = robots_[idx];
         unjoinMatchRQ(robot);
 
-    }, io_context_, 13, 0.03, 10000);
+    }, io_context_, 13, 0.001, 1000000);
     
 }
 

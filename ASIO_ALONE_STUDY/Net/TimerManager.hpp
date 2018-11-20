@@ -66,7 +66,7 @@ namespace fasio
                     if (--count_ > 0)
                     {
                         timer_->expires_after(std::chrono::milliseconds(S2M(interval_)));
-                        timer_->async_wait(std::forward<RepeatHandler>(*this));
+                        timer_->async_wait(std::move(*this));
                     }
                 }
             }
