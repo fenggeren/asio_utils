@@ -37,6 +37,9 @@
 		8139F607219B0FCD00684D69 /* SQLManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F605219B0FCC00684D69 /* SQLManager.cpp */; };
 		8139F60C219B109400684D69 /* libmysqlclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8139F60B219B109300684D69 /* libmysqlclient.a */; };
 		8139F612219DA66200684D69 /* DBActiveWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F610219DA66200684D69 /* DBActiveWrapper.cpp */; };
+		8139F61721A2F03700684D69 /* ActiveBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F61521A2F03700684D69 /* ActiveBuffer.cpp */; };
+		8139F61A21A2F67400684D69 /* SQLConnector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F61821A2F67400684D69 /* SQLConnector.cpp */; };
+		8139F61D21A3051D00684D69 /* EventActive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8139F61B21A3051D00684D69 /* EventActive.cpp */; };
 		81994CDA219074960034623E /* CPGClient.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CD9219074960034623E /* CPGClient.proto */; };
 		81994CDC21907A190034623E /* CPGCommon.proto in Sources */ = {isa = PBXBuildFile; fileRef = 81994CDB21907A190034623E /* CPGCommon.proto */; };
 /* End PBXBuildFile section */
@@ -124,13 +127,18 @@
 		8123E22521889FC20050FD4D /* TCPSessionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPSessionManager.cpp; sourceTree = "<group>"; };
 		8123E22621889FC20050FD4D /* TCPSessionManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPSessionManager.hpp; sourceTree = "<group>"; };
 		8123E22721889FC20050FD4D /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
-		8123E22821889FC20050FD4D /* NetBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetBase.hpp; sourceTree = "<group>"; };
 		8139F5F32196B9CD00684D69 /* Active.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Active.hpp; sourceTree = "<group>"; };
 		8139F605219B0FCC00684D69 /* SQLManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SQLManager.cpp; sourceTree = "<group>"; };
 		8139F606219B0FCC00684D69 /* SQLManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SQLManager.hpp; sourceTree = "<group>"; };
 		8139F60B219B109300684D69 /* libmysqlclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmysqlclient.a; path = "../../../../../usr/local/mysql-8.0.13-macos10.14-x86_64/lib/libmysqlclient.a"; sourceTree = "<group>"; };
 		8139F610219DA66200684D69 /* DBActiveWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DBActiveWrapper.cpp; sourceTree = "<group>"; };
 		8139F611219DA66200684D69 /* DBActiveWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DBActiveWrapper.hpp; sourceTree = "<group>"; };
+		8139F61521A2F03700684D69 /* ActiveBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ActiveBuffer.cpp; sourceTree = "<group>"; };
+		8139F61621A2F03700684D69 /* ActiveBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ActiveBuffer.hpp; sourceTree = "<group>"; };
+		8139F61821A2F67400684D69 /* SQLConnector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SQLConnector.cpp; sourceTree = "<group>"; };
+		8139F61921A2F67400684D69 /* SQLConnector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SQLConnector.hpp; sourceTree = "<group>"; };
+		8139F61B21A3051D00684D69 /* EventActive.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EventActive.cpp; sourceTree = "<group>"; };
+		8139F61C21A3051D00684D69 /* EventActive.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventActive.hpp; sourceTree = "<group>"; };
 		81994CD9219074960034623E /* CPGClient.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGClient.proto; sourceTree = "<group>"; };
 		81994CDB21907A190034623E /* CPGCommon.proto */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.protobuf; path = CPGCommon.proto; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,7 +195,6 @@
 				1F365418215A15B1003B9FAD /* TCPConnector.cpp */,
 				1F365406215A15B1003B9FAD /* Header.h */,
 				1F365408215A15B1003B9FAD /* Callbacks.h */,
-				8123E22821889FC20050FD4D /* NetBase.hpp */,
 				8123E22321889FC20050FD4D /* TCPListener.cpp */,
 				8123E22721889FC20050FD4D /* TCPListener.h */,
 				8123E22421889FC20050FD4D /* TCPSessionFactory.h */,
@@ -240,6 +247,10 @@
 				1FE3E87621894B7100A2F52D /* NetPacket.cpp */,
 				1FE3E87721894B7100A2F52D /* NetPacket.hpp */,
 				8139F5F32196B9CD00684D69 /* Active.hpp */,
+				8139F61B21A3051D00684D69 /* EventActive.cpp */,
+				8139F61C21A3051D00684D69 /* EventActive.hpp */,
+				8139F61521A2F03700684D69 /* ActiveBuffer.cpp */,
+				8139F61621A2F03700684D69 /* ActiveBuffer.hpp */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -333,6 +344,8 @@
 				8139F606219B0FCC00684D69 /* SQLManager.hpp */,
 				8139F610219DA66200684D69 /* DBActiveWrapper.cpp */,
 				8139F611219DA66200684D69 /* DBActiveWrapper.hpp */,
+				8139F61821A2F67400684D69 /* SQLConnector.cpp */,
+				8139F61921A2F67400684D69 /* SQLConnector.hpp */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -413,15 +426,18 @@
 				8139F607219B0FCD00684D69 /* SQLManager.cpp in Sources */,
 				1F36541F215A15B1003B9FAD /* TCPSession.cpp in Sources */,
 				28C200B120CD600900A9ECC5 /* main.cpp in Sources */,
+				8139F61721A2F03700684D69 /* ActiveBuffer.cpp in Sources */,
 				1F365423215A15B1003B9FAD /* TCPConnector.cpp in Sources */,
 				1F2463352193E731009A67AC /* ServiceKernel.cpp in Sources */,
 				8123E1FA216B9C4A0050FD4D /* Thread.cpp in Sources */,
 				1F2463B3219A660D009A67AC /* IOContextPool.cpp in Sources */,
 				8123E200216CDD280050FD4D /* Conv.cpp in Sources */,
+				8139F61D21A3051D00684D69 /* EventActive.cpp in Sources */,
 				8139F612219DA66200684D69 /* DBActiveWrapper.cpp in Sources */,
 				1F36541D215A15B1003B9FAD /* Queue.cpp in Sources */,
 				1F36541E215A15B1003B9FAD /* TCPServer.cpp in Sources */,
 				1F36541B215A15B1003B9FAD /* DataBuffer.cpp in Sources */,
+				8139F61A21A2F67400684D69 /* SQLConnector.cpp in Sources */,
 				1FF0855C219D4BE200A05710 /* ServerConfigManager.cpp in Sources */,
 				1F36541C215A15B1003B9FAD /* TCPClient.cpp in Sources */,
 				81994CDA219074960034623E /* CPGClient.proto in Sources */,

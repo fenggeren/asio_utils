@@ -33,7 +33,12 @@ namespace fasio
     {
         return ioContexts[pthread_self()];
     }
-
+    
+    bool hasIoContext()
+    {
+        return ioContexts.find(pthread_self()) != ioContexts.end();
+    }
+    
     asio::io_context& getIoContext(const pthread_t& id)
     {
         auto iter = ioContexts.find(id);

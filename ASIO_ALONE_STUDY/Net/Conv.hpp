@@ -12,13 +12,17 @@
 
 namespace fasio
 {
+#define THIS_THREAD std::this_thread::get_id()
+    
     using Handler = std::function<void()>;
     using CompleteHandler = std::function<void()>;
     
     asio::io_context& getIoContext();
-    asio::io_context& getIoContext(const pthread_t& id);
- 
+    asio::io_context& getIoContext(const std::thread::id& id);
     asio::io_context& getIoContext(const std::string& name);
+    bool hasIoContext();
+    
+    
     void setCurThreadName(const std::string& name);
     std::string getThreadName(const pthread_t& pid);
     
