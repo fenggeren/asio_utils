@@ -107,29 +107,14 @@ GSKernel::sessionFactory(int type, asio::io_context& ioc)
 std::shared_ptr<TCPSession>
 GSKernel::connectService(unsigned short type,
                            unsigned short port,
-                           short sid,
+                           int sid,
                            const std::string& ip)
 {
-    auto session = SessionManager.createConnector(type, getIoContext(),  ip, port);
-    if (type == ServerType_LoginServer)
-    {
-        if (loginSession_)
-        {
-            LOG_MINFO << " has connect login server:"
-            << " port: " << port
-            << " sid: " << sid
-            << " ip: " << ip;
-        }
-        loginSession_ = session;
-    }
-    return session;
+    return SessionManager.createConnector(type, getIoContext(),  ip, port);
 }
 
-void GSKernel::removeConnectService(int uuid)
+void GSKernel::removeConnectMatchService(std::shared_ptr<TCPSession> session)
 {
-    auto session = connectSession(uuid);
-    if (session)
-    {
         // 比赛服， 移除相关比赛分配信息
         if (session->type() == ServerType_MatchServer)
         {
@@ -150,20 +135,15 @@ void GSKernel::removeConnectService(int uuid)
             LOG_MINFO << "removed match service session for matches matches: "
                 << jointContainer(rmvMids);
         }
-        
-        
-        connectServices_.erase(uuid);
-        
-        if (loginSession_ && uuid == loginSession_->uuid())
+    
+        if (loginSession_ == session)
         {
             loginSession_ = nullptr;
         }
-        else if (centralSession_ && uuid == centralSession_->uuid())
+        else if (centralSession_ == session)
         {
             centralSession_ = nullptr;
         }
-    }
- 
 }
 inline TCPSessionPtr GSKernel::matchServiceSession(int mid)
 {
@@ -175,6 +155,39 @@ inline TCPSessionPtr GSKernel::matchServiceSession(int mid)
     return nullptr;
 }
 
+
+void GSKernel::updateServiceConnect(std::shared_ptr<TCPSession> session,
+                                    State state)
+{
+    if (state == kClose)
+    {
+        removeConnectMatchService(session);
+    }
+    else
+    {
+        if (session->type() == ServerType_LoginServer)
+        {
+            if (loginSession_)
+            {
+                LOG_MINFO << " has connect login server:"
+                << loginSession_->name();
+            }
+            loginSession_ = session;
+        }
+        else if (session->type() == ServerType_CentralServer)
+        {
+            if (centralSession_)
+            {
+                LOG_MINFO << " has connect central server:"
+                << centralSession_->name();
+            }
+            centralSession_ = session;
+        }
+    }
+}
+
+
+//////
 void GSKernel::transToLS(const void* data, const PacketHeader& header)
 {
     if (loginSession_)
@@ -218,12 +231,17 @@ void GSKernel::transToMS(const void* data, const PacketHeader& header, int mid)
     }
     else
     {
-        LOG_ERROR << " not connect central server"
+        LOG_ERROR << " not connect match server"
         << " msgid: " << header.type;
     }
 }
 
-
+void GSKernel::transToClient(const void* data, const PacketHeader& header)
+{
+    LOG_MINFO << " ";
+    SessionManager.sendMsg(header.extraID, data, header);
+}
+ 
 
 
 

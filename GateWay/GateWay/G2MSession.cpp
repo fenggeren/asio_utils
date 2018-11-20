@@ -12,11 +12,16 @@
 bool G2MSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header)
 {
+    if (header.type >= GSTransToMSFromCP_Begin &&
+        header.type <= GSTransToMSFromCP_End)
+    {
+        GSKernel::instance().transToClient(buffer, header);
+    }
     return true;
 }
 void G2MSession::onClose()
 {
     unenableRetry();
-    GSKernel::instance().removeConnectService(uuid());
+    GSKernel::instance().removeServiceSession(uuid());
 }
  

@@ -74,7 +74,7 @@ namespace fasio
     
     void ServiceKernel::addNewConnect(short type,
                        unsigned short port,
-                       short sid,
+                       int sid,
                        const std::string& ip)
     {
         LOG_MINFO << " type: " << type
@@ -90,6 +90,8 @@ namespace fasio
             auto session = connectService(type, port, sid, ip);
             config.session_ = session;
             connectServices_[session->uuid()] = config;
+            uuid = session->uuid();
+            updateServiceConnect(session, kConnect);
         }
         else
         {
@@ -102,6 +104,22 @@ namespace fasio
             
             oldConfig.sid = config.sid;
             oldConfig.session_->setLogicID(config.sid);
+            updateServiceConnect(oldConfig.session_, kUpdate);
+        }
+    }
+    
+    void ServiceKernel::removeServiceSession(int uuid)
+    {
+        auto iter = connectServices_.find(uuid);
+        if (iter == connectServices_.end())
+        {
+            LOG_MINFO << " not found service  uuid: " << uuid;
+        }
+        else
+        {
+            updateServiceConnect(iter->second.session_,
+                                 kClose);
+            connectServices_.erase(iter);
         }
     }
 }

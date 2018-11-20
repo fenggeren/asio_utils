@@ -21,17 +21,22 @@ public:
         return manager;
     }
     
-    
     void updateMatches(const std::list<int> matches);
     
-    std::list<int> matches() const
-    { return matches_; }
     
+    int joinMatch(int uid, int mid, int mtype);
+    int unjoinMatch(int uid, int mid, int mtype);
+    
+public:
+    std::list<int> matches() const {  return matches_; }
 private:
     
 //    std::map<int, std::shared_ptr<cpg_match_info>> matches_;
     
     std::list<int> matches_;
+    
+    // <mid, allplayer>
+    std::map<int, int> testMatchinfos_;
 };
 
 

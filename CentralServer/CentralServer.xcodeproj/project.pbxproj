@@ -14,6 +14,7 @@
 		1F2463A721995329009A67AC /* BetAlgorithm.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463A621995329009A67AC /* BetAlgorithm.cc */; };
 		1F2463B0219978E9009A67AC /* TimerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463AE219978E8009A67AC /* TimerManager.cpp */; };
 		1F2463BC219AB46F009A67AC /* CSMatchDistribution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463BA219AB46F009A67AC /* CSMatchDistribution.cpp */; };
+		1F2E1E5521A3BB8E00882241 /* CPGCommon.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1E5421A3BB8E00882241 /* CPGCommon.pb.cc */; };
 		1F95CE68218BFC780057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CE67218BFC780057618A /* libprotobuf.a */; };
 		1F95CE9A218BFD450057618A /* CPGToCentral.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE98218BFD450057618A /* CPGToCentral.pb.cc */; };
 		1F95CE9D218C3C6C0057618A /* CSKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE9B218C3C6C0057618A /* CSKernel.cpp */; };
@@ -77,6 +78,9 @@
 		1F2463BA219AB46F009A67AC /* CSMatchDistribution.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSMatchDistribution.cpp; sourceTree = "<group>"; };
 		1F2463BB219AB46F009A67AC /* CSMatchDistribution.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSMatchDistribution.hpp; sourceTree = "<group>"; };
 		1F2463BD219AB51A009A67AC /* CSMatchDistDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSMatchDistDefine.h; sourceTree = "<group>"; };
+		1F2E1E4E21A2AF8C00882241 /* MessageTypeDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeDefine.h; sourceTree = "<group>"; };
+		1F2E1E5321A3BB8D00882241 /* CPGCommon.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGCommon.pb.h; sourceTree = "<group>"; };
+		1F2E1E5421A3BB8E00882241 /* CPGCommon.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGCommon.pb.cc; sourceTree = "<group>"; };
 		1F95CE67218BFC780057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
 		1F95CE94218BFD450057618A /* CPGToCentral.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPGToCentral.proto; sourceTree = "<group>"; };
 		1F95CE95218BFD450057618A /* ng */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ng; sourceTree = "<group>"; };
@@ -254,6 +258,9 @@
 				1F95CE97218BFD450057618A /* CPGToCentral.pb.h */,
 				1F95CE98218BFD450057618A /* CPGToCentral.pb.cc */,
 				1F95CE99218BFD450057618A /* CPGServerDefine.h */,
+				1F2E1E4E21A2AF8C00882241 /* MessageTypeDefine.h */,
+				1F2E1E5421A3BB8E00882241 /* CPGCommon.pb.cc */,
+				1F2E1E5321A3BB8D00882241 /* CPGCommon.pb.h */,
 				1F95CF1D219177550057618A /* CPGClient.pb.cc */,
 				1F95CF1E219177550057618A /* CPGClient.pb.h */,
 				1F246393219950A0009A67AC /* cpg_match_struct_define.h */,
@@ -469,6 +476,7 @@
 				1FF08560219D5C1B00A05710 /* ServerConfigManager.cpp in Sources */,
 				1F95CF1F219177550057618A /* CPGClient.pb.cc in Sources */,
 				1FE3E9392189A5FB00A2F52D /* Thread.cpp in Sources */,
+				1F2E1E5521A3BB8E00882241 /* CPGCommon.pb.cc in Sources */,
 				1F2463A721995329009A67AC /* BetAlgorithm.cc in Sources */,
 				1FE3EA1F218AE86300A2F52D /* MatchSession.cpp in Sources */,
 				1F24633C2193F03F009A67AC /* ServiceKernel.cpp in Sources */,

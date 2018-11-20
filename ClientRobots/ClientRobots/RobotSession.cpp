@@ -28,7 +28,7 @@ void C2BSession::sendInitData()
     //向 balance发送连接请求。 返回合适的GateServer配置信息
     CPGClient::ConnectRQ rq;
     rq.set_logicid(uuid());
-    SessionManager.sendMsgToSession(shared_from_this(), rq, kConnectRQ, ServerType_BalanceServer);
+    SessionManager.sendMsgToSession(shared_from_this(), rq, kClientConnectRQ, ServerType_BalanceServer);
 }
 
 
@@ -36,7 +36,7 @@ bool C2BSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header)
 {
     switch (header.type) {
-        case kConnectRS:
+        case kClientConnectRS:
         {
             connectRS(buffer, header.size);
             break;
@@ -78,7 +78,7 @@ void RobotSession::sendInitData()
     char buf[64] = {0};
     snprintf(buf, sizeof(buf), "Robot-%d",uuid());
     rq.set_token(buf);
-    SessionManager.sendMsgToSession(shared_from_this(), rq, kLoginRQ,ServerType_GateServer);
+    SessionManager.sendMsgToSession(shared_from_this(), rq, kClientLoginRQ,ServerType_GateServer);
 }
 
 void RobotSession::onClose() 
@@ -90,9 +90,24 @@ bool RobotSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header)
 {
     switch (header.type) {
-        case kLoginRS:
+        case kClientLoginRS:
         {
-            loginRS(buffer, header.size);
+            gRobotManager.loginRS(session, buffer, header);
+            break;
+        }
+        case kMatchListRS:
+        {
+            gRobotManager.matchListRS(session, buffer, header);
+            break;
+        }
+        case kJoinMatchRS:
+        {
+            gRobotManager.joinMatchRS(session, buffer, header);
+            break;
+        }
+        case kUnjoinMatchRS:
+        {
+            gRobotManager.unjoinMatchRS(session, buffer, header);
             break;
         }
         default:
@@ -100,10 +115,4 @@ bool RobotSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
     }
     return true;
 }
-void RobotSession::loginRS(const void* data, int len)
-{
-    LOG_MINFO << " id: " << logicID();
-    CPGClient::LoginRS rs;
-    parseProtoMsg(data, len, rs);
-    rs.PrintDebugString();
-}
+ 

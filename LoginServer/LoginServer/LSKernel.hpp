@@ -9,8 +9,7 @@
 #pragma once
 #include <CPG/CPGHeader.h>
 #include <Net/ServiceKernel.hpp>
-using namespace fasio;
-static asio::io_context g_IoContext;
+using namespace fasio; 
 
 class LSKernel : public ServiceKernel
 {
@@ -22,9 +21,7 @@ public:
     }
     
     void start();
-    
-     void removeConnectService(int uuid);
-    
+     
 private:
      void runOneService(const ServerNetConfig::ServerInfo& config);
     
@@ -33,11 +30,12 @@ protected:
     virtual std::shared_ptr<TCPSession>
     connectService(unsigned short type,
                    unsigned short port,
-                   short sid,
+                   int sid,
                    const std::string& ip) override;
     virtual
     std::shared_ptr<TCPSessionFactory>
     sessionFactory(int type, asio::io_context& ioc) override;
+    virtual void updateServiceConnect(std::shared_ptr<TCPSession>, State) override;
 private:
     std::shared_ptr<TCPSession> centralSession_;
 };

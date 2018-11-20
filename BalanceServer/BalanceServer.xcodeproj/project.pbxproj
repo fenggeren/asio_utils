@@ -58,6 +58,7 @@
 		1F246366219407FC009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
 		1F24637221952C57009A67AC /* CPGToCentralSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentralSession.cpp; sourceTree = "<group>"; };
 		1F24637321952C58009A67AC /* CPGToCentralSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGToCentralSession.hpp; sourceTree = "<group>"; };
+		1F2E1E4F21A2B04000882241 /* MessageTypeDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeDefine.h; sourceTree = "<group>"; };
 		1F95CEB3219133B60057618A /* BalanceServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BalanceServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F95CEB6219133B60057618A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1F95CEBE219133C60057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
@@ -206,6 +207,7 @@
 				1F95CEC4219134000057618A /* ng */,
 				1F95CEC5219134000057618A /* CPGHeader.h */,
 				1F95CEC6219134000057618A /* CPGToCentral.pb.h */,
+				1F2E1E4F21A2B04000882241 /* MessageTypeDefine.h */,
 				1F95CEC7219134000057618A /* CPGClient.pb.h */,
 				1F95CEC8219134000057618A /* CPGClient.proto */,
 				1F95CEC9219134000057618A /* CPGToCentral.pb.cc */,

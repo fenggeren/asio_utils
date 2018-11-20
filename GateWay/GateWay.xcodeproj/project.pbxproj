@@ -61,6 +61,7 @@
 		1F24635E219407E8009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
 		1F24636F21952C3A009A67AC /* CPGToCentralSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentralSession.cpp; sourceTree = "<group>"; };
 		1F24637021952C3B009A67AC /* CPGToCentralSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGToCentralSession.hpp; sourceTree = "<group>"; };
+		1F2E1E4D21A2AE6800882241 /* MessageTypeDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeDefine.h; sourceTree = "<group>"; };
 		1F95CE47218BEB240057618A /* libprotoc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotoc.a; path = ../../../../../../usr/local/lib/libprotoc.a; sourceTree = "<group>"; };
 		1F95CE49218BEC660057618A /* libprotoc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotoc.dylib; path = ../../../../../../usr/local/lib/libprotoc.dylib; sourceTree = "<group>"; };
 		1F95CE4B218BECB60057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 				1F24635C219407E8009A67AC /* Net */,
 				1F95CF2321919AE70057618A /* CPGClient.pb.cc */,
 				1F95CF2421919AE70057618A /* CPGClient.pb.h */,
+				1F2E1E4D21A2AE6800882241 /* MessageTypeDefine.h */,
 				1F95CE84218BFD2E0057618A /* CPGToCentral.proto */,
 				1F95CE85218BFD2E0057618A /* ng */,
 				1F95CE86218BFD2E0057618A /* CPGHeader.h */,

@@ -22,6 +22,6 @@ message LoginRQ
 }
 
 message LoginRS
-{ 
+{
     int32  result = 1;
 }

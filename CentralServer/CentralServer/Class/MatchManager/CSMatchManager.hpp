@@ -14,7 +14,7 @@
 #include <map>
 #include <list>
 #include "CSMatchDistDefine.h"
-
+#include <CPG/cpg_match_struct_define.h>
 
 
 /*
@@ -54,12 +54,12 @@ public:
     
     std::map<MatchDisService, std::list<int>>
     getAllMatchServices()
-    {
-        return matchServices_;
-    }
+    {   return matchServices_; }
+    
+    std::list<std::shared_ptr<cpg_match_info>>
+    matchList() const;
     
     std::list<int> getDistMatch(int sid);
-    
     
     void addUndistriteMatches(std::list<int>&& mids);
 public:

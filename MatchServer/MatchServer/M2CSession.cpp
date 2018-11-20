@@ -23,7 +23,7 @@ using namespace fasio::logging;
 
 void M2CSession::onClose()
 {
-    MSKernel::instance().removeConnectService(uuid());
+    MSKernel::instance().removeServiceSession(uuid());
 }
 
 ServiceKernel& M2CSession::serviceKernel()

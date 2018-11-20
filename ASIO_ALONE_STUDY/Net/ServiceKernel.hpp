@@ -20,7 +20,7 @@ namespace fasio
     {
         short type;
         unsigned short port;
-        short sid;
+        int sid;
         std::string    ip;
         std::shared_ptr<TCPSession> session_;
     };
@@ -33,12 +33,15 @@ namespace fasio
         
         void addNewConnect(short type,
                            unsigned short port,
-                           short sid,
+                           int sid,
                            const std::string& ip);
         
         // @sid  service id
         std::shared_ptr<TCPSession> connectServiceSession(int sid) const;
         std::shared_ptr<TCPSession> connectSession(int uuid) const;
+        
+        // 移除 连接其他服务的 session
+        void removeServiceSession(int uuid);
     protected:
         
         void netInitializer(const ServerNetConfig::ServerInfo& info,
@@ -48,12 +51,21 @@ namespace fasio
         virtual std::shared_ptr<TCPSession>
         connectService(unsigned short type,
                        unsigned short port,
-                       short sid,
+                       int sid,
                        const std::string& ip) = 0;
         
         virtual
         std::shared_ptr<TCPSessionFactory>
         sessionFactory(int type, asio::io_context& ioc) = 0;
+        
+        enum State
+        {
+            kConnect, kUpdate, kClose,
+        };
+        
+        // 更新连接服务
+        virtual void updateServiceConnect(std::shared_ptr<TCPSession>,
+                                          State) {};
     protected:
         std::unordered_map<int, ServiceConfig> connectServices_;
     };

@@ -612,10 +612,10 @@ class NewConnServiceNotify : public ::google::protobuf::Message /* @@protoc_inse
 
   // accessors -------------------------------------------------------
 
-  // repeated .CPGToCentral.ServerInfo connServers = 3;
+  // repeated .CPGToCentral.ServerInfo connServers = 1;
   int connservers_size() const;
   void clear_connservers();
-  static const int kConnServersFieldNumber = 3;
+  static const int kConnServersFieldNumber = 1;
   ::CPGToCentral::ServerInfo* mutable_connservers(int index);
   ::google::protobuf::RepeatedPtrField< ::CPGToCentral::ServerInfo >*
       mutable_connservers();
@@ -1804,7 +1804,7 @@ ServerRegisterRS::connservers() const {
 
 // NewConnServiceNotify
 
-// repeated .CPGToCentral.ServerInfo connServers = 3;
+// repeated .CPGToCentral.ServerInfo connServers = 1;
 inline int NewConnServiceNotify::connservers_size() const {
   return connservers_.size();
 }

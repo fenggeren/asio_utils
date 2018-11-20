@@ -10,13 +10,11 @@
 #include "MSSessionManager.hpp"
 #include "GateSession.hpp"
 #include "M2CSession.hpp"
-#include <CPG/CPGHeader.h>
 #include "MSMatchManager.hpp"
+#include <CPG/CPGHeader.h>
+#include <Net/FASIO.hpp>
 #include <CPG/CPGToCentral.pb.h>
-#include <Net/Util/ParseProto.hpp>
-#include <Net/Conv.hpp>
-#include <CPG/Util/ConvFunctional.hpp>
-#include <CPG/Util/ServerConfigManager.hpp>
+#include <CPG/CPGCommon.pb.h>
 
 using namespace fasio::logging;
 
@@ -57,15 +55,25 @@ MSKernel::sessionFactory(int type, asio::io_context& ioc)
     return nullptr;
 }
 
-void MSKernel::removeConnectService(int uuid)
+void MSKernel::updateServiceConnect(std::shared_ptr<TCPSession> session, State state)
 {
-    connectServices_.erase(uuid);
-    
-    if (centralSession_ && uuid == centralSession_->uuid())
+    if (state == kClose)
     {
-        centralSession_ = nullptr;
+        if (centralSession_ == session)
+        {
+            centralSession_ = nullptr;
+        }
+    }
+    else
+    {
+        if (session->type() == ServerType_CentralServer)
+        {
+            centralSession_ = session;
+        }
     }
 }
+
+ 
 
 void MSKernel::transToCS(const void* data, const PacketHeader& header)
 {
@@ -90,7 +98,7 @@ void MSKernel::sendMsg(const TCPSessionPtr& session,
 std::shared_ptr<TCPSession>
 MSKernel::connectService(unsigned short type,
                          unsigned short port,
-                         short sid,
+                         int sid,
                          const std::string& ip)
 {
     return SessionManager.createConnector(type, getIoContext(),  ip, port);
@@ -137,7 +145,66 @@ void MSKernel::distibuteMatchesNotify(const void* buffer, const PacketHeader& he
 }
 
 
+// 报名比赛
+void MSKernel::joinMatchRQ(const TCPSessionPtr& session,
+                           const void* buffer,
+                           const PacketHeader& header)
+{
+    LOG_MINFO << "";
+    
+     CPGCommon::JoinMatchRS rs;
+    CPGCommon::JoinMatchRQ rq;
+    if (parseProtoMsg(buffer, header.size, rq))
+    {
+        rs.set_result(0);
+        // 报名比赛
+        int remain = MSMatchManager::instance().joinMatch(rq.uid(), rq.mid(), rq.mtype());
+        rs.set_remainplayer(remain);
+    }
+    else
+    {
+        rs.set_result(-1);
+        LOG_ERROR << header.type << " size: " << header.size;
+    }
+    rs.set_uid(rq.uid());
+    rs.set_mid(rq.mid());
+    rs.set_mtype(rq.mtype());
+    
+    PacketHeader rsHeader{kJoinMatchRS, rs.ByteSize(), header.extraID};
+    SessionManager.sendMsg(session, rs.SerializeAsString().data(),
+                           rsHeader);
+}
 
+// 取消报名比赛
+void MSKernel::unjoinMatchRQ(const TCPSessionPtr& session,
+                             const void* buffer,
+                             const PacketHeader& header)
+{
+    LOG_MINFO << "";
+    
+    CPGCommon::UnjoinMatchRS rs;
+    
+    CPGCommon::UnjoinMatchRQ rq;
+    if (parseProtoMsg(buffer, header.size, rq))
+    {
+        rs.set_result(0);
+        // 报名比赛
+        int remain = MSMatchManager::instance().unjoinMatch(rq.uid(), rq.mid(), rq.mtype());
+        rs.set_remainplayer(remain);
+    }
+    else
+    {
+        rs.set_result(-1);
+        LOG_ERROR << header.type << " size: " << header.size;
+    }
+    rs.set_uid(rq.uid());
+    rs.set_mid(rq.mid());
+    rs.set_mtype(rq.mtype());
+    
+    PacketHeader rsHeader{kUnjoinMatchRS, rs.ByteSize(), header.extraID};
+    SessionManager.sendMsg(session, rs.SerializeAsString().data(),
+                           rsHeader);
+}
 
 
 

@@ -33,7 +33,7 @@ bool BalanceSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
             CSKernel::instance().serverRegistRQ(session, buffer, header.size);
             break;
         }
-        case kConnectRQ:
+        case kClientConnectRQ:
         {
             CSKernel::instance().requestBestGateServer(shared_from_this(),
                                                        buffer, header);

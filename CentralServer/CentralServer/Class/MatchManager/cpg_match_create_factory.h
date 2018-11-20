@@ -78,7 +78,8 @@ private:
 
     std::map<int, cpg_match_rule> rules_;
     std::list<cpg_match_generate_date> patterns_;
-
+    
+    // <mid, infos>
     std::map<int, std::shared_ptr<cpg_match_info>> matches_;
 
 };

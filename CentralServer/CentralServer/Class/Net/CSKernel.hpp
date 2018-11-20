@@ -33,9 +33,9 @@ public:
         static CSKernel kernel;
         return kernel;
     }
-    
-    
     void start(const ServerNetConfig::ServerInfo& config);
+    std::shared_ptr<ServerInfo> getService(uint32 sid);
+    void removeService(uint32 sid);
 public:
     
     // sessionID, server type,
@@ -43,40 +43,43 @@ public:
     // ①需要将其 监听的端口信息发送给所有 对应类型的服务.
     // ②还需要将其 需要连接的服务信息，返回给他。
     // !需要祛除掉CS服务。
-    void serverRegistRQ(TCPSessionPtr session,
-                         const void* data, int len);
-     
+    void serverRegistRQ(const TCPSessionPtr& session,
+                        const void* data,
+                        int len);
     
     // 客户端连接BS 转发到this， 获取最合适的GS信息
-    void requestBestGateServer(TCPSessionPtr session, const void* data,
+    void requestBestGateServer(const TCPSessionPtr& session,
+                               const void* data,
                                const PacketHeader& header);
     
-    
-    
-public:
     // MatchServer
-    void checkMatchDistributeRQ(TCPSessionPtr session, const void* data,
+    void checkMatchDistributeRQ(const TCPSessionPtr& session,
+                                const void* data,
                                 const PacketHeader& header);
+    
+    
+public: // GS => CS from Client
+    
+    void matchListRQ(const TCPSessionPtr& session,
+                     const void* data,
+                     const PacketHeader& header);
     
     
 private:
      
     // @stype 分发给指定的服务
-    void serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info);
+    void serverRegistRS(const TCPSessionPtr& session,
+                        std::shared_ptr<ServerInfo> info);
     
     // 发送所有的比赛分配信息
-    void sendAllDistributeMatchInfos(TCPSessionPtr session, int type);
-private:
+    void sendAllDistributeMatchInfos(const TCPSessionPtr& session, int type);
     
     // 重新分配比赛
     void distributeMatch(const std::map<unsigned int, std::list<int>>& updateMap);
     
     std::shared_ptr<TCPSessionFactory>
     sessionFactory(ServerType type);
-public:
-    
-    std::shared_ptr<ServerInfo> getService(uint32 sid);
-    void removeService(uint32 sid);
+
     
 private:
     std::unordered_map<uint32, std::shared_ptr<ServerInfo>> servers_;

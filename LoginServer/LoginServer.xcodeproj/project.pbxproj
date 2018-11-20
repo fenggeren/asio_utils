@@ -59,6 +59,7 @@
 		1F24635A219407E1009A67AC /* CPGNetSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGNetSession.hpp; sourceTree = "<group>"; };
 		1F24636C219529FE009A67AC /* CPGToCentralSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentralSession.cpp; sourceTree = "<group>"; };
 		1F24636D219529FE009A67AC /* CPGToCentralSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPGToCentralSession.hpp; sourceTree = "<group>"; };
+		1F2E1E5021A2B08E00882241 /* MessageTypeDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeDefine.h; sourceTree = "<group>"; };
 		1F95CE61218BFC630057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
 		1F95CE8C218BFD380057618A /* CPGToCentral.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPGToCentral.proto; sourceTree = "<group>"; };
 		1F95CE8D218BFD380057618A /* ng */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ng; sourceTree = "<group>"; };
@@ -174,6 +175,7 @@
 				1F95CE8D218BFD380057618A /* ng */,
 				1F95CE8E218BFD380057618A /* CPGHeader.h */,
 				1F95CE8F218BFD380057618A /* CPGToCentral.pb.h */,
+				1F2E1E5021A2B08E00882241 /* MessageTypeDefine.h */,
 				1F95CE90218BFD380057618A /* CPGToCentral.pb.cc */,
 				1F95CE91218BFD380057618A /* CPGServerDefine.h */,
 			);

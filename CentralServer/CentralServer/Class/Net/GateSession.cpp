@@ -26,6 +26,11 @@ bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
             CSKernel::instance().serverRegistRQ(session, buffer, header.size);
             break;
         }
+        case kMatchListRQ:
+        {
+            CSKernel::instance().matchListRQ(session, buffer, header);
+            break;
+        }
         default:
             break;
     }

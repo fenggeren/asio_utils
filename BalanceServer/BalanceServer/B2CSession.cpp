@@ -20,7 +20,7 @@ using namespace fasio::logging;
 
 void B2CSession::onClose()
 {
-    BSKernel::instance().removeConnectService(uuid());
+    BSKernel::instance().removeServiceSession(uuid());
 }
 
 void B2CSession::sendInitData()
@@ -37,14 +37,18 @@ ServiceKernel& B2CSession::serviceKernel()
 bool B2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                              const void* buffer, const PacketHeader& header)
 {
-    switch (header.type) {
-        case kConnectRS:
-        {
-            connectRS(buffer, header);
-            break;
+    // 消息转发，不做解析处理
+    if (header.type >= BSTransToCSFromCP_Begin &&
+        header.type <= BSTransToCSFromCP_End)
+    {
+        BSKernel::instance().transToClient(buffer, header);
+    }
+    else
+    {
+        switch (header.type) {
+            default:
+                break;
         }
-        default:
-            break;
     }
     return true;
 }

@@ -21,7 +21,7 @@ using namespace fasio::logging;
 void LSKernel::start()
 {
     auto& manager = ServerConfigManager::instance();
-    manager.setType(ServerType_MatchServer);
+    manager.setType(ServerType_LoginServer);
     ServerNetConfig config;
     if (manager.configForType(ServerType_LoginServer,  config))
     {
@@ -53,23 +53,31 @@ LSKernel::sessionFactory(int type, asio::io_context& ioc)
     return nullptr;
 }
 
-
-void LSKernel::removeConnectService(int uuid)
+void LSKernel::updateServiceConnect(std::shared_ptr<TCPSession> session,
+                                    State state)
 {
-    connectServices_.erase(uuid);
-    
-    if (centralSession_ && uuid == centralSession_->uuid())
+    if (state == kClose)
     {
-        centralSession_ = nullptr;
+        if (centralSession_ == session)
+        {
+            centralSession_ = nullptr;
+        }
+    }
+    else
+    {
+        if (session->type() == ServerType_CentralServer)
+        {
+            centralSession_ = session;
+        }
     }
 }
 
 std::shared_ptr<TCPSession>
 LSKernel::connectService(unsigned short type,
                          unsigned short port,
-                         short sid,
+                         int sid,
                          const std::string& ip)
 {
-    return SessionManager.createConnector(type, g_IoContext,  ip, port);
+    return SessionManager.createConnector(type, getIoContext(),  ip, port);
 }
 

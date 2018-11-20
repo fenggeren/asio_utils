@@ -20,37 +20,27 @@ using namespace logging;
 bool CBSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                              const void* buffer, const PacketHeader& header)
 {
-    switch (header.type) {
-        case kConnectRQ:
-        {
-            connectRQ(buffer, header.size);
-            break;
-        }
-        default:
-            break;
-    }
-    return false;
-}
-
-void CBSession::connectRQ(const void* data, int len)
-{
-    LOG_MINFO << " ";
-    BSKernel::instance().transToCS(data, {kConnectRQ, len, static_cast<int32>(uuid())});
-    
-    
-    CPGClient::ConnectRQ rq;
-    if (fasio::parseProtoMsg(data, len, rq))
+    // 消息转发，不做解析处理
+    if (header.type >= BSTransToCSFromCP_Begin &&
+        header.type <= BSTransToCSFromCP_End)
     {
-        rq.set_logicid(uuid());
-        // 转发消息给CentralServer 
+        auto h = header;
+        h.extraID = uuid();
         
+        BSKernel::instance().transToCS(buffer, h);
     }
     else
     {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
+        switch (header.type) {
+            default:
+                break;
+        }
     }
+
+    return false;
 }
+
+ 
 
 
 

@@ -3,3 +3,80 @@ syntax = "proto3";
 // 前后端通用的数据包, 大多和具体游戏相关--
 // GateWay起到直接转发包的作用。
 package CPGCommon;
+
+
+/////////////////////////////////GS to MS from Client ////////////////////////////
+// 参加比赛
+message JoinMatchRQ
+{
+int32   uid     = 1;
+int32   mid     = 2;
+int32   mtype   = 3;
+}
+message JoinMatchRS
+{
+int32   uid             = 1;
+int32   mid             = 2;
+int32   mtype           = 3;
+int32   remainPlayer    = 4;
+int32   result          = 5;
+}
+
+// 取消参加比赛
+message UnjoinMatchRQ
+{
+int32   uid     = 1;
+int32   mid     = 2;
+int32   mtype   = 3;
+}
+message UnjoinMatchRS
+{
+int32   uid              = 1;
+int32   mid              = 2;
+int32   mtype            = 3;
+int32   remainPlayer     = 4;
+int32   result           = 5;
+}
+
+
+/////////////////////////////////GS to CS from Client ////////////////////////////
+
+
+message MatchListRQ
+{
+int32 uid = 1;
+}
+message MatchListRS
+{
+message MatchBriefInfo
+{
+int32   mid             = 1;
+int32   type            = 2;
+int32   time            = 3;
+int32   totalPlayer     = 4;
+int32   remainedPlayer  = 5;
+int32   state           = 6;
+int32   curLevel        = 7;
+int32   entryfee        = 8;
+}
+int32   result                      = 1;
+int32   uid                         = 2;
+repeated MatchBriefInfo matchList   = 3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

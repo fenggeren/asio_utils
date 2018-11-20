@@ -19,21 +19,24 @@ using namespace fasio::logging;
 void G2LSession::onClose()
 {
     unenableRetry();
-    GSKernel::instance().removeConnectService(uuid());
+    GSKernel::instance().removeServiceSession(uuid());
 }
 
 
 bool G2LSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header)
 {
-    switch (header.type) {
-        case kLoginRS:
-        {
-            loginRS(buffer, header);
-            break;
+    if (header.type >= GSTransToLSFromCP_Begin &&
+        header.type <= GSTransToLSFromCP_End)
+    {
+        GSKernel::instance().transToClient(buffer, header);
+    }
+    else
+    {
+        switch (header.type) {
+            default:
+                break;
         }
-        default:
-            break;
     }
     return true;
 } 

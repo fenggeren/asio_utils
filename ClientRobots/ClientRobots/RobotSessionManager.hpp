@@ -29,9 +29,10 @@ public:
         return manager;
     }
     
-    
 public:
-     
+    
+    
+    
 private:
     
     virtual std::shared_ptr<ClientSession> createConnectorSession(uint8 type) override;

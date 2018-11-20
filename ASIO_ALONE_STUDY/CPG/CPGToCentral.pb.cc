@@ -374,7 +374,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   "tral.ServerInfo\"^\n\020ServerRegisterRS\022\016\n\006r"
   "esult\030\001 \001(\005\022\013\n\003sid\030\002 \001(\005\022-\n\013connServers\030"
   "\003 \003(\0132\030.CPGToCentral.ServerInfo\"E\n\024NewCo"
-  "nnServiceNotify\022-\n\013connServers\030\003 \003(\0132\030.C"
+  "nnServiceNotify\022-\n\013connServers\030\001 \003(\0132\030.C"
   "PGToCentral.ServerInfo\"I\n\016GateServerInfo"
   "\022\014\n\004port\030\001 \001(\005\022\013\n\003sid\030\002 \001(\005\022\n\n\002ip\030\003 \001(\t\022"
   "\020\n\010exportIP\030\004 \001(\t\")\n\rServerLoginRQ\022\013\n\003ci"
@@ -1771,9 +1771,9 @@ const char* NewConnServiceNotify::_InternalParse(const char* begin, const char* 
     ptr = Varint::Parse32Inline(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // repeated .CPGToCentral.ServerInfo connServers = 3;
-      case 3: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+      // repeated .CPGToCentral.ServerInfo connServers = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         do {
           ptr = Varint::Parse32Inline(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
@@ -1786,7 +1786,7 @@ const char* NewConnServiceNotify::_InternalParse(const char* begin, const char* 
           GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
           ptr = newend;
           if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 26 && (ptr += 1));
+        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
         break;
       }
       default: {
@@ -1823,9 +1823,9 @@ bool NewConnServiceNotify::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .CPGToCentral.ServerInfo connServers = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+      // repeated .CPGToCentral.ServerInfo connServers = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                 input, add_connservers()));
         } else {
@@ -1861,11 +1861,11 @@ void NewConnServiceNotify::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .CPGToCentral.ServerInfo connServers = 3;
+  // repeated .CPGToCentral.ServerInfo connServers = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->connservers_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3,
+      1,
       this->connservers(static_cast<int>(i)),
       output);
   }
@@ -1884,12 +1884,12 @@ void NewConnServiceNotify::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .CPGToCentral.ServerInfo connServers = 3;
+  // repeated .CPGToCentral.ServerInfo connServers = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->connservers_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        3, this->connservers(static_cast<int>(i)), deterministic, target);
+        1, this->connservers(static_cast<int>(i)), deterministic, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1913,7 +1913,7 @@ size_t NewConnServiceNotify::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .CPGToCentral.ServerInfo connServers = 3;
+  // repeated .CPGToCentral.ServerInfo connServers = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->connservers_size());
     total_size += 1UL * count;

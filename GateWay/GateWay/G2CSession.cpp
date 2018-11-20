@@ -18,7 +18,7 @@ using namespace fasio::logging;
 
 void G2CSession::onClose()
 {
-    GSKernel::instance().removeConnectService(uuid());
+    GSKernel::instance().removeServiceSession(uuid());
 }
 
 void G2CSession::sendInitData()
@@ -30,47 +30,28 @@ void G2CSession::sendInitData()
 bool G2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header)
 {
-    switch (header.type) {
-        case kLoginRS:
+    // 消息转发，不做解析处理
+    if (header.type >= GSTransToCSFromCP_Begin &&
+        header.type <= GSTransToCSFromCP_End)
+    {
+         GSKernel::instance().transToClient(buffer, header);
+    }
+    else
+    {
+        switch (header.type) {
+            case kServerAllMatchDistributeNotify:
             {
-                serverLoginRS(buffer, header.size);
+                GSKernel::instance().distibuteMatchesNotify(buffer, header);
                 break;
             }
-        case kServerAllMatchDistributeNotify:
-        {
-            GSKernel::instance().distibuteMatchesNotify(buffer, header);
-            break;
-        }
             default:
                 break;
+        }
     }
     return true;
 }
 ServiceKernel& G2CSession::serviceKernel()
 {
     return GSKernel::instance();
-}
-
-
-void G2CSession::serverLoginRS(const void* data, int len)
-{
-    CPGToCentral::ServerLoginRS rs;
-    if (fasio::parseProtoMsg(data, len, rs))
-    {
-        if (rs.result() == 0)
-        {
-            // 转发消息给客户端  exportIP & port & sid
-            LOG_MINFO << rs.DebugString();
-        }
-        else
-        {
-            LOG_ERROR << " gs loginrs failure result: " << rs.result();
-        }
-    }
-    else
-    {
-        LOG_ERROR << " cant parse proto msg len: " << len
-        << " sessionID: " << uuid();
-    }
 }
 

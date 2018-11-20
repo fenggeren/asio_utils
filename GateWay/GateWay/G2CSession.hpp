@@ -29,10 +29,6 @@ private:
                             const PacketHeader& header) override;
     virtual ServiceKernel& serviceKernel() override;
     
-    
-    
-private:
      
-    void serverLoginRS(const void* data, int len);
 private:
 };

@@ -9,6 +9,7 @@
 #include "GateSession.hpp"
 #include <CPG/CPGToCentral.pb.h>
 #include <CPG/CPGClient.pb.h>
+#include <CPG/CPGHeader.h>
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
 #include <Net/logging/Logging.hpp>
@@ -21,7 +22,7 @@ bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                              const void* buffer, const PacketHeader& header)
 {
     switch (header.type) {
-        case kLoginRQ:
+        case kClientLoginRQ:
         {
             loginRQ(buffer, header);
             break;
@@ -49,7 +50,7 @@ void GateSession::loginRQ(const void* data, const PacketHeader& header)
         << " sessionID: " << uuid();
     }
     SessionManager.sendMsg(shared_from_this(), rs.SerializeAsString().data(),
-                        {kLoginRS, rs.ByteSize(), header.extraID});
+                        {kClientLoginRS, rs.ByteSize(), header.extraID});
 }
 
 

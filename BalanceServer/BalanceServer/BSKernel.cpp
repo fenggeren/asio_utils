@@ -23,9 +23,9 @@ using namespace fasio::logging;
 void BSKernel::start()
 {
     auto& manager = ServerConfigManager::instance();
-    manager.setType(ServerType_MatchServer);
+    manager.setType(ServerType_BalanceServer);
     ServerNetConfig config;
-    if (manager.configForType(ServerType_MatchServer,  config))
+    if (manager.configForType(ServerType_BalanceServer,  config))
     {
         for(auto& info : config.infos)
         {
@@ -56,27 +56,38 @@ BSKernel::sessionFactory(int type, asio::io_context& ioc)
 }
 
 
-void BSKernel::removeConnectService(int uuid)
+ 
+
+void BSKernel::updateServiceConnect(std::shared_ptr<TCPSession> session, State state)
 {
-    connectServices_.erase(uuid);
-    
-    if (centralSession_ && uuid == centralSession_->uuid())
+    if (state == kClose)
     {
-        centralSession_ = nullptr;
+        if (centralSession_ == session)
+        {
+            centralSession_ = nullptr;
+        }
+    }
+    else
+    {
+        if (session->type() == ServerType_CentralServer)
+        {
+            centralSession_ = session;
+        }
     }
 }
 
 std::shared_ptr<TCPSession>
 BSKernel::connectService(unsigned short type,
                          unsigned short port,
-                         short sid,
+                         int sid,
                          const std::string& ip)
 {
-    return SessionManager.createConnector(type, g_IoContext,  ip, port);
+    return SessionManager.createConnector(type, getIoContext(),  ip, port);
 }
 
 void BSKernel::transToCS(const void* data, const PacketHeader& header)
 {
+    LOG_MINFO << " ";
     if (centralSession_)
     {
         SessionManager.sendMsg(centralSession_, data, header);
@@ -88,3 +99,8 @@ void BSKernel::transToCS(const void* data, const PacketHeader& header)
     }
 }
 
+void BSKernel::transToClient(const void* data, const PacketHeader& header)
+{
+    LOG_MINFO << " ";
+    SessionManager.sendMsg(header.extraID, data, header);
+}

@@ -400,7 +400,20 @@ CSMatchManager::filterValidMatch(std::list<int>& mids)
     return {};
 }
 
-
+std::list<std::shared_ptr<cpg_match_info>>
+CSMatchManager::matchList() const
+{
+    auto& matchMap = cpg_match_create_factory::instance().get_all_matches();
+    std::list<std::shared_ptr<cpg_match_info>> list;
+    
+    
+    for(auto& pair : matchMap)
+    {
+        list.push_back(pair.second);
+    }
+    
+    return std::move(list);
+}
 
 
 

@@ -9,6 +9,10 @@
 #pragma once
  
 #include <google/protobuf/message.h>
-#include "../Net/Header.h"
 #include "../Net/base/FASIOType.h"
 #include "../Net/logging/Logging.hpp"
+#include "CPGServerDefine.h"
+#include "Net/CPGNetSession.hpp"
+#include "Util/ConvFunctional.hpp"
+#include "Util/ServerConfigManager.hpp"
+#include "MessageTypeDefine.h"

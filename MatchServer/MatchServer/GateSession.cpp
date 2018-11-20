@@ -7,9 +7,27 @@
 //
 
 #include "GateSession.hpp"
+#include "MSKernel.hpp"
+#include <CPG/CPGHeader.h>
 
 bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                            const void* buffer, const PacketHeader& header)
 {
+    switch (header.type)
+    {
+        case kJoinMatchRQ:
+        {
+            MSKernel::instance().joinMatchRQ(session, buffer, header);
+            break;
+        }
+        case kUnjoinMatchRQ:
+        {
+            MSKernel::instance().unjoinMatchRQ(session, buffer, header);
+            break;
+        }
+            
+        default:
+            break;
+    }
     return true;
 }

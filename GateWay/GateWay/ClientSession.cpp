@@ -8,6 +8,7 @@
 
 #include "ClientSession.hpp"
 #include <CPG/CPGClient.pb.h>
+#include <CPG/CPGHeader.h>
 #include <Net/Util/NetPacket.hpp>
 #include <Net/Util/ParseProto.hpp>
 #include "GSKernel.hpp"
@@ -17,14 +18,34 @@ using namespace fasio::logging;
 bool CGSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
                              const void* buffer, const PacketHeader& header)
 {
-    switch (header.type) {
-        case kLoginRQ:
+    // 消息转发，不做解析处理
+    if (header.type >= GSTransFromCP_Begin &&
+        header.type <= GSTransFromCP_End)
+    {
+        auto netHeader = header;
+        // 消息转发，不做解析处理
+        if (header.type >= GSTransToCSFromCP_Begin &&
+            header.type <= GSTransToCSFromCP_End)
         {
-            loginRQ(buffer, header.size);
-            break;
+            netHeader.extraID = uuid();
+            GSKernel::instance().transToCS(buffer, netHeader);
         }
-        default:
-            break;
+        else if (header.type >= GSTransToMSFromCP_Begin &&
+                     header.type <= GSTransToMSFromCP_End)
+        {
+            netHeader.extraID = uuid();
+            GSKernel::instance().transToMS(buffer, netHeader, header.extraID);
+        }
+        else if (header.type >= GSTransToLSFromCP_Begin &&
+                    header.type <= GSTransToLSFromCP_End)
+        {
+            netHeader.extraID = uuid();
+            GSKernel::instance().transToLS(buffer, netHeader);
+        }
+    }
+    else
+    {
+        
     }
     return true;
 }
@@ -33,7 +54,7 @@ bool CGSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 void CGSession::loginRQ(const void* data, int len)
 {
     LOG_MINFO << " ";
-    GSKernel::instance().transToLS(data, {kLoginRQ, len, static_cast<int32>(uuid())});
+    GSKernel::instance().transToLS(data, {kClientLoginRQ, len, static_cast<int32>(uuid())});
 }
 
 

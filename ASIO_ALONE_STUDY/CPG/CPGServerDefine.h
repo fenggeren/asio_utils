@@ -12,20 +12,6 @@
 
 #define MAIN "main"
 
-#define kServerRegistRQ     20001
-#define kServerRegistRS     20002
-#define kLoginRQ      20003
-#define kLoginRS      20004
-#define kCheckMatchDistributeRQ 20005
-#define kCheckMatchDistributeRS 20006
-
-#define kServerNewServicesNotify 21001
-#define kServerAllMatchDistributeNotify 21002
-#define kServerMatchDistributeNotify 21003
-
-
-#define kConnectRQ    10001
-#define kConnectRS    10002
 
 
 

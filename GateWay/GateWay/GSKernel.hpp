@@ -30,15 +30,12 @@ public:
     }
     
     void start();
-    void removeConnectService(int uuid);
-    
-    
     
     void transToLS(const void* data, const PacketHeader& header);
     void transToCS(const void* data, const PacketHeader& header);
     void transToMS(const void* data, const PacketHeader& header, int mid);
 
-    
+    void transToClient(const void* data, const PacketHeader& header);
 public:
     // 比赛分配
     void distibuteMatchesNotify(const void* buffer, const PacketHeader& header);
@@ -48,16 +45,19 @@ private:
     // 比赛id 对应的 matchService session
     TCPSessionPtr matchServiceSession(int mid);
     
+    void removeConnectMatchService(std::shared_ptr<TCPSession> session);
 protected:
     
     virtual std::shared_ptr<TCPSession>
     connectService(unsigned short type,
                    unsigned short port,
-                   short sid,
+                   int sid,
                    const std::string& ip) override;
     virtual
     std::shared_ptr<TCPSessionFactory>
     sessionFactory(int type, asio::io_context& ioc) override;
+    
+    virtual void updateServiceConnect(std::shared_ptr<TCPSession> session, State) override;
 private:
     // 比赛id, match service session
     std::unordered_map<int, TCPSessionPtr> matchesServices_;

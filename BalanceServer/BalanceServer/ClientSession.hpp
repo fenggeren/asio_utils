@@ -27,9 +27,7 @@ private:
     
     virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header) override;
-    
-private:
-    void connectRQ(const void* data, int len);
+     
     
 private:
 };

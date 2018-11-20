@@ -9,6 +9,7 @@
 #include "CPGToCentralSession.hpp"
 #include "CPGServerDefine.h"
 #include <CPG/CPGToCentral.pb.h>
+#include "MessageTypeDefine.h"
 #include "../Util/ServerConfigManager.hpp"
 #include "../../Net/FASIO.hpp"
 #include <list>
@@ -71,7 +72,6 @@ void CPGToCentralSession::serverRegistRS(const void* data, int len)
         {
             setLogicID(rs.sid()); // 设置server id
             LOG_MINFO << " server id: " << rs.sid();
-            
             for(auto& connsvr : rs.connservers())
             {
                 serviceKernel().addNewConnect(connsvr.type(), connsvr.port(), connsvr.sid(), connsvr.ip());

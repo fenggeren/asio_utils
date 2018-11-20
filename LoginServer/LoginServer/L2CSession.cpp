@@ -25,7 +25,7 @@ void L2CSession::sendInitData()
 
 void L2CSession::onClose()
 {
-    LSKernel::instance().removeConnectService(uuid());
+    LSKernel::instance().removeServiceSession(uuid());
 }
 
 bool L2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,

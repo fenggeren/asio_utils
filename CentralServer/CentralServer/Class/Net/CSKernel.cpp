@@ -9,6 +9,7 @@
 #include "CSKernel.hpp"
 #include <CPG/CPGToCentral.pb.h>
 #include <CPG/CPGClient.pb.h>
+#include <CPG/CPGCommon.pb.h>
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"
@@ -28,10 +29,17 @@ void CSKernel::start(const ServerNetConfig::ServerInfo& config)
 {
  
     auto& curIoCtx = getIoContext();
+    
+    std::shared_ptr<ServerInfo> info(new ServerInfo);
+    info->type = ServerType_CentralServer;
+    info->sid = 100000000;
+    info->connectTimes = time(NULL);
+    
     for(auto& listen: config.listenInfos)
     {
         SessionManager.createListener(listen.port, false,
                                       sessionFactory((ServerType)listen.type));
+        info->listeners.push_back({static_cast<unsigned char>(listen.type), listen.port, listen.ip});
     }
     
     for(auto& connect : config.connectInfos)
@@ -41,6 +49,8 @@ void CSKernel::start(const ServerNetConfig::ServerInfo& config)
                                        connect.port);
     }
  CSMatchManager::instance().setChangedMatchMapCB(std::bind(&CSKernel::distributeMatch, this, std::placeholders::_1));
+    
+    servers_[info->sid] = info;
     
     curIoCtx.run();
 }
@@ -97,8 +107,9 @@ void CSKernel::removeService(uint32 sid)
 
 
 int32 CSKernel::serverID = 0;
-void CSKernel::serverRegistRQ(TCPSessionPtr session,
-                                       const void* data, int len)
+void CSKernel::serverRegistRQ(const TCPSessionPtr& session,
+                              const void* data,
+                              int len)
 {
     CPGToCentral::ServerRegisterRQ rq;
     if (fasio::parseProtoMsg(data, len, rq))
@@ -159,7 +170,8 @@ void CSKernel::serverRegistRQ(TCPSessionPtr session,
 
 
 // 将消息直接返回给所有连接的 GS
-void CSKernel::serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo> info)
+void CSKernel::serverRegistRS(const TCPSessionPtr& session,
+                              std::shared_ptr<ServerInfo> info)
 {
     // 获取需要连接的服务信息
     // 注册返回
@@ -215,7 +227,7 @@ void CSKernel::serverRegistRS(TCPSessionPtr session, std::shared_ptr<ServerInfo>
 
 
 
-void CSKernel::requestBestGateServer(TCPSessionPtr session,
+void CSKernel::requestBestGateServer(const TCPSessionPtr& session,
                                      const void* data,
                                      const PacketHeader& header)
 {
@@ -266,7 +278,7 @@ void CSKernel::requestBestGateServer(TCPSessionPtr session,
     
     auto body = rs.SerializeAsString();
     SessionManager.sendMsg(session, body.data(),
-                           {kConnectRS, rs.ByteSize(),
+                           {kClientConnectRS, rs.ByteSize(),
                             header.extraID});
 }
 
@@ -299,7 +311,8 @@ void CSKernel::distributeMatch(const std::map<unsigned int, std::list<int>>& upd
     sendAllDistributeMatchInfos(nullptr, ServerType_GateServer);
 }
 
-void CSKernel::sendAllDistributeMatchInfos(TCPSessionPtr session, int stype)
+void CSKernel::sendAllDistributeMatchInfos(const TCPSessionPtr& session,
+                                           int stype)
 {
     // 1. 将所有的分配信息发送个给所有的GS
     CPGToCentral::ServerAllMatchDistributeNotify notify;
@@ -327,8 +340,9 @@ void CSKernel::sendAllDistributeMatchInfos(TCPSessionPtr session, int stype)
                            header, stype);
 }
 
-void CSKernel::checkMatchDistributeRQ(TCPSessionPtr session, const void* data,
-                            const PacketHeader& header)
+void CSKernel::checkMatchDistributeRQ(const TCPSessionPtr& session,
+                                      const void* data,
+                                      const PacketHeader& header)
 {
     CPGToCentral::CheckMatchDistributeRQ rq;
     if (parseProtoMsg(data, header.size, rq))
@@ -363,6 +377,40 @@ void CSKernel::checkMatchDistributeRQ(TCPSessionPtr session, const void* data,
     }
 }
 
+
+// 请求比赛列表
+void CSKernel::matchListRQ(const TCPSessionPtr& session,
+                         const void* data,
+                         const PacketHeader& header)
+{
+    LOG_MINFO << "";
+    CPGCommon::MatchListRS rs;
+    CPGCommon::MatchListRQ rq;
+    if (parseProtoMsg(data, header.size, rq))
+    {
+        rs.set_uid(rq.uid());
+        auto list = CSMatchManager::instance().matchList();
+        for(auto& m : list)
+        {
+            auto& binfo = *rs.add_matchlist();
+            binfo.set_mid(m->match_id);
+            binfo.set_time(m->begin_date_time);
+            binfo.set_totalplayer(m->total_joined_player);
+            binfo.set_remainedplayer(m->remained_player);
+            binfo.set_state(m->match_state);
+            binfo.set_curlevel(m->current_blind_level);
+            binfo.set_entryfee(m->entryfee_coin);
+        }
+    }
+    else
+    {
+        rs.set_result(0);
+    }
+   
+    PacketHeader rsHeader{kMatchListRS, rs.ByteSize(), header.extraID};
+    SessionManager.sendMsg(session, rs.SerializeAsString().data(),
+                           rsHeader);
+}
 
 
 

@@ -14,9 +14,7 @@
 #include <CPG/CPGHeader.h>
 #include <google/protobuf/message.h>
 
-using namespace fasio;
-static asio::io_context g_IoContext;
-
+using namespace fasio; 
 class B2CSession;
 
 class BSKernel : public ServiceKernel
@@ -30,11 +28,10 @@ public:
     }
     
     void start();
-    
-    void removeConnectService(int uuid);
+     
     
     void transToCS(const void* data, const PacketHeader& header);
-    
+    void transToClient(const void* data, const PacketHeader& header);
 private:
     void runOneService(const ServerNetConfig::ServerInfo& config);
     
@@ -43,11 +40,12 @@ protected:
     virtual std::shared_ptr<TCPSession>
     connectService(unsigned short type,
                    unsigned short port,
-                   short sid,
+                   int sid,
                    const std::string& ip) override;
     virtual
     std::shared_ptr<TCPSessionFactory>
     sessionFactory(int type, asio::io_context& ioc) override;
+    virtual void updateServiceConnect(std::shared_ptr<TCPSession> session, State) override;
 private:
     TCPSessionPtr centralSession_;
 };

@@ -17,6 +17,8 @@
 
 #define gRobotManager RobotManager::instance()
 
+using namespace fasio;
+
 class RobotManager
 {
 public:
@@ -40,16 +42,37 @@ public:
     
     void setRobotNum(int num) { robotNums_ = num; }
     
+    
+    
 public:
 
     void postConnect(std::shared_ptr<Robot> robot);
 
+    
+    void joinMatchRQ(const std::shared_ptr<Robot>& robot);
+    void unjoinMatchRQ(const std::shared_ptr<Robot>& robot);
+    void matchListRQ(const std::shared_ptr<Robot>& robot);
+    
+    
+    void loginRS(const std::shared_ptr<TCPSession>& session,
+                 const void* data, const PacketHeader& heaer);
+    void joinMatchRS(const std::shared_ptr<TCPSession>& session,
+                     const void* data, const PacketHeader& heaer);
+    void unjoinMatchRS(const std::shared_ptr<TCPSession>& session,
+                       const void* data, const PacketHeader& heaer);
+    void matchListRS(const std::shared_ptr<TCPSession>& session,
+                     const void* data, const PacketHeader& heaer);
+    
+    
+private:
+    
+    std::shared_ptr<Robot> getRobot(const std::shared_ptr<TCPSession>& session);
+    
 private:
     
     int32 robotNums_;
     asio::io_context io_context_;
     std::vector<std::shared_ptr<Robot>> robots_;
-    
     
     const std::string ip_;
     const uint16 port_;

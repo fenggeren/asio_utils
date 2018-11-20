@@ -47,10 +47,7 @@ private:
                             const void* buffer,
                             const PacketHeader& header) override;
     
-private:
 
-    void loginRS(const void* data, int len);
-    
 private: 
 };
 
