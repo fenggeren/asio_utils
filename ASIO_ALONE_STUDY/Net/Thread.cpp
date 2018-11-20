@@ -13,26 +13,7 @@
 namespace fasio
 {
     
-    static thread_local std::string threadName;
-    
-    
-    using nameThreadMap = std::map<std::string, std::__thread_id>;
-    
-    nameThreadMap&
-    ioThreadMap()
-    {
-        static nameThreadMap* map = new nameThreadMap;
-        return *map;
-    }
-    
-    static void setThreadName(std::string&& name)
-    {
-        threadName = std::move(name);
-    }
-    static const std::string& getThreadName()
-    {
-        return threadName;
-    }
+ 
 }
 
 

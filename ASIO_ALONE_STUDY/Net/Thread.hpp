@@ -12,24 +12,23 @@
 #include <thread>
 #include <string>
 #include "Header.h"
-
+#include "noncopyable.h"
 namespace fasio
-{ 
-    static void setThreadName(std::string&& name);
-    static const std::string& getThreadName();
-    
-    asio::io_context& getIoContext(); 
-    
-    struct ThreadInfo
-    {
-        ThreadInfo(const std::__thread_id& tid, const std::string& name)
-        : tid_(tid), name_(name){}
-        const std::__thread_id tid_;
-        const std::string name_;
-        const asio::io_context ictx_;
-    };
-    
+{
+ 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
