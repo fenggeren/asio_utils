@@ -14,13 +14,12 @@
 		1F2463A721995329009A67AC /* BetAlgorithm.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463A621995329009A67AC /* BetAlgorithm.cc */; };
 		1F2463B0219978E9009A67AC /* TimerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463AE219978E8009A67AC /* TimerManager.cpp */; };
 		1F2463BC219AB46F009A67AC /* CSMatchDistribution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2463BA219AB46F009A67AC /* CSMatchDistribution.cpp */; };
-		1F2E1E5521A3BB8E00882241 /* CPGCommon.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1E5421A3BB8E00882241 /* CPGCommon.pb.cc */; };
+		1F2E1E6421A4F1B500882241 /* CPGClientServer.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1E6021A4F1B500882241 /* CPGClientServer.pb.cc */; };
+		1F2E1E6521A4F1B500882241 /* CPGServer.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1E6221A4F1B500882241 /* CPGServer.pb.cc */; };
 		1F95CE68218BFC780057618A /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F95CE67218BFC780057618A /* libprotobuf.a */; };
-		1F95CE9A218BFD450057618A /* CPGToCentral.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE98218BFD450057618A /* CPGToCentral.pb.cc */; };
 		1F95CE9D218C3C6C0057618A /* CSKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE9B218C3C6C0057618A /* CSKernel.cpp */; };
 		1F95CEA0218C3F520057618A /* CSMatchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CE9E218C3F520057618A /* CSMatchManager.cpp */; };
 		1F95CF1C219137FE0057618A /* BalanceSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CF1A219137FE0057618A /* BalanceSession.cpp */; };
-		1F95CF1F219177550057618A /* CPGClient.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F95CF1D219177550057618A /* CPGClient.pb.cc */; };
 		1FE3E9042189A5B500A2F52D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9032189A5B500A2F52D /* main.cpp */; };
 		1FE3E9392189A5FB00A2F52D /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E90B2189A5FB00A2F52D /* Thread.cpp */; };
 		1FE3E93B2189A5FB00A2F52D /* NetPacket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3E9142189A5FB00A2F52D /* NetPacket.cpp */; };
@@ -79,14 +78,13 @@
 		1F2463BB219AB46F009A67AC /* CSMatchDistribution.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSMatchDistribution.hpp; sourceTree = "<group>"; };
 		1F2463BD219AB51A009A67AC /* CSMatchDistDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSMatchDistDefine.h; sourceTree = "<group>"; };
 		1F2E1E4E21A2AF8C00882241 /* MessageTypeDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTypeDefine.h; sourceTree = "<group>"; };
-		1F2E1E5321A3BB8D00882241 /* CPGCommon.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGCommon.pb.h; sourceTree = "<group>"; };
-		1F2E1E5421A3BB8E00882241 /* CPGCommon.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGCommon.pb.cc; sourceTree = "<group>"; };
+		1F2E1E6021A4F1B500882241 /* CPGClientServer.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGClientServer.pb.cc; sourceTree = "<group>"; };
+		1F2E1E6121A4F1B500882241 /* CPGServer.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServer.pb.h; sourceTree = "<group>"; };
+		1F2E1E6221A4F1B500882241 /* CPGServer.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGServer.pb.cc; sourceTree = "<group>"; };
+		1F2E1E6321A4F1B500882241 /* CPGClientServer.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGClientServer.pb.h; sourceTree = "<group>"; };
 		1F95CE67218BFC780057618A /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
-		1F95CE94218BFD450057618A /* CPGToCentral.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CPGToCentral.proto; sourceTree = "<group>"; };
 		1F95CE95218BFD450057618A /* ng */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ng; sourceTree = "<group>"; };
 		1F95CE96218BFD450057618A /* CPGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGHeader.h; sourceTree = "<group>"; };
-		1F95CE97218BFD450057618A /* CPGToCentral.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGToCentral.pb.h; sourceTree = "<group>"; };
-		1F95CE98218BFD450057618A /* CPGToCentral.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentral.pb.cc; sourceTree = "<group>"; };
 		1F95CE99218BFD450057618A /* CPGServerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGServerDefine.h; sourceTree = "<group>"; };
 		1F95CE9B218C3C6C0057618A /* CSKernel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CSKernel.cpp; sourceTree = "<group>"; };
 		1F95CE9C218C3C6C0057618A /* CSKernel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSKernel.hpp; sourceTree = "<group>"; };
@@ -94,8 +92,6 @@
 		1F95CE9F218C3F520057618A /* CSMatchManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CSMatchManager.hpp; sourceTree = "<group>"; };
 		1F95CF1A219137FE0057618A /* BalanceSession.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BalanceSession.cpp; sourceTree = "<group>"; };
 		1F95CF1B219137FE0057618A /* BalanceSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BalanceSession.hpp; sourceTree = "<group>"; };
-		1F95CF1D219177550057618A /* CPGClient.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGClient.pb.cc; sourceTree = "<group>"; };
-		1F95CF1E219177550057618A /* CPGClient.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGClient.pb.h; sourceTree = "<group>"; };
 		1FE3E9002189A5B500A2F52D /* CentralServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CentralServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE3E9032189A5B500A2F52D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1FE3E90B2189A5FB00A2F52D /* Thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thread.cpp; sourceTree = "<group>"; };
@@ -252,17 +248,14 @@
 				1FF08552219D190B00A05710 /* Util */,
 				1F24639721995135009A67AC /* Third */,
 				1F246360219407EF009A67AC /* Net */,
-				1F95CE94218BFD450057618A /* CPGToCentral.proto */,
 				1F95CE95218BFD450057618A /* ng */,
 				1F95CE96218BFD450057618A /* CPGHeader.h */,
-				1F95CE97218BFD450057618A /* CPGToCentral.pb.h */,
-				1F95CE98218BFD450057618A /* CPGToCentral.pb.cc */,
 				1F95CE99218BFD450057618A /* CPGServerDefine.h */,
+				1F2E1E6021A4F1B500882241 /* CPGClientServer.pb.cc */,
+				1F2E1E6321A4F1B500882241 /* CPGClientServer.pb.h */,
+				1F2E1E6221A4F1B500882241 /* CPGServer.pb.cc */,
+				1F2E1E6121A4F1B500882241 /* CPGServer.pb.h */,
 				1F2E1E4E21A2AF8C00882241 /* MessageTypeDefine.h */,
-				1F2E1E5421A3BB8E00882241 /* CPGCommon.pb.cc */,
-				1F2E1E5321A3BB8D00882241 /* CPGCommon.pb.h */,
-				1F95CF1D219177550057618A /* CPGClient.pb.cc */,
-				1F95CF1E219177550057618A /* CPGClient.pb.h */,
 				1F246393219950A0009A67AC /* cpg_match_struct_define.h */,
 				1F24639E2199522D009A67AC /* GameDefine.h */,
 				1F2463A621995329009A67AC /* BetAlgorithm.cc */,
@@ -448,6 +441,7 @@
 				1F2463A12199527F009A67AC /* cpg_json_struct_helper.cpp in Sources */,
 				1FE3EA22218AE86E00A2F52D /* LoginSession.cpp in Sources */,
 				1FE3E93C2189A5FB00A2F52D /* ParseProto.cpp in Sources */,
+				1F2E1E6521A4F1B500882241 /* CPGServer.pb.cc in Sources */,
 				1F2463BC219AB46F009A67AC /* CSMatchDistribution.cpp in Sources */,
 				1FE3E9482189A5FB00A2F52D /* Timestamp.cpp in Sources */,
 				1FE3E9412189A5FB00A2F52D /* TCPServer.cpp in Sources */,
@@ -458,6 +452,7 @@
 				1FE3E93B2189A5FB00A2F52D /* NetPacket.cpp in Sources */,
 				1FE3E9402189A5FB00A2F52D /* Queue.cpp in Sources */,
 				1FE3E9462189A5FB00A2F52D /* TCPSessionManager.cpp in Sources */,
+				1F2E1E6421A4F1B500882241 /* CPGClientServer.pb.cc in Sources */,
 				1FE3E93D2189A5FB00A2F52D /* TCPListener.cpp in Sources */,
 				1F95CE9D218C3C6C0057618A /* CSKernel.cpp in Sources */,
 				1F95CF1C219137FE0057618A /* BalanceSession.cpp in Sources */,
@@ -472,11 +467,8 @@
 				1FE3E9452189A5FB00A2F52D /* DataHandler.cpp in Sources */,
 				1FE3E9042189A5B500A2F52D /* main.cpp in Sources */,
 				1FF0854D219D0BA300A05710 /* CSMatchLoadedEvaluation.cpp in Sources */,
-				1F95CE9A218BFD450057618A /* CPGToCentral.pb.cc in Sources */,
 				1FF08560219D5C1B00A05710 /* ServerConfigManager.cpp in Sources */,
-				1F95CF1F219177550057618A /* CPGClient.pb.cc in Sources */,
 				1FE3E9392189A5FB00A2F52D /* Thread.cpp in Sources */,
-				1F2E1E5521A3BB8E00882241 /* CPGCommon.pb.cc in Sources */,
 				1F2463A721995329009A67AC /* BetAlgorithm.cc in Sources */,
 				1FE3EA1F218AE86300A2F52D /* MatchSession.cpp in Sources */,
 				1F24633C2193F03F009A67AC /* ServiceKernel.cpp in Sources */,

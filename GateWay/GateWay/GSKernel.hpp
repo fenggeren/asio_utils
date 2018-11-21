@@ -39,7 +39,10 @@ public:
 public:
     // 比赛分配
     void distibuteMatchesNotify(const void* buffer, const PacketHeader& header);
-
+    
+    void beatHeartRQ(const std::shared_ptr<TCPSession>& session,
+                     const void* buffer, const PacketHeader& header);
+    
 private:
     void runOneService(const ServerNetConfig::ServerInfo& config);
     // 比赛id 对应的 matchService session

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package CPGToCentral;
+package CPGServer;
 
 // 服务器之间的消息
 

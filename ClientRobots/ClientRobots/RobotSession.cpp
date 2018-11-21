@@ -7,7 +7,7 @@
 //
 
 #include "RobotSession.hpp"
-#include <CPG/CPGClient.pb.h>
+#include <CPG/CPGClientServer.pb.h>
 #include "RobotSessionManager.hpp"
 #include <CPG/CPGServerDefine.h>
 #include <Net/Util/NetPacket.hpp>
@@ -26,7 +26,7 @@ void C2BSession::onClose()
 void C2BSession::sendInitData()
 {
     //向 balance发送连接请求。 返回合适的GateServer配置信息
-    CPGClient::ConnectRQ rq;
+    CPGClientServer::ConnectRQ rq;
     rq.set_logicid(uuid());
     SessionManager.sendMsgToSession(shared_from_this(), rq, kClientConnectRQ, ServerType_BalanceServer);
 }
@@ -53,7 +53,7 @@ bool C2BSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 void C2BSession::connectRS(const void* data, int len)
 {
     LOG_MINFO << " ";
-    CPGClient::ConnectRS rs;
+    CPGClientServer::ConnectRS rs;
     if (fasio::parseProtoMsg(data, len, rs))
     {
         auto robot = gRobotManager.getRobot(logicID());
@@ -64,7 +64,7 @@ void C2BSession::connectRS(const void* data, int len)
     }
     else
     {
-        LOG_ERROR << " not parse data to CPGClient::ConnectRS size: " << len;
+        LOG_ERROR << " not parse data to CPGClientServer::ConnectRS size: " << len;
     }
 }
 
@@ -73,16 +73,18 @@ void C2BSession::connectRS(const void* data, int len)
 void RobotSession::sendInitData()
 {
     // 登录请求
-    CPGClient::LoginRQ rq;
+    CPGClientServer::LoginRQ rq;
     rq.set_uid(uuid());
     char buf[64] = {0};
     snprintf(buf, sizeof(buf), "Robot-%d",uuid());
     rq.set_token(buf);
     SessionManager.sendMsgToSession(shared_from_this(), rq, kClientLoginRQ,ServerType_GateServer);
+    updateHeartBeat();
 }
 
 void RobotSession::onClose() 
 {
+//    unenableRetry();
 }
 
 

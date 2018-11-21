@@ -23,6 +23,7 @@ TCPSession::TCPSession(SocketPtr socket, const std::string& name)
 {
     socket_ = std::move(socket);
     name_ = name;
+    updateHeartBeat();
 }
     
 TCPSession::TCPSession()
@@ -187,6 +188,12 @@ void TCPSession::forceClose()
     }
 }
 
+void TCPSession::updateHeartBeat(time_t cur)
+{
+    heartBeat_ = cur;
+}
+
+
 ClientSession::ClientSession()
 :TCPSession()
 {
@@ -221,7 +228,5 @@ void ClientSession::stop()
         connector_->stop();
     }
 }
-
-
 
 }

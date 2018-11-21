@@ -81,6 +81,9 @@ public:
     void setLogicID(int32 logicID) { logicID_ = logicID; }
     int32 logicID() const { return logicID_; }
     
+    
+    void updateHeartBeat(time_t cur = time(NULL));
+    time_t heartBeatTime() const  { return heartBeat_;}
 public:
     ///////  设置回调   /////////
     void setConnectionCallback(const std::function<void(const TCPSessionPtr&)>& cb)
@@ -137,6 +140,7 @@ protected:
     int32 logicID_{INVALID_LID};
     
     bool client_{false};
+    time_t heartBeat_;
     static std::atomic<int> num_;
 };
 
@@ -154,6 +158,7 @@ public:
     void unenableRetry() { retry_ = false; }
     
     bool canRetry() const { return retry_; }
+
 public:
     
     void setConnector(std::shared_ptr<TCPConnector> connector);

@@ -7,9 +7,48 @@
 //
 
 #include "CSSessionManager.hpp"
-#include <CPG/CPGToCentral.pb.h>
-#include <Net/Util/ParseProto.hpp>
-#include <Net/Util/NetPacket.hpp>
+#include <CPG/CPGServer.pb.h>
+#include <Net/FASIO.hpp>
 #include "CPGServerDefine.h"
 
 using namespace fasio::logging;
+
+void CSSessionManager::initialize()
+{
+    // 客户端心跳包检测。
+    //
+    TimerManager::createTimer(std::bind(&CSSessionManager::clientCheckOvertime, this), getIoContext(), kServerHeartBeatDuration, kServerHeartBeatDuration, INT_MAX);
+}
+
+
+void CSSessionManager::clientCheckOvertime()
+{
+    std::list<TCPSessionPtr> overtimeSessions;
+    
+    time_t cur = time(NULL);
+    LOG_DEBUG << cur;
+    sessionMap_.foreach([&](const std::shared_ptr<TCPSession>& session)
+                        {
+//                            LOG_DEBUG << session->heartBeatTime()
+//                            << "  over  " << cur - session->heartBeatTime();
+                            if (cur - session->heartBeatTime() > kServerHeartBeatOvertime)
+                            {
+                                overtimeSessions.push_back(session);
+                            }
+                        });
+    
+    
+    for(auto& session : overtimeSessions)
+    {
+        LOG_MINFO << " service overtime " << session->uuid();
+        session->forceClose();
+    }
+}
+
+
+
+
+
+
+
+

@@ -7,7 +7,7 @@
 //
 
 #include "G2LSession.hpp"
-#include <CPG/CPGClient.pb.h>
+#include <CPG/CPGClientServer.pb.h>
 #include <Net/Util/NetPacket.hpp>
 #include <Net/Util/ParseProto.hpp>
 #include "GSKernel.hpp"

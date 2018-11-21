@@ -7,8 +7,8 @@
 //
 
 #include "GateSession.hpp"
-#include <CPG/CPGToCentral.pb.h>
-#include <CPG/CPGClient.pb.h>
+#include <CPG/CPGServer.pb.h>
+#include <CPG/CPGClientServer.pb.h>
 #include <CPG/CPGHeader.h>
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
@@ -36,9 +36,9 @@ bool GateSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
 void GateSession::loginRQ(const void* data, const PacketHeader& header)
 {
     LOG_MINFO << " csid: " << header.extraID;
-    CPGClient::LoginRS rs;
+    CPGClientServer::LoginRS rs;
     // token 校验
-    CPGClient::LoginRQ rq;
+    CPGClientServer::LoginRQ rq;
     if (fasio::parseProtoMsg(data, header.size, rq))
     {
         rs.set_result(0);

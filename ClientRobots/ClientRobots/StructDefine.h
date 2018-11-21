@@ -25,13 +25,13 @@ struct MatchBriefInfo
 
 namespace fasio
 {
-    class TCPSession;
+    class ClientSession;
 }
 
 struct UserInfo
 {
     int uid;
-    std::shared_ptr<fasio::TCPSession> session;
+    std::shared_ptr<fasio::ClientSession> session;
 };
 
 

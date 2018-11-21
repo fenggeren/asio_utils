@@ -7,8 +7,7 @@
 //
 
 #include "GSSessionManager.hpp"
-#include <Net/logging/Logging.hpp>
-#include <Net/Util/ParseProto.hpp>
+#include <Net/FASIO.hpp>
 #include <CPG/CPGServerDefine.h>
 #include "G2CSession.hpp"
 #include "G2MSession.hpp"
@@ -17,30 +16,42 @@
 using namespace fasio::logging;
 
 
-void GSSessionManager::updateMatchDistri(const std::map<int, std::list<int>>& matchesDist)
+
+
+void GSSessionManager::initialize()
 {
-    for(auto& pair : matchesDist)
-    {
-        
-    }
+    // 客户端心跳包检测。
+    //
+    TimerManager::createTimer(std::bind(&GSSessionManager::clientCheckOvertime, this), getIoContext(), kClientHeartBeatDuration, kClientHeartBeatDuration, INT_MAX);
 }
 
-void GSSessionManager::transToMatchServer(int32 mid, const google::protobuf::Message& msg, int32 msgType)
+
+void GSSessionManager::clientCheckOvertime()
 {
-    // 根据比赛 mid 获取对应的 G2MSession!
-    auto iter = mid2MatchServers_.find(mid);
-    if (iter != mid2MatchServers_.end())
+    std::list<TCPSessionPtr> overtimeSessions;
+    
+    time_t cur = time(NULL);
+//    LOG_DEBUG << cur;
+    sessionMap_.foreach([&](const std::shared_ptr<TCPSession>& session)
+                        {
+                            if (session->type() == ServerType_Client)
+                            {
+                                LOG_DEBUG << session->heartBeatTime()
+                                << "  over  " << cur - session->heartBeatTime();
+                                if (cur - session->heartBeatTime() > kClientHeartBeatOvertime)
+                                {
+                                    overtimeSessions.push_back(session);
+                                }
+                            }
+                        });
+    
+    
+    for(auto& session : overtimeSessions)
     {
-        PacketHeader header{msgType, msg.ByteSize()};
-        iter->second->addMore(&header, kPacketHeaderSize);
-        iter->second->send(msg.SerializeAsString());
-    }
-    else
-    {
-        LOG_ERROR << " not found matchserver for mid: " << mid;
+        LOG_MINFO << " client overtime " << session->uuid();
+        session->forceClose();
     }
 }
-
 
 
 std::shared_ptr<ClientSession>

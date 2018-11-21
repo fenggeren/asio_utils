@@ -31,6 +31,7 @@ size_(size + kPacketHeaderSize)
 
 NetPacket::NetPacket(const void* data, const PacketHeader& header)
 : buffer_(new char[header.size + kPacketHeaderSize])
+,size_(header.size + kPacketHeaderSize)
 {
     memcpy(buffer_, &header, kPacketHeaderSize);
     memcpy(buffer_+kPacketHeaderSize, data, header.size);

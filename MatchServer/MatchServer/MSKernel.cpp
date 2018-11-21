@@ -13,8 +13,8 @@
 #include "MSMatchManager.hpp"
 #include <CPG/CPGHeader.h>
 #include <Net/FASIO.hpp>
-#include <CPG/CPGToCentral.pb.h>
-#include <CPG/CPGCommon.pb.h>
+#include <CPG/CPGServer.pb.h>
+#include <CPG/CPGClientServer.pb.h>
 
 using namespace fasio::logging;
 
@@ -108,7 +108,7 @@ MSKernel::connectService(unsigned short type,
 void MSKernel::checkMatchDistributeRS(const void* buffer, const PacketHeader& header)
 {
     LOG_MINFO << "";
-    CPGToCentral::CheckMatchDistributeRS rs;
+    CPGServer::CheckMatchDistributeRS rs;
     if (parseProtoMsg(buffer, header.size, rs))
     {
         LOG_MINFO << " result: " << rs.result();
@@ -129,7 +129,7 @@ void MSKernel::checkMatchDistributeRS(const void* buffer, const PacketHeader& he
 void MSKernel::distibuteMatchesNotify(const void* buffer, const PacketHeader& header)
 {
     LOG_MINFO << "";
-    CPGToCentral::ServiceMatchDistibuteNotify notify;
+    CPGServer::ServiceMatchDistibuteNotify notify;
     if (parseProtoMsg(buffer, header.size, notify))
     {
         std::list<int> mids;
@@ -152,8 +152,8 @@ void MSKernel::joinMatchRQ(const TCPSessionPtr& session,
 {
     LOG_MINFO << "";
     
-     CPGCommon::JoinMatchRS rs;
-    CPGCommon::JoinMatchRQ rq;
+     CPGClientServer::JoinMatchRS rs;
+    CPGClientServer::JoinMatchRQ rq;
     if (parseProtoMsg(buffer, header.size, rq))
     {
         rs.set_result(0);
@@ -182,9 +182,9 @@ void MSKernel::unjoinMatchRQ(const TCPSessionPtr& session,
 {
     LOG_MINFO << "";
     
-    CPGCommon::UnjoinMatchRS rs;
+    CPGClientServer::UnjoinMatchRS rs;
     
-    CPGCommon::UnjoinMatchRQ rq;
+    CPGClientServer::UnjoinMatchRQ rq;
     if (parseProtoMsg(buffer, header.size, rq))
     {
         rs.set_result(0);

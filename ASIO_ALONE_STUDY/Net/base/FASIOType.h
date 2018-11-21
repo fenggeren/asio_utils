@@ -22,6 +22,13 @@ typedef unsigned int 		uint32;
 typedef signed long long 	int64;
 typedef unsigned long long 	uint64;
 
+
+
+#define kClientHeartBeatDuration 9
+#define kClientHeartBeatOvertime 20
+#define kServerHeartBeatDuration 5
+#define kServerHeartBeatOvertime 11
+
 struct PacketHeader
 {
     int32 type{0};

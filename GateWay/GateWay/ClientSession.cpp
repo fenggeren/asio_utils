@@ -7,7 +7,7 @@
 //
 
 #include "ClientSession.hpp"
-#include <CPG/CPGClient.pb.h>
+#include <CPG/CPGClientServer.pb.h>
 #include <CPG/CPGHeader.h>
 #include <Net/Util/NetPacket.hpp>
 #include <Net/Util/ParseProto.hpp>
@@ -45,8 +45,9 @@ bool CGSession::handlerMsg(const std::shared_ptr<TCPSession>& session,
     }
     else
     {
-        
+        LOG_ERROR << "unrecognize msg: " << header.type;
     }
+//    updateHeartBeat();
     return true;
 }
 

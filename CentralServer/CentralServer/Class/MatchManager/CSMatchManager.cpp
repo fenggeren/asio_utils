@@ -381,7 +381,7 @@ CSMatchManager::checkServiceDistMap(const MatchDisService& service,
             undistMatches_.remove(mid);
         }
         
-        LOG_MINFO << " reconnect recover: " << jointContainer(mids);
+        LOG_MINFO << " reconnect recover: " << jointContainer(matchServices_[service]);
     }
     else
     {

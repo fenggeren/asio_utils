@@ -19,10 +19,12 @@ class CPGToCentralSession : public CPGClientSession
 {
 public:
     
+    virtual ~CPGToCentralSession();
 protected:
     
     void sendRegisterData(TCPSessionManager& sessionManager);
     
+    void sendHeartBeat(TCPSessionManager& sessionManager); 
 private:
     void serverRegistRS(const void* data, int len);
     void newServicesNotify(const void* data, int len);
@@ -32,7 +34,8 @@ private:
     
     
 private:
-    
+    std::shared_ptr<asio::basic_waitable_timer<
+                    std::chrono::steady_clock>> heartTimer_;
     int testID_{0};
 };
 

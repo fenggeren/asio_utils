@@ -8,7 +8,8 @@
 
 #include "CPGToCentralSession.hpp"
 #include "CPGServerDefine.h"
-#include <CPG/CPGToCentral.pb.h>
+#include <CPG/CPGServer.pb.h>
+#include <CPG/CPGClientServer.pb.h>
 #include "MessageTypeDefine.h"
 #include "../Util/ServerConfigManager.hpp"
 #include "../../Net/FASIO.hpp"
@@ -16,6 +17,17 @@
 #include <set>
 
 using namespace logging;
+
+
+CPGToCentralSession::~CPGToCentralSession()
+{
+    if (heartTimer_)
+    {
+        heartTimer_->cancel();
+        heartTimer_ = nullptr;
+    }
+    LOG_DEBUG << " 断开CS连接";
+}
 
 void CPGToCentralSession::defaultMessageCallback(
                                               const std::shared_ptr<TCPSession>& session,
@@ -49,7 +61,7 @@ void CPGToCentralSession::defaultMessageCallback(
 
 void CPGToCentralSession::newServicesNotify(const void* data, int len)
 {
-    CPGToCentral::NewConnServiceNotify rs;
+    CPGServer::NewConnServiceNotify rs;
     if (fasio::parseProtoMsg(data, len, rs))
     {
         for(auto& connsvr : rs.connservers())
@@ -65,7 +77,7 @@ void CPGToCentralSession::newServicesNotify(const void* data, int len)
 }
 void CPGToCentralSession::serverRegistRS(const void* data, int len)
 {
-    CPGToCentral::ServerRegisterRS rs;
+    CPGServer::ServerRegisterRS rs;
     if (fasio::parseProtoMsg(data, len, rs))
     {
         if (rs.result() == 0)
@@ -133,7 +145,7 @@ std::set<int> connectTypes()
 
 void CPGToCentralSession::sendRegisterData(TCPSessionManager& sessionManager)
 {
-    CPGToCentral::ServerRegisterRQ rq;
+    CPGServer::ServerRegisterRQ rq;
     rq.set_sid(logicID()); // 可能会重复注册，根据logicID判断
     rq.set_type(ServerType_MatchServer);
     
@@ -152,4 +164,38 @@ void CPGToCentralSession::sendRegisterData(TCPSessionManager& sessionManager)
     }
     sessionManager.sendMsgToSession(shared_from_this(), rq,
                                     kServerRegistRQ, ServerType_CentralServer);
+    sendHeartBeat(sessionManager);
 }
+
+
+
+void CPGToCentralSession::sendHeartBeat(TCPSessionManager& sessionManager)
+{
+    static fasio::NetPacketPtr beatHeartPacket = nullptr;
+    if (!beatHeartPacket)
+    {
+        CPGClientServer::BeatHeartRQ beat;
+        beat.set_type(ServerType_Client);
+        PacketHeader header{kHeartBeatRQ, beat.ByteSize(),0};
+        beatHeartPacket = std::make_shared<NetPacket>
+        (beat.SerializeAsString().data(), header);
+    }
+    
+    
+    if (heartTimer_)
+    {
+        heartTimer_->cancel();
+        heartTimer_ = nullptr;
+    }
+    
+    heartTimer_ = TimerManager::createTimer([&]{
+        sessionManager.sendMsgToSession(shared_from_this(), beatHeartPacket);
+    },
+     getIoContext(), kServerHeartBeatDuration,
+      kServerHeartBeatDuration, INT_MAX);
+}
+
+
+
+
+

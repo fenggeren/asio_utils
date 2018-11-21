@@ -7,9 +7,8 @@
 //
 
 #include "CSKernel.hpp"
-#include <CPG/CPGToCentral.pb.h>
-#include <CPG/CPGClient.pb.h>
-#include <CPG/CPGCommon.pb.h>
+#include <CPG/CPGServer.pb.h>
+#include <CPG/CPGClientServer.pb.h>
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"
@@ -34,6 +33,7 @@ void CSKernel::start(const ServerNetConfig::ServerInfo& config)
     info->type = ServerType_CentralServer;
     info->sid = 100000000;
     info->connectTimes = time(NULL);
+    SessionManager.initialize();
     
     for(auto& listen: config.listenInfos)
     {
@@ -111,7 +111,7 @@ void CSKernel::serverRegistRQ(const TCPSessionPtr& session,
                               const void* data,
                               int len)
 {
-    CPGToCentral::ServerRegisterRQ rq;
+    CPGServer::ServerRegisterRQ rq;
     if (fasio::parseProtoMsg(data, len, rq))
     {
         std::shared_ptr<ServerInfo> info = nullptr;
@@ -160,7 +160,7 @@ void CSKernel::serverRegistRQ(const TCPSessionPtr& session,
     }
     else
     {
-        CPGToCentral::ServerRegisterRS rs;
+        CPGServer::ServerRegisterRS rs;
         rs.set_result(-1);
         SessionManager.sendMsgToSession(session, rs, kServerRegistRS);
         LOG_ERROR << " cant parse proto msg len: " << len ;
@@ -175,7 +175,7 @@ void CSKernel::serverRegistRS(const TCPSessionPtr& session,
 {
     // 获取需要连接的服务信息
     // 注册返回
-    CPGToCentral::ServerRegisterRS rs;
+    CPGServer::ServerRegisterRS rs;
     rs.set_result(0);
     rs.set_sid(info->sid);
  
@@ -211,7 +211,7 @@ void CSKernel::serverRegistRS(const TCPSessionPtr& session,
         for(auto& lis : info->listeners)
         {
             // 发送此服务信息给所有监听的类型服务信息
-            CPGToCentral::NewConnServiceNotify notify;
+            CPGServer::NewConnServiceNotify notify;
             auto conn = notify.add_connservers();
             conn->set_port(lis.port);
             conn->set_sid(info->sid);
@@ -231,9 +231,9 @@ void CSKernel::requestBestGateServer(const TCPSessionPtr& session,
                                      const void* data,
                                      const PacketHeader& header)
 {
-    CPGClient::ConnectRS rs;
+    CPGClientServer::ConnectRS rs;
     
-    CPGClient::ConnectRQ rq;
+    CPGClientServer::ConnectRQ rq;
     if (parseProtoMsg(data, header.size, rq))
     {
         rs.set_result(0); 
@@ -288,7 +288,7 @@ void CSKernel::distributeMatch(const std::map<unsigned int, std::list<int>>& upd
  
     for(auto& pair : updateMap)
     {
-        CPGToCentral::ServiceMatchDistibuteNotify notify;
+        CPGServer::ServiceMatchDistibuteNotify notify;
         notify.set_sid(pair.first);
         for(auto mid : pair.second)
         {
@@ -315,11 +315,11 @@ void CSKernel::sendAllDistributeMatchInfos(const TCPSessionPtr& session,
                                            int stype)
 {
     // 1. 将所有的分配信息发送个给所有的GS
-    CPGToCentral::ServerAllMatchDistributeNotify notify;
+    CPGServer::ServerAllMatchDistributeNotify notify;
     auto map = CSMatchManager::instance().getAllMatchServices();
     for(auto& pair : map)
     {
-        CPGToCentral::ServiceMatchDistibuteNotify& subnotify = *notify.add_services();;
+        CPGServer::ServiceMatchDistibuteNotify& subnotify = *notify.add_services();;
         subnotify.set_sid(pair.first.sid);
         for(auto mid : pair.second)
         {
@@ -344,7 +344,7 @@ void CSKernel::checkMatchDistributeRQ(const TCPSessionPtr& session,
                                       const void* data,
                                       const PacketHeader& header)
 {
-    CPGToCentral::CheckMatchDistributeRQ rq;
+    CPGServer::CheckMatchDistributeRQ rq;
     if (parseProtoMsg(data, header.size, rq))
     {
         std::list<int> mids;
@@ -358,7 +358,7 @@ void CSKernel::checkMatchDistributeRQ(const TCPSessionPtr& session,
         MatchDisService service{session->logicID(), loaded};
         auto res = CSMatchManager::instance().checkServiceDistMap(service, mids);
         
-        CPGToCentral::CheckMatchDistributeRS rs;
+        CPGServer::CheckMatchDistributeRS rs;
         rs.set_sid(session->logicID());
         rs.set_type(session->type());
         rs.set_result(res);
@@ -384,8 +384,8 @@ void CSKernel::matchListRQ(const TCPSessionPtr& session,
                          const PacketHeader& header)
 {
     LOG_MINFO << "";
-    CPGCommon::MatchListRS rs;
-    CPGCommon::MatchListRQ rq;
+    CPGClientServer::MatchListRS rs;
+    CPGClientServer::MatchListRQ rq;
     if (parseProtoMsg(data, header.size, rq))
     {
         rs.set_uid(rq.uid());

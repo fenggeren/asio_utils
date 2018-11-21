@@ -7,7 +7,7 @@
 //
 
 #include "M2CSession.hpp"
-#include <CPG/CPGToCentral.pb.h>
+#include <CPG/CPGServer.pb.h>
 #include <CPG/CPGServerDefine.h>
 #include "MSSessionManager.hpp"
 #include <Net/Util/NetPacket.hpp>
@@ -23,7 +23,7 @@ using namespace fasio::logging;
 
 void M2CSession::onClose()
 {
-    MSKernel::instance().removeServiceSession(uuid());
+//    MSKernel::instance().removeServiceSession(uuid());
 }
 
 ServiceKernel& M2CSession::serviceKernel()
@@ -53,7 +53,7 @@ void M2CSession::checkMatchDistribute()
 {
     auto matches = MSMatchManager::instance().matches();
     
-    CPGToCentral::CheckMatchDistributeRQ rq;
+    CPGServer::CheckMatchDistributeRQ rq;
     rq.set_sid(logicID());
     rq.set_type(ServerType_MatchServer);
     for(auto mid : matches)

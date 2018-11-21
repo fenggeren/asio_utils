@@ -14,6 +14,7 @@
 #include <vector>
 #include <set>
 #include "StructDefine.h"
+#include "BeatHeartClient.hpp"
 
 class Robot : public std::enable_shared_from_this<Robot>
 {
@@ -26,16 +27,16 @@ public:
     
     void connect();
     
-    
     void joinedMatch(int mid);
     void unjoinedMatch(int mid);
+    
 public:
     
     void setUid(int uid)
     {
         userInfo_.uid = uid;
     }
-    void setSession(const std::shared_ptr<fasio::TCPSession>& session)
+    void setSession(const std::shared_ptr<fasio::ClientSession>& session)
     {
         userInfo_.session = session;
     }
@@ -54,6 +55,7 @@ public:
     }
     
     MatchBriefInfo matchInfo(int mid);
+   
     
 public:
     const std::string& ip() const {return ip_; }

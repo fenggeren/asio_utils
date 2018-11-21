@@ -7,7 +7,7 @@
 //
 
 #include "L2CSession.hpp"
-#include <CPG/CPGToCentral.pb.h>
+#include <CPG/CPGServer.pb.h>
 #include <CPG/CPGServerDefine.h>
 #include <Net/Util/NetPacket.hpp>
 #include <Net/logging/Logging.hpp>
@@ -25,7 +25,7 @@ void L2CSession::sendInitData()
 
 void L2CSession::onClose()
 {
-    LSKernel::instance().removeServiceSession(uuid());
+//    LSKernel::instance().removeServiceSession(uuid());
 }
 
 bool L2CSession::handlerMsg(const std::shared_ptr<TCPSession>& session,

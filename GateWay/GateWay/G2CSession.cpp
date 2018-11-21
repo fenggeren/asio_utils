@@ -7,7 +7,7 @@
 //
 
 #include "G2CSession.hpp"
-#include <CPG/CPGToCentral.pb.h>
+#include <CPG/CPGServer.pb.h>
 #include <CPG/CPGServerDefine.h>
 #include "GSSessionManager.hpp"
 #include "GSKernel.hpp"
@@ -18,7 +18,7 @@ using namespace fasio::logging;
 
 void G2CSession::onClose()
 {
-    GSKernel::instance().removeServiceSession(uuid());
+//    GSKernel::instance().removeServiceSession(uuid());
 }
 
 void G2CSession::sendInitData()

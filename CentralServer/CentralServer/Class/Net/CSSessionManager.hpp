@@ -28,9 +28,13 @@ public:
         return manager;
     }
     
-    
-public:
   
+    void initialize();
+    
+private:
+    
+    void clientCheckOvertime();
+    
 private:
     std::vector<std::shared_ptr<ServerInfo>> servers_;
 

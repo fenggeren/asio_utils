@@ -10,8 +10,8 @@
 #include <Net/Util/NetPacket.hpp>
 #include "CSKernel.hpp"
 #include <Net/Util/ParseProto.hpp>
-#include <CPG/CPGToCentral.pb.h>
-#include <CPG/CPGClient.pb.h>
+#include <CPG/CPGServer.pb.h>
+#include <CPG/CPGClientServer.pb.h> 
 #include <CPG/CPGServerDefine.h>
 #include "CSSessionManager.hpp"
 

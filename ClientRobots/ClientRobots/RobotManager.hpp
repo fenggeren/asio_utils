@@ -63,7 +63,12 @@ public:
     void matchListRS(const std::shared_ptr<TCPSession>& session,
                      const void* data, const PacketHeader& heaer);
     
+    void heartBeat(const std::shared_ptr<Robot>& robot);
+    void heartReatReceive(const std::shared_ptr<TCPSession>& session,
+                          const void* data, const PacketHeader& heaer);
     
+    
+    void receiveData(const std::shared_ptr<TCPSession>& session);
 private:
     
     std::shared_ptr<Robot> getRobot(const std::shared_ptr<TCPSession>& session);

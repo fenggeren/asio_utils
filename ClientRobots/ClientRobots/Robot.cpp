@@ -18,6 +18,7 @@ void Robot::connect()
 const MatchBriefInfo& Robot::randMatch() const
 {
     int index = arc4random_uniform(matchList_.size());
+    assert(index < matchList_.size());
     return matchList_[index];
 }
 MatchBriefInfo Robot::matchInfo(int mid)

@@ -8,8 +8,8 @@
 
 #include "RobotManager.hpp"
 #include "RobotSessionManager.hpp"
-#include <CPG/CPGCommon.pb.h>
-#include <CPG/CPGClient.pb.h>
+#include <CPG/CPGClientServer.pb.h>
+#include <CPG/CPGClientServer.pb.h>
 #include <Net/FASIO.hpp>
 
 
@@ -25,14 +25,41 @@ port_(7841)
         int idx = arc4random_uniform(robotNums_);
         auto robot = robots_[idx];
         joinMatchRQ(robot);
-    }, io_context_, 11, 0.001, 10000000);
+    }, io_context_, 3, 0.001, 1000);
+//
+//    TimerManager::createTimer([&]{
+//        int idx = arc4random_uniform(robotNums_);
+//        auto robot = robots_[idx];
+//        unjoinMatchRQ(robot);
+//
+//    }, io_context_, 13, 0.001, 1000000);
+    
     
     TimerManager::createTimer([&]{
-        int idx = arc4random_uniform(robotNums_);
-        auto robot = robots_[idx];
-        unjoinMatchRQ(robot);
+        std::list<std::shared_ptr<Robot>> missRobots;
+        time_t cur = time(NULL);
+        for(auto& robot : robots_)
+        {
+            if (cur - robot->userInfo().session->heartBeatTime() >
+                kClientHeartBeatDuration)
+            {
+                missRobots.push_back(robot);
+            }
+            else
+            {
+                heartBeat(robot);
+            }
+        }
 
-    }, io_context_, 13, 0.001, 1000000);
+        for(auto& robot : missRobots)
+        {
+            LOG_ERROR << " overtime: " << robot->logicID();
+            auto session = robot->userInfo().session;
+            session->unenableRetry();
+            session->forceClose();
+        }
+    }, io_context_, kClientHeartBeatDuration, kClientHeartBeatDuration, 1000000);
+    
     
 }
 
@@ -80,7 +107,7 @@ void RobotManager::postConnect(std::shared_ptr<Robot> robot)
 
 void RobotManager::joinMatchRQ(const std::shared_ptr<Robot>& robot)
 {
-    CPGCommon::JoinMatchRQ rq;
+    CPGClientServer::JoinMatchRQ rq;
     rq.set_uid(robot->userInfo().uid);
     
     auto match = robot->randMatch();
@@ -94,7 +121,7 @@ void RobotManager::joinMatchRQ(const std::shared_ptr<Robot>& robot)
 }
 void RobotManager::unjoinMatchRQ(const std::shared_ptr<Robot>& robot)
 {
-    CPGCommon::UnjoinMatchRQ rq;
+    CPGClientServer::UnjoinMatchRQ rq;
     rq.set_uid(robot->userInfo().uid);
     
     auto match = robot->randMatch();
@@ -108,7 +135,7 @@ void RobotManager::unjoinMatchRQ(const std::shared_ptr<Robot>& robot)
 }
 void RobotManager::matchListRQ(const std::shared_ptr<Robot>& robot)
 {
-    CPGCommon::MatchListRQ rq;
+    CPGClientServer::MatchListRQ rq;
     rq.set_uid(robot->userInfo().uid);
     
     PacketHeader header{kMatchListRQ, rq.ByteSize(), robot->userInfo().uid};
@@ -117,11 +144,23 @@ void RobotManager::matchListRQ(const std::shared_ptr<Robot>& robot)
                            header);
 }
 
+void RobotManager::heartBeat(const std::shared_ptr<Robot>& robot)
+{
+    auto packet = BeatHeartClient::heartBeatMessage();
+    SessionManager.sendMsgToSession(robot->userInfo().session, packet);
+}
+
+void RobotManager::heartReatReceive(
+                    const std::shared_ptr<TCPSession>& session,
+                      const void* data, const PacketHeader& heaer)
+{
+    session->updateHeartBeat();
+}
 
 void RobotManager::loginRS(const std::shared_ptr<TCPSession>& session,
              const void* data, const PacketHeader& header)
 {
-    CPGClient::LoginRS rs;
+    CPGClientServer::LoginRS rs;
     if (parseProtoMsg(data, header.size, rs))
     {
         LOG_MINFO << " id: " << session->logicID();
@@ -136,7 +175,7 @@ void RobotManager::loginRS(const std::shared_ptr<TCPSession>& session,
 void RobotManager::joinMatchRS(const std::shared_ptr<TCPSession>& session,
                  const void* data, const PacketHeader& header)
 {
-    CPGCommon::JoinMatchRS rs;
+    CPGClientServer::JoinMatchRS rs;
     if (parseProtoMsg(data, header.size, rs))
     {
         auto robot = getRobot(session);
@@ -158,7 +197,7 @@ void RobotManager::joinMatchRS(const std::shared_ptr<TCPSession>& session,
 void RobotManager::unjoinMatchRS(const std::shared_ptr<TCPSession>& session,
                    const void* data, const PacketHeader& header)
 {
-    CPGCommon::UnjoinMatchRS rs;
+    CPGClientServer::UnjoinMatchRS rs;
     if (parseProtoMsg(data, header.size, rs))
     {
         auto robot = getRobot(session);
@@ -181,7 +220,7 @@ void RobotManager::matchListRS(const std::shared_ptr<TCPSession>& session,
                  const void* data, const PacketHeader& header)
 {
     LOG_MINFO << "";
-    CPGCommon::MatchListRS rs;
+    CPGClientServer::MatchListRS rs;
     if (parseProtoMsg(data, header.size, rs))
     {
         auto robot = getRobot(session);
@@ -213,6 +252,19 @@ void RobotManager::matchListRS(const std::shared_ptr<TCPSession>& session,
         LOG_ERROR << "";
     }
 }
+
+void RobotManager::receiveData(const std::shared_ptr<TCPSession>& session)
+{
+    
+}
+
+
+
+
+
+
+
+
 
 
 

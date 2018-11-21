@@ -7,12 +7,12 @@
 //
 
 #include "CPGNetSession.hpp"
-#include "../../Net/Util/NetPacket.hpp"
-#include "../../Net/Util/ParseProto.hpp"
-#include "../../Net/logging/Logging.hpp"
-#include "../../Net/ServiceKernel.hpp"
+#include "../../Net/FASIO.hpp"
 #include "CPGServerDefine.h"
-#include "../CPGToCentral.pb.h"
+#include "../CPGServer.pb.h"
+#include "../CPGClientServer.pb.h"
+#include "../MessageTypeDefine.h"
+
 using namespace logging;
 
 CPGServerSession::CPGServerSession(const SocketPtr& sock, const std::string& name)
@@ -29,7 +29,14 @@ void CPGServerSession::defaultMessageCallback(
     {
         PacketHeader* header = (PacketHeader*)data->peek();
         const void* buffer = data->peek() + kPacketHeaderSize;
-        handlerMsg(session, buffer, *header);
+        if (header->type == kHeartBeatRQ)
+        {
+            updateHeartBeat();
+        }
+        else
+        {
+            handlerMsg(session, buffer, *header);
+        }
         data->retrieve(kPacketHeaderSize + header->size);
     }
 }

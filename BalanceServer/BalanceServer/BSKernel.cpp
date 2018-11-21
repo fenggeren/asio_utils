@@ -7,7 +7,7 @@
 //
 
 #include "BSKernel.hpp"
-#include <CPG/CPGToCentral.pb.h>
+#include <CPG/CPGServer.pb.h>
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"

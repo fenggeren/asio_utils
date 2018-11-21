@@ -8,7 +8,7 @@
 
 #include "ClientSession.hpp"
 #include "GSKernel.hpp"
-#include <CPG/CPGToCentral.pb.h>
+#include <CPG/CPGServer.pb.h>
 #include <Net/Util/ParseProto.hpp>
 #include <Net/Util/NetPacket.hpp>
 #include "CPGServerDefine.h"
@@ -35,20 +35,21 @@ void GSKernel::start()
     {
         assert(0);
     }
+    
+    SessionManager.initialize();
+    getIoContext().run();
 }
 
 
 void GSKernel::runOneService(const ServerNetConfig::ServerInfo& config)
 {
-    auto& ioc = getIoContext();
-    netInitializer(config, ioc, SessionManager);
-    ioc.run();
+    netInitializer(config, getIoContext(), SessionManager);
 }
 
 void GSKernel::distibuteMatchesNotify(const void* buffer, const PacketHeader& header)
 {
     LOG_DEBUG << "";
-    CPGToCentral::ServerAllMatchDistributeNotify notify;
+    CPGServer::ServerAllMatchDistributeNotify notify;
     if (fasio::parseProtoMsg(buffer, header.size, notify))
     {
         // sid : <mid>
@@ -241,7 +242,13 @@ void GSKernel::transToClient(const void* data, const PacketHeader& header)
     LOG_MINFO << " ";
     SessionManager.sendMsg(header.extraID, data, header);
 }
- 
+
+
+void GSKernel::beatHeartRQ(const std::shared_ptr<TCPSession>& session,
+                           const void* buffer, const PacketHeader& header)
+{
+    
+}
 
 
 

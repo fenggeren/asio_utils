@@ -18,6 +18,7 @@ using namespace fasio;
 
 #define SessionManager GSSessionManager::instance()
 
+
 class GSSessionManager : public TCPSessionManager
 {
 public:
@@ -28,20 +29,17 @@ public:
         return manager;
     }
     
+    void initialize();
     
-    void updateMatchDistri(const std::map<int, std::list<int>>& matchesDist);
-    
-public:
-    
-    void transToMatchServer(int32 mid, const google::protobuf::Message& msg, int32 msgType);
-    
+    // 客户端心跳包管理--
 private:
+    
+    void clientCheckOvertime();
     
     virtual std::shared_ptr<ClientSession> createConnectorSession(uint8 type) override;
     
-    
 private:
-    std::unordered_map<uint32, std::shared_ptr<TCPSession>> mid2MatchServers_;
+    
 };
 
 

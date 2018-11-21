@@ -7,8 +7,8 @@
 //
 
 #include "B2CSession.hpp"
-#include <CPG/CPGToCentral.pb.h>
-#include <CPG/CPGClient.pb.h>
+#include <CPG/CPGServer.pb.h>
+#include <CPG/CPGClientServer.pb.h>
 #include <CPG/CPGServerDefine.h>
 #include "BSSessionManager.hpp"
 #include "BSKernel.hpp"
@@ -20,7 +20,7 @@ using namespace fasio::logging;
 
 void B2CSession::onClose()
 {
-    BSKernel::instance().removeServiceSession(uuid());
+//    BSKernel::instance().removeServiceSession(uuid());
 }
 
 void B2CSession::sendInitData()
