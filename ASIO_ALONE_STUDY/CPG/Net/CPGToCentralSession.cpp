@@ -189,6 +189,7 @@ void CPGToCentralSession::sendHeartBeat(TCPSessionManager& sessionManager)
     }
     
     heartTimer_ = TimerManager::createTimer([&]{
+        LOG_DEBUG << "";
         sessionManager.sendMsgToSession(shared_from_this(), beatHeartPacket);
     },
      getIoContext(), kServerHeartBeatDuration,

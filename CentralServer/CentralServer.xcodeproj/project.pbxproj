@@ -107,7 +107,6 @@
 		1FE3E9172189A5FB00A2F52D /* Callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callbacks.h; sourceTree = "<group>"; };
 		1FE3E9182189A5FB00A2F52D /* TCPListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPListener.cpp; sourceTree = "<group>"; };
 		1FE3E9192189A5FB00A2F52D /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
-		1FE3E91A2189A5FB00A2F52D /* NetBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NetBase.hpp; sourceTree = "<group>"; };
 		1FE3E91B2189A5FB00A2F52D /* TCPServer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPServer.hpp; sourceTree = "<group>"; };
 		1FE3E91C2189A5FB00A2F52D /* TCPListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPListener.h; sourceTree = "<group>"; };
 		1FE3E91D2189A5FB00A2F52D /* Conv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Conv.hpp; sourceTree = "<group>"; };
@@ -310,7 +309,6 @@
 				1FE3E9172189A5FB00A2F52D /* Callbacks.h */,
 				1FE3E9182189A5FB00A2F52D /* TCPListener.cpp */,
 				1FE3E9192189A5FB00A2F52D /* Queue.hpp */,
-				1FE3E91A2189A5FB00A2F52D /* NetBase.hpp */,
 				1FE3E91B2189A5FB00A2F52D /* TCPServer.hpp */,
 				1FE3E91C2189A5FB00A2F52D /* TCPListener.h */,
 				1FE3E91D2189A5FB00A2F52D /* Conv.hpp */,

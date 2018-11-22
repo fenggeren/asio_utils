@@ -66,6 +66,7 @@ void TCPSessionManager::removeSessionPtr(const TCPSessionPtr& session)
         ClientSession* clientsession = dynamic_cast<ClientSession*>(ssp);
         if (clientsession && clientsession->canRetry())
         {
+            LOG_DEBUG << " reconnect";
             clientsession->reconnect();
         }
         else

@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../ASIO_ALONE_STUDY/Net/ServiceKernel.cpp"
-            timestampString = "564485665.987514"
+            timestampString = "564549610.768398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
             landmarkName = "ServiceKernel::removeServiceSession(int uuid)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../ASIO_ALONE_STUDY/Net/TCPSessionManager.cpp"
+            timestampString = "564549610.76847"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "TCPSessionManager::removeSessionPtr(const TCPSessionPtr&amp; session)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

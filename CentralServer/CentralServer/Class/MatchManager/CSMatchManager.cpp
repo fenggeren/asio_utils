@@ -262,9 +262,20 @@ void CSMatchManager::updateDistMatchServices()
         });
         
         // ③
+        
         for (auto& srv : changedServices_)
         {
-            matchServices_[srv.service] = {};
+            auto iter = matchServices_.find(srv.service);
+            if (iter == matchServices_.end() ||
+                iter->second.size() == 0)
+            {
+                matchServices_[srv.service] = {};
+            }
+            else //
+            {
+                LOG_ERROR << "add service has exist: " << srv.service.sid
+                << "  " << jointContainer(iter->second);
+            }
         }
         
        
@@ -372,6 +383,7 @@ CSMatchManager::checkServiceDistMap(const MatchDisService& service,
             res = ErrorMatchServerMore;
         }
     }
+    //
     else if (mids.size() > 0)
     {
         res = ErrorReconnect;
@@ -381,7 +393,15 @@ CSMatchManager::checkServiceDistMap(const MatchDisService& service,
             undistMatches_.remove(mid);
         }
         
-        LOG_MINFO << " reconnect recover: " << jointContainer(matchServices_[service]);
+        LOG_MINFO << " reconnect recover " << service.sid
+        << " : " <<jointContainer(matchServices_[service]) ;
+        
+        // CS重启，MS自动重连的情况。
+        // 需要清理 changedServices_
+        changedServices_.remove_if([=](const ChangedService& changed)
+        {
+            return changed.service.sid == service.sid;
+        });
     }
     else
     {
@@ -389,6 +409,7 @@ CSMatchManager::checkServiceDistMap(const MatchDisService& service,
         // 已经0负载。
         startTimerCheckDistMatchServices();
     }
+    
     
     return res;
 }

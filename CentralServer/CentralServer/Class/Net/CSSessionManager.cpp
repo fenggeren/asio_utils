@@ -24,9 +24,7 @@ void CSSessionManager::initialize()
 void CSSessionManager::clientCheckOvertime()
 {
     std::list<TCPSessionPtr> overtimeSessions;
-    
     time_t cur = time(NULL);
-    LOG_DEBUG << cur;
     sessionMap_.foreach([&](const std::shared_ptr<TCPSession>& session)
                         {
 //                            LOG_DEBUG << session->heartBeatTime()
@@ -40,8 +38,9 @@ void CSSessionManager::clientCheckOvertime()
     
     for(auto& session : overtimeSessions)
     {
-        LOG_MINFO << " service overtime " << session->uuid();
-        session->forceClose();
+        LOG_ERROR << " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        << "service overtime " << session->uuid();
+//        session->forceClose();
     }
 }
 

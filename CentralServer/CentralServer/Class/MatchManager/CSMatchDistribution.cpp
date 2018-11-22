@@ -77,7 +77,7 @@ MatchDistribution::distributeFill(
         if (diff <= 0) { break; }
         
         auto iter = matchServices.find(srv);
-        for(int i = 0; i < diff; i++)
+        for(int i = 0; i < diff && undistMatches.size() > 0; i++)
         {
             int mid = undistMatches.front();
             undistMatches.pop_front();
