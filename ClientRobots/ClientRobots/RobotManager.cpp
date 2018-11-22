@@ -21,12 +21,12 @@ RobotManager::RobotManager()
 port_(7841)
 {
     //
-    TimerManager::createTimer([&]{
-        int idx = arc4random_uniform(robotNums_);
-        auto robot = robots_[idx];
-        joinMatchRQ(robot);
-    }, io_context_, 3, 0.001, 1000);
-//
+//    TimerManager::createTimer([&]{
+//        int idx = arc4random_uniform(robotNums_);
+//        auto robot = robots_[idx];
+//        joinMatchRQ(robot);
+//    }, io_context_, 3, 0.001, 1000);
+
 //    TimerManager::createTimer([&]{
 //        int idx = arc4random_uniform(robotNums_);
 //        auto robot = robots_[idx];
@@ -58,7 +58,7 @@ port_(7841)
             session->unenableRetry();
             session->forceClose();
         }
-    }, io_context_, kClientHeartBeatDuration, kClientHeartBeatDuration, 1000000);
+    }, io_context_, 1, kClientHeartBeatDuration, 1000000);
     
     
 }

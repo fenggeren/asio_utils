@@ -9,12 +9,14 @@
 
 #include <CPG/Third/json/json.hpp>
 #include <CPG/cpg_match_struct_define.h>
+#include <CPG/CPGMatchDefine.h>
 #include <memory>
 
 
 namespace nlohmann
 {
     using nlohmann::json;
+     
     
     void to_json(json& j,
      const cpg_match_generate_date& generate_date);

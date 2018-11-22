@@ -16,3 +16,4 @@
 #include "Util/ConvFunctional.hpp"
 #include "Util/ServerConfigManager.hpp"
 #include "MessageTypeDefine.h"
+#include "CPGMatchDefine.h"

@@ -1,0 +1,26 @@
+{
+    "data":
+    [
+        {
+         "matchName":"50积分赛",
+         "startTime":"2018-12-01 21:30:00",
+         "startCondition":0,
+         "minPlayersAmount":1,
+         "maxPlayersAmount":2000,
+         "firstBlindLevel":1,
+         "entryfee":5000,
+         "operatorTime":15,
+         "initChipsAmount":10000,
+         "increaseBlindTime":300,
+         "rewardType":1,
+         "bonusID":27,
+         "guaranteePerson":0,
+         "matchType":2,
+         "stopCondition":0,
+         "delayJoinLevel":12,
+         "finishCondition":0,
+         "finishParam": 0
+        }
+    ]
+    
+}

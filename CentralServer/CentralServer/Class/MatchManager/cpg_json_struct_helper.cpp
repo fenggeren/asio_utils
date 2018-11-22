@@ -11,7 +11,9 @@
 
 
 namespace nlohmann {
-
+ 
+    
+    
     void to_json(json& j,
                  const cpg_match_generate_date& generate_date)
     {

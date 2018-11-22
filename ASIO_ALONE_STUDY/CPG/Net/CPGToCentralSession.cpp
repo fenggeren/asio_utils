@@ -49,6 +49,12 @@ void CPGToCentralSession::defaultMessageCallback(
                 newServicesNotify(buffer, header->size);
                 break;
             }
+            case kHeartBeatRS:
+            {
+                updateHeartBeat();
+                LOG_DEBUG << " kHeartBeatRS ";
+                break;
+            }
             default:
             {
                 handlerMsg(session, buffer, *header);
@@ -189,7 +195,6 @@ void CPGToCentralSession::sendHeartBeat(TCPSessionManager& sessionManager)
     }
     
     heartTimer_ = TimerManager::createTimer([&]{
-        LOG_DEBUG << "";
         sessionManager.sendMsgToSession(shared_from_this(), beatHeartPacket);
     },
      getIoContext(), kServerHeartBeatDuration,

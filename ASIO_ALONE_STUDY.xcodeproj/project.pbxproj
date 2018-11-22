@@ -75,6 +75,7 @@
 		1F2E1E4C21A2AB7000882241 /* MessageTypeDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageTypeDefine.h; sourceTree = "<group>"; };
 		1F2E1E6621A4F7C500882241 /* CPGToCentralSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGToCentralSession.cpp; sourceTree = "<group>"; };
 		1F2E1E6721A4F7C500882241 /* CPGToCentralSession.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGToCentralSession.hpp; sourceTree = "<group>"; };
+		1F2E1E7221A6974F00882241 /* MatchConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MatchConfig.json; sourceTree = "<group>"; };
 		1F365403215A15B1003B9FAD /* Timestamp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timestamp.hpp; sourceTree = "<group>"; };
 		1F365404215A15B1003B9FAD /* DataHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataHandler.hpp; sourceTree = "<group>"; };
 		1F365405215A15B1003B9FAD /* TCPConnector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPConnector.hpp; sourceTree = "<group>"; };
@@ -287,6 +288,7 @@
 				1F95CE75218BFCE90057618A /* CPGHeader.h */,
 				1F2E1E3F219EB70200882241 /* ServerConfig.json */,
 				1F95CE79218BFCE90057618A /* CPGServerDefine.h */,
+				1F2E1E7221A6974F00882241 /* MatchConfig.json */,
 				1F2E1E4C21A2AB7000882241 /* MessageTypeDefine.h */,
 				1F24639221994F29009A67AC /* cpg_match_struct_define.h */,
 				1F24639D21995218009A67AC /* GameDefine.h */,

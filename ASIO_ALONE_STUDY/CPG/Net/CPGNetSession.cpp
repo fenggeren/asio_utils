@@ -31,7 +31,7 @@ void CPGServerSession::defaultMessageCallback(
         const void* buffer = data->peek() + kPacketHeaderSize;
         if (header->type == kHeartBeatRQ)
         {
-            updateHeartBeat();
+            heartBeatRQ();
         }
         else
         {
@@ -40,6 +40,17 @@ void CPGServerSession::defaultMessageCallback(
         data->retrieve(kPacketHeaderSize + header->size);
     }
 }
+
+void CPGServerSession::heartBeatRQ()
+{
+    updateHeartBeat();
+    CPGClientServer::BeatHeartRS rs;
+    rs.set_type(type());
+    PacketHeader header{kHeartBeatRS, rs.ByteSize(), 0};
+    addMore(&header, kPacketHeaderSize);
+    send(rs.SerializeAsString());
+}
+
 
 CPGClientSession::CPGClientSession()
 :ClientSession()
@@ -55,7 +66,15 @@ void CPGClientSession::defaultMessageCallback(
     {
         PacketHeader* header = (PacketHeader*)data->peek();
         const void* buffer = data->peek() + kPacketHeaderSize;
-        handlerMsg(session, buffer, *header); 
+        if (header->type == kHeartBeatRS)
+        {
+            updateHeartBeat();
+            LOG_DEBUG << " kHeartBeatRS ";
+        }
+        else
+        {
+            handlerMsg(session, buffer, *header);
+        }
         data->retrieve(kPacketHeaderSize + header->size);
     }
 }

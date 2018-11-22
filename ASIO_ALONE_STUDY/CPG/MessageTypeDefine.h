@@ -80,7 +80,7 @@ enum ClientToGateServer
     ClientToGateServer_Begin = 20000,
     
     kHeartBeatRQ          =   20101,
-    kHeartBeatRS          =   20101,
+    kHeartBeatRS          =   20102,
     
     ClientToGateServer_End = 20100,
 };

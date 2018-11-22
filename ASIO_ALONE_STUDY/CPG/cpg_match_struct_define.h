@@ -173,8 +173,7 @@ struct cpg_match_info
     int start_blind_level;          //初始盲注级别
     int end_match_type{0};          // 结束比赛的方式 0, 1, 2
     int end_match_param{0};         // 结束比赛的方式 对应的值
-    int delay_join;                //延时报名:"比赛开始十分后不可报名"或"盲注进到
-    // 第五个级别不可报名"或"盲注进到500/100后不可报名"
+    int delay_join;                //延时报名
     
     /*matchStartConditionType*/
     matchStartConditionType start_condition;        //开赛条件:0,按时间开赛(同时要满足最低开赛人数);1,按人数开赛

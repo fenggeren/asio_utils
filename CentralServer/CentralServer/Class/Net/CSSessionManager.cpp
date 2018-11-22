@@ -40,7 +40,7 @@ void CSSessionManager::clientCheckOvertime()
     {
         LOG_ERROR << " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         << "service overtime " << session->uuid();
-//        session->forceClose();
+        session->forceClose();
     }
 }
 

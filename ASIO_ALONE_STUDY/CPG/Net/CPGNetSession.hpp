@@ -26,10 +26,11 @@ public:
 private:
     void defaultMessageCallback(const std::shared_ptr<TCPSession>& session,
                                 DataBuffer*const data);
+    
+    void heartBeatRQ();
 protected:
     virtual bool handlerMsg(const std::shared_ptr<TCPSession>& session,
                             const void* buffer, const PacketHeader& header) = 0;
-    
     
 };
 
