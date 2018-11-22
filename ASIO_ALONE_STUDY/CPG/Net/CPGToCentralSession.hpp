@@ -32,7 +32,6 @@ private:
     virtual void defaultMessageCallback(const std::shared_ptr<TCPSession>&      session, DataBuffer*const data);
      virtual ServiceKernel& serviceKernel() = 0;
     
-    
 private:
     std::shared_ptr<asio::basic_waitable_timer<
                     std::chrono::steady_clock>> heartTimer_;

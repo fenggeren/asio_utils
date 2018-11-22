@@ -52,11 +52,11 @@ namespace fasio
         connectService(unsigned short type,
                        unsigned short port,
                        int sid,
-                       const std::string& ip) = 0;
+                       const std::string& ip) { return nullptr; };
         
         virtual
         std::shared_ptr<TCPSessionFactory>
-        sessionFactory(int type, asio::io_context& ioc) = 0;
+        sessionFactory(int type, asio::io_context& ioc) { return nullptr; };
         
         enum State
         {

@@ -36,8 +36,6 @@ void GSSessionManager::clientCheckOvertime()
                         {
                             if (session->type() == ServerType_Client)
                             {
-                                LOG_DEBUG << session->heartBeatTime()
-                                << "  over  " << cur - session->heartBeatTime();
                                 if (cur - session->heartBeatTime() > kClientHeartBeatOvertime)
                                 {
                                     overtimeSessions.push_back(session);

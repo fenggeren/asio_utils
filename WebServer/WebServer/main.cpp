@@ -7,9 +7,12 @@
 //
 
 #include <iostream>
+#include "cpg_web_server.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    cpg_web_server server;
+    server.start();
+    
     return 0;
 }
