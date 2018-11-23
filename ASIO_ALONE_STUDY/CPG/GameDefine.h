@@ -1,4 +1,4 @@
-﻿#ifndef _GAME_DEFINE_H_
+#ifndef _GAME_DEFINE_H_
 #define _GAME_DEFINE_H_
 
 #define   GATEWAYSERVER  "gateway"
@@ -95,6 +95,7 @@ enum ENUM_MTT_MATCH_STATE
 	ENUM_STATE_RUNING_REWARD_ROUND	= 4,		//游戏进行中,钱圈,不可报名,不可退赛,可强退
 	ENUM_STATE_RUNING_FINAL_TABLE 	= 5,		//游戏进行中,决赛桌,不可报名，不可退赛，可强退
 	ENUM_STATE_FINISH		= 6,		//游戏结束
+    ENUM_STATE_CANCEL       = 7,
 };
 
 enum GameingState {

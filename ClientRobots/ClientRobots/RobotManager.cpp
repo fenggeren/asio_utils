@@ -55,8 +55,9 @@ port_(7841)
         {
             LOG_ERROR << " overtime: " << robot->logicID();
             auto session = robot->userInfo().session;
-            session->unenableRetry();
-            session->forceClose();
+//            session->unenableRetry();
+//            session->forceClose();
+            session->reconnect();
         }
     }, io_context_, 1, kClientHeartBeatDuration, 1000000);
     

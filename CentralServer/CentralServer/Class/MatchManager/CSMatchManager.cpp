@@ -12,7 +12,6 @@
 #include <Net/Conv.hpp>
 #include <Net/logging/Logging.hpp>
 #include <algorithm>
-#include "cpg_match_create_factory.h"
 #include "CSMatchDistribution.hpp"
 #include "CSMatchLoadedEvaluation.hpp"
 
@@ -24,20 +23,17 @@ void CSMatchManager::initialize()
 {
     using namespace nlohmann;
     
-    auto& factory = cpg_match_create_factory::instance();
-    factory.load_from_file();
-    factory.create_all_matches();
-    
-    
+    CPGMatchCreateFactory factory;
     // 获取所有的比赛
-    auto& matches = factory.get_all_matches();
+    matches_ = factory.initialize();
+    
     std::list<int> allmatches;
-    for(auto& pair : matches)
+    for(auto& pair : matches_)
     {
         allmatches.push_back(pair.first);
     }
     
-    undistMatches_ = std::move(allmatches);
+    undistMatches_.swap(allmatches);
     
     // CS启动20s后自检一次，
     // 防止CS之前因为故障重新启动，
@@ -281,7 +277,7 @@ void CSMatchManager::updateDistMatchServices()
        
         // ④ 策略重新分配 比赛<=>服务
         
-        auto changedServersList = MatchDistribution()(matchServices_, undistMatches_);
+        auto changedServersList = MatchDistribution()(matchServices_, matches_,undistMatches_);
         ChangedMatchMap changedMap;
         for(auto sid : changedServersList)
         {
@@ -421,19 +417,17 @@ CSMatchManager::filterValidMatch(std::list<int>& mids)
     return {};
 }
 
-std::list<std::shared_ptr<cpg_match_info>>
+std::list<std::shared_ptr<CPGMatchProfile>>
 CSMatchManager::matchList() const
 {
-    auto& matchMap = cpg_match_create_factory::instance().get_all_matches();
-    std::list<std::shared_ptr<cpg_match_info>> list;
+    std::list<std::shared_ptr<CPGMatchProfile>> list;
     
-    
-    for(auto& pair : matchMap)
+    for(auto& pair : matches_)
     {
         list.push_back(pair.second);
     }
     
-    return std::move(list);
+    return list;
 }
 
 

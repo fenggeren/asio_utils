@@ -29,7 +29,8 @@ public:
     void queryNext();
     void closeQuery();
     
-    
+    ~SQLConnector();
+     
 public:
     
     bool connectDB(const std::string& dbname,
@@ -52,6 +53,9 @@ public:
     
     MYSQL* mysql() const { return mysql_; }
     MYSQL_RES* myresult() const { return myResult_; }
+    
+    std::map<std::string, std::string>& fieldsValue()
+    { return fieldsValue_; }
 private:
     MYSQL* mysql_{NULL};
     

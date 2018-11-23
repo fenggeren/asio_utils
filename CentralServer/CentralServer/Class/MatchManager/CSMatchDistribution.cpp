@@ -7,10 +7,10 @@
 //
 
 #include "CSMatchDistribution.hpp"
-#include "cpg_match_create_factory.h"
 #include <algorithm>
 #include <vector>
 #include <Net/logging/Logging.hpp>
+#include <CPG/MatchCreate/CPGMatchCreateFactory.hpp>
 #include "CSMatchLoadedEvaluation.hpp"
 
 using namespace fasio::logging;
@@ -18,14 +18,14 @@ using namespace fasio::logging;
 std::list<unsigned int>
 MatchDistribution::operator()(
         std::map<MatchDisService, std::list<int>>& matchServices,
+        const std::map<int,std::shared_ptr<CPGMatchProfile>>& allMatches,
            std::list<int>& undistMatches)
 {
     if (matchServices.size() == 0)
     {
         return {};
     }
-    auto matches = cpg_match_create_factory::instance().get_all_matches();
-    auto allLoaded = matches.size();
+    auto allLoaded = allMatches.size();
     
     auto allServices = matchServices.size();
     

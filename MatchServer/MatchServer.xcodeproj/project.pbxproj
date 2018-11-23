@@ -126,7 +126,6 @@
 		1FF08542219C01D700A05710 /* IOContextPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOContextPool.hpp; sourceTree = "<group>"; };
 		1FF08546219C05B200A05710 /* MSMatchManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MSMatchManager.cpp; sourceTree = "<group>"; };
 		1FF08547219C05B200A05710 /* MSMatchManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MSMatchManager.hpp; sourceTree = "<group>"; };
-		1FF08549219C061900A05710 /* cpg_match_struct_define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpg_match_struct_define.h; sourceTree = "<group>"; };
 		1FF0854A219C066900A05710 /* GameDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDefine.h; sourceTree = "<group>"; };
 		1FF08557219D240C00A05710 /* ConvFunctional.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConvFunctional.cpp; sourceTree = "<group>"; };
 		1FF08558219D240C00A05710 /* ConvFunctional.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ConvFunctional.hpp; sourceTree = "<group>"; };
@@ -170,7 +169,6 @@
 			children = (
 				1FF08556219D240C00A05710 /* Util */,
 				1FF0854A219C066900A05710 /* GameDefine.h */,
-				1FF08549219C061900A05710 /* cpg_match_struct_define.h */,
 				1F246354219407D3009A67AC /* Net */,
 				1F95CE7C218BFD150057618A /* CPGServer.proto */,
 				1F95CE7D218BFD150057618A /* ng */,

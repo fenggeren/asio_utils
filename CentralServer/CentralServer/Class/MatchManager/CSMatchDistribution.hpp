@@ -12,6 +12,8 @@
 #include <set>
 #include "CSMatchDistDefine.h"
 
+class CPGMatchProfile;
+
 class MatchDistribution
 {
 public:
@@ -21,7 +23,8 @@ public:
      初期： 一个比赛+1负载
      */
     std::list<unsigned int>
-    operator()(std::map<MatchDisService, std::list<int>>& matchServices, 
+    operator()(std::map<MatchDisService, std::list<int>>& matchServices,
+               const std::map<int,std::shared_ptr<CPGMatchProfile>>& allMatches,
                std::list<int>& undistMatches);
     
 private:

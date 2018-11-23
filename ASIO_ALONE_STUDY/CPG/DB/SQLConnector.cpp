@@ -9,6 +9,11 @@
 #include "SQLConnector.hpp"
 
 
+SQLConnector::~SQLConnector()
+{
+    clear();
+}
+
 void SQLConnector::clear()
 {
     if (mysql_)
@@ -51,6 +56,7 @@ void SQLConnector::clearResult()
             }
         } while (mysql_next_result(mysql_) == 0);
     }
+    myResult_ = NULL;
 }
 
 int SQLConnector::execQuery(const std::string& data)
@@ -84,6 +90,7 @@ int SQLConnector::execQuery(const std::string& data)
     return ret;
 }
 
+ 
 void SQLConnector::fieldData(const std::string& name, int32_t& value)
 {
     auto iter = fieldsValue_.find(name);

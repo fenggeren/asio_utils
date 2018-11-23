@@ -8,11 +8,19 @@
 
 #include <iostream>
 #include "cpg_web_server.hpp"
+#include <CPG/MatchCreate/CPGMatchCreateFactory.hpp>
+
 
 int main(int argc, const char * argv[]) {
     
-    cpg_web_server server;
-    server.start();
+//    cpg_web_server server;
+//    server.start();
+
+    
+    CPGMatchCreateFactory factory;
+    factory.initialize();
+//    factory.loadFromFile();
+//    factory.loadFromDB();
     
     return 0;
 }

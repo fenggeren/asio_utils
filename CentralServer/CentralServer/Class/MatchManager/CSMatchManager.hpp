@@ -14,7 +14,7 @@
 #include <map>
 #include <list>
 #include "CSMatchDistDefine.h"
-#include <CPG/cpg_match_struct_define.h>
+#include <CPG/MatchCreate/CPGMatchCreateFactory.hpp>
 
 
 /*
@@ -56,7 +56,7 @@ public:
     getAllMatchServices()
     {   return matchServices_; }
     
-    std::list<std::shared_ptr<cpg_match_info>>
+    std::list<std::shared_ptr<CPGMatchProfile>>
     matchList() const;
     
     std::list<int> getDistMatch(int sid);
@@ -114,6 +114,7 @@ private:
     // 所有的比赛服务 对应的 所运行比赛id
     std::map<MatchDisService, std::list<int>> matchServices_;
     
+    std::map<int, std::shared_ptr<CPGMatchProfile>> matches_;
     
     std::list<ChangedService> changedServices_;
     // 比赛开始前1分钟？分配比赛？ CS会是流量瓶颈?

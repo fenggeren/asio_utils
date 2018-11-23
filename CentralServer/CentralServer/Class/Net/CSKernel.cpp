@@ -393,13 +393,13 @@ void CSKernel::matchListRQ(const TCPSessionPtr& session,
         for(auto& m : list)
         {
             auto& binfo = *rs.add_matchlist();
-            binfo.set_mid(m->match_id);
-            binfo.set_time(m->begin_date_time);
-            binfo.set_totalplayer(m->total_joined_player);
-            binfo.set_remainedplayer(m->remained_player);
+            binfo.set_mid(m->mid);
+            binfo.set_time(m->start_time);
+            binfo.set_totalplayer(m->total_player_amount);
+            binfo.set_remainedplayer(m->remained_player_amount);
             binfo.set_state(m->match_state);
             binfo.set_curlevel(m->current_blind_level);
-            binfo.set_entryfee(m->entryfee_coin);
+            binfo.set_entryfee(m->entryfee);
         }
     }
     else
