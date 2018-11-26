@@ -21,6 +21,13 @@ enum ServiceToService
     kServerAllMatchDistributeNotify = 5006,
     kServerMatchDistributeNotify = 5007,
     
+    kCancelMatchRQ    = 5101,
+    kCancelMatchRS    = 5102,
+    kUpdateMatchRQ    = 5103,
+    kUpdateMatchRS    = 5104,
+    kCreateMatchRQ    = 5105,
+    kCreateMatchRS    = 5106,
+    
     ServiceToService_End = 10000,
 };
 

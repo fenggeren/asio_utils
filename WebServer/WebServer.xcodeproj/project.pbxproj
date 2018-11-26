@@ -44,8 +44,10 @@
 		1F2E1F1A21A6AB6500882241 /* libmysqlclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2E1F1921A6AB6500882241 /* libmysqlclient.a */; };
 		1F2E1F1D21A6B06F00882241 /* W2CSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1F1B21A6B06F00882241 /* W2CSession.cpp */; };
 		1F2E1F2021A6B0EB00882241 /* WSKernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1F1E21A6B0EB00882241 /* WSKernel.cpp */; };
-		1F2E1F2A21A7991200882241 /* CPGMatchCreateFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1F2921A7991200882241 /* CPGMatchCreateFactory.cpp */; };
-		1F2E1F2D21A7DE8000882241 /* CPGMatchStructHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1F2B21A7DE8000882241 /* CPGMatchStructHelper.cpp */; };
+		1F2E1F4D21ABA61300882241 /* CPGMatchStructHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1F4921ABA61200882241 /* CPGMatchStructHelper.cpp */; };
+		1F2E1F4E21ABA61300882241 /* DBWrapperHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1F4A21ABA61200882241 /* DBWrapperHandler.cpp */; };
+		1F2E1F4F21ABA61300882241 /* CPGMatchCreateFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1F4B21ABA61200882241 /* CPGMatchCreateFactory.cpp */; };
+		1F2E1F6721ABDE5600882241 /* WSMatchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E1F6521ABDE5600882241 /* WSMatchManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,7 +66,6 @@
 		1F2E1E8021A6A28A00882241 /* WebServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WebServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2E1E8321A6A28A00882241 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1F2E1E8B21A6A3C100882241 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../../../../usr/local/lib/libprotobuf.a; sourceTree = "<group>"; };
-		1F2E1E8D21A6A78400882241 /* crow_all.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crow_all.h; sourceTree = "<group>"; };
 		1F2E1E8E21A6A91900882241 /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../../usr/local/lib/libboost_system.a; sourceTree = "<group>"; };
 		1F2E1E9421A6AA7100882241 /* cpg_web_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cpg_web_server.cpp; sourceTree = "<group>"; };
 		1F2E1E9521A6AA7100882241 /* cpg_web_server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cpg_web_server.hpp; sourceTree = "<group>"; };
@@ -160,10 +161,14 @@
 		1F2E1F1C21A6B06F00882241 /* W2CSession.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = W2CSession.hpp; sourceTree = "<group>"; };
 		1F2E1F1E21A6B0EB00882241 /* WSKernel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WSKernel.cpp; sourceTree = "<group>"; };
 		1F2E1F1F21A6B0EB00882241 /* WSKernel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WSKernel.hpp; sourceTree = "<group>"; };
-		1F2E1F2821A7991100882241 /* CPGMatchCreateFactory.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPGMatchCreateFactory.hpp; sourceTree = "<group>"; };
-		1F2E1F2921A7991200882241 /* CPGMatchCreateFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPGMatchCreateFactory.cpp; sourceTree = "<group>"; };
-		1F2E1F2B21A7DE8000882241 /* CPGMatchStructHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPGMatchStructHelper.cpp; sourceTree = "<group>"; };
-		1F2E1F2C21A7DE8000882241 /* CPGMatchStructHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPGMatchStructHelper.hpp; sourceTree = "<group>"; };
+		1F2E1F4721ABA61200882241 /* DBWrapperHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DBWrapperHandler.hpp; sourceTree = "<group>"; };
+		1F2E1F4821ABA61200882241 /* CPGMatchCreateFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGMatchCreateFactory.hpp; sourceTree = "<group>"; };
+		1F2E1F4921ABA61200882241 /* CPGMatchStructHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGMatchStructHelper.cpp; sourceTree = "<group>"; };
+		1F2E1F4A21ABA61200882241 /* DBWrapperHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DBWrapperHandler.cpp; sourceTree = "<group>"; };
+		1F2E1F4B21ABA61200882241 /* CPGMatchCreateFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPGMatchCreateFactory.cpp; sourceTree = "<group>"; };
+		1F2E1F4C21ABA61200882241 /* CPGMatchStructHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CPGMatchStructHelper.hpp; sourceTree = "<group>"; };
+		1F2E1F6521ABDE5600882241 /* WSMatchManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WSMatchManager.cpp; sourceTree = "<group>"; };
+		1F2E1F6621ABDE5600882241 /* WSMatchManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WSMatchManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,10 +206,11 @@
 			children = (
 				1F2E1EE621A6AAB400882241 /* CPG */,
 				1F2E1E9721A6AAA300882241 /* Net */,
-				1F2E1E8D21A6A78400882241 /* crow_all.h */,
 				1F2E1E8321A6A28A00882241 /* main.cpp */,
 				1F2E1E9421A6AA7100882241 /* cpg_web_server.cpp */,
 				1F2E1E9521A6AA7100882241 /* cpg_web_server.hpp */,
+				1F2E1F6521ABDE5600882241 /* WSMatchManager.cpp */,
+				1F2E1F6621ABDE5600882241 /* WSMatchManager.hpp */,
 				1F2E1F1B21A6B06F00882241 /* W2CSession.cpp */,
 				1F2E1F1C21A6B06F00882241 /* W2CSession.hpp */,
 				1F2E1F1E21A6B0EB00882241 /* WSKernel.cpp */,
@@ -313,7 +319,7 @@
 		1F2E1EE621A6AAB400882241 /* CPG */ = {
 			isa = PBXGroup;
 			children = (
-				1F2E1F2E21A7F85900882241 /* MatchCreate */,
+				1F2E1F4621ABA61200882241 /* MatchHelper */,
 				1F2E1EE721A6AAB400882241 /* CPGServer.proto */,
 				1F2E1EE821A6AAB400882241 /* ServerConfig.json */,
 				1F2E1EE921A6AAB400882241 /* CPGClientServer.proto */,
@@ -391,15 +397,17 @@
 			path = DB;
 			sourceTree = "<group>";
 		};
-		1F2E1F2E21A7F85900882241 /* MatchCreate */ = {
+		1F2E1F4621ABA61200882241 /* MatchHelper */ = {
 			isa = PBXGroup;
 			children = (
-				1F2E1F2921A7991200882241 /* CPGMatchCreateFactory.cpp */,
-				1F2E1F2821A7991100882241 /* CPGMatchCreateFactory.hpp */,
-				1F2E1F2B21A7DE8000882241 /* CPGMatchStructHelper.cpp */,
-				1F2E1F2C21A7DE8000882241 /* CPGMatchStructHelper.hpp */,
+				1F2E1F4721ABA61200882241 /* DBWrapperHandler.hpp */,
+				1F2E1F4B21ABA61200882241 /* CPGMatchCreateFactory.cpp */,
+				1F2E1F4821ABA61200882241 /* CPGMatchCreateFactory.hpp */,
+				1F2E1F4921ABA61200882241 /* CPGMatchStructHelper.cpp */,
+				1F2E1F4A21ABA61200882241 /* DBWrapperHandler.cpp */,
+				1F2E1F4C21ABA61200882241 /* CPGMatchStructHelper.hpp */,
 			);
-			path = MatchCreate;
+			path = MatchHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,6 +470,7 @@
 				1F2E1F1121A6AAB400882241 /* BetAlgorithm.cc in Sources */,
 				1F2E1E9621A6AA7100882241 /* cpg_web_server.cpp in Sources */,
 				1F2E1EDB21A6AAA300882241 /* Queue.cpp in Sources */,
+				1F2E1F6721ABDE5600882241 /* WSMatchManager.cpp in Sources */,
 				1F2E1F1621A6AAB400882241 /* CPGServer.pb.cc in Sources */,
 				1F2E1EE221A6AAA300882241 /* Logging.cpp in Sources */,
 				1F2E1ED321A6AAA300882241 /* EventActive.cpp in Sources */,
@@ -479,13 +488,13 @@
 				1F2E1EDE21A6AAA300882241 /* TCPSession.cpp in Sources */,
 				1F2E1F2021A6B0EB00882241 /* WSKernel.cpp in Sources */,
 				1F2E1F0F21A6AAB400882241 /* ConvFunctional.cpp in Sources */,
+				1F2E1F4D21ABA61300882241 /* CPGMatchStructHelper.cpp in Sources */,
 				1F2E1ED121A6AAA300882241 /* TimerManager.cpp in Sources */,
 				1F2E1ED721A6AAA300882241 /* TCPListener.cpp in Sources */,
 				1F2E1EE021A6AAA300882241 /* DataHandler.cpp in Sources */,
+				1F2E1F4F21ABA61300882241 /* CPGMatchCreateFactory.cpp in Sources */,
 				1F2E1ED621A6AAA300882241 /* ParseProto.cpp in Sources */,
-				1F2E1F2A21A7991200882241 /* CPGMatchCreateFactory.cpp in Sources */,
 				1F2E1F1421A6AAB400882241 /* SQLManager.cpp in Sources */,
-				1F2E1F2D21A7DE8000882241 /* CPGMatchStructHelper.cpp in Sources */,
 				1F2E1F1221A6AAB400882241 /* SQLConnector.cpp in Sources */,
 				1F2E1F1321A6AAB400882241 /* DBActiveWrapper.cpp in Sources */,
 				1F2E1F1521A6AAB400882241 /* CPGClientServer.pb.cc in Sources */,
@@ -494,6 +503,7 @@
 				1F2E1EE121A6AAA300882241 /* TCPSessionManager.cpp in Sources */,
 				1F2E1ED221A6AAA300882241 /* Thread.cpp in Sources */,
 				1F2E1F1021A6AAB400882241 /* ServerConfigManager.cpp in Sources */,
+				1F2E1F4E21ABA61300882241 /* DBWrapperHandler.cpp in Sources */,
 				1F2E1EE521A6AAA300882241 /* IOContextPool.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

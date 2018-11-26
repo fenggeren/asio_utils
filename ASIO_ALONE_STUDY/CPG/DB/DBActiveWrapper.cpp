@@ -14,7 +14,7 @@ using namespace logging;
 
 DBActiveWrapper::DBActiveWrapper(const DBConfig& config,
                     const std::function<void(NetPacket*)>& cb)
-:active_(std::make_unique<Active<NetPacket, NetPacket*>>(cb))
+:active_(std::make_unique<EventActive<NetPacket, NetPacket*>>(cb))
 , connector_(new SQLConnector())
 {
     int ret = connector_->connectDB(config.dbname,

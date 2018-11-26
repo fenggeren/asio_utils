@@ -51,8 +51,6 @@ void CSKernel::start(const ServerNetConfig::ServerInfo& config)
  CSMatchManager::instance().setChangedMatchMapCB(std::bind(&CSKernel::distributeMatch, this, std::placeholders::_1));
     
     servers_[info->sid] = info;
-    
-    curIoCtx.run();
 }
 
 std::shared_ptr<TCPSessionFactory>

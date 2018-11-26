@@ -17,7 +17,8 @@ struct CPGMatchProfile
     int total_player_amount{0};  // 当前总报名人数
     int remained_player_amount{0}; // 当前剩余人数.
     int match_state{1};             // 比赛状态
-    int mid;
+    int end_time{0};               // 结束时间.
+    int mid{0};
     // 静态数据
     int match_type;
     int enter_code{0};

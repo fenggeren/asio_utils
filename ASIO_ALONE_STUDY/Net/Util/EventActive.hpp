@@ -31,9 +31,9 @@ namespace fasio
         EventActive(const ActiveCallback& cb)
         :eventPool_(1024),
         activeID_(++globalActiveID_),
-        callback_(cb),
-    guard_(std::make_shared<ExecutorGuard>(ioc_))
+        callback_(cb)
         {
+            guard_ = std::make_shared<ExecutorGuard>(asio::make_work_guard(ioc_));
         }
         
         ~EventActive()

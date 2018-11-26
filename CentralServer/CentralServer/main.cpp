@@ -7,10 +7,12 @@
 //
 
 #include <iostream>
-#include <Net/Conv.hpp>
+#include <Net/FASIO.hpp>
 #include "Class/Net/CSKernel.hpp"
 #include "Class/MatchManager/CSMatchManager.hpp"
 #include <CPG/Util/ServerConfigManager.hpp>
+
+using namespace fasio::queue;
 
 int main(int argc, const char * argv[]) {
     
@@ -21,6 +23,9 @@ int main(int argc, const char * argv[]) {
     auto manager = ServerConfigManager::instance();
     manager.setType(ServerType_MatchServer);
     ServerNetConfig config;
+    
+    Queue::mainQueue();
+    
     if (manager.configForType(ServerType_CentralServer, config))
     {
         if (config.infos.size() == 1)
@@ -28,6 +33,7 @@ int main(int argc, const char * argv[]) {
             CSKernel::instance().start(config.infos.front());
         }
     }
+    MainQueue.run();
     
     return 0;
 }

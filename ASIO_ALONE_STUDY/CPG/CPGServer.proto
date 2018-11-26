@@ -60,11 +60,11 @@ message ServiceMatchDistibuteNotify
 {
     int32 sid = 1;
     repeated int32 mid = 2;
-};
+}
 message ServerAllMatchDistributeNotify
 {
     repeated ServiceMatchDistibuteNotify services = 1;
-};
+}
 
 // 校验 比赛分配信息
 message CheckMatchDistributeRQ
@@ -72,7 +72,7 @@ message CheckMatchDistributeRQ
     int32 sid = 1;
     int32 type = 2;
     repeated int32 mids = 3;
-};
+}
 // 校验 比赛分配信息
 message CheckMatchDistributeRS
 {
@@ -80,10 +80,47 @@ message CheckMatchDistributeRS
     int32 type = 2;
     int32 result = 3;
     repeated int32 mids = 4;
-};
+}
 
+// 取消比赛
+message CancelMatchRQ
+{
+int32 mid = 1;
+int32 reason = 2;
+}
+message CancelMatchRS
+{
+int32 mid = 1;
+int32 result = 2;
+}
+// 更新比赛信息字段
+message UpdateMatchRQ
+{
+int32 mid = 1;
+map<string, string> properties = 2;
+}
+message UpdateMatchRS
+{
+int32 mid = 1;
+int32 result = 2;
+}
+// 创建比赛
+message CreateMatchRQ
+{
+map<string,string> properties = 1;
+}
+message CreateMatchRS
+{
+map<string,string> properties = 1;
+}
 
-
+// 消息公告，
+message MessageClientsNotify
+{
+int32 type = 1;  // 类型
+repeat int32 uids = 2; // 玩家序列， 0的话为所有玩家
+string cnt = 3;
+}
 
 
 

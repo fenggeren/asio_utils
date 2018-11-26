@@ -10,13 +10,15 @@
 #include <memory>
 #include <google/protobuf/message.h>
 #include "../../Net/Util/NetPacket.hpp"
+#include "../../Net/Util/EventActive.hpp"
 #include "../../Net/base/FASIOType.h"
 #include "SQLConnector.hpp"
 
 namespace fasio
 {
     class NetPacket;
-    template<class T, class TPtr> class Active;
+//    template<class T, class TPtr> class Active;
+//    template<class T, class TPtr> class EventActive;
 }
 
 struct DBConfig
@@ -44,12 +46,12 @@ public:
     
     void start();
     
-//    std::shared_ptr<SQLConnector> SQLConnector()
-//    { return connector_; }
+    std::shared_ptr<SQLConnector>
+    connector() { return connector_; }
     
     int actorID() const;
 private:
-    std::unique_ptr<fasio::Active<fasio::NetPacket,
+    std::unique_ptr<fasio::EventActive<fasio::NetPacket,
     fasio::NetPacket*>> active_;
     
     std::shared_ptr<SQLConnector> connector_;

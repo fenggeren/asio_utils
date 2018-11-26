@@ -10,6 +10,7 @@
 #include "json.hpp"
 #include <map>
 #include <regex>
+#include <CPG/MatchHelper/CPGMatchCreateFactory.hpp>
 
 #define WEB_PORT 18080
 
@@ -23,17 +24,20 @@ void cpg_web_server::start()
     // 增加比赛
     // 校验数据： 存储到mysql
     // 发送mid至cs
-    CROW_ROUTE(app, "/match/add")
+    CROW_ROUTE(app, "/match/create")
     .methods(crow::HTTPMethod::POST)
     ([](const crow::request& req)
     {
         auto params = getQueryParams(req.body);
-        std::cout << params["name"] << std::endl;
         
-        nlohmann::json j(params);
+        nlohmann::json j(params["data"]);
+        // 根据json， 创建比赛. 
+        
+        
         
         crow::response res(j.dump());
         res.set_header("content-type", "application/json");
+        
         return res;
     });
     
@@ -60,7 +64,6 @@ void cpg_web_server::route()
     
 }
 
-#include <boost/regex.hpp>
 
 std::map<std::string, std::string>
 getQueryParams(const std::string& params)

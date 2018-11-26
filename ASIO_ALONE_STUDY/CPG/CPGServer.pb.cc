@@ -16,9 +16,12 @@
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 
+extern PROTOBUF_INTERNAL_EXPORT_CPGServer_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_CreateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_CPGServer_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_CreateMatchRS_PropertiesEntry_DoNotUse_CPGServer_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_CPGServer_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_GateServerInfo_CPGServer_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_CPGServer_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_ServerInfo_CPGServer_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_CPGServer_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_ServiceMatchDistibuteNotify_CPGServer_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_CPGServer_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_UpdateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto;
 namespace CPGServer {
 class ServerInfoDefaultTypeInternal {
  public:
@@ -64,6 +67,42 @@ class CheckMatchDistributeRSDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<CheckMatchDistributeRS> _instance;
 } _CheckMatchDistributeRS_default_instance_;
+class CancelMatchRQDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<CancelMatchRQ> _instance;
+} _CancelMatchRQ_default_instance_;
+class CancelMatchRSDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<CancelMatchRS> _instance;
+} _CancelMatchRS_default_instance_;
+class UpdateMatchRQ_PropertiesEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<UpdateMatchRQ_PropertiesEntry_DoNotUse> _instance;
+} _UpdateMatchRQ_PropertiesEntry_DoNotUse_default_instance_;
+class UpdateMatchRQDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<UpdateMatchRQ> _instance;
+} _UpdateMatchRQ_default_instance_;
+class UpdateMatchRSDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<UpdateMatchRS> _instance;
+} _UpdateMatchRS_default_instance_;
+class CreateMatchRQ_PropertiesEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<CreateMatchRQ_PropertiesEntry_DoNotUse> _instance;
+} _CreateMatchRQ_PropertiesEntry_DoNotUse_default_instance_;
+class CreateMatchRQDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<CreateMatchRQ> _instance;
+} _CreateMatchRQ_default_instance_;
+class CreateMatchRS_PropertiesEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<CreateMatchRS_PropertiesEntry_DoNotUse> _instance;
+} _CreateMatchRS_PropertiesEntry_DoNotUse_default_instance_;
+class CreateMatchRSDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<CreateMatchRS> _instance;
+} _CreateMatchRS_default_instance_;
 }  // namespace CPGServer
 static void InitDefaultsServerInfo_CPGServer_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -224,6 +263,132 @@ static void InitDefaultsCheckMatchDistributeRS_CPGServer_2eproto() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_CheckMatchDistributeRS_CPGServer_2eproto =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCheckMatchDistributeRS_CPGServer_2eproto}, {}};
 
+static void InitDefaultsCancelMatchRQ_CPGServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGServer::_CancelMatchRQ_default_instance_;
+    new (ptr) ::CPGServer::CancelMatchRQ();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::CPGServer::CancelMatchRQ::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_CancelMatchRQ_CPGServer_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCancelMatchRQ_CPGServer_2eproto}, {}};
+
+static void InitDefaultsCancelMatchRS_CPGServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGServer::_CancelMatchRS_default_instance_;
+    new (ptr) ::CPGServer::CancelMatchRS();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::CPGServer::CancelMatchRS::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_CancelMatchRS_CPGServer_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCancelMatchRS_CPGServer_2eproto}, {}};
+
+static void InitDefaultsUpdateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGServer::_UpdateMatchRQ_PropertiesEntry_DoNotUse_default_instance_;
+    new (ptr) ::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse();
+  }
+  ::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_UpdateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsUpdateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto}, {}};
+
+static void InitDefaultsUpdateMatchRQ_CPGServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGServer::_UpdateMatchRQ_default_instance_;
+    new (ptr) ::CPGServer::UpdateMatchRQ();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::CPGServer::UpdateMatchRQ::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<1> scc_info_UpdateMatchRQ_CPGServer_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsUpdateMatchRQ_CPGServer_2eproto}, {
+      &scc_info_UpdateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto.base,}};
+
+static void InitDefaultsUpdateMatchRS_CPGServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGServer::_UpdateMatchRS_default_instance_;
+    new (ptr) ::CPGServer::UpdateMatchRS();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::CPGServer::UpdateMatchRS::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_UpdateMatchRS_CPGServer_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsUpdateMatchRS_CPGServer_2eproto}, {}};
+
+static void InitDefaultsCreateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGServer::_CreateMatchRQ_PropertiesEntry_DoNotUse_default_instance_;
+    new (ptr) ::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse();
+  }
+  ::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_CreateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCreateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto}, {}};
+
+static void InitDefaultsCreateMatchRQ_CPGServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGServer::_CreateMatchRQ_default_instance_;
+    new (ptr) ::CPGServer::CreateMatchRQ();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::CPGServer::CreateMatchRQ::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<1> scc_info_CreateMatchRQ_CPGServer_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsCreateMatchRQ_CPGServer_2eproto}, {
+      &scc_info_CreateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto.base,}};
+
+static void InitDefaultsCreateMatchRS_PropertiesEntry_DoNotUse_CPGServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGServer::_CreateMatchRS_PropertiesEntry_DoNotUse_default_instance_;
+    new (ptr) ::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse();
+  }
+  ::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_CreateMatchRS_PropertiesEntry_DoNotUse_CPGServer_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCreateMatchRS_PropertiesEntry_DoNotUse_CPGServer_2eproto}, {}};
+
+static void InitDefaultsCreateMatchRS_CPGServer_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::CPGServer::_CreateMatchRS_default_instance_;
+    new (ptr) ::CPGServer::CreateMatchRS();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::CPGServer::CreateMatchRS::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<1> scc_info_CreateMatchRS_CPGServer_2eproto =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsCreateMatchRS_CPGServer_2eproto}, {
+      &scc_info_CreateMatchRS_PropertiesEntry_DoNotUse_CPGServer_2eproto.base,}};
+
 void InitDefaults_CPGServer_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_ServerInfo_CPGServer_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_ServerRegisterRQ_CPGServer_2eproto.base);
@@ -236,9 +401,18 @@ void InitDefaults_CPGServer_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_ServerAllMatchDistributeNotify_CPGServer_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_CheckMatchDistributeRQ_CPGServer_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_CheckMatchDistributeRS_CPGServer_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CancelMatchRQ_CPGServer_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CancelMatchRS_CPGServer_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_UpdateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_UpdateMatchRQ_CPGServer_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_UpdateMatchRS_CPGServer_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CreateMatchRQ_PropertiesEntry_DoNotUse_CPGServer_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CreateMatchRQ_CPGServer_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CreateMatchRS_PropertiesEntry_DoNotUse_CPGServer_2eproto.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CreateMatchRS_CPGServer_2eproto.base);
 }
 
-::google::protobuf::Metadata file_level_metadata_CPGServer_2eproto[11];
+::google::protobuf::Metadata file_level_metadata_CPGServer_2eproto[20];
 constexpr ::google::protobuf::EnumDescriptor const** file_level_enum_descriptors_CPGServer_2eproto = nullptr;
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_CPGServer_2eproto = nullptr;
 
@@ -329,6 +503,73 @@ const ::google::protobuf::uint32 TableStruct_CPGServer_2eproto::offsets[] PROTOB
   PROTOBUF_FIELD_OFFSET(::CPGServer::CheckMatchDistributeRS, type_),
   PROTOBUF_FIELD_OFFSET(::CPGServer::CheckMatchDistributeRS, result_),
   PROTOBUF_FIELD_OFFSET(::CPGServer::CheckMatchDistributeRS, mids_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CancelMatchRQ, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CancelMatchRQ, mid_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CancelMatchRQ, reason_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CancelMatchRS, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CancelMatchRS, mid_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CancelMatchRS, result_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRQ, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRQ, mid_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRQ, properties_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRS, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRS, mid_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::UpdateMatchRS, result_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRQ, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRQ, properties_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRS, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::CPGServer::CreateMatchRS, properties_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::CPGServer::ServerInfo)},
@@ -342,6 +583,15 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 63, -1, sizeof(::CPGServer::ServerAllMatchDistributeNotify)},
   { 69, -1, sizeof(::CPGServer::CheckMatchDistributeRQ)},
   { 77, -1, sizeof(::CPGServer::CheckMatchDistributeRS)},
+  { 86, -1, sizeof(::CPGServer::CancelMatchRQ)},
+  { 93, -1, sizeof(::CPGServer::CancelMatchRS)},
+  { 100, 107, sizeof(::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse)},
+  { 109, -1, sizeof(::CPGServer::UpdateMatchRQ)},
+  { 116, -1, sizeof(::CPGServer::UpdateMatchRS)},
+  { 123, 130, sizeof(::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse)},
+  { 132, -1, sizeof(::CPGServer::CreateMatchRQ)},
+  { 138, 145, sizeof(::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse)},
+  { 147, -1, sizeof(::CPGServer::CreateMatchRS)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -356,12 +606,21 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_ServerAllMatchDistributeNotify_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_CheckMatchDistributeRQ_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_CheckMatchDistributeRS_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_CancelMatchRQ_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_CancelMatchRS_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_UpdateMatchRQ_PropertiesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_UpdateMatchRQ_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_UpdateMatchRS_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_CreateMatchRQ_PropertiesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_CreateMatchRQ_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_CreateMatchRS_PropertiesEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::CPGServer::_CreateMatchRS_default_instance_),
 };
 
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_CPGServer_2eproto = {
   {}, AddDescriptors_CPGServer_2eproto, "CPGServer.proto", schemas,
   file_default_instances, TableStruct_CPGServer_2eproto::offsets,
-  file_level_metadata_CPGServer_2eproto, 11, file_level_enum_descriptors_CPGServer_2eproto, file_level_service_descriptors_CPGServer_2eproto,
+  file_level_metadata_CPGServer_2eproto, 20, file_level_enum_descriptors_CPGServer_2eproto, file_level_service_descriptors_CPGServer_2eproto,
 };
 
 ::google::protobuf::internal::DescriptorTable descriptor_table_CPGServer_2eproto = {
@@ -387,10 +646,23 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   "ify\"A\n\026CheckMatchDistributeRQ\022\013\n\003sid\030\001 \001"
   "(\005\022\014\n\004type\030\002 \001(\005\022\014\n\004mids\030\003 \003(\005\"Q\n\026CheckM"
   "atchDistributeRS\022\013\n\003sid\030\001 \001(\005\022\014\n\004type\030\002 "
-  "\001(\005\022\016\n\006result\030\003 \001(\005\022\014\n\004mids\030\004 \003(\005b\006proto"
-  "3"
+  "\001(\005\022\016\n\006result\030\003 \001(\005\022\014\n\004mids\030\004 \003(\005\",\n\rCan"
+  "celMatchRQ\022\013\n\003mid\030\001 \001(\005\022\016\n\006reason\030\002 \001(\005\""
+  ",\n\rCancelMatchRS\022\013\n\003mid\030\001 \001(\005\022\016\n\006result\030"
+  "\002 \001(\005\"\215\001\n\rUpdateMatchRQ\022\013\n\003mid\030\001 \001(\005\022<\n\n"
+  "properties\030\002 \003(\0132(.CPGServer.UpdateMatch"
+  "RQ.PropertiesEntry\0321\n\017PropertiesEntry\022\013\n"
+  "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\",\n\rUpdateM"
+  "atchRS\022\013\n\003mid\030\001 \001(\005\022\016\n\006result\030\002 \001(\005\"\200\001\n\r"
+  "CreateMatchRQ\022<\n\nproperties\030\001 \003(\0132(.CPGS"
+  "erver.CreateMatchRQ.PropertiesEntry\0321\n\017P"
+  "ropertiesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001"
+  "(\t:\0028\001\"\200\001\n\rCreateMatchRS\022<\n\nproperties\030\001"
+  " \003(\0132(.CPGServer.CreateMatchRS.Propertie"
+  "sEntry\0321\n\017PropertiesEntry\022\013\n\003key\030\001 \001(\t\022\r"
+  "\n\005value\030\002 \001(\t:\0028\001b\006proto3"
 ,
-  "CPGServer.proto", &assign_descriptors_table_CPGServer_2eproto, 881,
+  "CPGServer.proto", &assign_descriptors_table_CPGServer_2eproto, 1425,
 };
 
 void AddDescriptors_CPGServer_2eproto() {
@@ -4668,6 +4940,2304 @@ void CheckMatchDistributeRS::InternalSwap(CheckMatchDistributeRS* other) {
 }
 
 
+// ===================================================================
+
+void CancelMatchRQ::InitAsDefaultInstance() {
+}
+class CancelMatchRQ::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CancelMatchRQ::kMidFieldNumber;
+const int CancelMatchRQ::kReasonFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CancelMatchRQ::CancelMatchRQ()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CPGServer.CancelMatchRQ)
+}
+CancelMatchRQ::CancelMatchRQ(const CancelMatchRQ& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&mid_, &from.mid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&reason_) -
+    reinterpret_cast<char*>(&mid_)) + sizeof(reason_));
+  // @@protoc_insertion_point(copy_constructor:CPGServer.CancelMatchRQ)
+}
+
+void CancelMatchRQ::SharedCtor() {
+  ::memset(&mid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&reason_) -
+      reinterpret_cast<char*>(&mid_)) + sizeof(reason_));
+}
+
+CancelMatchRQ::~CancelMatchRQ() {
+  // @@protoc_insertion_point(destructor:CPGServer.CancelMatchRQ)
+  SharedDtor();
+}
+
+void CancelMatchRQ::SharedDtor() {
+}
+
+void CancelMatchRQ::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const CancelMatchRQ& CancelMatchRQ::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_CancelMatchRQ_CPGServer_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void CancelMatchRQ::Clear() {
+// @@protoc_insertion_point(message_clear_start:CPGServer.CancelMatchRQ)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&mid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&reason_) -
+      reinterpret_cast<char*>(&mid_)) + sizeof(reason_));
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CancelMatchRQ::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CancelMatchRQ*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // int32 mid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_mid(value);
+        break;
+      }
+      // int32 reason = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_reason(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4 || tag == 0) {
+          bool ok = ctx->ValidEndGroup(tag);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool CancelMatchRQ::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CPGServer.CancelMatchRQ)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 mid = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &mid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 reason = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &reason_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CPGServer.CancelMatchRQ)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CPGServer.CancelMatchRQ)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void CancelMatchRQ::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CPGServer.CancelMatchRQ)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->mid(), output);
+  }
+
+  // int32 reason = 2;
+  if (this->reason() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->reason(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:CPGServer.CancelMatchRQ)
+}
+
+::google::protobuf::uint8* CancelMatchRQ::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:CPGServer.CancelMatchRQ)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->mid(), target);
+  }
+
+  // int32 reason = 2;
+  if (this->reason() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->reason(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:CPGServer.CancelMatchRQ)
+  return target;
+}
+
+size_t CancelMatchRQ::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CPGServer.CancelMatchRQ)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->mid());
+  }
+
+  // int32 reason = 2;
+  if (this->reason() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->reason());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CancelMatchRQ::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CPGServer.CancelMatchRQ)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CancelMatchRQ* source =
+      ::google::protobuf::DynamicCastToGenerated<CancelMatchRQ>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGServer.CancelMatchRQ)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGServer.CancelMatchRQ)
+    MergeFrom(*source);
+  }
+}
+
+void CancelMatchRQ::MergeFrom(const CancelMatchRQ& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CPGServer.CancelMatchRQ)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.reason() != 0) {
+    set_reason(from.reason());
+  }
+}
+
+void CancelMatchRQ::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CPGServer.CancelMatchRQ)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CancelMatchRQ::CopyFrom(const CancelMatchRQ& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CPGServer.CancelMatchRQ)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CancelMatchRQ::IsInitialized() const {
+  return true;
+}
+
+void CancelMatchRQ::Swap(CancelMatchRQ* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CancelMatchRQ::InternalSwap(CancelMatchRQ* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(mid_, other->mid_);
+  swap(reason_, other->reason_);
+}
+
+::google::protobuf::Metadata CancelMatchRQ::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGServer_2eproto);
+  return ::file_level_metadata_CPGServer_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void CancelMatchRS::InitAsDefaultInstance() {
+}
+class CancelMatchRS::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CancelMatchRS::kMidFieldNumber;
+const int CancelMatchRS::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CancelMatchRS::CancelMatchRS()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CPGServer.CancelMatchRS)
+}
+CancelMatchRS::CancelMatchRS(const CancelMatchRS& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&mid_, &from.mid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&mid_)) + sizeof(result_));
+  // @@protoc_insertion_point(copy_constructor:CPGServer.CancelMatchRS)
+}
+
+void CancelMatchRS::SharedCtor() {
+  ::memset(&mid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&mid_)) + sizeof(result_));
+}
+
+CancelMatchRS::~CancelMatchRS() {
+  // @@protoc_insertion_point(destructor:CPGServer.CancelMatchRS)
+  SharedDtor();
+}
+
+void CancelMatchRS::SharedDtor() {
+}
+
+void CancelMatchRS::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const CancelMatchRS& CancelMatchRS::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_CancelMatchRS_CPGServer_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void CancelMatchRS::Clear() {
+// @@protoc_insertion_point(message_clear_start:CPGServer.CancelMatchRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&mid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&mid_)) + sizeof(result_));
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CancelMatchRS::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CancelMatchRS*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // int32 mid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_mid(value);
+        break;
+      }
+      // int32 result = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_result(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4 || tag == 0) {
+          bool ok = ctx->ValidEndGroup(tag);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool CancelMatchRS::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CPGServer.CancelMatchRS)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 mid = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &mid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 result = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &result_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CPGServer.CancelMatchRS)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CPGServer.CancelMatchRS)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void CancelMatchRS::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CPGServer.CancelMatchRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->mid(), output);
+  }
+
+  // int32 result = 2;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->result(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:CPGServer.CancelMatchRS)
+}
+
+::google::protobuf::uint8* CancelMatchRS::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:CPGServer.CancelMatchRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->mid(), target);
+  }
+
+  // int32 result = 2;
+  if (this->result() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->result(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:CPGServer.CancelMatchRS)
+  return target;
+}
+
+size_t CancelMatchRS::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CPGServer.CancelMatchRS)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->mid());
+  }
+
+  // int32 result = 2;
+  if (this->result() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->result());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CancelMatchRS::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CPGServer.CancelMatchRS)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CancelMatchRS* source =
+      ::google::protobuf::DynamicCastToGenerated<CancelMatchRS>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGServer.CancelMatchRS)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGServer.CancelMatchRS)
+    MergeFrom(*source);
+  }
+}
+
+void CancelMatchRS::MergeFrom(const CancelMatchRS& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CPGServer.CancelMatchRS)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void CancelMatchRS::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CPGServer.CancelMatchRS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CancelMatchRS::CopyFrom(const CancelMatchRS& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CPGServer.CancelMatchRS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CancelMatchRS::IsInitialized() const {
+  return true;
+}
+
+void CancelMatchRS::Swap(CancelMatchRS* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CancelMatchRS::InternalSwap(CancelMatchRS* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(mid_, other->mid_);
+  swap(result_, other->result_);
+}
+
+::google::protobuf::Metadata CancelMatchRS::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGServer_2eproto);
+  return ::file_level_metadata_CPGServer_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+UpdateMatchRQ_PropertiesEntry_DoNotUse::UpdateMatchRQ_PropertiesEntry_DoNotUse() {}
+UpdateMatchRQ_PropertiesEntry_DoNotUse::UpdateMatchRQ_PropertiesEntry_DoNotUse(::google::protobuf::Arena* arena)
+    : SuperType(arena) {}
+void UpdateMatchRQ_PropertiesEntry_DoNotUse::MergeFrom(const UpdateMatchRQ_PropertiesEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::google::protobuf::Metadata UpdateMatchRQ_PropertiesEntry_DoNotUse::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGServer_2eproto);
+  return ::file_level_metadata_CPGServer_2eproto[13];
+}
+void UpdateMatchRQ_PropertiesEntry_DoNotUse::MergeFrom(
+    const ::google::protobuf::Message& other) {
+  ::google::protobuf::Message::MergeFrom(other);
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool UpdateMatchRQ_PropertiesEntry_DoNotUse::_ParseMap(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx) {
+  using MF = ::google::protobuf::internal::MapField<
+      UpdateMatchRQ_PropertiesEntry_DoNotUse, EntryKeyType, EntryValueType,
+      kEntryKeyFieldType, kEntryValueFieldType,
+      kEntryDefaultEnumValue>;
+  auto mf = static_cast<MF*>(object);
+  Parser<MF, ::google::protobuf::Map<EntryKeyType, EntryValueType>> parser(mf);
+#define DO_(x) if (!(x)) return false
+  DO_(parser.ParseMap(begin, end));
+  DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+    parser.key().data(), static_cast<int>(parser.key().length()),
+    ::google::protobuf::internal::WireFormatLite::PARSE,
+    "CPGServer.UpdateMatchRQ.PropertiesEntry.key"));
+  DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+    parser.value().data(), static_cast<int>(parser.value().length()),
+    ::google::protobuf::internal::WireFormatLite::PARSE,
+    "CPGServer.UpdateMatchRQ.PropertiesEntry.value"));
+#undef DO_
+  return true;
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+
+// ===================================================================
+
+void UpdateMatchRQ::InitAsDefaultInstance() {
+}
+class UpdateMatchRQ::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int UpdateMatchRQ::kMidFieldNumber;
+const int UpdateMatchRQ::kPropertiesFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+UpdateMatchRQ::UpdateMatchRQ()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CPGServer.UpdateMatchRQ)
+}
+UpdateMatchRQ::UpdateMatchRQ(const UpdateMatchRQ& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  properties_.MergeFrom(from.properties_);
+  mid_ = from.mid_;
+  // @@protoc_insertion_point(copy_constructor:CPGServer.UpdateMatchRQ)
+}
+
+void UpdateMatchRQ::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_UpdateMatchRQ_CPGServer_2eproto.base);
+  mid_ = 0;
+}
+
+UpdateMatchRQ::~UpdateMatchRQ() {
+  // @@protoc_insertion_point(destructor:CPGServer.UpdateMatchRQ)
+  SharedDtor();
+}
+
+void UpdateMatchRQ::SharedDtor() {
+}
+
+void UpdateMatchRQ::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const UpdateMatchRQ& UpdateMatchRQ::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_UpdateMatchRQ_CPGServer_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void UpdateMatchRQ::Clear() {
+// @@protoc_insertion_point(message_clear_start:CPGServer.UpdateMatchRQ)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  properties_.Clear();
+  mid_ = 0;
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* UpdateMatchRQ::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<UpdateMatchRQ*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // int32 mid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_mid(value);
+        break;
+      }
+      // map<string, string> properties = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          parser_till_end = ::google::protobuf::internal::SlowMapEntryParser;
+          auto parse_map = ::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse::_ParseMap;
+          ctx->extra_parse_data().payload.clear();
+          ctx->extra_parse_data().parse_map = parse_map;
+          object = &msg->properties_;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          GOOGLE_PROTOBUF_PARSER_ASSERT(parse_map(ptr, newend, object, ctx));
+          ptr = newend;
+          if (ptr >= end) break;
+        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 18 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4 || tag == 0) {
+          bool ok = ctx->ValidEndGroup(tag);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool UpdateMatchRQ::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CPGServer.UpdateMatchRQ)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 mid = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &mid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // map<string, string> properties = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          UpdateMatchRQ_PropertiesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              UpdateMatchRQ_PropertiesEntry_DoNotUse,
+              ::std::string, ::std::string,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              0 >,
+            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&properties_);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+              input, &parser));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            parser.key().data(), static_cast<int>(parser.key().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CPGServer.UpdateMatchRQ.PropertiesEntry.key"));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            parser.value().data(), static_cast<int>(parser.value().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CPGServer.UpdateMatchRQ.PropertiesEntry.value"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CPGServer.UpdateMatchRQ)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CPGServer.UpdateMatchRQ)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void UpdateMatchRQ::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CPGServer.UpdateMatchRQ)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->mid(), output);
+  }
+
+  // map<string, string> properties = 2;
+  if (!this->properties().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.UpdateMatchRQ.PropertiesEntry.key");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.UpdateMatchRQ.PropertiesEntry.value");
+      }
+    };
+
+    if (output->IsSerializationDeterministic() &&
+        this->properties().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->properties().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<UpdateMatchRQ_PropertiesEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(properties_.NewEntryWrapper(items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(2, *entry, output);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      ::std::unique_ptr<UpdateMatchRQ_PropertiesEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it) {
+        entry.reset(properties_.NewEntryWrapper(it->first, it->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(2, *entry, output);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:CPGServer.UpdateMatchRQ)
+}
+
+::google::protobuf::uint8* UpdateMatchRQ::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:CPGServer.UpdateMatchRQ)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->mid(), target);
+  }
+
+  // map<string, string> properties = 2;
+  if (!this->properties().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.UpdateMatchRQ.PropertiesEntry.key");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.UpdateMatchRQ.PropertiesEntry.value");
+      }
+    };
+
+    if (deterministic &&
+        this->properties().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->properties().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<UpdateMatchRQ_PropertiesEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(properties_.NewEntryWrapper(items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(2, *entry, deterministic, target);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      ::std::unique_ptr<UpdateMatchRQ_PropertiesEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it) {
+        entry.reset(properties_.NewEntryWrapper(it->first, it->second));
+        target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(2, *entry, deterministic, target);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:CPGServer.UpdateMatchRQ)
+  return target;
+}
+
+size_t UpdateMatchRQ::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CPGServer.UpdateMatchRQ)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, string> properties = 2;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->properties_size());
+  {
+    ::std::unique_ptr<UpdateMatchRQ_PropertiesEntry_DoNotUse> entry;
+    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+        it = this->properties().begin();
+        it != this->properties().end(); ++it) {
+      entry.reset(properties_.NewEntryWrapper(it->first, it->second));
+      total_size += ::google::protobuf::internal::WireFormatLite::
+          MessageSizeNoVirtual(*entry);
+    }
+  }
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->mid());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void UpdateMatchRQ::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CPGServer.UpdateMatchRQ)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UpdateMatchRQ* source =
+      ::google::protobuf::DynamicCastToGenerated<UpdateMatchRQ>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGServer.UpdateMatchRQ)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGServer.UpdateMatchRQ)
+    MergeFrom(*source);
+  }
+}
+
+void UpdateMatchRQ::MergeFrom(const UpdateMatchRQ& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CPGServer.UpdateMatchRQ)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  properties_.MergeFrom(from.properties_);
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+}
+
+void UpdateMatchRQ::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CPGServer.UpdateMatchRQ)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UpdateMatchRQ::CopyFrom(const UpdateMatchRQ& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CPGServer.UpdateMatchRQ)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateMatchRQ::IsInitialized() const {
+  return true;
+}
+
+void UpdateMatchRQ::Swap(UpdateMatchRQ* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void UpdateMatchRQ::InternalSwap(UpdateMatchRQ* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  properties_.Swap(&other->properties_);
+  swap(mid_, other->mid_);
+}
+
+::google::protobuf::Metadata UpdateMatchRQ::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGServer_2eproto);
+  return ::file_level_metadata_CPGServer_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void UpdateMatchRS::InitAsDefaultInstance() {
+}
+class UpdateMatchRS::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int UpdateMatchRS::kMidFieldNumber;
+const int UpdateMatchRS::kResultFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+UpdateMatchRS::UpdateMatchRS()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CPGServer.UpdateMatchRS)
+}
+UpdateMatchRS::UpdateMatchRS(const UpdateMatchRS& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&mid_, &from.mid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&mid_)) + sizeof(result_));
+  // @@protoc_insertion_point(copy_constructor:CPGServer.UpdateMatchRS)
+}
+
+void UpdateMatchRS::SharedCtor() {
+  ::memset(&mid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&mid_)) + sizeof(result_));
+}
+
+UpdateMatchRS::~UpdateMatchRS() {
+  // @@protoc_insertion_point(destructor:CPGServer.UpdateMatchRS)
+  SharedDtor();
+}
+
+void UpdateMatchRS::SharedDtor() {
+}
+
+void UpdateMatchRS::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const UpdateMatchRS& UpdateMatchRS::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_UpdateMatchRS_CPGServer_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void UpdateMatchRS::Clear() {
+// @@protoc_insertion_point(message_clear_start:CPGServer.UpdateMatchRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&mid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&mid_)) + sizeof(result_));
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* UpdateMatchRS::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<UpdateMatchRS*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // int32 mid = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 8) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_mid(value);
+        break;
+      }
+      // int32 result = 2;
+      case 2: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::int32 value = val;
+        msg->set_result(value);
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4 || tag == 0) {
+          bool ok = ctx->ValidEndGroup(tag);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool UpdateMatchRS::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CPGServer.UpdateMatchRS)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // int32 mid = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (8 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &mid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 result = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &result_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CPGServer.UpdateMatchRS)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CPGServer.UpdateMatchRS)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void UpdateMatchRS::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CPGServer.UpdateMatchRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->mid(), output);
+  }
+
+  // int32 result = 2;
+  if (this->result() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->result(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:CPGServer.UpdateMatchRS)
+}
+
+::google::protobuf::uint8* UpdateMatchRS::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:CPGServer.UpdateMatchRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->mid(), target);
+  }
+
+  // int32 result = 2;
+  if (this->result() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->result(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:CPGServer.UpdateMatchRS)
+  return target;
+}
+
+size_t UpdateMatchRS::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CPGServer.UpdateMatchRS)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 mid = 1;
+  if (this->mid() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->mid());
+  }
+
+  // int32 result = 2;
+  if (this->result() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->result());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void UpdateMatchRS::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CPGServer.UpdateMatchRS)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UpdateMatchRS* source =
+      ::google::protobuf::DynamicCastToGenerated<UpdateMatchRS>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGServer.UpdateMatchRS)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGServer.UpdateMatchRS)
+    MergeFrom(*source);
+  }
+}
+
+void UpdateMatchRS::MergeFrom(const UpdateMatchRS& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CPGServer.UpdateMatchRS)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.mid() != 0) {
+    set_mid(from.mid());
+  }
+  if (from.result() != 0) {
+    set_result(from.result());
+  }
+}
+
+void UpdateMatchRS::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CPGServer.UpdateMatchRS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UpdateMatchRS::CopyFrom(const UpdateMatchRS& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CPGServer.UpdateMatchRS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateMatchRS::IsInitialized() const {
+  return true;
+}
+
+void UpdateMatchRS::Swap(UpdateMatchRS* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void UpdateMatchRS::InternalSwap(UpdateMatchRS* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(mid_, other->mid_);
+  swap(result_, other->result_);
+}
+
+::google::protobuf::Metadata UpdateMatchRS::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGServer_2eproto);
+  return ::file_level_metadata_CPGServer_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+CreateMatchRQ_PropertiesEntry_DoNotUse::CreateMatchRQ_PropertiesEntry_DoNotUse() {}
+CreateMatchRQ_PropertiesEntry_DoNotUse::CreateMatchRQ_PropertiesEntry_DoNotUse(::google::protobuf::Arena* arena)
+    : SuperType(arena) {}
+void CreateMatchRQ_PropertiesEntry_DoNotUse::MergeFrom(const CreateMatchRQ_PropertiesEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::google::protobuf::Metadata CreateMatchRQ_PropertiesEntry_DoNotUse::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGServer_2eproto);
+  return ::file_level_metadata_CPGServer_2eproto[16];
+}
+void CreateMatchRQ_PropertiesEntry_DoNotUse::MergeFrom(
+    const ::google::protobuf::Message& other) {
+  ::google::protobuf::Message::MergeFrom(other);
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool CreateMatchRQ_PropertiesEntry_DoNotUse::_ParseMap(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx) {
+  using MF = ::google::protobuf::internal::MapField<
+      CreateMatchRQ_PropertiesEntry_DoNotUse, EntryKeyType, EntryValueType,
+      kEntryKeyFieldType, kEntryValueFieldType,
+      kEntryDefaultEnumValue>;
+  auto mf = static_cast<MF*>(object);
+  Parser<MF, ::google::protobuf::Map<EntryKeyType, EntryValueType>> parser(mf);
+#define DO_(x) if (!(x)) return false
+  DO_(parser.ParseMap(begin, end));
+  DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+    parser.key().data(), static_cast<int>(parser.key().length()),
+    ::google::protobuf::internal::WireFormatLite::PARSE,
+    "CPGServer.CreateMatchRQ.PropertiesEntry.key"));
+  DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+    parser.value().data(), static_cast<int>(parser.value().length()),
+    ::google::protobuf::internal::WireFormatLite::PARSE,
+    "CPGServer.CreateMatchRQ.PropertiesEntry.value"));
+#undef DO_
+  return true;
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+
+// ===================================================================
+
+void CreateMatchRQ::InitAsDefaultInstance() {
+}
+class CreateMatchRQ::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CreateMatchRQ::kPropertiesFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CreateMatchRQ::CreateMatchRQ()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CPGServer.CreateMatchRQ)
+}
+CreateMatchRQ::CreateMatchRQ(const CreateMatchRQ& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  properties_.MergeFrom(from.properties_);
+  // @@protoc_insertion_point(copy_constructor:CPGServer.CreateMatchRQ)
+}
+
+void CreateMatchRQ::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_CreateMatchRQ_CPGServer_2eproto.base);
+}
+
+CreateMatchRQ::~CreateMatchRQ() {
+  // @@protoc_insertion_point(destructor:CPGServer.CreateMatchRQ)
+  SharedDtor();
+}
+
+void CreateMatchRQ::SharedDtor() {
+}
+
+void CreateMatchRQ::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const CreateMatchRQ& CreateMatchRQ::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_CreateMatchRQ_CPGServer_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void CreateMatchRQ::Clear() {
+// @@protoc_insertion_point(message_clear_start:CPGServer.CreateMatchRQ)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  properties_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CreateMatchRQ::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CreateMatchRQ*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // map<string, string> properties = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          parser_till_end = ::google::protobuf::internal::SlowMapEntryParser;
+          auto parse_map = ::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse::_ParseMap;
+          ctx->extra_parse_data().payload.clear();
+          ctx->extra_parse_data().parse_map = parse_map;
+          object = &msg->properties_;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          GOOGLE_PROTOBUF_PARSER_ASSERT(parse_map(ptr, newend, object, ctx));
+          ptr = newend;
+          if (ptr >= end) break;
+        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4 || tag == 0) {
+          bool ok = ctx->ValidEndGroup(tag);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool CreateMatchRQ::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CPGServer.CreateMatchRQ)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // map<string, string> properties = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          CreateMatchRQ_PropertiesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              CreateMatchRQ_PropertiesEntry_DoNotUse,
+              ::std::string, ::std::string,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              0 >,
+            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&properties_);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+              input, &parser));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            parser.key().data(), static_cast<int>(parser.key().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CPGServer.CreateMatchRQ.PropertiesEntry.key"));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            parser.value().data(), static_cast<int>(parser.value().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CPGServer.CreateMatchRQ.PropertiesEntry.value"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CPGServer.CreateMatchRQ)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CPGServer.CreateMatchRQ)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void CreateMatchRQ::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CPGServer.CreateMatchRQ)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // map<string, string> properties = 1;
+  if (!this->properties().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.CreateMatchRQ.PropertiesEntry.key");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.CreateMatchRQ.PropertiesEntry.value");
+      }
+    };
+
+    if (output->IsSerializationDeterministic() &&
+        this->properties().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->properties().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<CreateMatchRQ_PropertiesEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(properties_.NewEntryWrapper(items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(1, *entry, output);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      ::std::unique_ptr<CreateMatchRQ_PropertiesEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it) {
+        entry.reset(properties_.NewEntryWrapper(it->first, it->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(1, *entry, output);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:CPGServer.CreateMatchRQ)
+}
+
+::google::protobuf::uint8* CreateMatchRQ::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:CPGServer.CreateMatchRQ)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // map<string, string> properties = 1;
+  if (!this->properties().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.CreateMatchRQ.PropertiesEntry.key");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.CreateMatchRQ.PropertiesEntry.value");
+      }
+    };
+
+    if (deterministic &&
+        this->properties().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->properties().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<CreateMatchRQ_PropertiesEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(properties_.NewEntryWrapper(items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(1, *entry, deterministic, target);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      ::std::unique_ptr<CreateMatchRQ_PropertiesEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it) {
+        entry.reset(properties_.NewEntryWrapper(it->first, it->second));
+        target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(1, *entry, deterministic, target);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:CPGServer.CreateMatchRQ)
+  return target;
+}
+
+size_t CreateMatchRQ::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CPGServer.CreateMatchRQ)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, string> properties = 1;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->properties_size());
+  {
+    ::std::unique_ptr<CreateMatchRQ_PropertiesEntry_DoNotUse> entry;
+    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+        it = this->properties().begin();
+        it != this->properties().end(); ++it) {
+      entry.reset(properties_.NewEntryWrapper(it->first, it->second));
+      total_size += ::google::protobuf::internal::WireFormatLite::
+          MessageSizeNoVirtual(*entry);
+    }
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CreateMatchRQ::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CPGServer.CreateMatchRQ)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CreateMatchRQ* source =
+      ::google::protobuf::DynamicCastToGenerated<CreateMatchRQ>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGServer.CreateMatchRQ)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGServer.CreateMatchRQ)
+    MergeFrom(*source);
+  }
+}
+
+void CreateMatchRQ::MergeFrom(const CreateMatchRQ& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CPGServer.CreateMatchRQ)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  properties_.MergeFrom(from.properties_);
+}
+
+void CreateMatchRQ::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CPGServer.CreateMatchRQ)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CreateMatchRQ::CopyFrom(const CreateMatchRQ& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CPGServer.CreateMatchRQ)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateMatchRQ::IsInitialized() const {
+  return true;
+}
+
+void CreateMatchRQ::Swap(CreateMatchRQ* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CreateMatchRQ::InternalSwap(CreateMatchRQ* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  properties_.Swap(&other->properties_);
+}
+
+::google::protobuf::Metadata CreateMatchRQ::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGServer_2eproto);
+  return ::file_level_metadata_CPGServer_2eproto[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+CreateMatchRS_PropertiesEntry_DoNotUse::CreateMatchRS_PropertiesEntry_DoNotUse() {}
+CreateMatchRS_PropertiesEntry_DoNotUse::CreateMatchRS_PropertiesEntry_DoNotUse(::google::protobuf::Arena* arena)
+    : SuperType(arena) {}
+void CreateMatchRS_PropertiesEntry_DoNotUse::MergeFrom(const CreateMatchRS_PropertiesEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::google::protobuf::Metadata CreateMatchRS_PropertiesEntry_DoNotUse::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGServer_2eproto);
+  return ::file_level_metadata_CPGServer_2eproto[18];
+}
+void CreateMatchRS_PropertiesEntry_DoNotUse::MergeFrom(
+    const ::google::protobuf::Message& other) {
+  ::google::protobuf::Message::MergeFrom(other);
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool CreateMatchRS_PropertiesEntry_DoNotUse::_ParseMap(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx) {
+  using MF = ::google::protobuf::internal::MapField<
+      CreateMatchRS_PropertiesEntry_DoNotUse, EntryKeyType, EntryValueType,
+      kEntryKeyFieldType, kEntryValueFieldType,
+      kEntryDefaultEnumValue>;
+  auto mf = static_cast<MF*>(object);
+  Parser<MF, ::google::protobuf::Map<EntryKeyType, EntryValueType>> parser(mf);
+#define DO_(x) if (!(x)) return false
+  DO_(parser.ParseMap(begin, end));
+  DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+    parser.key().data(), static_cast<int>(parser.key().length()),
+    ::google::protobuf::internal::WireFormatLite::PARSE,
+    "CPGServer.CreateMatchRS.PropertiesEntry.key"));
+  DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+    parser.value().data(), static_cast<int>(parser.value().length()),
+    ::google::protobuf::internal::WireFormatLite::PARSE,
+    "CPGServer.CreateMatchRS.PropertiesEntry.value"));
+#undef DO_
+  return true;
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+
+// ===================================================================
+
+void CreateMatchRS::InitAsDefaultInstance() {
+}
+class CreateMatchRS::HasBitSetters {
+ public:
+};
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CreateMatchRS::kPropertiesFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CreateMatchRS::CreateMatchRS()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:CPGServer.CreateMatchRS)
+}
+CreateMatchRS::CreateMatchRS(const CreateMatchRS& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  properties_.MergeFrom(from.properties_);
+  // @@protoc_insertion_point(copy_constructor:CPGServer.CreateMatchRS)
+}
+
+void CreateMatchRS::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_CreateMatchRS_CPGServer_2eproto.base);
+}
+
+CreateMatchRS::~CreateMatchRS() {
+  // @@protoc_insertion_point(destructor:CPGServer.CreateMatchRS)
+  SharedDtor();
+}
+
+void CreateMatchRS::SharedDtor() {
+}
+
+void CreateMatchRS::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const CreateMatchRS& CreateMatchRS::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_CreateMatchRS_CPGServer_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void CreateMatchRS::Clear() {
+// @@protoc_insertion_point(message_clear_start:CPGServer.CreateMatchRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  properties_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CreateMatchRS::_InternalParse(const char* begin, const char* end, void* object,
+                  ::google::protobuf::internal::ParseContext* ctx) {
+  auto msg = static_cast<CreateMatchRS*>(object);
+  ::google::protobuf::uint32 size; (void)size;
+  int depth; (void)depth;
+  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
+  auto ptr = begin;
+  while (ptr < end) {
+    ::google::protobuf::uint32 tag;
+    ptr = Varint::Parse32Inline(ptr, &tag);
+    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+    switch (tag >> 3) {
+      // map<string, string> properties = 1;
+      case 1: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
+        do {
+          ptr = Varint::Parse32Inline(ptr, &size);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+          parser_till_end = ::google::protobuf::internal::SlowMapEntryParser;
+          auto parse_map = ::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse::_ParseMap;
+          ctx->extra_parse_data().payload.clear();
+          ctx->extra_parse_data().parse_map = parse_map;
+          object = &msg->properties_;
+          if (size > end - ptr) goto len_delim_till_end;
+          auto newend = ptr + size;
+          GOOGLE_PROTOBUF_PARSER_ASSERT(parse_map(ptr, newend, object, ctx));
+          ptr = newend;
+          if (ptr >= end) break;
+        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
+        break;
+      }
+      default: {
+      handle_unusual: (void)&&handle_unusual;
+        if ((tag & 7) == 4 || tag == 0) {
+          bool ok = ctx->ValidEndGroup(tag);
+          GOOGLE_PROTOBUF_PARSER_ASSERT(ok);
+          return ptr;
+        }
+        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
+          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
+        ptr = res.first;
+        if (res.second) return ptr;
+      }
+    }  // switch
+  }  // while
+  return ptr;
+len_delim_till_end: (void)&&len_delim_till_end;
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                                 {parser_till_end, object}, size);
+group_continues: (void)&&group_continues;
+  GOOGLE_DCHECK(ptr >= end);
+  ctx->StoreGroup({_InternalParse, msg}, {parser_till_end, object}, depth);
+  return ptr;
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool CreateMatchRS::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:CPGServer.CreateMatchRS)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // map<string, string> properties = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
+          CreateMatchRS_PropertiesEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
+              CreateMatchRS_PropertiesEntry_DoNotUse,
+              ::std::string, ::std::string,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              0 >,
+            ::google::protobuf::Map< ::std::string, ::std::string > > parser(&properties_);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+              input, &parser));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            parser.key().data(), static_cast<int>(parser.key().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CPGServer.CreateMatchRS.PropertiesEntry.key"));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            parser.value().data(), static_cast<int>(parser.value().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "CPGServer.CreateMatchRS.PropertiesEntry.value"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:CPGServer.CreateMatchRS)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:CPGServer.CreateMatchRS)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void CreateMatchRS::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:CPGServer.CreateMatchRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // map<string, string> properties = 1;
+  if (!this->properties().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.CreateMatchRS.PropertiesEntry.key");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.CreateMatchRS.PropertiesEntry.value");
+      }
+    };
+
+    if (output->IsSerializationDeterministic() &&
+        this->properties().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->properties().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<CreateMatchRS_PropertiesEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(properties_.NewEntryWrapper(items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(1, *entry, output);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      ::std::unique_ptr<CreateMatchRS_PropertiesEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it) {
+        entry.reset(properties_.NewEntryWrapper(it->first, it->second));
+        ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(1, *entry, output);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:CPGServer.CreateMatchRS)
+}
+
+::google::protobuf::uint8* CreateMatchRS::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:CPGServer.CreateMatchRS)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // map<string, string> properties = 1;
+  if (!this->properties().empty()) {
+    typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::google::protobuf::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.CreateMatchRS.PropertiesEntry.key");
+        ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+          p->second.data(), static_cast<int>(p->second.length()),
+          ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+          "CPGServer.CreateMatchRS.PropertiesEntry.value");
+      }
+    };
+
+    if (deterministic &&
+        this->properties().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->properties().size()]);
+      typedef ::google::protobuf::Map< ::std::string, ::std::string >::size_type size_type;
+      size_type n = 0;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      ::std::unique_ptr<CreateMatchRS_PropertiesEntry_DoNotUse> entry;
+      for (size_type i = 0; i < n; i++) {
+        entry.reset(properties_.NewEntryWrapper(items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second));
+        target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(1, *entry, deterministic, target);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      ::std::unique_ptr<CreateMatchRS_PropertiesEntry_DoNotUse> entry;
+      for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+          it = this->properties().begin();
+          it != this->properties().end(); ++it) {
+        entry.reset(properties_.NewEntryWrapper(it->first, it->second));
+        target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessageNoVirtualToArray(1, *entry, deterministic, target);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:CPGServer.CreateMatchRS)
+  return target;
+}
+
+size_t CreateMatchRS::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:CPGServer.CreateMatchRS)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, string> properties = 1;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->properties_size());
+  {
+    ::std::unique_ptr<CreateMatchRS_PropertiesEntry_DoNotUse> entry;
+    for (::google::protobuf::Map< ::std::string, ::std::string >::const_iterator
+        it = this->properties().begin();
+        it != this->properties().end(); ++it) {
+      entry.reset(properties_.NewEntryWrapper(it->first, it->second));
+      total_size += ::google::protobuf::internal::WireFormatLite::
+          MessageSizeNoVirtual(*entry);
+    }
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CreateMatchRS::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:CPGServer.CreateMatchRS)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CreateMatchRS* source =
+      ::google::protobuf::DynamicCastToGenerated<CreateMatchRS>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:CPGServer.CreateMatchRS)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:CPGServer.CreateMatchRS)
+    MergeFrom(*source);
+  }
+}
+
+void CreateMatchRS::MergeFrom(const CreateMatchRS& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:CPGServer.CreateMatchRS)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  properties_.MergeFrom(from.properties_);
+}
+
+void CreateMatchRS::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:CPGServer.CreateMatchRS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CreateMatchRS::CopyFrom(const CreateMatchRS& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:CPGServer.CreateMatchRS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateMatchRS::IsInitialized() const {
+  return true;
+}
+
+void CreateMatchRS::Swap(CreateMatchRS* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CreateMatchRS::InternalSwap(CreateMatchRS* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  properties_.Swap(&other->properties_);
+}
+
+::google::protobuf::Metadata CreateMatchRS::GetMetadata() const {
+  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_CPGServer_2eproto);
+  return ::file_level_metadata_CPGServer_2eproto[kIndexInFileMessages];
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace CPGServer
 namespace google {
@@ -4704,6 +7274,33 @@ template<> PROTOBUF_NOINLINE ::CPGServer::CheckMatchDistributeRQ* Arena::CreateM
 }
 template<> PROTOBUF_NOINLINE ::CPGServer::CheckMatchDistributeRS* Arena::CreateMaybeMessage< ::CPGServer::CheckMatchDistributeRS >(Arena* arena) {
   return Arena::CreateInternal< ::CPGServer::CheckMatchDistributeRS >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGServer::CancelMatchRQ* Arena::CreateMaybeMessage< ::CPGServer::CancelMatchRQ >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGServer::CancelMatchRQ >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGServer::CancelMatchRS* Arena::CreateMaybeMessage< ::CPGServer::CancelMatchRS >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGServer::CancelMatchRS >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage< ::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGServer::UpdateMatchRQ_PropertiesEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGServer::UpdateMatchRQ* Arena::CreateMaybeMessage< ::CPGServer::UpdateMatchRQ >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGServer::UpdateMatchRQ >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGServer::UpdateMatchRS* Arena::CreateMaybeMessage< ::CPGServer::UpdateMatchRS >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGServer::UpdateMatchRS >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage< ::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGServer::CreateMatchRQ_PropertiesEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGServer::CreateMatchRQ* Arena::CreateMaybeMessage< ::CPGServer::CreateMatchRQ >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGServer::CreateMatchRQ >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse* Arena::CreateMaybeMessage< ::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGServer::CreateMatchRS_PropertiesEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::CPGServer::CreateMatchRS* Arena::CreateMaybeMessage< ::CPGServer::CreateMatchRS >(Arena* arena) {
+  return Arena::CreateInternal< ::CPGServer::CreateMatchRS >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

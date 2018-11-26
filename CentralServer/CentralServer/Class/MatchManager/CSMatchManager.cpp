@@ -11,13 +11,24 @@
 #include <iostream>
 #include <Net/Conv.hpp>
 #include <Net/logging/Logging.hpp>
+#include <CPG/ErrorCodeDefine.h>
+#include <CPG/GameDefine.h>
+#include <CPG/CPGServer.pb.h>
+#include <CPG/MatchHelper/CPGMatchStructHelper.hpp>
+#include <CPG/CPGMatchDefine.h>
 #include <algorithm>
 #include "CSMatchDistribution.hpp"
 #include "CSMatchLoadedEvaluation.hpp"
 
 using namespace fasio::logging;
 
-
+CSMatchManager::CSMatchManager()
+:matchLatestUpdateTime_(time(NULL))
+{
+    DBConfig config{3306,"127.0.0.1","CPGLive",
+        "root", "123456789"};
+    dbwrapper_ = std::make_unique<DBActiveWrapper>(config, std::bind(&CSMatchManager::dbAsyncHandler, this, std::placeholders::_1));
+}
 // 初始化
 void CSMatchManager::initialize()
 {
@@ -60,6 +71,37 @@ std::list<int> CSMatchManager::getDistMatch(int sid)
     return {};
 }
 
+int CSMatchManager::getService(int mid)
+{
+    if (undistMatches_.size() > 0)
+    {
+        auto iter = std::find_if(undistMatches_.begin(),
+                     undistMatches_.end(), [&](int undistmid)
+                     {
+                         return mid == undistmid;
+                     });
+        if (iter != undistMatches_.end())
+        {
+            return -1;
+        }
+    }
+    
+    for(auto& pair : matchServices_)
+    {
+        auto iter = std::find_if(pair.second.begin(),
+                                 pair.second.end(), [&](int undistmid)
+                                 {
+                                     return mid == undistmid;
+                                 });
+        if (iter != pair.second.end())
+        {
+            return pair.first.sid;
+        }
+    }
+    
+    return -1;
+}
+
 // 加载所有比赛
 void CSMatchManager::loadAllMatches()
 {
@@ -98,12 +140,18 @@ void CSMatchManager::stopTimerCheckDistMatchServices()
     }
 }
 
+void CSMatchManager::updateMatchesOrService()
+{
+    matchLatestUpdateTime_ = time(NULL);
+    startTimerCheckDistMatchServices();
+}
+
 void CSMatchManager::addUndistriteMatches(std::list<int>&& mids)
 {
     undistMatches_.merge(mids);
     undistMatches_.sort();
     undistMatches_.unique();
-    startTimerCheckDistMatchServices();
+    updateMatchesOrService();
 }
 
 void
@@ -139,7 +187,7 @@ CSMatchManager::updateMatchService(const std::shared_ptr<ServerInfo>& service)
     };
     
     changedServices_.push_back(std::move(changedService));
-    updateDistMatchServices();
+    updateMatchesOrService();
 }
 
 void
@@ -180,36 +228,14 @@ CSMatchManager::removeMatchService(const std::shared_ptr<ServerInfo>& service)
             time(NULL) };
         changedServices_.push_back(std::move(changedService));
     }
-    updateDistMatchServices();
+    updateMatchesOrService();
 }
 
 bool CSMatchManager::checkDistMatchServices()
 {
     time_t now = time(NULL);
-    time_t after = 0;
-    
-    for (auto& changed : changedServices_)
-    {
-        if (changed.stamp > after)
-        {
-            after = changed.stamp;
-        }
-    }
-    
     // 时间间隔大于指定时间， 更新比赛分配信息
-    if (now - after >= updateDuration)
-    {
-        return true;
-    }
-    else
-    {
-        if (changedServices_.size() == 0 &&
-            undistMatches_.size() > 0)
-        {
-            return true;
-        }
-    }
-    return false;
+    return matchLatestUpdateTime_ - now >= updateDuration;
 }
 
 // 已经进行处理， changedServices_ 每个sid，只包含一个改变.
@@ -403,9 +429,8 @@ CSMatchManager::checkServiceDistMap(const MatchDisService& service,
     {
         res = ErrorNoMatch;
         // 已经0负载。
-        startTimerCheckDistMatchServices();
+        updateMatchesOrService();
     }
-    
     
     return res;
 }
@@ -428,6 +453,150 @@ CSMatchManager::matchList() const
     }
     
     return list;
+}
+
+
+// 取消比赛
+int CSMatchManager::cancelMatch(int mid,int reason)
+{
+    auto match = getMatch(mid);
+    if (!match)
+    {
+        return kManager_MatchNotFound;
+    }
+    if (match->match_state > ENUM_STATE_READY)
+    {
+        return kManager_MatchCancel_StartedError;
+    }
+    
+    // 移除本地数据。
+    int sid = getService(mid);
+    if (sid > 0) // 已分配，需要移除多处数据，并将比赛更新分配信息通知出去.
+    {
+        MatchDisService serviceKey{sid, 0};
+        auto iter = matchServices_.find(serviceKey);
+        if (iter != matchServices_.end())
+        {
+            iter->second.remove(mid);
+            // 通知其他服务.
+            ChangedMatchMap changedMap;
+            changedMap[sid] = iter->second;
+            changedMatchMapCB_(changedMap);
+        }
+    }
+    undistMatches_.remove(mid);
+    
+    CPGServer::CancelMatchRQ rq;
+    rq.set_mid(mid);
+    rq.set_reason(reason);
+    dbwrapper_->sendToDBThread(rq.SerializeAsString().data(),
+                               {kCancelMatchRQ, rq.ByteSize(),0});
+    
+    return kNoneError;
+}
+// 更新比赛参数.
+int CSMatchManager::updateMatch(int mid, const std::map<std::string,std::string>& properties)
+{
+    // 更新本地数据
+    auto match = getMatch(mid);
+    if (match == nullptr)
+    {
+        return kManager_MatchNotFound;
+    }
+    // 更新local
+    auto matchproperties = structConvertMap(*match.get());
+    for(auto& pair : properties)
+    {
+        matchproperties[pair.first] = pair.second;
+    }
+    mapConvertStruct(matchproperties, *match.get());
+    
+    // 更新数据库
+    CPGServer::UpdateMatchRQ rq;
+    
+    for(auto& pro : properties)
+    {
+        auto p = rq.mutable_properties();
+        
+        p->insert({pro.first, pro.second});
+    }
+    dbwrapper_->sendToDBThread(rq.SerializeAsString().data(),
+                               {kUpdateMatchRQ, rq.ByteSize(),0});
+    return kNoneError;
+}
+// 获取比赛
+std::shared_ptr<CPGMatchProfile>
+CSMatchManager::getMatch(int mid)
+{
+    auto iter = matches_.find(mid);
+    if (iter != matches_.end()) {
+        return iter->second;
+    }
+    
+    return nullptr;
+}
+// 创建比赛, mid = 0, 存储到mysql,获取唯一的mid
+int CSMatchManager::createMatch(const CPGMatchProfile& match, int promiseID)
+{
+    int code = createMatchValid(match);
+    if (code != kNoneError)
+    {
+        return code;
+    }
+    
+    // 检测比赛信息有效性
+    CPGServer::UpdateMatchRQ rq;
+    auto properties = structConvertMap(match);
+    for(auto& pro : properties)
+    {
+        auto p = rq.mutable_properties();
+        
+        p->insert({pro.first, pro.second});
+    }
+    dbwrapper_->sendToDBThread(rq.SerializeAsString().data(),
+                               {kCreateMatchRQ, rq.ByteSize(),promiseID});
+    
+    
+    return code;
+}
+
+void createMatchWait(const CPGMatchProfile& match,
+                     std::promise<int>&& promise)
+{
+    
+}
+
+
+void CSMatchManager::createdMatches(const   std::list<std::shared_ptr<CPGMatchProfile>>& matches)
+{
+    std::list<int> mids;
+    for(auto& match : matches)
+    {
+        matches_[match->mid] = match;
+        mids.push_back(match->mid);
+    }
+    addUndistriteMatches(std::move(mids));
+}
+
+int CSMatchManager::createMatchValid(const CPGMatchProfile& match)
+{
+    time_t cur = time(NULL);
+    if (match.start_time > cur + 60)
+    {
+        return kCreateMatch_ErrorTimeOut;
+    }
+    
+    // 统一类型的比赛，统一时间只会开赛一场
+    for(auto& pair : matches_)
+    {
+        if (pair.second->start_time == match.start_time &&
+            pair.second->match_type == match.match_type &&
+            pair.second->entryfee == match.entryfee)
+        {
+            return kCreateMatch_ErrorHasExist;
+        }
+    }
+    return kNoneError;
 }
 
 

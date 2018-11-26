@@ -7,8 +7,8 @@
 //
 
 #include "CPGMatchCreateFactory.hpp"
-#include <CPG/Third/json/json.hpp>
-#include <Net/FASIO.hpp>
+#include "../Third/json/json.hpp"
+#include "../../Net/FASIO.hpp"
 #include "BetAlgorithm.h"
 #include <iostream>
 #include <fstream>
@@ -100,6 +100,22 @@ std::shared_ptr<CPGMatchProfile> CPGMatchCreateFactory::createMatch(const std::s
     return profile;
 }
 
+std::shared_ptr<CPGMatchProfile>
+CPGMatchCreateFactory::createMatch(std::shared_ptr<CPGMatchProfile> profile)
+{
+    auto pair = checkValidAndStore(profile);
+    if (pair.first) // false 已存在
+    {
+        profile->mid = pair.second;
+        LOG_MINFO << "new match mid: " << pair.second;
+        return profile;
+    }
+    else
+    {
+        return nullptr;
+    }
+}
+
 // 可能已有一些其他字段的校验--!
 std::pair<bool, int>
 CPGMatchCreateFactory::checkValidAndStore(std::shared_ptr<CPGMatchProfile> profile)
@@ -111,34 +127,7 @@ CPGMatchCreateFactory::checkValidAndStore(std::shared_ptr<CPGMatchProfile> profi
     if (mid == INVALID_MID)
     {
         res = true;
-        // 存储
-        std::stringstream save;
-        
-        auto paramap = structConvertMap(*profile.get());
-        std::stringstream fss;
-        std::stringstream vss;
-        
-        auto index = paramap.size();
-        for(auto& pair : paramap)
-        {
-            index--;
-            fss << pair.first;
-            vss << "'" << pair.second <<"'";
-            if (index > 0)
-            {
-                fss << ",";
-                vss << ",";
-            }
-        }
-        save << "INSERT INTO match_infos ( "
-            << fss.str() << " ) "
-            << " VALUES ( "
-        << vss.str() << " ); ";
-        
-        if (connector_.execQuery(save.str()))
-        {
-            LOG_ERROR << "save error!";
-        }
+        mid = CPGMatchCreateFactory::createAndStoreMatch(*profile.get(), connector_);
     }
     
     
@@ -153,24 +142,7 @@ CPGMatchCreateFactory::checkValidAndStore(std::shared_ptr<CPGMatchProfile> profi
 
 int CPGMatchCreateFactory::queryMid(std::shared_ptr<CPGMatchProfile> profile)
 {
-    int mid = INVALID_MID;
-    
-    std::stringstream ss;
-    ss << "SELECT mid FROM match_infos WHERE ";
-    ss << " start_time=" << profile->start_time;
-    ss << " AND match_type=" << profile->match_type;
-    ss << " limit 1;";
-    if (connector_.execQuery(ss.str()))
-    {
-        return mid;
-    }
-    
-    
-    if (connector_.queryRowNum() == 1)
-    {
-        connector_.fieldData("mid", mid);
-    }
-    return mid;
+    return CPGMatchCreateFactory::queryMatchMid(*profile.get(), connector_);
 }
 
 std::shared_ptr<CPGMatchProfile>
@@ -229,6 +201,81 @@ CPGMatchCreateFactory::createMatch(const nlohmann::json& match)
     
     return profile;
 }
+
+int
+CPGMatchCreateFactory::createAndStoreMatch(CPGMatchProfile& profile,
+                               SQLConnector& connector)
+{
+    // 存储
+    std::stringstream save;
+    
+    auto paramap = structConvertMap(profile);
+    std::stringstream fss;
+    std::stringstream vss;
+    
+    auto index = paramap.size();
+    for(auto& pair : paramap)
+    {
+        index--;
+        fss << pair.first;
+        vss << "'" << pair.second <<"'";
+        if (index > 0)
+        {
+            fss << ",";
+            vss << ",";
+        }
+    }
+    save << "INSERT INTO match_infos ( "
+    << fss.str() << " ) "
+    << " VALUES ( "
+    << vss.str() << " ); ";
+    
+    if (connector.execQuery(save.str()))
+    {
+        LOG_ERROR << "save error!";
+    }
+    return queryMatchMid(profile, connector);
+}
+
+std::pair<bool, int>
+CPGMatchCreateFactory::checkValidMatch(CPGMatchProfile& profile,
+                SQLConnector& connector)
+{
+    bool res = false;
+    int mid = queryMatchMid(profile, connector);
+    
+    // 查找比赛是否已经创建。
+    if (mid == INVALID_MID)
+    {
+        res = true;
+    }
+    return {res, mid};
+}
+
+int
+CPGMatchCreateFactory::queryMatchMid(CPGMatchProfile& profile,
+                         SQLConnector& connector)
+{
+    int mid = INVALID_MID;
+    
+    std::stringstream ss;
+    ss << "SELECT mid FROM match_infos WHERE ";
+    ss << " start_time=" << profile.start_time;
+    ss << " AND match_type=" << profile.match_type;
+    ss << " limit 1;";
+    if (connector.execQuery(ss.str()))
+    {
+        return mid;
+    }
+    
+    
+    if (connector.queryRowNum() == 1)
+    {
+        connector.fieldData("mid", mid);
+    }
+    return mid;
+}
+
 
 std::list<std::shared_ptr<CPGMatchProfile>>
 CPGMatchCreateFactory::loadFromFile()

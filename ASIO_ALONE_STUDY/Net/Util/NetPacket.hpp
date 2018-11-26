@@ -10,6 +10,7 @@
 
 #include <memory>
 #include <string>
+#include <boost/any.hpp>
 #include "../base/FASIOType.h"
 namespace fasio
 {
@@ -37,10 +38,13 @@ public:
     void setLogicID(int logicID) { logicID_ = logicID;}
     int logicID() const { return logicID_; }
     
+//    void setExtra(const boost::any& any) { extra_ = any;}
+//    boost::any& extra() { return extra_;}
 private:
     int logicID_;
     char* buffer_;
     size_t size_;
+//    boost::any extra_;
 };
 
 

@@ -8,8 +8,8 @@
 
 #include "CPGToCentralSession.hpp"
 #include "CPGServerDefine.h"
-#include <CPG/CPGServer.pb.h>
-#include <CPG/CPGClientServer.pb.h>
+#include "../CPGServer.pb.h"
+#include "../CPGClientServer.pb.h"
 #include "MessageTypeDefine.h"
 #include "../Util/ServerConfigManager.hpp"
 #include "../../Net/FASIO.hpp"

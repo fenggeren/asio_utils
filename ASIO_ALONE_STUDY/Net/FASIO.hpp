@@ -13,7 +13,7 @@
 #include "IOContextPool.hpp"
 #include "TCPClient.hpp"
 #include "TimerManager.hpp"
-#include "DataHandler.hpp" 
+#include "DataHandler.hpp"
 #include "ServiceKernel.hpp"
 #include "TCPServer.hpp"
 #include "TCPSessionManager.hpp"
@@ -33,6 +33,7 @@
 #include "logging/Logging.hpp"
 
 #include "Util/Active.hpp"
+#include "Util/EventActive.hpp"
 #include "Util/NetPacket.hpp"
 #include "Util/ObjectIndexPool.hpp"
 #include "Util/ObjectPool.hpp"

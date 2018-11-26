@@ -10,11 +10,13 @@
 
 #include <CPG/CPGServerDefine.h>
 #include <CPG/Util/ConvFunctional.hpp>
+#include <CPG/CPGMatchDefine.h>
 #include <Net/TimerManager.hpp>
 #include <map>
 #include <list>
 #include "CSMatchDistDefine.h"
-#include <CPG/MatchCreate/CPGMatchCreateFactory.hpp>
+#include <CPG/MatchHelper/CPGMatchCreateFactory.hpp>
+#include <CPG/DB/DBActiveWrapper.hpp>
 
 
 /*
@@ -43,7 +45,7 @@ public:
         static CSMatchManager manager;
         return manager;
     }
-    
+    CSMatchManager();
     // 初始化
     void initialize();
     
@@ -59,9 +61,26 @@ public:
     std::list<std::shared_ptr<CPGMatchProfile>>
     matchList() const;
     
+    // 获取给定match服务 负责的所有比赛。
     std::list<int> getDistMatch(int sid);
     
     void addUndistriteMatches(std::list<int>&& mids);
+    
+    int getService(int mid);
+ 
+public: // 增 删 改 查
+    // 取消比赛
+    // 1: 条件不满足，自动取消
+    // 2: manager主动取消
+    int cancelMatch(int mid, int reason);
+    // 更新比赛参数.
+    int updateMatch(int mid, const std::map<std::string,std::string>& properties);
+    // 获取比赛
+    std::shared_ptr<CPGMatchProfile> getMatch(int mid);
+    
+    // 创建比赛, mid = 0, 存储到mysql,获取唯一的mid
+    // 异步的，需要特殊处理
+    int createMatch(const CPGMatchProfile& match, int promiseID);
 public:
     // 启动/暂停新的比赛服务.
     // 可能需要从新分配比赛
@@ -89,6 +108,10 @@ public:
     // 校验 比赛分配信息
     CheckError checkServiceDistMap(const MatchDisService& service,
                              std::list<int>& mids);
+    
+    // 给定信息，能否创建比赛--
+    int createMatchValid(const CPGMatchProfile& match);
+
 private:
     // 加载所有比赛
     void loadAllMatches();
@@ -108,12 +131,30 @@ private:
     std::list<int>
     filterValidMatch(std::list<int>& mids);
     
+    // 比赛相关改变。 如:数量，服务等
+    void updateMatchesOrService();
+    
+    // 创建新比赛，已经创建完，处理相关数据
+    void createdMatches(const std::list<std::shared_ptr<CPGMatchProfile>>& matches);
+    
+    void dbAsyncHandler(fasio::NetPacket* packet);
+    
+    
+    
+private: // db handler
+    void cancelMatch(const void* data,
+                     const PacketHeader& header);
+    void updateMatch(const void* data,
+                     const PacketHeader& header);
+    void createMatch(const void* data,
+                     const PacketHeader& header);
+    
 private:
     // 异步更新 比赛对应服务表--
     ChangedMatchMapCB changedMatchMapCB_;
     // 所有的比赛服务 对应的 所运行比赛id
     std::map<MatchDisService, std::list<int>> matchServices_;
-    
+    // <mid, profile>
     std::map<int, std::shared_ptr<CPGMatchProfile>> matches_;
     
     std::list<ChangedService> changedServices_;
@@ -124,6 +165,10 @@ private:
     
     using AsioTimer = asio::basic_waitable_timer<std::chrono::steady_clock>;
     std::shared_ptr<AsioTimer> timer_;
+    
+    time_t matchLatestUpdateTime_; // 比赛最后改变时间.
+    
+    std::unique_ptr<DBActiveWrapper> dbwrapper_;
 };
 
 
