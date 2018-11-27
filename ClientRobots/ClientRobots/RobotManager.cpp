@@ -21,18 +21,17 @@ RobotManager::RobotManager()
 port_(7841)
 {
     //
-//    TimerManager::createTimer([&]{
-//        int idx = arc4random_uniform(robotNums_);
-//        auto robot = robots_[idx];
-//        joinMatchRQ(robot);
-//    }, io_context_, 3, 0.001, 1000);
+    TimerManager::createTimer([&]{
+        int idx = arc4random_uniform(robotNums_);
+        auto robot = robots_[idx];
+        if (robot->login()) joinMatchRQ(robot);
+    }, io_context_, 13, 0.01, 1000);
 
-//    TimerManager::createTimer([&]{
-//        int idx = arc4random_uniform(robotNums_);
-//        auto robot = robots_[idx];
-//        unjoinMatchRQ(robot);
-//
-//    }, io_context_, 13, 0.001, 1000000);
+    TimerManager::createTimer([&]{
+        int idx = arc4random_uniform(robotNums_);
+        auto robot = robots_[idx];
+        if (robot->login()) unjoinMatchRQ(robot);
+    }, io_context_, 13, 0.01, 1000000);
     
     
     TimerManager::createTimer([&]{

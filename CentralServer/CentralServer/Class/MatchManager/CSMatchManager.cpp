@@ -239,7 +239,7 @@ bool CSMatchManager::checkDistMatchServices()
 {
     time_t now = time(NULL);
     // 时间间隔大于指定时间， 更新比赛分配信息
-    return matchLatestUpdateTime_ - now >= updateDuration;
+    return now - matchLatestUpdateTime_ >= updateDuration;
 }
 
 // 已经进行处理， changedServices_ 每个sid，只包含一个改变.
