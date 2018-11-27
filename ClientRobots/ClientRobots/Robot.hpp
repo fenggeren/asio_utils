@@ -56,7 +56,8 @@ public:
     
     MatchBriefInfo matchInfo(int mid);
    
-    
+    const bool login() const { return login_;}
+    void setLogin(bool login) { login_ = login;}
 public:
     const std::string& ip() const {return ip_; }
     void setIP(const std::string& ip) { ip_ = ip; }
@@ -70,6 +71,7 @@ private:
     std::string ip_;
     uint32 logicID_;
     UserInfo    userInfo_;
+    bool login_{false};
     std::vector<MatchBriefInfo> matchList_;
     std::set<int>  joinedMatches_;
 };

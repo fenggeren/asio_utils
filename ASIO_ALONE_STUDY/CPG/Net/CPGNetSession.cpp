@@ -69,7 +69,7 @@ void CPGClientSession::defaultMessageCallback(
         if (header->type == kHeartBeatRS)
         {
             updateHeartBeat();
-            LOG_DEBUG << " kHeartBeatRS ";
+            LOG_DEBUG << " kHeartBeatRS " << logicID();
         }
         else
         {

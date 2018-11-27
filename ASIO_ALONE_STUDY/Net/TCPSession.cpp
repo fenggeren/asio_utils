@@ -33,7 +33,7 @@ inputBuffer_(new DataBuffer),
 state_(kConnecting)
 //,uuid_(num_++)
 {
-    
+    updateHeartBeat();
 }
 
 TCPSession::~TCPSession()

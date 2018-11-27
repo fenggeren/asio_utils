@@ -17,7 +17,7 @@ using namespace fasio;
 
 int main(int argc, const char * argv[]) {
     
-    gRobotManager.setRobotNum(100);
+    gRobotManager.setRobotNum(1000);
     gRobotManager.start();
     return 0;
 }

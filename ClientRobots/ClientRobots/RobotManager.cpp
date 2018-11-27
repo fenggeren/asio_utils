@@ -40,8 +40,9 @@ port_(7841)
         time_t cur = time(NULL);
         for(auto& robot : robots_)
         {
-            if (cur - robot->userInfo().session->heartBeatTime() >
-                kClientHeartBeatDuration)
+            if ( robot->login() &&
+                (cur - robot->userInfo().session->heartBeatTime() >
+                kClientHeartBeatOvertime))
             {
                 missRobots.push_back(robot);
             }
@@ -59,7 +60,7 @@ port_(7841)
 //            session->forceClose();
             session->reconnect();
         }
-    }, io_context_, 1, kClientHeartBeatDuration, 1000000);
+    }, io_context_, 10, kClientHeartBeatDuration, 1000000);
     
     
 }
@@ -75,10 +76,8 @@ void RobotManager::start()
         robot->setLogicID(session->logicID());
         robot->setUserInfo({i, session});
         robots_[i] = robot;
-        if (i % 100 == 0)
-        {
-            usleep(10000);
-        }
+        io_context_.run_one();
+        usleep(1000);
     }
     io_context_.run();
 }
@@ -166,6 +165,7 @@ void RobotManager::loginRS(const std::shared_ptr<TCPSession>& session,
     {
         LOG_MINFO << " id: " << session->logicID();
         
+        getRobot(session)->setLogin(true);
         matchListRQ(getRobot(session));
     }
     else
