@@ -35,6 +35,7 @@ public:
     boost::any& futureData(int promiseID);
     
     bool setData(const boost::any& data, int value, int promiseID);
+    void removePromise(int promiseID);
 private:
     std::map<int, PromiseProfile> promiseMap_;
     std::mutex mutex_;

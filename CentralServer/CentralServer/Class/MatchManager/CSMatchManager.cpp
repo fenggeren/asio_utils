@@ -34,9 +34,11 @@ void CSMatchManager::initialize()
 {
     using namespace nlohmann;
     
-    CPGMatchCreateFactory factory;
-    // 获取所有的比赛
-    matches_ = factory.initialize();
+    {
+        CPGMatchCreateFactory factory;
+        // 获取所有的比赛
+        matches_ = factory.initialize();
+    }
     
     std::list<int> allmatches;
     for(auto& pair : matches_)
@@ -52,6 +54,8 @@ void CSMatchManager::initialize()
     fasio::TimerManager::createTimer(
          std::bind(&CSMatchManager::updateDistMatchServices, this),
                                      fasio::getIoContext(), 20);
+    
+    dbwrapper_->start();
     // 已经分配的比赛
 //    std::list<int> distedMatches;
 //    for(auto& pair : matchServices_)
@@ -545,14 +549,14 @@ int CSMatchManager::createMatch(const CPGMatchProfile& match, int promiseID)
     }
     
     // 检测比赛信息有效性
-    CPGServer::UpdateMatchRQ rq;
+    CPGServer::CreateMatchRQ rq;
     auto properties = structConvertMap(match);
+    auto p = rq.mutable_properties();
     for(auto& pro : properties)
     {
-        auto p = rq.mutable_properties();
-        
         p->insert({pro.first, pro.second});
     }
+     
     dbwrapper_->sendToDBThread(rq.SerializeAsString().data(),
                                {kCreateMatchRQ, rq.ByteSize(),promiseID});
     
@@ -581,7 +585,7 @@ void CSMatchManager::createdMatches(const   std::list<std::shared_ptr<CPGMatchPr
 int CSMatchManager::createMatchValid(const CPGMatchProfile& match)
 {
     time_t cur = time(NULL);
-    if (match.start_time > cur + 60)
+    if (match.start_time < cur + 60)
     {
         return kCreateMatch_ErrorTimeOut;
     }

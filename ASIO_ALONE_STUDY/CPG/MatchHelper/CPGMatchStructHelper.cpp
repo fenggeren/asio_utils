@@ -8,6 +8,7 @@
 
 #include "CPGMatchStructHelper.hpp"
 #include "../BetAlgorithm.h"
+#include <iostream>
 
 std::map<std::string, std::string>
 structConvertMap(const CPGMatchProfile& match)
@@ -50,23 +51,23 @@ void mapConvertStruct(std::map<std::string, std::string>& dict,
                       CPGMatchProfile& match)
 {
     match.mid = std::atoi(dict["mid"].c_str());
-    match.start_time = std::atoi(dict["begin_date_time"].c_str());
-    match.total_player_amount = std::atoi(dict["total_joined_player"].c_str());
-    match.remained_player_amount = std::atoi(dict["remained_player"].c_str());
+    match.start_time = std::atoi(dict["start_time"].c_str());
+    match.total_player_amount = std::atoi(dict["total_player_amount"].c_str());
+    match.remained_player_amount = std::atoi(dict["remained_player_amount"].c_str());
     match.match_state = std::atoi(dict["match_state"].c_str());
     match.current_blind_level = std::atoi(dict["current_blind_level"].c_str());
-    match.entryfee = std::atoi(dict["entryfee_coin"].c_str());
+    match.entryfee = std::atoi(dict["entryfee"].c_str());
     match.init_chips_amount = std::atoi(dict["init_chips_amount"].c_str());
     match.min_players_amount = std::atoi(dict["min_players_amount"].c_str());
     match.max_players_amount = std::atoi(dict["max_players_amount"].c_str());
-    match.operator_time = std::atoi(dict["speed"].c_str());
+    match.operator_time = std::atoi(dict["operator_time"].c_str());
     match.increase_blind_time = std::atoi(dict["increase_blind_time"].c_str());
-    match.first_blind_level = std::atoi(dict["start_blind_level"].c_str());
+    match.first_blind_level = std::atoi(dict["first_blind_level"].c_str());
     match.delay_join_level = std::atoi(dict["delay_join_level"].c_str());
     match.start_condition = std::atoi(dict["start_condition"].c_str());
     match.reward_type = std::atoi(dict["reward_type"].c_str());
     match.match_type = std::atoi(dict["match_type"].c_str());
-    match.bonusid = std::atoi(dict["bonus_id"].c_str());
+    match.bonusid = std::atoi(dict["bonusid"].c_str());
     match.guarantee_person = std::atoi(dict["guarantee_person"].c_str());
     match.enter_code = std::atoi(dict["enter_code"].c_str());
     match.entry_pool = std::atoi(dict["entry_pool"].c_str());
@@ -120,7 +121,7 @@ namespace nlohmann
         };
     }
     void from_json(const json& j, CPGMatchProfile& match)
-    {
+    { 
         match.name = j["name"].get<std::string>();
         match.start_condition = j["start_condition"];
         match.min_players_amount = j["min_players_amount"];
@@ -140,47 +141,49 @@ namespace nlohmann
         match.delay_join_level = j["delay_join_level"];
         match.finish_condition = j["finish_condition"];
         match.finish_param = j["finish_param"];
-        if (!j["mid"].is_null())
+
+        if (j.hasMember("mid"))
         {
             match.mid = j["mid"];
         }
-        if (!j["end_time"].is_null())
+        if (j.hasMember("end_time"))
         {
             match.end_time = j["end_time"];
         }
-        if (!j["match_auto_cancel_second"].is_null())
+        if (j.hasMember("match_auto_cancel_second"))
         {
             match.match_auto_cancel_second = j["match_auto_cancel_second"];
         }
-        if (!j["bankid"].is_null())
+        if (j.hasMember("bankid"))
         {
             match.bankid = j["bankid"];
         }
-        if (!j["current_blind_level"].is_null())
+        if (j.hasMember("current_blind_level"))
         {
             match.current_blind_level = j["current_blind_level"];
         }
-        if (!j["total_player_amount"].is_null())
+        if (j.hasMember("total_player_amount"))
         {
             match.total_player_amount = j["total_player_amount"];
         }
-        if (!j["remained_player_amount"].is_null())
+        if (j.hasMember("remained_player_amount"))
         {
             match.remained_player_amount = j["remained_player_amount"];
         }
-        if (!j["match_state"].is_null())
+        if (j.hasMember("match_state"))
         {
             match.match_state = j["match_state"];
         }
-        if (!j["enter_code"].is_null())
+        if (j.hasMember("enter_code"))
         {
             match.enter_code = j["enter_code"];
         }
-        if (j["start_time"].is_number())
+            
+        if (j.hasMember("start_time") && j["start_time"].is_number_integer())
         {
             match.start_time = j["start_time"];
         }
-        else if (!j["start_time"].is_string())
+        else if (j.hasMember("start_time"))
         {
             match.start_time =  (int)BetCoreAlgo::GetDateTimeIntFromFormat(j["start_time"].get<std::string>().c_str());
         }

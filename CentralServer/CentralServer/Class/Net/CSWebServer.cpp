@@ -34,18 +34,54 @@ void CSWebServer::start()
 
 void CSWebServer::route()
 {
+    // 比赛列表
+    CROW_ROUTE(app, "/match/list")
+    .methods(crow::HTTPMethod::GET)
+    ([](const crow::request& rq, crow::response& res)
+     {
+         auto matches = CSMatchManager::instance().matchList();
+         std::vector<nlohmann::json> mjsons;
+         for(auto& m : matches)
+         {
+             mjsons.push_back(*m.get());
+         }
+         
+         nlohmann::json j;
+         j["code"] = kNoneError;
+         j["data"] = mjsons;
+         res.body = j.dump();
+         res.end();
+     });
+    
+    // 比赛更新
+    CROW_ROUTE(app, "/match/update")
+    .methods(crow::HTTPMethod::POST)
+    ([](const crow::request& req, crow::response& res)
+     {
+         
+         res.end();
+     });
+    // 取消比赛
+    CROW_ROUTE(app, "/match/cancel")
+    .methods(crow::HTTPMethod::POST)
+    ([](const crow::request& req, crow::response& res)
+     {
+         
+         res.end();
+     });
+    
+    // 创建比赛
     CROW_ROUTE(app, "/match/create")
     .methods(crow::HTTPMethod::POST)
     ([](const crow::request& req)
      {
-         auto params = getQueryParams(req.body);
          
-         nlohmann::json j(params["data"]);
+         auto bodyJson = nlohmann::json::parse(req.body);
          // 根据json， 创建比赛.
          auto& promise = PromiseFutureQueue::instance().nextPromise();
          
          auto future = promise.promise.get_future();
-         CPGMatchProfile profile = j;
+         CPGMatchProfile profile = bodyJson["data"];
          int code = CSMatchManager::instance().createMatch(profile,
                                                         promise.promiseID);
          // 创建失败，直接返回

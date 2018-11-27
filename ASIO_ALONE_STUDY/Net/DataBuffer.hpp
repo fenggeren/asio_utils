@@ -18,7 +18,7 @@ class DataBuffer
 {
 public:
     
-    static const size_t kCheapPrepend = 8;
+    static const size_t kCheapPrepend = 0;
     static const size_t kInitialSize = 1024;
     
     
@@ -53,7 +53,8 @@ public:
     void retrieve(size_t len)
     {
         assert(len <= readableBytes());
-        if (len < readableBytes()) {
+        if (len < readableBytes())
+        {
             readerIndex_ += len;
         }
         else

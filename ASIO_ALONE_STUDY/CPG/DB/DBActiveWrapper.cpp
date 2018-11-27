@@ -21,7 +21,7 @@ DBActiveWrapper::DBActiveWrapper(const DBConfig& config,
                                     config.username,
                                     config.pwd,
                                     config.ip, config.port);
-    if (ret != 0)
+    if (!ret)
     {
         LOG_ERROR << " cant connect db, ret: " << ret
         << "info: " << config.ip << ":" << config.port

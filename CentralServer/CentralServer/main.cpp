@@ -11,12 +11,19 @@
 #include "Class/Net/CSKernel.hpp"
 #include "Class/MatchManager/CSMatchManager.hpp"
 #include <CPG/Util/ServerConfigManager.hpp>
+#include "Class/Net/CSWebServer.hpp"
 
 using namespace fasio::queue;
 
 int main(int argc, const char * argv[]) {
     
     fasio::setCurThreadName("main");
+    
+    
+    CSWebServer webserver;
+    std::thread t([&]{
+        webserver.start();
+    });
     
     CSMatchManager::instance().initialize();
 
@@ -34,6 +41,8 @@ int main(int argc, const char * argv[]) {
         }
     }
     MainQueue.run();
+    
+    t.join();
     
     return 0;
 }

@@ -43,18 +43,6 @@ TCPSession::~TCPSession()
     delete inputBuffer_;
 }
 
-void TCPSession::startAsyncRead()
-{
-    if (state_ == kConnected)
-    {
-        inputBuffer_->ensureWritableBytes(1024);
-        socket_->async_read_some(asio::buffer(inputBuffer_->beginWrite(),
-                                              inputBuffer_->writableBytes()),
-                                 std::bind(&TCPSession::handRead,this,
-                                           std::placeholders::_1,
-                                           std::placeholders::_2));
-    }
-}
 
 void TCPSession::send(const std::string& message)
 {
@@ -91,6 +79,20 @@ void TCPSession::internalSend()
     sendBuffer_->operate();
 
 }
+    
+void TCPSession::startAsyncRead()
+{
+    if (state_ == kConnected)
+    {
+        inputBuffer_->ensureWritableBytes(1024);
+        socket_->async_read_some(asio::buffer(inputBuffer_->beginWrite(),
+                                              inputBuffer_->writableBytes()),
+                                 std::bind(&TCPSession::handRead,this,
+                                           std::placeholders::_1,
+                                           std::placeholders::_2));
+    }
+}
+
 
 void TCPSession::handRead(std::error_code ec, std::size_t bytesRead)
 {

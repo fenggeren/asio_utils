@@ -17,6 +17,7 @@
 #include "PromiseFutureQueue.hpp"
 
 using namespace fasio;
+using namespace logging;
 using namespace queue;
 
 void CSMatchManager::dbAsyncHandler(fasio::NetPacket* packet)
@@ -91,11 +92,15 @@ void CSMatchManager::createMatch(const void* data,
     CPGServer::CreateMatchRQ rq;
     if (parseProtoMsg(data, header.size, rq))
     {
+        
         std::map<std::string, std::string> properties;
         for(auto& pro : rq.properties())
         {
             properties[pro.first] = pro.second;
         }
+        LOG_DEBUG << rq.DebugString();
+        LOG_DEBUG << rq.properties_size();
+        
         CPGMatchProfile profile;
         mapConvertStruct(properties, profile);
         
@@ -109,6 +114,9 @@ void CSMatchManager::createMatch(const void* data,
         MainQueue.dispatch([&]{
             this->createdMatches({newmatch});
         });
+        
+        
+        std::cout << "=============" << std::endl;
         
         PromiseFutureQueue::instance().setData(profile, kNoneError,
                                                header.extraID);

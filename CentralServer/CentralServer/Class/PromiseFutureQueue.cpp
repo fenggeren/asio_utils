@@ -16,6 +16,7 @@ PromiseFutureQueue::nextPromise()
 {
     std::lock_guard<std::mutex> lock(mutex_);
     int pid = promiseID_++;
+    promiseMap_[pid].promiseID = pid;
     return promiseMap_[pid];
 }
  
@@ -40,6 +41,11 @@ bool PromiseFutureQueue::setData(const boost::any& data,
     return true;
 }
 
+void PromiseFutureQueue::removePromise(int promiseID)
+{
+    std::lock_guard<std::mutex> lock(mutex_);
+    promiseMap_.erase(promiseID);
+}
 
 
 

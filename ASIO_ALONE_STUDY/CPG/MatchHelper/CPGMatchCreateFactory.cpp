@@ -232,7 +232,7 @@ CPGMatchCreateFactory::createAndStoreMatch(CPGMatchProfile& profile,
     
     if (connector.execQuery(save.str()))
     {
-        LOG_ERROR << "save error!";
+        LOG_ERROR << "save error! " << connector.errorStr();
     }
     return queryMatchMid(profile, connector);
 }

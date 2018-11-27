@@ -13483,7 +13483,18 @@ class basic_json
 
         return result;
     }
-
+    
+    template<typename KeyT>
+    bool hasMember(KeyT&& key)
+    {
+        return find(key) != end();
+    }
+    template<typename KeyT>
+    bool hasMember(KeyT&& key) const
+    {
+        return find(key) != end();
+    }
+    
     /*!
     @brief find an element in a JSON object
     @copydoc find(KeyT&&)

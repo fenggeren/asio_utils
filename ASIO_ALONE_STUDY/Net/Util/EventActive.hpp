@@ -62,12 +62,13 @@ namespace fasio
             thread_ = std::make_shared<std::thread>(&EventActive::run, this);
         }
         
-        void send(Tptr& t)
+        void send(Tptr t)
         {
             ++pendingWorkNum_;
-            asio::dispatch(ioc_, [&]
+            asio::dispatch(ioc_, [&, t]
             {
                 callback_(t);
+                releaseEvent(t);
                 --pendingWorkNum_;
             });
         }
@@ -79,7 +80,7 @@ namespace fasio
         }
         
         
-        void releaseEvent(Tptr& event)
+        void releaseEvent(const Tptr& event)
         {
             eventPool_.releaseObject(event);
         }

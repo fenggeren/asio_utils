@@ -34,6 +34,7 @@
  其他服务自动重连。
  MS将自己分配的所有比赛发送给CS
  */
+
 class CSMatchManager
 {
     using ChangedMatchMap = std::map<unsigned int, std::list<int>>;
@@ -150,6 +151,9 @@ private: // db handler
                      const PacketHeader& header);
     
 private:
+    
+    // TODO.  fixme 线程安全。
+    
     // 异步更新 比赛对应服务表--
     ChangedMatchMapCB changedMatchMapCB_;
     // 所有的比赛服务 对应的 所运行比赛id
