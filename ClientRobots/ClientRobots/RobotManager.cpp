@@ -25,13 +25,13 @@ port_(7841)
         int idx = arc4random_uniform(robotNums_);
         auto robot = robots_[idx];
         if (robot->login()) joinMatchRQ(robot);
-    }, io_context_, 13, 0.01, 1000);
+    }, io_context_, 13, 0.01, INT_MAX);
 
     TimerManager::createTimer([&]{
         int idx = arc4random_uniform(robotNums_);
         auto robot = robots_[idx];
         if (robot->login()) unjoinMatchRQ(robot);
-    }, io_context_, 13, 0.01, 1000000);
+    }, io_context_, 13, 0.01, INT_MAX);
     
     
     TimerManager::createTimer([&]{
